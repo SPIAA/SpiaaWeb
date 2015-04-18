@@ -32,10 +32,11 @@
                             <div class="col-lg-12">
                                 <br/><br/>
                                 <display:table class="table table-striped table-hover"  name="denunciaList" id="denunciaList" requestURI="" pagesize="7">
-                                    <display:column property="bairro.nome" title="Bairro"/>
+                                    <display:column property="bairro.nome" title="Bairro" sortable="true" />
                                     <display:column property="endereco" title="Endereco"/>
                                     <display:column property="numero" title="Numero"/>
                                     <display:column property="telefone" title="Telefone"/>
+                                    <display:column property="status" title="Status" sortable="true"/>
                                     
                                     <display:column value="<a href=\"denuncia/${denunciaList.id}/visualiza\">Visualizar</a>" title=""/>
                                     

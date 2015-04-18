@@ -16,6 +16,7 @@
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -28,15 +29,12 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
         <!--validate -->
-        <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
         <link rel="shortcut icon" href="img/icone_spiaa.png">
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
-        <script src="js/jquery.validationEngine-pt_BR.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/jquery.maskedinput.min.js"></script>	
+
     </head>
 
     <body>
@@ -88,41 +86,16 @@
                 <div class="col-md-3 column"></div>
                 <div class="col-md-6 column" style="border: 1px silver solid; border-radius: 15px;">
                     <div class="col-md-12 text-center">
-                        <h3>Relatório de denúncia</h3></div>
-                    <form role="form" id="formDenuncia" method="POST">
+                        <h2 class="text-success">Denuncia enviada com sucesso</h2>
+                        <br/><br/>
+                        <h4>Obrigado por nos ajudar a combater a dengue!</h4>
+                        <br/>
+                        <p class="text-success"><i class="fa fa-4x fa-smile-o"></i></p>
+                        <br/>
+                        <a href="<c:url value="/home"/>" class="btn btn-success">Voltar a Página Inicial!</a>
+                        <br/><br/><br/>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Bairro:</label>
-                            <select  class="form-control validate[required]" name="bairro.id" id="estrato.id">
-                                <c:forEach var="bairroList" items="${bairroList}">
-                                    <option value="${bairroList.id}" > ${bairroList.nome}  </option>
-                                </c:forEach>
-                            </select>
-
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Inputendereco">Endereço:</label><input type="text" class="form-control validate[required]" name="endereco" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Inputnumero">Numero:</label><input type="text" class="form-control validate[required]" name="numero" />
-                        </div>
-                        <div class="form-group">
-                            <label for="Inputtelefone">Telefone:</label><input type="text" class="form-control" id="telefone" name="telefone"/>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="Inputtipoirregularidade">Tipo de irregularidades:</label><textarea  class="form-control validate[required]" name="irregularidade" ></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="Inputobservacao">Observação:</label><textarea  class="form-control" name="observacao" ></textarea>
-                        </div>
-                        <div class="form-group text-center">
-                            <input class="btn btn-lg btn-success" type="submit" value=" Enviar Denuncia" /> 
-                        </div>
-
-                    </form>
 
                 </div>
 
@@ -153,18 +126,18 @@
             </div>
         </div>
         <script>
-            $('#telefone').focusout(function(){
-			var phone, element;
-			element = $(this);
-			element.unmask();
-			phone = element.val().replace(/\D/g, '');
-			if(phone.length > 10) {
-				element.mask("(99) 99999-999?9");
-			} else {
-				element.mask("(99) 9999-9999?9");
-			}
-		}).trigger('focusout');
-            
+            $('#telefone').focusout(function () {
+                var phone, element;
+                element = $(this);
+                element.unmask();
+                phone = element.val().replace(/\D/g, '');
+                if (phone.length > 10) {
+                    element.mask("(99) 99999-999?9");
+                } else {
+                    element.mask("(99) 9999-9999?9");
+                }
+            }).trigger('focusout');
+
             jQuery(document).ready(function () {
                 // binds form submission and fields to the validation engine
                 jQuery("#formDenuncia").validationEngine('attach', {promptPosition: "bottomLeft", autoPositionUpdate: true});

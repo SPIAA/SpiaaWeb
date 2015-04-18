@@ -6,7 +6,7 @@ import spiaa.model.base.BaseEntity;
 
 public class Atividade extends BaseEntity{
     private String endereco;
-    private String quarteirao;
+    private Quarteirao quarteirao;
     private String numero;
     private String observacao;
     private Integer inspecionado;
@@ -28,14 +28,7 @@ public class Atividade extends BaseEntity{
         this.endereco = endereco;
     }
 
-    public String getQuarteirao() {
-        return quarteirao;
-    }
-
-    public void setQuarteirao(String quarteirao) {
-        this.quarteirao = quarteirao;
-    }
-
+   
     public String getNumero() {
         return numero;
     }
@@ -91,5 +84,13 @@ public class Atividade extends BaseEntity{
     public void setInspecionado(Integer inspecionado) {
         this.inspecionado = inspecionado;
     } 
+
+    public Quarteirao getQuarteirao() {
+        return quarteirao;
+    }
+
+    public void setQuarteirao(Quarteirao quarteirao) {
+        this.quarteirao = quarteirao;
+    }
     
 }

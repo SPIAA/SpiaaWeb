@@ -16,7 +16,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${usuarioLogado.nome} <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li>
-            <a href="<c:url value="/logout"/>"> Sair</a>
+                <a href="<c:url value="/logout"/>"> Sair</a>
             </li>
         </ul>
     </li>
