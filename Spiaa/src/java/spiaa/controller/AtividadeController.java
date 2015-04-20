@@ -18,6 +18,7 @@ import spiaa.model.entity.AtividadeInseticida;
 import spiaa.model.entity.BoletimDiario;
 import spiaa.model.entity.Criadouro;
 import spiaa.model.entity.Inseticida;
+import spiaa.model.entity.Quarteirao;
 import spiaa.model.entity.TipoImoveis;
 
 @Controller
@@ -40,6 +41,7 @@ public class AtividadeController {
             mv.addObject("boletimDiario", boletimDiario);
             mv.addObject("atividadeList", atividadeList);
         } catch (Exception e) {
+            e.printStackTrace();
         }
         
         return mv;
@@ -51,6 +53,7 @@ public class AtividadeController {
         List<Criadouro> criadouroList = new ArrayList<Criadouro>();
         List<Inseticida> inseticidaList = new ArrayList<Inseticida>();
         List<TipoImoveis> tipoImoveisList = new ArrayList<TipoImoveis>();
+        List<Quarteirao>  quarteiraoList = new ArrayList<Quarteirao>();
         Map<String, Object> criteria = new HashMap<String, Object>();
         try {
             criadouroList = ServiceLocator.getBaseCriadouroService().readByCriteria(criteria);
@@ -62,6 +65,7 @@ public class AtividadeController {
             mv.addObject("tipoImoveisList", tipoImoveisList);
             //  mv = new ModelAndView("redirect:/atividade/"+id);
         } catch (Exception e) {
+            e.printStackTrace();
         }
         
         return mv;

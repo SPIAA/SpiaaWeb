@@ -77,10 +77,10 @@
 
                                 <display:table class="table table-striped table-hover"  name="atividadeList" id="atividadeList" requestURI="" pagesize="7">
                                     <display:column property="quarteirao" title="Quarteirão"/>
-                                    <display:column property="endereco" title="Endereço"/>
+                                    <display:column property="rua" title="Endereço"/>
                                     <display:column property="numero" title="Numero"/>
                                     <display:column property="observacao" title="Observação"/>
-                                    <display:column property="totalInspecionado" title="T. Inspec."/>
+                                    <display:column property="inspecionado" title="T. Inspec."/>
                                     <display:column value="<a href=\"../atividade/${atividadeList.id}/alterar\">alterar</a>" title=""/>
                                     <display:column value="<a href=\"../atividade/${atividadeList.id}/excluir\">Excluir</a>" class="deleteLink" title=""/>
                                 </display:table>

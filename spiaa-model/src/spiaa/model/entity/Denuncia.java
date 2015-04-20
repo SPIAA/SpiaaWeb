@@ -10,7 +10,7 @@ public class Denuncia extends BaseEntity {
     private String irregularidade;
     private String observacao;
     private String status;
-    private String conlusao;
+    private String conclusao;
     private Bairro bairro;
 
     public String getEndereco() {
@@ -53,12 +53,12 @@ public class Denuncia extends BaseEntity {
         this.status = status;
     }
 
-    public String getConlusao() {
-        return conlusao;
+    public String getConclusao() {
+        return conclusao;
     }
 
-    public void setConlusao(String conlusao) {
-        this.conlusao = conlusao;
+    public void setConclusao(String conclusao) {
+        this.conclusao = conclusao;
     }
 
     public Bairro getBairro() {

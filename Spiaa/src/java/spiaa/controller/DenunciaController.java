@@ -34,9 +34,10 @@ public class DenunciaController {
         ModelAndView mv = null;
         try {
             ServiceLocator.getbaseDenunciaService().create(denuncia);
-            mv = new ModelAndView("redirect:/home");
+            mv = new ModelAndView("denuncia/sucesso");
 
         } catch (Exception e) {
+        e.printStackTrace();
         }
 
         return mv;
@@ -81,6 +82,24 @@ public class DenunciaController {
 
             mv = new ModelAndView("denuncia/view");
             mv.addObject("denuncia", denuncia);
+
+               return mv;
+    }
+    
+    @RequestMapping(value = "/denuncia/{id}/visualiza", method = RequestMethod.POST)
+    public ModelAndView visualizar(@PathVariable Long id, Denuncia denuncia) throws Exception {
+        ModelAndView mv = null;
+        
+        ServiceLocator.getbaseDenunciaService().update(denuncia);
+        try {
+            mv = new ModelAndView("denuncia/view");
+            mv.addObject("denuncia", denuncia);
+            mv.addObject("mensagem", "Denuncia salva com sucesso");
+            
+        } catch (Exception e) {
+            mv.addObject("mensagem", "Erro ao Salvar a denuncia");
+        }
+           
 
                return mv;
     }

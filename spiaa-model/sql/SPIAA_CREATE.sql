@@ -12,7 +12,7 @@ id bigserial NOT NULL,
 endereco character varying(50),
 numero character varying(20),
 telefone character varying(20),
-irregularidades TEXT,
+irregularidade TEXT,
 observacao TEXT,
 conclusao TEXT,
 status varchar(10),
@@ -167,6 +167,7 @@ observacao VARCHAR(15),
 inspecionado Integer,
 tipo_imovel_fk BIGINT NOT NULL,
 boletim_fk BIGINT NOT NULL,
+quarteirao_fk bigint NOT NULL,
 PRIMARY KEY (id)
 );
 ALTER TABLE  atividade ADD CONSTRAINT atividade_boletim_fk
@@ -174,6 +175,9 @@ FOREIGN KEY(boletim_fk)REFERENCES boletim_diario(id);
 
 ALTER TABLE  atividade ADD CONSTRAINT atividade_tipo_imovel_fk
 FOREIGN KEY(tipo_imovel_fk)REFERENCES tipo_imovel(id); 
+
+ALTER TABLE  atividade ADD CONSTRAINT atividade_quarteirao_fk
+FOREIGN KEY(quarteirao_fk)REFERENCES quarteirao(id); 
 
 --Atividade Criadouro
 CREATE TABLE atividade_criadouro(

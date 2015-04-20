@@ -25,36 +25,67 @@
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">
-                                Denúncia
-                                <small>Visualizar</small>
-                            </h1>
-                            <div class="col-lg-12">
-                                <br/>
-                                <div class="form-group">
-                                    <label for="Inputendereco">Bairro :</label><p>${denuncia.bairro.nome}</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Inputendereco">Endereço:</label><p>${denuncia.endereco}</p>
-                                </div>
+                            <form role="form" id="formDenuncia" method="POST">   
+                                <h1 class="page-header">
+                                    Denúncia
+                                    <small>Visualizar</small> 
+                                </h1>
+                                <c:if test="${not empty mensagem}">  <div class="alert alert-info alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <p class="text-center">${mensagem}</p> 
+                                    </div>
+                                </c:if>
+                                <div class="col-lg-6 column">
 
-                                <div class="form-group">
-                                    <label for="Inputnumero">Numero:</label><p>${denuncia.numero}</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Inputtelefone">Telefone:</label><p>${denuncia.telefone}</p>
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="Inputtipoirregularidade">Tipo de irregularidades:</label><p>${denuncia.irregularidade}</p>-
-                                </div>
-                                <div class="form-group">
-                                    <label for="Inputobservacao">Observação:</label><p>${denuncia.observacao}</p>
-                                </div>
+                                    <div class="panel panel-danger">
+                                        <div class="panel-heading">Dados da Denuncia</div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <label for="Inputendereco">Bairro :</label><input type="text"  class="form-control" readonly name="bairro.nome" value="${denuncia.bairro.nome}"/>
+                                            </div>
 
 
-                            </div>
+                                            <div class="form-group">
+                                                <label for="Inputendereco">Endereço:</label><input type="text"  class="form-control" readonly name="endereco" value="${denuncia.endereco}"/>
+                                            </div>
 
+                                            <div class="form-group">
+                                                <label for="Inputnumero">Numero:</label><input type="text"  class="form-control" readonly name="numero" value="${denuncia.numero}" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Inputtelefone">Telefone:</label><input type="text"  class="form-control" readonly id="telefone" name="telefone" value="${denuncia.telefone}"/>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Inputtipoirregularidade">Tipo de irregularidades:</label><textarea  class="form-control" readonly name="irregularidade" >${denuncia.irregularidade}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Inputobservacao">Observação:</label><textarea  class="form-control" readonly name="observacao" > ${denuncia.observacao}</textarea>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <input type="text" class="" hidden="" name="id" value="${denuncia.id}"/>
+                                <div class="col-md-6 column">
+                                    <div class="form-group">
+                                        <label for="InputStatus">  Status : </label>
+                                        <select class="form-control col-lg-11" name="status" <c:if test="${denuncia.status eq 'fechado'}"> disabled</c:if>>
+                                            <option value="aberto" <c:if test="${denuncia.status eq 'aberto'}"> selected</c:if> >Aberto</option>
+                                            <option value="encaminhado" <c:if test="${denuncia.status eq 'encaminhado'}"> selected</c:if>>Encaminhado</option>
+                                            <option value="fechado" <c:if test="${denuncia.status eq 'fechado'}"> selected</c:if>>Fechado</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputConclusao">Conclusão :</label><textarea  class="form-control" name="conclusao" <c:if test="${denuncia.status eq 'fechado'}"> readonly</c:if>>${denuncia.conclusao}</textarea>
+                                    </div>
+                                    <div class="col-sm-4"> <p> &nbsp;</p></div>
+                                    <div class="col-sm-4"> <input class="btn btn-lg btn-block btn-default" type="submit"  value="Salvar" <c:if test="${denuncia.status eq 'fechado'}"> disabled</c:if> /> </div>
+                                    <div class="col-sm-4"> <p> &nbsp;</p></div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!-- /.row -->

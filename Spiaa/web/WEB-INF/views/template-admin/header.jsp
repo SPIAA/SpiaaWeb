@@ -14,6 +14,8 @@
 <link href="<c:url value="/css/sb-admin.css"/>" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="<c:url value="/css/font-awesome.min.css"/>" rel="stylesheet">
+<!--validate -->
+<link rel="stylesheet" href="<c:url value="/css/validationEngine.jquery.css"/>" type="text/css"/>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,3 +30,6 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+
+<script src="<c:url value="/js/jquery.validationEngine-pt_BR.js"/>" type="text/javascript" charset="utf-8"></script>
+<script src="<c:url value="/js/jquery.validationEngine.js"/>" type="text/javascript" charset="utf-8"></script>

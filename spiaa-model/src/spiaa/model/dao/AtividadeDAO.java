@@ -14,6 +14,7 @@ import spiaa.model.entity.AtividadeInseticida;
 import spiaa.model.entity.BoletimDiario;
 import spiaa.model.entity.Criadouro;
 import spiaa.model.entity.Inseticida;
+import spiaa.model.entity.Quarteirao;
 import spiaa.model.entity.TipoImoveis;
 
 public class AtividadeDAO implements BaseDAO<Atividade> {
@@ -23,17 +24,17 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     @Override
     public void create(Atividade entity, Connection conn) throws Exception {
 
-        String sql = "INSERT INTO atividade(numero_quateirao, endereco, numero, observacao, inspecionado, tipo_imovel_fk, boletim_fk) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id;";
+        String sql = "INSERT INTO atividade (rua, numero, observacao, inspecionado, tipo_imovel_fk, boletim_fk, quarteirao_fk) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id;";
         PreparedStatement ps = conn.prepareStatement(sql);
 
         int i = 0;
-        ps.setString(++i, entity.getQuarteirao());
         ps.setString(++i, entity.getEndereco());
         ps.setString(++i, entity.getNumero());
         ps.setString(++i, entity.getObservacao());
         ps.setInt(++i, entity.getInspecionado());
         ps.setLong(++i, entity.getTipoImoveis().getId());
         ps.setLong(++i, entity.getBoletimDiario().getId());
+        ps.setLong(++i, entity.getQuarteirao().getId());
 
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
@@ -73,7 +74,15 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     @Override
     public Atividade readById(Long id, Connection conn) throws Exception {
         Atividade atividade = null;
-        String sql = "SELECT atividade .*,tipo_imovel.id as tipo_imovel_id, tipo_imovel.nome as tipo_imovel_nome, tipo_imovel.sigla as tipo_imovel_sigla, atividade_criadouro.quantidade as atividade_criadouro_qtde, criadouro.id as criadouro_id, criadouro.grupo as criadouro_nome FROM atividade LEFT JOIN tipo_imovel on tipo_imovel.id = atividade.tipo_imovel_fk LEFT JOIN atividade_criadouro on atividade_criadouro.atividade_fk = atividade.id LEFT JOIN criadouro on criadouro.id = atividade_criadouro.criadouro_fk WHERE atividade.id = ?";
+        String sql = "SELECT atividade .*,tipo_imovel.id as tipo_imovel_id, tipo_imovel.descricao as tipo_imovel_descricao, tipo_imovel.sigla as tipo_imovel_sigla, ";
+        sql += "atividade_criadouro.quantidade as atividade_criadouro_qtde, criadouro.id as criadouro_id, criadouro.grupo as criadouro_nome, ";
+        sql += "quarteirao.id as quarteirao_id, quarteirao.descricao as quarteirao_descricao ";
+        sql += "FROM atividade ";
+        sql += "LEFT JOIN tipo_imovel on tipo_imovel.id = atividade.tipo_imovel_fk  ";
+        sql += "LEFT JOIN quarteirao on quarteirao.id = atividade.quarteirao_fk ";
+        sql += "LEFT JOIN atividade_criadouro on atividade_criadouro.atividade_fk = atividade.id ";
+        sql += "LEFT JOIN criadouro on criadouro.id = atividade_criadouro.criadouro_fk ";
+        sql += "WHERE atividade.id = ?";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setLong(1, id);
@@ -83,7 +92,10 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
                 atividade = new Atividade();
                 atividade.setId(rs.getLong("id"));
                 atividade.setEndereco(rs.getString("endereco"));
-                atividade.setQuarteirao(rs.getString("numero_quateirao"));
+                Quarteirao quarteirao = new Quarteirao();
+                quarteirao.setId(rs.getLong("quarteirao_id"));
+                quarteirao.setDescricao(rs.getString("quarteirao_descricao"));
+                atividade.setQuarteirao(quarteirao);
                 atividade.setNumero(rs.getString("numero"));
                 atividade.setObservacao(rs.getString("observacao"));
                 atividade.setInspecionado(rs.getInt("inspecionado"));
@@ -93,14 +105,14 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
                 tipoImoveis.setId(rs.getLong("tipo_imovel_id"));
                 tipoImoveis.setSigla(rs.getString("tipo_imovel_sigla"));
                 tipoImoveis.setDescricao(rs.getString("tipo_imovel_nome"));
-                
+
                 //boletim diario
                 BoletimDiario boletimDiario = new BoletimDiario();
                 boletimDiario.setId(rs.getLong("boletim_fk"));
                 atividade.setBoletimDiario(boletimDiario);
 
                 atividade.setTipoImoveis(tipoImoveis);
-                
+
                 //Atividade inseticida
                 List<AtividadeInseticida> atividadeInseticidaList = new ArrayList<AtividadeInseticida>();
                 atividadeInseticidaList = getInseticida(id, conn);
@@ -131,7 +143,12 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         List<Atividade> atividadeList = new ArrayList<Atividade>();
         Atividade atividade = null;
         TipoImoveis tipoImoveis = null;
-        String sql = "SELECT atividade .*,tipo_imovel.id as tipo_imovel_id, tipo_imovel.nome as tipo_imovel_nome, tipo_imovel.sigla as tipo_imovel_sigla FROM atividade LEFT JOIN tipo_imovel on tipo_imovel.id = atividade.tipo_imovel_fk WHERE 1 = 1";
+        String sql = "SELECT atividade .*,tipo_imovel.id as tipo_imovel_id, tipo_imovel.descricao as tipo_imovel_descricao, tipo_imovel.sigla as tipo_imovel_sigla,";
+        sql += " quarteirao.id as quarteirao_id, quarteirao.descricao as quarteirao_descricao ";
+        sql += "FROM atividade LEFT JOIN tipo_imovel on tipo_imovel.id = atividade.tipo_imovel_fk  ";
+        sql += "LEFT JOIN quarteirao on quarteirao.id = atividade.quarteirao_fk ";
+        sql += "WHERE 1 = 1";
+
         Statement s = conn.createStatement();
 
         Long criterionBoletimIdEq = (Long) criteria.get(CRITERION_BOLETIM_ID_EQ);
@@ -146,7 +163,10 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
             atividade = new Atividade();
             atividade.setId(rs.getLong("id"));
             atividade.setEndereco(rs.getString("endereco"));
-            atividade.setQuarteirao(rs.getString("numero_quateirao"));
+            Quarteirao quarteirao = new Quarteirao();
+            quarteirao.setId(rs.getLong("quarteirao_id"));
+            quarteirao.setDescricao(rs.getString("quarteirao_descricao"));
+            atividade.setQuarteirao(quarteirao);
             atividade.setNumero(rs.getString("numero"));
             atividade.setObservacao(rs.getString("observacao"));
             atividade.setInspecionado(rs.getInt("inspecionado"));
@@ -155,7 +175,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
             tipoImoveis = new TipoImoveis();
             tipoImoveis.setId(rs.getLong("tipo_imovel_id"));
             tipoImoveis.setSigla(rs.getString("tipo_imovel_sigla"));
-            tipoImoveis.setDescricao(rs.getString("tipo_imovel_nome"));
+            tipoImoveis.setDescricao(rs.getString("tipo_imovel_descricao"));
 
             atividade.setTipoImoveis(tipoImoveis);
 
@@ -171,16 +191,16 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     @Override
     public void update(Atividade entity, Connection conn) throws Exception {
 
-        String sql = "UPDATE atividade SET numero_quateirao=?, endereco=?, numero=?, observacao=?, inspecionado=?, tipo_imovel_fk=?, boletim_fk=? WHERE id=?";
+        String sql = "UPDATE atividade SET id=?, rua=?, numero=?, observacao=?, inspecionado=?, tipo_imovel_fk=?, boletim_fk=?, quarteirao_fk=? WHERE id=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
-        ps.setString(++i, entity.getQuarteirao());
         ps.setString(++i, entity.getEndereco());
         ps.setString(++i, entity.getNumero());
         ps.setString(++i, entity.getObservacao());
         ps.setInt(++i, entity.getInspecionado());
         ps.setLong(++i, entity.getTipoImoveis().getId());
         ps.setLong(++i, entity.getBoletimDiario().getId());
+        ps.setLong(++i, entity.getQuarteirao().getId());
         ps.setLong(++i, entity.getId());
         ps.execute();
         ps.close();
@@ -262,20 +282,18 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setLong(1, id);
         ResultSet rs = ps.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             inseticida = new Inseticida();
             inseticida.setId(rs.getLong("inseticida_id"));
             inseticida.setNome(rs.getString("inseticida_nome"));
-            
+
             atividadeInseticida = new AtividadeInseticida();
             atividadeInseticida.setQuantidadeInseticida(rs.getInt("atividade_inseticida_qtde"));
             atividadeInseticida.setInseticida(inseticida);
-        
+
             atividadeInseticidaList.add(atividadeInseticida);
         }
-        
-        
-        
+
         return atividadeInseticidaList;
     }
 

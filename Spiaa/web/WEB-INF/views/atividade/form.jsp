@@ -112,7 +112,7 @@
                                         <c:forEach var="criadouro" items="${criadouroList}">
 
                                             <div class="form-group col-md-1">
-                                                <label for="criadouro">${criadouro.nome} :</label>
+                                                <label for="criadouro">${criadouro.grupo} :</label>
                                                 <input type="text" class="form-control"  name="qtdeCriadouro">
                                                 <input type="hidden" name="criadouro" value="${criadouro.id}">
                                             </div>
@@ -122,7 +122,7 @@
                                     <c:if test="${not empty atividade.atividadeCriadouroList}">
                                         <c:forEach var="criadouro" items="${atividade.atividadeCriadouroList}">
                                             <div class="form-group col-md-1">
-                                                <label for="criadouro">${criadouro.criadouro.nome} :</label>
+                                                <label for="criadouro">${criadouro.criadouro.grupo} :</label>
                                                 <input type="text" class="form-control"  name="qtdeCriadouro" value="${criadouro.qtdeCriadouro}">
                                                 <input type="hidden" name="criadouro" value="${criadouro.criadouro.id}">
                                             </div>

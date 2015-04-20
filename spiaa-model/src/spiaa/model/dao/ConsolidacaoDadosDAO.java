@@ -56,7 +56,16 @@ public class ConsolidacaoDadosDAO implements BaseDAO<ConsolidacaoDados> {
     public ConsolidacaoDados readById(Long id, Connection conn) throws Exception {
         ConsolidacaoDados consolidacaoDados = null;
 
-        String sql = "SELECT consolidacao_dados.*, consolidacao_criadouro.qtde as consolidacao_criadouro_qtde, criadouro.id as criadouro_id, criadouro.grupo as criadouro_nome, liraa.id as liraa_id, liraa.data_inicio as liraa_data_inicio, liraa.data_fim as liraa_data_fim, estrato.id as estrato_id, estrato.nome as estrato_nome FROM consolidacao_dados LEFT JOIN consolidacao_criadouro on consolidacao_criadouro.consolidacao_fk = consolidacao_dados.id LEFT JOIN criadouro on criadouro.id = consolidacao_criadouro.criadouro_fk LEFT JOIN liraa on liraa.id = consolidacao_dados.liraa_fk LEFT JOIN estrato on estrato.id = consolidacao_dados.estrato_fk WHERE consolidacao_dados.id = ?;";
+        String sql = "SELECT consolidacao_dados.*, consolidacao_criadouro.quantidade as consolidacao_criadouro_qtde, ";
+        sql += "criadouro.id as criadouro_id, criadouro.grupo as criadouro_nome, ";
+        sql += "liraa.id as liraa_id, liraa.data_inicio as liraa_data_inicio, liraa.data_fim as liraa_data_fim, ";
+        sql += "estrato.id as estrato_id, estrato.nome as estrato_nome ";
+        sql += "FROM consolidacao_dados ";
+        sql += "LEFT JOIN consolidacao_criadouro on consolidacao_criadouro.consolidacao_fk = consolidacao_dados.id ";
+        sql += "LEFT JOIN criadouro on criadouro.id = consolidacao_criadouro.criadouro_fk ";
+        sql += "LEFT JOIN liraa on liraa.id = consolidacao_dados.liraa_fk ";
+        sql += "LEFT JOIN estrato on estrato.id = consolidacao_dados.estrato_fk ";
+        sql += "WHERE consolidacao_dados.id = ? ";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setLong(1, id);
 
@@ -224,7 +233,12 @@ public class ConsolidacaoDadosDAO implements BaseDAO<ConsolidacaoDados> {
         List<ConsolidacaoCriadouro> consolidacaoCriadouroList = new ArrayList<ConsolidacaoCriadouro>();
         ConsolidacaoCriadouro consolidacaoCriadouro = null;
         Criadouro criadouro = null;
-        String sqlCriadouro = "SELECT consolidacao_criadouro.*, consolidacao_criadouro.qtde as consolidacao_criadouro_qtde, criadouro.id as criadouro_id, criadouro.grupo as criadouro_nome FROM consolidacao_criadouro LEFT JOIN criadouro on criadouro.id = consolidacao_criadouro.criadouro_fk WHERE consolidacao_criadouro.consolidacao_fk = ?";
+
+        String sqlCriadouro = "SELECT consolidacao_criadouro.*, consolidacao_criadouro.quantidade as consolidacao_criadouro_qtde, ";
+        sqlCriadouro += "criadouro.id as criadouro_id, criadouro.grupo as criadouro_nome FROM consolidacao_criadouro ";
+        sqlCriadouro += "LEFT JOIN criadouro on criadouro.id = consolidacao_criadouro.criadouro_fk ";
+        sqlCriadouro += "WHERE consolidacao_criadouro.consolidacao_fk = ?";
+
         PreparedStatement ps = conn.prepareStatement(sqlCriadouro);
         ps.setLong(1, id);
         ResultSet rsCriadouro = ps.executeQuery();

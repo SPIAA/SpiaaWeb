@@ -18,7 +18,7 @@ public class BoletimDiarioDAO implements BaseDAO<BoletimDiario> {
     @Override
     public void create(BoletimDiario entity, Connection conn) throws Exception {
 
-        String sql = "INSERT INTO boletim_diario(data_boletim, numero, semana, turma, usuario_fk, bairro_fk,numero_atividade, tipo_atividade)VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
+        String sql = "INSERT INTO boletim_diario(data_boletim, numero, semana_epidemiologica, turma, usuario_fk, bairro_fk,numero_atividade, tipo_atividade)VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
         PreparedStatement ps = conn.prepareStatement(sql);
 
         int i = 0;
@@ -57,7 +57,7 @@ public class BoletimDiarioDAO implements BaseDAO<BoletimDiario> {
             entity.setDataBoletim(rs.getDate("data_boletim"));
             entity.setNumero(rs.getString("numero"));
             entity.setTurma(rs.getString("turma"));
-            entity.setSemana(rs.getString("semana"));
+            entity.setSemana(rs.getString("semana_epidemiologica"));
             entity.setNumeroAtividade(rs.getString("numero_atividade"));
             entity.setTipoAtividade(rs.getString("tipo_atividade"));
 
@@ -95,7 +95,7 @@ public class BoletimDiarioDAO implements BaseDAO<BoletimDiario> {
             entity.setDataBoletim(rs.getDate("data_boletim"));
             entity.setNumero(rs.getString("numero"));
             entity.setTurma(rs.getString("turma"));
-            entity.setSemana(rs.getString("semana"));
+            entity.setSemana(rs.getString("semana_epidemiologica"));
             entity.setNumeroAtividade(rs.getString("numero_atividade"));
             entity.setTipoAtividade(rs.getString("tipo_atividade"));
 
