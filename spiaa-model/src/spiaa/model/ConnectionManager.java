@@ -12,10 +12,10 @@ public class ConnectionManager {
         source = new PGPoolingDataSource();
         source.setDataSourceName("spiaa");
         source.setServerName("localhost");
-        source.setPortNumber(5432);
-        source.setDatabaseName("spiaa");
+        source.setPortNumber(5433);
+        source.setDatabaseName("spiaa_novo");
         source.setUser("postgres");
-        source.setPassword("postgres");
+        source.setPassword("fpssi");
         source.setMaxConnections(30);
         source.setInitialConnections(10);
         source.setTcpKeepAlive(true);
