@@ -13,25 +13,30 @@ public class UsuarioController {
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public ModelAndView login() {
-
         ModelAndView mv = new ModelAndView("login/form");
-
         return mv;
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public ModelAndView login(String usuario, String senha, HttpSession session) throws Exception {
-
         try {
             Usuario usuariologado = ServiceLocator.getBaseUsuarioService().login(usuario, senha);
             session.setAttribute("usuarioLogado", usuariologado);
-
         } catch (Exception e) {
         }
-
         ModelAndView mv = new ModelAndView("redirect:/liraa");
-
         return mv;
+    }
+
+    @RequestMapping(value = "/usuario/novo", method = RequestMethod.GET)
+    public ModelAndView create() {
+        return new ModelAndView("usuario/new");
+    }
+
+    @RequestMapping(value = "/usuario/novo", method = RequestMethod.POST)
+    public ModelAndView create(Usuario usuario) throws Exception {
+        ServiceLocator.getBaseUsuarioService().create(usuario);
+        return new ModelAndView("redirect:/login");
     }
 
     @RequestMapping("logout")

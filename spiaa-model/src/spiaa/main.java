@@ -2,17 +2,24 @@ package spiaa;
 
 import java.sql.Connection;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 import spiaa.model.ConnectionManager;
-import spiaa.model.dao.ConsolidacaoDadosDAO;
-import spiaa.model.entity.ConsolidacaoDados;
+import spiaa.model.ServiceLocator;
+import spiaa.model.entity.Usuario;
 
 public class main {
 
     public static void main(String[] args) throws ParseException, Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
-
+        
+        
+        Usuario usuario = new Usuario();
+        usuario.setEmail("BBB@AA.com");
+        usuario.setNome("teste4");
+        usuario.setTipo("ADM");
+        usuario.setUsuario("teste");
+        usuario.setSenha("teste");
+        ServiceLocator.getBaseUsuarioService().create(usuario);
+         
 //        AnoDAO anodao = new AnoDAO();
 //        Ano ano = new Ano();
 //        ano.setDateAno("2013");
@@ -65,14 +72,14 @@ public class main {
 //        beDAO.create(best, conn);
         
         //consolidaca dados
-        
+        /*
         ConsolidacaoDadosDAO conDAO = new ConsolidacaoDadosDAO();
         ConsolidacaoDados consolidacaoDados = new ConsolidacaoDados();
         List<ConsolidacaoDados> consList = new ArrayList<ConsolidacaoDados>();
         consList = conDAO.readByCriteria(null, conn);
         
         System.out.println(consolidacaoDados);
-        conn.commit();
+        conn.commit();*/
     }
 
 }

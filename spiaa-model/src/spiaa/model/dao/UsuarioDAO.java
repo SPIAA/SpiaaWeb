@@ -17,7 +17,20 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
 
     @Override
     public void create(Usuario entity, Connection conn) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO usuario(nome, usuario, senha, email, tipo) VALUES (?, ?, ?, ?, ?) RETURNING id";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        int i = 0;
+        ps.setString(++i, entity.getNome());
+        ps.setString(++i, entity.getUsuario());
+        ps.setString(++i, entity.getSenha());
+        ps.setString(++i, entity.getEmail());
+        ps.setString(++i, entity.getTipo());
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            entity.setId(rs.getLong("id"));
+        }
+        ps.close();
+        rs.close();
     }
 
     @Override
@@ -33,7 +46,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         String sql = "SELECT * FROM usuario WHERE 1=1";
         Statement s = conn.createStatement();
 
-       String criterionUsuarioEq = (String) criteria.get(CRITERION_USUARIO_EQ);
+        String criterionUsuarioEq = (String) criteria.get(CRITERION_USUARIO_EQ);
         if (criterionUsuarioEq != null && !criterionUsuarioEq.trim().isEmpty()) {
             sql += " AND usuario = '" + criterionUsuarioEq + "'";
         }
@@ -44,7 +57,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         }
 
         ResultSet rs = s.executeQuery(sql);
-        
+
         while (rs.next()) {
             usuario = new Usuario();
             usuario.setId(rs.getLong("id"));

@@ -14,9 +14,7 @@ public class UsuarioService implements BaseUsuarioService {
 
     @Override
     public void create(Usuario entity) throws Exception {
-
         Connection conn = ConnectionManager.getInstance().getConnection();
-
         try {
             UsuarioDAO dao = new UsuarioDAO();
             dao.create(entity, conn);
@@ -99,6 +97,7 @@ public class UsuarioService implements BaseUsuarioService {
             }
             conn.close();
         } catch (Exception e) {
+            throw e;
         }
         return usuarioLogado;
     }

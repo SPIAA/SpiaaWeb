@@ -15,8 +15,8 @@
         <!--script src="js/less-1.3.3.min.js"></script-->
         <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
+        <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -24,15 +24,15 @@
         <![endif]-->
 
         <!-- Fav and touch icons -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-        <link rel="shortcut icon" href="img/icone_spiaa.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<c:url value="/img/apple-touch-icon-144-precomposed.png"/>">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<c:url value="/img/apple-touch-icon-114-precomposed.png"/>">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<c:url value="/img/apple-touch-icon-72-precomposed.png"/>">
+        <link rel="apple-touch-icon-precomposed" href="<c:url value="/img/apple-touch-icon-57-precomposed.png"/>">
+        <link rel="shortcut icon" href="<c:url value="/img/icone_spiaa.png"/>">
 
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
+        <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/js/scripts.js"/>"></script>
     </head>
 
     <body>
@@ -42,7 +42,7 @@
                     <div class="row clearfix">
                         <div class="col-md-12 column">
                             <div class="col-md-2 column">
-                                <img alt="" src="img/MiniLogo.png" class="img-responsive"> 
+                                <img alt="" src="<c:url value="/img/MiniLogo.png"/>" class="img-responsive"> 
                             </div>
                             <div class="col-md-10 column">
                                 <h3><b> Todos contra a Dengue!</b></h3>
@@ -84,11 +84,21 @@
                 <div class="col-md-3 column"></div>
                 <div class="col-md-6 column" style="border: 1px silver solid; border-radius: 15px;">
                     <div class="col-md-12 text-center">
-                        <h3>Acesso Restrito</h3>
+                        <h3>Cadastre-se</h3>
                     </div>
                     <form role="form" class="form-group" method="POST">
-
-
+                        <div class="form-group">
+                            <label for="InputUsuario">Nome</label>
+                            <input type="text" class="form-control" name="nome" id="Inputusuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="InputSenha">Tipo</label>
+                            <input type="text" class="form-control" name="tipo" id="InputPassword" >
+                        </div>
+                        <div class="form-group">
+                            <label for="InputSenha">Email</label>
+                            <input type="email" class="form-control" name="email" id="InputPassword" >
+                        </div>                        
                         <div class="form-group">
                             <label for="InputUsuario">Usuário</label>
                             <input type="text" class="form-control" name="usuario" id="Inputusuario">
@@ -96,12 +106,13 @@
                         <div class="form-group">
                             <label for="InputSenha">Senha</label>
                             <input type="password" class="form-control" name="senha" id="InputPassword" >
-                        </div>
+                        </div>                     
                         <div class="form-group">
-                            <div class="col-md-3"></div>
+                            <div class="col-md-3"></div>                            
                             <div class="col-md-6">
+                                <br/>
                                 <button type="submit" class="btn btn-success btn-block">Entrar</button>
-                                <br/><a href="<c:url value="/usuario/novo"/>">Cadastre-se</a><br/><br/><br/>
+                                <br/><br/>
                             </div>
                             <div class="col-md-3"></div>
                         </div>
@@ -113,16 +124,16 @@
                 <div class="col-md-12 column">
                     <hr>
                     <div class="col-lg-3">
-                        <img alt=""  height="75" src="img/fai_mg.jpg">
+                        <img alt=""  height="75" src="<c:url value="/img/fai_mg.jpg"/>">
                     </div>
                     <div class="col-lg-3">
-                        <img alt="" height="75" src="img/selo_fai.jpg">
+                        <img alt="" height="75" src="<c:url value="/img/selo_fai.jpg"/>">
                     </div>
                     <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="img/MiniLogo.png" class="img-responsive">
+                        <img alt="" width="174" height="75" src="<c:url value="/img/MiniLogo.png"/>" class="img-responsive">
                     </div>
                     <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="img/LogoFaitec2.png" class="img-responsive">
+                        <img alt="" width="174" height="75" src="<c:url value="/img/LogoFaitec2.png"/>" class="img-responsive">
                     </div>
                 </div>
             </div>

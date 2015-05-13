@@ -42,6 +42,9 @@ public class AAFilter extends HandlerInterceptorAdapter {
 
         //URI Livres de Autenticação
         if (!ok) {
+            if (uri.startsWith("/Spiaa/usuario/novo")) {
+                ok = true;
+            }
             if (uri.startsWith("/Spiaa/home")) {
                 ok = true;
             }
