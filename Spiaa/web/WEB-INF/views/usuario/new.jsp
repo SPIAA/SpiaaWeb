@@ -1,143 +1,87 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@include file="../imports.jspf" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
     <head>
-        <meta charset="utf-8">
-        <title>SPIAA - FAITEC 2014</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
-        <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
-        <!--script src="js/less-1.3.3.min.js"></script-->
-        <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
-
-        <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet">
-        <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
-
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-        <![endif]-->
-
-        <!-- Fav and touch icons -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<c:url value="/img/apple-touch-icon-144-precomposed.png"/>">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<c:url value="/img/apple-touch-icon-114-precomposed.png"/>">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<c:url value="/img/apple-touch-icon-72-precomposed.png"/>">
-        <link rel="apple-touch-icon-precomposed" href="<c:url value="/img/apple-touch-icon-57-precomposed.png"/>">
-        <link rel="shortcut icon" href="<c:url value="/img/icone_spiaa.png"/>">
-
-        <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/bootstrap.min.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/js/scripts.js"/>"></script>
+        <jsp:include page="../template-admin/header.jsp"/>
+        <link href="<c:url value="/css/jquery-ui.min.css"/>" rel="stylesheet">
+        <script src="<c:url value="/js/jquery-ui.min.js"/>"></script>
     </head>
 
     <body>
-        <div class="container">
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <div class="row clearfix">
-                        <div class="col-md-12 column">
-                            <div class="col-md-2 column">
-                                <img alt="" src="<c:url value="/img/MiniLogo.png"/>" class="img-responsive"> 
-                            </div>
-                            <div class="col-md-10 column">
-                                <h3><b> Todos contra a Dengue!</b></h3>
-                            </div>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+                <jsp:include page="../template-admin/menutop.jsp"/>
+
+            </nav>
+
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">
+                                Usuário
+                                <small>Novo</small>
+                            </h1>
+                            <form class="form-group" method="POST">
+                                <div class="form-group col-md-4 ">
+                                    <label for="nome">Nome: </label>
+                                    <input type="text" class="form-control"  name="nome"/>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="usuario">Nome de Usuário:</label>
+                                    <input type="text" class="form-control"  name="usuario"/>
+                                </div> 
+
+                                <div class="form-group col-md-3">
+                                    <label for="tipo">Tipo de Usuário: </label>
+                                    <select class="form-control" name="tipo" id="tipo">
+                                        <option value="0">Selecione...</option>
+                                        <option value="AGS">Agente de Saúde</option>
+                                        <option value="ADM">Administrador</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control"  name="email"/>
+                                </div>                                                               
+
+
+
+                                <div class="form-group col-md-3">
+                                    <label for="senha">Senha:</label>
+                                    <input type="text" class="form-control" name="senha" placeholder="Min. 8 caracteres"/>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="confirm">Confirme a Senha:</label>
+                                    <input type="text" class="form-control" name="confirm"/>
+                                </div>
+
+
+                                <br/><br/><br/><br/><br/><br/><br/><br/>
+                                <div class="col-lg-12" align="center">
+                                    <button class="btn btn-success " > Cadastrar Usuário</button>  
+                                </div>
+
+                            </form>
+                            <br/>
                         </div>
                     </div>
-                    <nav class="navbar navbar-default" role="navigation">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
-                                <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                <span class="icon-bar"></span></button> <a class="navbar-brand" href="<c:url value="/home"/>">Início</a>
-                        </div>
-
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="">
-                                    <a href="<c:url value="/mapa"/>">Mapa da cidade</a>
-                                </li>
-                                <li>
-                                    <a href="<c:url value="/denunciaform"/>">Denuncie</a>
-                                </li>
-
-                            </ul>
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="<c:url value="/login"/>">Acesso restrito</a>
-                                </li>
-
-                            </ul>
-                        </div>
-
-                    </nav>
+                    <!-- /.row -->
                 </div>
+                <!-- /.container-fluid -->
             </div>
-
-            <div class="row clearfix">
-
-                <div class="col-md-3 column"></div>
-                <div class="col-md-6 column" style="border: 1px silver solid; border-radius: 15px;">
-                    <div class="col-md-12 text-center">
-                        <h3>Cadastre-se</h3>
-                    </div>
-                    <form role="form" class="form-group" method="POST">
-                        <div class="form-group">
-                            <label for="InputUsuario">Nome</label>
-                            <input type="text" class="form-control" name="nome" id="Inputusuario">
-                        </div>
-                        <div class="form-group">
-                            <label for="InputSenha">Tipo</label>
-                            <input type="text" class="form-control" name="tipo" id="InputPassword" >
-                        </div>
-                        <div class="form-group">
-                            <label for="InputSenha">Email</label>
-                            <input type="email" class="form-control" name="email" id="InputPassword" >
-                        </div>                        
-                        <div class="form-group">
-                            <label for="InputUsuario">Usuário</label>
-                            <input type="text" class="form-control" name="usuario" id="Inputusuario">
-                        </div>
-                        <div class="form-group">
-                            <label for="InputSenha">Senha</label>
-                            <input type="password" class="form-control" name="senha" id="InputPassword" >
-                        </div>                     
-                        <div class="form-group">
-                            <div class="col-md-3"></div>                            
-                            <div class="col-md-6">
-                                <br/>
-                                <button type="submit" class="btn btn-success btn-block">Entrar</button>
-                                <br/><br/>
-                            </div>
-                            <div class="col-md-3"></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-3 column"></div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <hr>
-                    <div class="col-lg-3">
-                        <img alt=""  height="75" src="<c:url value="/img/fai_mg.jpg"/>">
-                    </div>
-                    <div class="col-lg-3">
-                        <img alt="" height="75" src="<c:url value="/img/selo_fai.jpg"/>">
-                    </div>
-                    <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="<c:url value="/img/MiniLogo.png"/>" class="img-responsive">
-                    </div>
-                    <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="<c:url value="/img/LogoFaitec2.png"/>" class="img-responsive">
-                    </div>
-                </div>
-            </div>
+            <!-- /#page-wrapper -->
         </div>
+        <!-- /#wrapper -->     
     </body>
 </html>
-

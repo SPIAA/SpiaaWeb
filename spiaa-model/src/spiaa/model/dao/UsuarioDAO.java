@@ -20,11 +20,11 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         String sql = "INSERT INTO usuario(nome, usuario, senha, email, tipo) VALUES (?, ?, ?, ?, ?) RETURNING id";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
-        ps.setString(++i, entity.getNome());
-        ps.setString(++i, entity.getUsuario());
-        ps.setString(++i, entity.getSenha());
-        ps.setString(++i, entity.getEmail());
-        ps.setString(++i, entity.getTipo());
+        ps.setString(++i, entity.getNome().trim());
+        ps.setString(++i, entity.getUsuario().trim());
+        ps.setString(++i, entity.getSenha().trim());
+        ps.setString(++i, entity.getEmail().trim());
+        ps.setString(++i, entity.getTipo().trim());
         ResultSet rs = ps.executeQuery();
         if(rs.next()){
             entity.setId(rs.getLong("id"));

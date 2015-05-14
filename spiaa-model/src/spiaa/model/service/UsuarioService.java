@@ -20,7 +20,7 @@ public class UsuarioService implements BaseUsuarioService {
             dao.create(entity, conn);
             conn.commit();
             conn.close();
-        } catch (Exception e) {
+        } catch (Exception e) {            
             conn.rollback();
             conn.close();
         }

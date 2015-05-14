@@ -24,7 +24,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="shortcut icon" href="img/icone_spiaa.png">
+<link rel="shortcut icon" href="<c:url value="/img/icone_spiaa.png"/>">
 <!-- jQuery Version 1.11.0 -->
 <script src="<c:url value="/js/jquery.min.js"/>"></script>
 

@@ -28,15 +28,15 @@ public class UsuarioController {
         return mv;
     }
 
-    @RequestMapping(value = "/usuario/novo", method = RequestMethod.GET)
+    @RequestMapping(value = "/usuario", method = RequestMethod.GET)
     public ModelAndView create() {
         return new ModelAndView("usuario/new");
     }
 
-    @RequestMapping(value = "/usuario/novo", method = RequestMethod.POST)
+    @RequestMapping(value = "/usuario", method = RequestMethod.POST)
     public ModelAndView create(Usuario usuario) throws Exception {
         ServiceLocator.getBaseUsuarioService().create(usuario);
-        return new ModelAndView("redirect:/login");
+        return new ModelAndView("redirect:/liraa");
     }
 
     @RequestMapping("logout")

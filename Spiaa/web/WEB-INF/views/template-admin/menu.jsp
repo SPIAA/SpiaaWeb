@@ -18,6 +18,9 @@
         <a href="<c:url value="/denuncia"/>" style="color: #fff"><i class="fa fa-2x fa-exclamation-circle"></i> Denúncia</a>
     </li>
     <li>
+        <a href="<c:url value="/usuario"/>" style="color: #fff"><i class="fa fa-2x fa-user-plus"></i> Usuário</a>
+    </li>
+    <li>
         <a href="<c:url value="/mapa/admin"/>" style="color: #fff"><i class="fa fa-2x fa-globe"></i> Mapa</a>
     </li>
 

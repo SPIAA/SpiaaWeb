@@ -101,7 +101,7 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
                                 <button type="submit" class="btn btn-success btn-block">Entrar</button>
-                                <br/><a href="<c:url value="/usuario/novo"/>">Cadastre-se</a><br/><br/><br/>
+                                <br/><br/><br/><br/>
                             </div>
                             <div class="col-md-3"></div>
                         </div>
