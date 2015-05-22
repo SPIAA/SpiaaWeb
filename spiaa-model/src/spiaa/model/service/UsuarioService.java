@@ -1,10 +1,13 @@
 package spiaa.model.service;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import spiaa.model.ConnectionManager;
 import spiaa.model.base.service.BaseUsuarioService;
 import spiaa.model.dao.UsuarioDAO;
@@ -39,8 +42,7 @@ public class UsuarioService implements BaseUsuarioService {
     @Override
     public List<Usuario> readByCriteria(Map<String, Object> criteria) throws Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
-        List<Usuario> listUsuario = new ArrayList<Usuario>();
-        Usuario usuario = new Usuario();
+        List<Usuario> listUsuario = new ArrayList<>();
         UsuarioDAO dao = new UsuarioDAO();
         listUsuario = dao.readByCriteria(criteria, conn);
         conn.close();
@@ -100,5 +102,10 @@ public class UsuarioService implements BaseUsuarioService {
             throw e;
         }
         return usuarioLogado;
+    }
+
+    @Override
+    public void endoceStrToUTF8(Usuario usuario) {
+  
     }
 }

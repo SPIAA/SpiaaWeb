@@ -24,12 +24,12 @@
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Estrato <small>Listagem</small>  </h1>
-                            <a href="estrato/novo" class="btn btn-primary">Novo Estrato</a><br/><br/>
-                            <display:table class="table table-striped table-hover "  name="estrato" id="estrato" requestURI="" pagesize="7">
-                                <display:column  property="nome" title="Estrato"/>
-                                <display:column value="<a href=\"estrato/${estrato.id}/alterar\">Alterar</a>" title=""/>
-                                <display:column value="<a href=\"estratobairro/${estrato.id}\">Dados bairros</a>" title=""/>
+                            <h1 class="page-header">Usu&aacute;rio <small>Listagem</small>  </h1>
+                            <a href="<c:url value="/usuario/novo"/>" class="btn btn-primary">Novo Usu&aacute;rio</a><br/><br/>
+                            <display:table class="table table-striped table-hover "  name="usuario" id="usuario" requestURI="" pagesize="7">
+                                <display:column  property="nome" title="Usuario"/>
+                                <display:column value="<a href=\"usuario/${usuario.id}/atualizar\">Alterar</a>" title=""/>
+                                <display:column value="<a href=\"usuario/${usuario.id}/excluir\">Excluir</a>" title=""/>
                             </display:table>
                             <br/><br/> <br/><br/>
                         </div>

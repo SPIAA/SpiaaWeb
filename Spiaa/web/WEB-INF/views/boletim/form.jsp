@@ -51,7 +51,6 @@
                                     <select class="form-control" name="usuario.id" id="usuario.id">
                                         <c:forEach var="usuario" items="${usuarioList}">
                                             <option value="${usuario.id}" <c:if test="${boletimDiario.usuario.id eq usuario.id}">selected</c:if>>
-
                                                 ${usuario.nome}
                                             </option>
                                         </c:forEach>

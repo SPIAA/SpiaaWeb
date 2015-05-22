@@ -10,15 +10,19 @@ public class main {
 
     public static void main(String[] args) throws ParseException, Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
-        
-        
+                
         Usuario usuario = new Usuario();
         usuario.setEmail("BBB@AA.com");
-        usuario.setNome("teste4");
+        usuario.setNome("João");
         usuario.setTipo("ADM");
-        usuario.setUsuario("teste");
-        usuario.setSenha("teste");
-        ServiceLocator.getBaseUsuarioService().create(usuario);
+        usuario.setUsuario("José");
+        usuario.setSenha("JoãoJosé");
+        usuario.setId(1L);
+        
+         usuario.setNome(new String(usuario.getNome().getBytes("UTF-8")));
+     
+        
+        ServiceLocator.getBaseUsuarioService().update(usuario);
          
 //        AnoDAO anodao = new AnoDAO();
 //        Ano ano = new Ano();

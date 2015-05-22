@@ -33,55 +33,54 @@
                             <form class="form-group" method="POST">
                                 <div class="form-group col-md-4 ">
                                     <label for="nome">Nome: </label>
-                                    <input type="text" class="form-control"  name="nome"/>
+                                    <input type="text" class="form-control"  name="nome" value="${user.nome}"/>
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label for="usuario">Nome de Usuário:</label>
-                                    <input type="text" class="form-control"  name="usuario"/>
+                                    <input type="text" class="form-control"  name="usuario" value="${user.usuario}"/>
                                 </div> 
 
                                 <div class="form-group col-md-3">
                                     <label for="tipo">Tipo de Usuário: </label>
                                     <select class="form-control" name="tipo" id="tipo">
                                         <option value="0">Selecione...</option>
-                                        <option value="AGS">Agente de Saúde</option>
-                                        <option value="ADM">Administrador</option>
-                                    </select>
-                                </div>
+                                        <option value="AGS" <c:if test="${user.tipo == 'AGS'}">selected</c:if>>Agente de Saúde</option>
+                                        <option value="ADM" <c:if test="${user.tipo == 'ADM'}">selected</c:if>>Administrador</option>
+                                        </select>
+                                    </div>
 
-                                <div class="form-group col-md-4">
-                                    <label for="email">Email:</label>
-                                    <input type="email" class="form-control"  name="email"/>
-                                </div>                                                               
-
-
-
-                                <div class="form-group col-md-3">
-                                    <label for="senha">Senha:</label>
-                                    <input type="text" class="form-control" name="senha" placeholder="Min. 8 caracteres"/>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="confirm">Confirme a Senha:</label>
-                                    <input type="text" class="form-control" name="confirm"/>
-                                </div>
-
-
-                                <br/><br/><br/><br/><br/><br/><br/><br/>
-                                <div class="col-lg-12" align="center">
-                                    <button class="btn btn-success " > Cadastrar Usuário</button>  
-                                </div>
-
-                            </form>
-                            <br/>
+                                    <div class="form-group col-md-4">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control"  name="email" value="${user.email}"/>
+                                </div>              
                         </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="senha">Senha:</label>
+                            <input type="text" class="form-control" name="senha" value="${user.senha}" placeholder="Min. 8 caracteres"/>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="confirm">Confirme a Senha:</label>
+                            <input type="text" class="form-control" name="confirm"/>
+                        </div>
+
+
+                        <br/><br/><br/><br/><br/><br/><br/><br/>
+                        <div class="col-lg-12" align="center">
+                            <button class="btn btn-success " >Gravar</button>  
+                        </div>
+
+                        </form>
+                        <br/>
                     </div>
-                    <!-- /.row -->
                 </div>
-                <!-- /.container-fluid -->
+
             </div>
-            <!-- /#page-wrapper -->
+            <!-- /.container-fluid -->
         </div>
-        <!-- /#wrapper -->     
-    </body>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->     
+</body>
 </html>
