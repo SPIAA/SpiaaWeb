@@ -1,6 +1,7 @@
 package spiaa.model;
 
 import spiaa.model.base.service.BaseEstratoService;
+import spiaa.model.entity.ImportarDados;
 import spiaa.model.entity.TipoImoveis;
 import spiaa.model.service.AtividadeService;
 import spiaa.model.service.BairroService;
@@ -9,6 +10,7 @@ import spiaa.model.service.ConsolidacaoDadosService;
 import spiaa.model.service.CriadouroService;
 import spiaa.model.service.DenunciaService;
 import spiaa.model.service.EstratoService;
+import spiaa.model.service.ImportarDadosService;
 import spiaa.model.service.InseticidaService;
 import spiaa.model.service.LiraaService;
 import spiaa.model.service.MapaService;
@@ -86,6 +88,11 @@ public class ServiceLocator {
     public static MapaService getbaseMapaService() {
 
         return new MapaService();
+
+    }
+    public static ImportarDadosService getbaseImportarDadosService() {
+
+        return new ImportarDadosService();
 
     }
 }
