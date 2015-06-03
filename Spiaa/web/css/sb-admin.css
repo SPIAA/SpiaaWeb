@@ -8,7 +8,7 @@
 
 body {
     margin-top: 100px;
-    background-color: #BB0707;
+    background-color: #fff;
 }
 
 @media(min-width:768px) {
@@ -19,7 +19,7 @@ body {
 
 #wrapper {
     padding-left: 0;
-    
+
 }
 
 #page-wrapper {
@@ -116,6 +116,7 @@ ul.alert-dropdown {
 
 @media(min-width:768px) {
     .side-nav {
+        height: 100%;
         position: fixed;
         top: 51px;
         left: 225px;
@@ -124,7 +125,7 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color:  #BB0707;
+        background-color:  #024208;
         font-size: 20px;
         color: #fff;
     }
@@ -150,7 +151,7 @@ ul.alert-dropdown {
     display: block;
     padding: 10px 15px 10px 38px;
     text-decoration: none;
-     color: #fff;;
+    color: #fff;;
 }
 
 .side-nav>li>ul>li>a:hover {

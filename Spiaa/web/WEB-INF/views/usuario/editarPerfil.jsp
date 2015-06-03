@@ -27,8 +27,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Usuário
-                                <small>Novo</small>
+                                Perfil
+                                <small>Editar</small>
                             </h1>
                             <c:if test="${not empty mensagem}">  <div class="alert alert-danger alert-dismissible" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -48,7 +48,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label for="tipo">Tipo de Usuário: </label>
-                                    <select class="form-control " name="tipo" id="tipo">
+                                    <select class="form-control " name="tipo" id="tipo" disabled>
                                         <option value="0">Selecione...</option>
                                         <option value="AGS" <c:if test="${usuario.tipo == 'AGS'}">selected</c:if>>Agente de Saúde</option>
                                         <option value="ADM" <c:if test="${usuario.tipo == 'ADM'}">selected</c:if>>Administrador</option>
@@ -86,7 +86,7 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->     
-     <script>
+    <script>
         jQuery(document).ready(function () {
             // binds form submission and fields to the validation engine
             jQuery("#form").validationEngine('attach', {promptPosition: "bottomLeft", autoPositionUpdate: true});

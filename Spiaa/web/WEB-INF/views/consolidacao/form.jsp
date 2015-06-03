@@ -8,7 +8,7 @@
 
     </head>
     <body>
-        <div id="wrapper">
+        <div id="wrapper"  class="col-lg-12">
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <jsp:include page="../template-admin/menutop.jsp"/>

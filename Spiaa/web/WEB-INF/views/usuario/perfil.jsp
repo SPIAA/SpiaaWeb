@@ -26,15 +26,19 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Bairro
-                                <small>Listagem</small>
+                                Usuário
+                                <small>Perfil</small>
                             </h1>
-                            
-                            <display:table class="table table-striped table-hover"  name="bairrolist" id="bairrolist" requestURI="" pagesize="7">
-                                <display:column property="nome" title="Estrato"/>
-                                
-                            </display:table>
+                            <c:if test="${not empty mensagem}">  <div class="alert alert-info alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <p class="text-center">${mensagem}</p> 
+                                </div>
+                            </c:if>
+                            <p class="lead"> <label>Nome : </label> ${usuario.nome}</p>
+                            <p class="lead"><label>Usuário : </label> ${usuario.usuario}</p>
+                            <p class="lead"> <label>E-mail : </label> ${usuario.email}</p>
 
+                            <h3><a href="<c:url value="/usuario/${usuario.id}/editaperfil"/>"> Alterar senha</a></h3>
 
                         </div>
                     </div>
