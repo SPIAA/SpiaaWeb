@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../imports.jspf" %>
 <!DOCTYPE html>
@@ -5,6 +6,8 @@
 
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
+        <link href="<c:url value="/css/jquery-ui.min.css"/>" rel="stylesheet">
+        <script src="<c:url value="/js/jquery-ui.min.js"/>"></script>
     </head>
 
     <body>
@@ -19,38 +22,33 @@
             </nav>
 
             <div id="page-wrapper">
-
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 Bairro
-                                <small>Listagem</small>
+                                <small>Novo</small>
                             </h1>
-                            <a href="bairro/novo" class="btn btn-primary">Novo Bairro</a><br/><br/>
-                            <display:table class="table table-striped table-hover"  name="bairrolist" id="bairrolist" requestURI="" pagesize="7">
-                                <display:column property="nome" title="Estrato"/>
-                                
-                            </display:table>
+                            <form class="form-group" method="POST">
+                                <div class="form-group col-md-4 ">
+                                    <label for="nome">Nome: </label>
+                                    <input type="text" class="form-control"  name="nome" value="${user.nome}"/>
+                                </div>
 
-
+                                <br/><br/><br/><br/><br/><br/><br/><br/>
+                                <div class="col-lg-12" align="center">
+                                    <button class="btn btn-success " >Gravar</button>  
+                                </div>
+                            </form>
+                            <br/>
                         </div>
                     </div>
-                    <!-- /.row -->
-
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- /#page-wrapper -->
-
         </div>
-        <!-- /#wrapper -->
-
-
-
+        <!-- /#wrapper -->     
     </body>
-
 </html>

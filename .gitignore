@@ -1,5 +1,6 @@
 /spiaa-model/build/
 /spiaa-model/dist/
+/spiaa-model/src/spiaa/model/ConnectionManager.java
 /Spiaa/build/
 /Spiaa/dist/
 spiaa-model/nbproject/private/private.properties
