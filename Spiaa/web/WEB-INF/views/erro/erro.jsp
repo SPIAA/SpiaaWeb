@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>ERRO!</h1>
+        ${e}
     </body>
 </html>

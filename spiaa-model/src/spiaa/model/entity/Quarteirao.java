@@ -7,15 +7,25 @@ package spiaa.model.entity;
 
 import spiaa.model.base.BaseEntity;
 
-public class Quarteirao extends BaseEntity{
- private String Descricao;
+public class Quarteirao extends BaseEntity {
 
-    public String getDescricao() {
-        return Descricao;
-    }
+  private String Descricao;
+  private Bairro bairro;
 
-    public void setDescricao(String Descricao) {
-        this.Descricao = Descricao;
-    }
- 
+  public String getDescricao() {
+    return Descricao;
+  }
+
+  public void setDescricao(String Descricao) {
+    this.Descricao = Descricao;
+  }
+
+  public Bairro getBairro() {
+    return bairro;
+  }
+
+  public void setBairro(Bairro bairro) {
+    this.bairro = bairro;
+  }
+
 }

@@ -26,20 +26,20 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Liraa
+                                Usuário
+                                <small>Perfil</small>
                             </h1>
-                            <br/>
-                            <a href="liraa/novo" class="btn btn-primary">Novo Liraa</a>
-                            <br/><br/>
+                            <c:if test="${not empty mensagem}">  <div class="alert alert-info alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <p class="text-center">${mensagem}</p> 
+                                </div>
+                            </c:if>
+                            <p class="lead"> <label>Nome : </label> ${usuario.nome}</p>
+                            <p class="lead"><label>Usuário : </label> ${usuario.usuario}</p>
+                            <p class="lead"> <label>E-mail : </label> ${usuario.email}</p>
 
-                             <display:table class="table table-striped table-hover"  name="liraa" id="liraa" requestURI="" pagesize="7">
-                                    <display:column property="dataInicio" format="{0,date,dd/MM/yyyy}" title="Data Inicio"/>
-                                    <display:column property="dataTermino" format="{0,date,dd/MM/yyyy}" title="Data Término"/>
+                            <h3><a href="<c:url value="/usuario/${usuario.id}/editaperfil"/>"> Alterar senha</a></h3>
 
-                                    <display:column value="<a href=\"liraa/${liraa.id}/alterar\">alterar</a>" title=""/>
-                                    <display:column value="<a href=\"consolidacao/${liraa.id}\">Consolidação de dados</a>" title=""/>
-                                </display:table>
-                            
                         </div>
                     </div>
                     <!-- /.row -->

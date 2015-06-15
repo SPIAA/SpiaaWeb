@@ -12,7 +12,7 @@
 
     <body>
 
-        <div id="wrapper">
+        <div id="wrapper"  class="col-lg-12">
 
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
