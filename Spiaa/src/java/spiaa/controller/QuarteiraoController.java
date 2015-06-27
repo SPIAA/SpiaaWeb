@@ -20,144 +20,161 @@ import spiaa.model.entity.Quarteirao;
 @Controller
 public class QuarteiraoController {
 
-  /**
-   * LISTAGEM DOS QUARTEIRÕES DO BAIRRO
-   *
-   * @param bairroID
-   * @return
-   * @throws java.lang.Exception
-   *
-   */
-  @RequestMapping(value = "/quarteirao/{bairroID}", method = RequestMethod.GET)
-  public ModelAndView read(@PathVariable Long bairroID) throws Exception {
-    ModelAndView mv;
-    try {
-      //Buscar quarteirões que correspondam apenas ao id do bairro específico
-      Map<String, Object> criteria = new HashMap<String, Object>();
-      criteria.put(QuarteiraoDAO.CRITERION_BAIRRO_ID, bairroID);
-      List<Quarteirao> quarteiraoList = ServiceLocator.getbaseQuarteiraoService()
-              .readByCriteria(criteria);
-      mv = new ModelAndView("quarteirao/list");
-      mv.addObject("quarteiraoList", quarteiraoList);
-      mv.addObject("bairroID", bairroID);
-    } catch (Exception e) {
-      mv = new ModelAndView("erro/erro");
-      mv.addObject("e", e);
-    }
-    return mv;
-  }
+   /**
+    * LISTAGEM DOS QUARTEIRÕES DO BAIRRO
+    *
+    * @return
+    *
+    */
+   @RequestMapping(value = "/quarteirao", method = RequestMethod.GET)
+   public ModelAndView read() {
+      ModelAndView mv;
+      try {
+         List<Quarteirao> quarteiaoList = ServiceLocator.getbaseQuarteiraoService()
+                 .readByCriteria(new HashMap<String, Object>());
+         mv = new ModelAndView("quarteirao/list");
+         mv.addObject("quarteiraoList", quarteiaoList);
+      } catch (Exception e) {
+         mv = new ModelAndView("erro/erro");
+         mv.addObject("e", e);
+      }
 
-  /**
-   * OBTÉM FORMULÁRIO DE CADASTRO DE QUARTEIRÃO
-   *
-   * @param id
-   * @return
-   * @throws java.lang.Exception
-   *
-   */
-  @RequestMapping(value = "/quarteirao/novo/{id}", method = RequestMethod.GET)
-  public ModelAndView create(@PathVariable Long id) throws Exception {
-    ModelAndView mv;
-    try {
-      Bairro bairro = ServiceLocator.getBaseBairroService().readById(id);
-      mv = new ModelAndView("quarteirao/form");
-      mv.addObject("bairroID", bairro.getId());
-    } catch (Exception e) {
-      mv = new ModelAndView("erro/erro");
-      mv.addObject("e", e);
-    }
-    return mv;
-  }
+      return mv;
+   }
 
-  /**
-   * CADASTRA UM NOVO QUARTEIRÃO
-   *
-   * @param quarteirao
-   * @param id
-   * @return
-   */
-  @RequestMapping(value = "/quarteirao/novo/{id}", method = RequestMethod.POST)
-  public ModelAndView create(Quarteirao quarteirao, @PathVariable Long id) {
-    ModelAndView mv;
+   @RequestMapping(value = "/quarteirao/{bairroID}", method = RequestMethod.GET)
+   public ModelAndView read(@PathVariable Long bairroID) throws Exception {
+      ModelAndView mv;
+      try {
+         //Buscar quarteirões que correspondam apenas ao id do bairro específico
+         Map<String, Object> criteria = new HashMap<String, Object>();
+         criteria.put(QuarteiraoDAO.CRITERION_BAIRRO_ID, bairroID);
+         List<Quarteirao> quarteiraoList = ServiceLocator.getbaseQuarteiraoService()
+                 .readByCriteria(criteria);
+         mv = new ModelAndView("quarteirao/list");
+         mv.addObject("quarteiraoList", quarteiraoList);
+         mv.addObject("bairroID", bairroID);
+      } catch (Exception e) {
+         mv = new ModelAndView("erro/erro");
+         mv.addObject("e", e);
+      }
+      return mv;
+   }
 
-    try {
-      Bairro bairro = new Bairro();
-      bairro.setId(id);
-      quarteirao.setBairro(bairro);
-      ServiceLocator.getbaseQuarteiraoService().create(quarteirao);
-      mv = new ModelAndView("redirect:/quarteirao/" + id);
-    } catch (Exception e) {
-      mv = new ModelAndView("erro/erro");
-      mv.addObject("e", e);
-    }
-    return mv;
-  }
+   /**
+    * OBTÉM FORMULÁRIO DE CADASTRO DE QUARTEIRÃO
+    *
+    *
+    * @return
+    *
+    * @throws java.lang.Exception
+    *
+    */
+   @RequestMapping(value = "/quarteirao/novo", method = RequestMethod.GET)
+   public ModelAndView create() throws Exception {
+      ModelAndView mv;
+      try {
+         List<Bairro> bairroList = ServiceLocator.getBaseBairroService()
+                 .readByCriteria(new HashMap<String, Object>());
+         mv = new ModelAndView("quarteirao/form");
+         mv.addObject("bairroList", bairroList);
+      } catch (Exception e) {
+         mv = new ModelAndView("erro/erro");
+         mv.addObject("e", e);
+      }
+      return mv;
+   }
 
-  /**
-   * OBTÉM FORMULÁRIO PARA ATUALIZAÇÃO DOS DADOS DO QUARTEIRÃO
-   *
-   * @param id
-   * @param bairroID
-   * @return
-   * @throws Exception
-   */
-  @RequestMapping(value = "/quarteirao/{id}/bairro-{bairroID}/alterar", method = RequestMethod.GET)
-  public ModelAndView update(@PathVariable Long id, @PathVariable Long bairroID) throws Exception {
-    ModelAndView mv;
-    try {
-      Quarteirao quarteirao = ServiceLocator.getbaseQuarteiraoService().readById(id);
-      mv = new ModelAndView("quarteirao/form");
-      mv.addObject("quarteirao", quarteirao);
-    } catch (Exception e) {
-      mv = new ModelAndView("erro/erro");
-      mv.addObject("e", e);
-    }
-    return mv;
-  }
+   /**
+    * CADASTRA UM NOVO QUARTEIRÃO
+    *
+    * @param quarteirao
+    * @param quantidade
+    *
+    * @return
+    */
+   @RequestMapping(value = "/quarteirao/novo", method = RequestMethod.POST)
+   public ModelAndView create(Quarteirao quarteirao, int quantidade) {
+      ModelAndView mv;
 
-  /**
-   * ATUALIZA DADOS DO QUARTEIRÃO
-   *
-   * @param quarteirao
-   * @param id
-   * @param bairroID
-   * @return
-   */
-  @RequestMapping(value = "/quarteirao/{id}/bairro-{bairroID}/alterar", method = RequestMethod.POST)
-  public ModelAndView update(Quarteirao quarteirao, @PathVariable Long id, @PathVariable Long bairroID) {
-    ModelAndView mv;
-    try {
-      Bairro bairro = new Bairro();
-      bairro.setId(bairroID);
-      quarteirao.setBairro(bairro);
-      ServiceLocator.getbaseQuarteiraoService().update(quarteirao);
-      mv = new ModelAndView("redirect:/quarteirao/" + bairroID);
-    } catch (Exception e) {
-      mv = new ModelAndView("erro/erro");
-      mv.addObject("e", e);
-    }
+      try {
+         String sigla = quarteirao.getDescricao();
+         for (int i = 0; i < quantidade; i++) {
+            quarteirao.setDescricao(sigla + "-" + (i + 1));
+            ServiceLocator.getbaseQuarteiraoService().create(quarteirao);
+         }
+         mv = new ModelAndView("redirect:/quarteirao");
+      } catch (Exception e) {
+         mv = new ModelAndView("erro/erro");
+         mv.addObject("e", e);
+      }
+      return mv;
+   }
 
-    return mv;
-  }
+   /**
+    * OBTÉM FORMULÁRIO PARA ATUALIZAÇÃO DOS DADOS DO QUARTEIRÃO
+    *
+    * @param id
+    *
+    * @return
+    *
+    * @throws Exception
+    */
+   @RequestMapping(value = "/quarteirao/{id}/alterar", method = RequestMethod.GET)
+   public ModelAndView update(@PathVariable Long id) throws Exception {
+      ModelAndView mv;
+      try {
+         Quarteirao quarteirao = ServiceLocator.getbaseQuarteiraoService().readById(id);
+         List<Bairro> bairroList = ServiceLocator.getBaseBairroService()
+                 .readByCriteria(new HashMap<String, Object>());
+         mv = new ModelAndView("quarteirao/form");
+         mv.addObject("quarteirao", quarteirao);
+         mv.addObject("bairroList", bairroList);
+      } catch (Exception e) {
+         mv = new ModelAndView("erro/erro");
+         mv.addObject("e", e);
+      }
+      return mv;
+   }
 
-  /**
-   * EXCLUI QUARTEIRÃO
-   *
-   * @param id
-   * @param bairro
-   * @return
-   */
-  @RequestMapping(value = "/quarteirao/{id}/bairro-{bairro}/excluir", method = RequestMethod.GET)
-  public ModelAndView delete(@PathVariable Long id, @PathVariable Long bairro) {
-    ModelAndView mv;
-    try {
-      ServiceLocator.getbaseQuarteiraoService().delete(id);
-      mv = new ModelAndView("redirect:/quarteirao/" + bairro);
-    } catch (Exception e) {
-      mv = new ModelAndView("erro/erro");
-      mv.addObject("e", e);
-    }
-    return mv;
-  }
+   /**
+    * ATUALIZA DADOS DO QUARTEIRÃO
+    *
+    * @param quarteirao
+    *
+    * @return
+    */
+   @RequestMapping(value = "/quarteirao/{id}/alterar", method = RequestMethod.POST)
+   public ModelAndView update(Quarteirao quarteirao) {
+      ModelAndView mv;
+      try {
+         ServiceLocator.getbaseQuarteiraoService().update(quarteirao);
+         mv = new ModelAndView("redirect:/quarteirao");
+      } catch (Exception e) {
+         mv = new ModelAndView("erro/erro");
+         mv.addObject("e", e);
+      }
+      return mv;
+   }
+
+   /**
+    * EXCLUI QUARTEIRÃO
+    *
+    * @param id
+    *
+    * @return
+    */
+   @RequestMapping(value = "/quarteirao/{id}/excluir", method = RequestMethod.GET)
+   public ModelAndView delete(@PathVariable Long id) {
+      ModelAndView mv;
+      try {
+         ServiceLocator.getbaseQuarteiraoService().delete(id);
+         mv = new ModelAndView("redirect:/quarteirao");
+      } catch (Exception e) {
+         mv = new ModelAndView("erro/erro");
+         mv.addObject("e", e);
+      }
+      return mv;
+   }
 
 }

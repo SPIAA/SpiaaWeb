@@ -16,16 +16,28 @@
       <div id="page-wrapper">
         <div class="container-fluid">
           <!-- Page Heading -->
+            <!-- Page Heading -->
           <div class="row">
             <div class="col-lg-12">
-              <h1 class="page-header">Quarteir&otilde;es <small>Listagem</small>  </h1>
-              <a href="<c:url value="/quarteirao/novo/${bairroID}"/>" class="btn btn-primary">Novo Quarteir&atilde;o</a><br/><br/>
-              <display:table class="table table-striped table-hover "  name="quarteiraoList" id="quarteirao" requestURI="" pagesize="7">
-                <display:column  property="descricao" title="Descrição"/>
-                <display:column value="<a href=\"${quarteirao.id}\bairro-${bairroID}/alterar\">Alterar</a>" title=""/>
-                <display:column value="<a href=\"${quarteirao.id}\bairro-${bairroID}/excluir\">Excluir</a>" class="deleteLink" title=""/>
+              <h1 class="page-header">
+                 Quarteir&atilde;o
+                <small>Listagem</small>
+              </h1>
+               <a href="<c:url value="/quarteirao/novo"/>" class="btn btn-primary">Novo Quarteir&atilde;o</a><br/><br/>
+              <display:table class="table table-striped table-hover"  name="quarteiraoList" id="quarteirao" requestURI="" pagesize="7">
+                <display:column property="descricao" title="Sigla"/>
+                <display:column property="bairro.nome" title="Bairro"/>
+                <display:column>
+                   <a href="<c:url value="/quarteirao/${quarteirao.id}/alterar"/>">
+                      Alterar
+                   </a>
+                </display:column>
+                <display:column>
+                   <a href="<c:url value="/quarteirao/${quarteirao.id}/excluir"/>">
+                      Excluir
+                   </a>
+                </display:column>
               </display:table>
-              <br/><br/> <br/><br/> 
             </div>
           </div>
           <!-- /.row -->
