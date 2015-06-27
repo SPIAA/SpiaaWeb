@@ -15,8 +15,9 @@
         <!--script src="js/less-1.3.3.min.js"></script-->
         <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="<c:url value="../css/bootstrap.min.css"/>" rel="stylesheet">
+        <link href="<c:url value="../css/style.css" />"rel="stylesheet">
+        <link rel="stylesheet" href="<c:url value="../css/validationEngine.jquery.css"/>" type="text/css"/>
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -30,9 +31,11 @@
         <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
         <link rel="shortcut icon" href="img/icone_spiaa.png">
 
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
+        <script type="text/javascript" src="<c:url value="../js/jquery.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="../js/bootstrap.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="../js/scripts.js"/>"></script>
+        <script src="<c:url value="../js/jquery.validationEngine-pt_BR.js"/>" type="text/javascript" charset="utf-8"></script>
+        <script src="<c:url value="../js/jquery.validationEngine.js"/>" type="text/javascript" charset="utf-8"></script>
     </head>
 
     <body>
@@ -42,7 +45,7 @@
                     <div class="row clearfix">
                         <div class="col-md-12 column">
                             <div class="col-md-2 column">
-                                <img alt="" src="img/MiniLogo.png" class="img-responsive"> 
+                                <img alt="" src="<c:url value="../img/MiniLogo.png"/>" class="img-responsive"> 
                             </div>
                             <div class="col-md-10 column">
                                 <h3><b> Todos contra a Dengue!</b></h3>
@@ -84,26 +87,23 @@
                 <div class="col-md-3 column"></div>
                 <div class="col-md-6 column" style="border: 1px silver solid; border-radius: 15px;">
                     <div class="col-md-12 text-center">
-                        <h3>Acesso Restrito</h3>
+                        <h3>Recuperarção de senha</h3>
                     </div>
-                    <form role="form" class="form-group" method="POST">
-
-
-                        <div class="form-group">
-                            <label for="InputUsuario">Usuário</label>
-                            <input type="text" class="form-control" name="usuario" id="Inputusuario">
+                    <form role="form" class="form-group"  id="formRecuperarSenha" method="POST">
+                        <div class="form-group text-center">
+                            <h4 class="text-success">Digite seu e-mail e pressione enviar</h4>
                         </div>
+
                         <div class="form-group">
-                            <label for="InputSenha">Senha</label>
-                            <input type="password" class="form-control" name="senha" id="InputPassword" >
+                            <label for="InputUsuario">E-mail</label>
+                            <input type="email" class="form-control validate[required ,custom[email]]" name="email" required="" id="Inputusuario">
                         </div>
                         <div class="form-group">
                             <div class="col-md-3"></div>
                             <div class="col-md-6 text-center">
-                                <a href="<c:url value="login/recuperarsenha"/>"> Recuperar Senha</a>
+
+                                <button type="submit" class="btn btn-success btn-block">Enviar</button>
                                 <br/><br/>
-                                <button type="submit" class="btn btn-success btn-block">Entrar</button>
-                                <br/><br/><br/><br/>
                             </div>
                             <div class="col-md-3"></div>
                         </div>
@@ -115,20 +115,26 @@
                 <div class="col-md-12 column">
                     <hr>
                     <div class="col-lg-3">
-                        <img alt=""  height="75" src="img/fai_mg.jpg">
+                        <img alt=""  height="75" src="<c:url value="../img/fai_mg.jpg"/>">
                     </div>
                     <div class="col-lg-3">
-                        <img alt="" height="75" src="img/selo_fai.jpg">
+                        <img alt="" height="75" src="<c:url value="../img/selo_fai.jpg"/>">
                     </div>
                     <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="img/MiniLogo.png" class="img-responsive">
+                        <img alt="" width="174" height="75" src="<c:url value="../img/MiniLogo.png"/>" class="img-responsive">
                     </div>
                     <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="img/LogoFaitec2.png" class="img-responsive">
+                        <img alt="" width="174" height="75" src="<c:url value="../img/LogoFaitec2.png"/>" class="img-responsive">
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            jQuery(document).ready(function () {
+                // binds form submission and fields to the validation engine
+                jQuery("#formRecuperarSenha").validationEngine('attach', {promptPosition: "bottomLeft", autoPositionUpdate: true});
+            });
+        </script>
     </body>
 </html>
 

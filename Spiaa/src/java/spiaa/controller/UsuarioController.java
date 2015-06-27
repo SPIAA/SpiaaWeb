@@ -2,6 +2,7 @@ package spiaa.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import spiaa.model.ServiceLocator;
+import spiaa.model.dao.UsuarioDAO;
+import spiaa.model.entity.RecuperarSenha;
 import spiaa.model.entity.Usuario;
 
 @Controller
@@ -31,6 +34,65 @@ public class UsuarioController {
         } catch (Exception e) {
             mv = new ModelAndView("erro/erro");
             mv.addObject("erro", e.getCause());
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/login/recuperarsenha", method = RequestMethod.GET)
+    public ModelAndView recuperarSenha() throws Exception {
+        ModelAndView mv;
+        return mv = new ModelAndView("login/recuperarSenhaForm");
+    }
+
+    @RequestMapping(value = "/login/recuperarsenha", method = RequestMethod.POST)
+    public ModelAndView recuperarSenha(String email) throws Exception {
+        ModelAndView mv = null;
+        try {
+            Map<String, Object> criteria = new HashMap<String, Object>();
+            criteria.put(UsuarioDAO.CRITERION_EMAIL_EQ, email);
+            List<Usuario> usuarioList = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
+            if (usuarioList.size() > 1 || usuarioList.size() <= 0) {
+                mv = new ModelAndView("login/recuperarSenhaForm");
+                mv.addObject("msg", "Prcesso não pode ser concluído. Por favor verifique com o administrador!");
+            } else {
+                RecuperarSenha recuperarSenha = new RecuperarSenha();
+                recuperarSenha.setUsuario(usuarioList.get(0));
+
+                ServiceLocator.getBaseUsuarioService().recuperarSenhaCreate(recuperarSenha);
+
+                mv = new ModelAndView("login/sucessemail");
+            }
+        } catch (Exception e) {
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/login/redefinirsenha", method = RequestMethod.GET)
+    public ModelAndView redefinirSenha(String usuario, String confirmacao) throws Exception {
+        ModelAndView mv = null;
+        try {
+            Usuario usuarioobj = new Usuario();
+            RecuperarSenha recuperarSenha = null;
+            recuperarSenha = ServiceLocator.getBaseUsuarioService().recuperarSenhaReadByUserToken(usuario, confirmacao);
+            if (recuperarSenha != null) {
+                mv = new ModelAndView("redirect:/login/redefinirsenha");
+                mv.addObject("redefinirsenha", recuperarSenha);
+            } else {
+                mv = new ModelAndView("login/errorredefinirsenha");
+            }
+
+        } catch (Exception e) {
+
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/login/redefinirsenha", method = RequestMethod.POST)
+    public ModelAndView redefinirSenha() throws Exception {
+        ModelAndView mv = null;
+        try {
+
+        } catch (Exception e) {
         }
         return mv;
     }

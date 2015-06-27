@@ -24,7 +24,7 @@ public class SincronizarController {
         return importar;		
     }		
 		
-    @RequestMapping(value = "/sincronizar/importar", method = RequestMethod.GET)		
+    @RequestMapping(value = "/sincronizar/exportar", method = RequestMethod.GET)		
     public ExportarDados exportar() {		
        ExportarDados exportar = new ExportarDados();		
         return exportar;		

@@ -87,22 +87,18 @@
                         <h3>Acesso Restrito</h3>
                     </div>
                     <form role="form" class="form-group" method="POST">
-
-
-                        <div class="form-group">
-                            <label for="InputUsuario">Usuário</label>
-                            <input type="text" class="form-control" name="usuario" id="Inputusuario">
+                        <div class="form-group col-md-4">
+                            <label for="senha">Senha:</label>
+                            <input type="password" class="form-control validate[required]" id="senha" name="senha" value="${usuario.senha}" placeholder="Min. 8 caracteres"/>
                         </div>
-                        <div class="form-group">
-                            <label for="InputSenha">Senha</label>
-                            <input type="password" class="form-control" name="senha" id="InputPassword" >
+                        <div class="form-group col-md-4">
+                            <label for="confirmaSenha">Confirme a Senha:</label>
+                            <input type="password" id="confirmaSenha"class="form-control validate[required]" onchange="verificarSenhas()" name="confirmaSenha" id="confirmaSenha"/>
                         </div>
                         <div class="form-group">
                             <div class="col-md-3"></div>
                             <div class="col-md-6 text-center">
-                                <a href="<c:url value="login/recuperarsenha"/>"> Recuperar Senha</a>
-                                <br/><br/>
-                                <button type="submit" class="btn btn-success btn-block">Entrar</button>
+                                <button type="submit" class="btn btn-success btn-block">redefinir</button>
                                 <br/><br/><br/><br/>
                             </div>
                             <div class="col-md-3"></div>
