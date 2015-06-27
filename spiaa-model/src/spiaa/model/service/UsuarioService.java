@@ -1,16 +1,19 @@
 package spiaa.model.service;
 
-import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.net.URL;
+import java.security.MessageDigest;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.HtmlEmail;
 import spiaa.model.ConnectionManager;
 import spiaa.model.base.service.BaseUsuarioService;
 import spiaa.model.dao.UsuarioDAO;
+import spiaa.model.entity.RecuperarSenha;
 import spiaa.model.entity.Usuario;
 
 public class UsuarioService implements BaseUsuarioService {
@@ -23,7 +26,7 @@ public class UsuarioService implements BaseUsuarioService {
             dao.create(entity, conn);
             conn.commit();
             conn.close();
-        } catch (Exception e) {            
+        } catch (Exception e) {
             conn.rollback();
             conn.close();
         }
@@ -105,7 +108,83 @@ public class UsuarioService implements BaseUsuarioService {
     }
 
     @Override
-    public void endoceStrToUTF8(Usuario usuario) {
-  
+    public String encodeStrToUTF8(Usuario usuario) {
+        String hash = usuario.getEmail() + "spiaaweb2015";
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(hash.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            return number.toString(16);
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+
+    }
+
+    @Override
+    public void recuperarSenhaCreate(RecuperarSenha recuperar) throws Exception {
+
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        try {
+            String token = encodeStrToUTF8(recuperar.getUsuario());
+            recuperar.setToken(token);
+
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.recuperarSenhaCreate(recuperar, conn);
+            //envia email
+            enviarEmailRecuperarSenha(recuperar);
+
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+        }
+    }
+
+    @Override
+    public void recuperarSenhaDelete(Long id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public RecuperarSenha recuperarSenhaReadByUserToken(String usuario, String token) throws Exception {
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        RecuperarSenha recuperarSenha = new RecuperarSenha();
+        try {
+            UsuarioDAO dao = new UsuarioDAO();
+            recuperarSenha = dao.recuperarSenhaReadByUserToken(usuario, token, conn);
+            conn.close();
+        } catch (Exception e) {
+            conn.close();
+            e.printStackTrace();
+        }
+        return recuperarSenha;
+    }
+
+    @Override
+    public void enviarEmailRecuperarSenha(RecuperarSenha recuperarSenha) throws Exception {
+
+        // Create the email message
+        HtmlEmail email = new HtmlEmail();
+        email.setHostName("smtp.googlemail.com");
+        email.setSmtpPort(465);
+        email.setAuthenticator(new DefaultAuthenticator("coloque o email aqui", "coloque a senha aqui"));
+        email.setSSLOnConnect(true);
+        email.addTo(recuperarSenha.getUsuario().getEmail(), recuperarSenha.getUsuario().getNome());
+        email.setFrom("felipepdsouza@gmail.com", "SPIAA");
+        email.setSubject("SPIAA - Recuperar Senha");
+
+        String msg = "<html>";
+        msg += "<p>Ola " + recuperarSenha.getUsuario().getNome() + "!</p>";
+        msg += "<p>Clique no link para redefinir sua senha :<p/>";
+        msg += "<a href='localhost:8084/Spiaa/redefinirsenha?usuario=" + recuperarSenha.getUsuario().getEmail() + "&confirmacao=" + recuperarSenha.getToken() + "'> redefnir senha</a>";
+        msg += "<p>Caso o link não estiver habilitado copie o texto e cole no seu navegador :<p/>";
+        msg += "localhost:8084/Spiaa/redefinirsenha?usuario=" + recuperarSenha.getUsuario().getEmail() + "&confirmacao=" + recuperarSenha.getToken();
+        msg += "</html>";
+        // set the html message
+        email.setHtmlMsg(msg);
+        // send the email
+        email.send();
     }
 }

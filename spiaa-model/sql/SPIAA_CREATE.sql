@@ -203,3 +203,13 @@ FOREIGN KEY(atividade_fk)REFERENCES atividade(id);
 
 ALTER TABLE  atividade_inseticida ADD CONSTRAINT atividade_inseticida_inseticida_fk
 FOREIGN KEY(inseticida_fk)REFERENCES inseticida(id); 
+
+CREATE TABLE recupera_senha
+(
+  id bigserial NOT NULL,
+  usuario_fk bigint NOT NULL,
+  email character varying NOT NULL,
+  token character varying NOT NULL,
+  data_pedido timestamp with time zone,
+  CONSTRAINT recuperar_senha_id_pk PRIMARY KEY (id)
+);
