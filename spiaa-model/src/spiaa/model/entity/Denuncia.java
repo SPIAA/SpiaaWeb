@@ -12,6 +12,7 @@ public class Denuncia extends BaseEntity {
     private String status;
     private String conclusao;
     private Bairro bairro;
+    private Usuario usuario;
 
     public String getEndereco() {
         return endereco;
@@ -75,6 +76,14 @@ public class Denuncia extends BaseEntity {
 
     public void setIrregularidade(String irregularidade) {
         this.irregularidade = irregularidade;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

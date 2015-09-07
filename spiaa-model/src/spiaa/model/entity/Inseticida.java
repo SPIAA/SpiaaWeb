@@ -10,6 +10,7 @@ import spiaa.model.base.BaseEntity;
 
 public class Inseticida extends BaseEntity{
     private String nome;
+    private String unidade;
 
     public String getNome() {
         return nome;
@@ -17,6 +18,14 @@ public class Inseticida extends BaseEntity{
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
     }
      
 }

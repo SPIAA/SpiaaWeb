@@ -22,6 +22,11 @@ public class UsuarioController {
         ModelAndView mv = new ModelAndView("login/form");
         return mv;
     }
+    @RequestMapping(value = "login/error", method = RequestMethod.GET)
+    public ModelAndView error() {
+        ModelAndView mv = new ModelAndView("erro/erro");
+        return mv;
+    }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public ModelAndView login(String usuario, String senha, HttpSession session) throws Exception {
@@ -30,7 +35,7 @@ public class UsuarioController {
             Usuario usuariologado = ServiceLocator.getBaseUsuarioService()
                     .login(usuario, senha);
             session.setAttribute("usuarioLogado", usuariologado);
-            mv = new ModelAndView("redirect:/liraa");
+            mv = new ModelAndView("redirect:/denuncia");
         } catch (Exception e) {
             mv = new ModelAndView("erro/erro");
             mv.addObject("erro", e.getCause());

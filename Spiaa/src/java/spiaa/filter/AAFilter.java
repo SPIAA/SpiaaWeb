@@ -3,11 +3,13 @@ package spiaa.filter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import spiaa.model.dao.UsuarioDAO;
+import spiaa.model.entity.Usuario;
 
 public class AAFilter extends HandlerInterceptorAdapter {
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, 
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
             Object handler) throws Exception {
         boolean ok = false;
         String uri = request.getRequestURI();
@@ -65,8 +67,8 @@ public class AAFilter extends HandlerInterceptorAdapter {
 
         //Verificar Autenticação
         if (!ok) {
-            Object usuario = request.getSession().getAttribute("usuarioLogado");
-            if (usuario != null) {
+            Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
+            if (usuario != null && usuario.getTipo().equalsIgnoreCase(UsuarioDAO.TIPO_ADMNISTRADOR)) {
                 ok = true;
             }
             // Criar um mecanismo para verificar Autorização
@@ -74,7 +76,7 @@ public class AAFilter extends HandlerInterceptorAdapter {
 
         //Finalizando
         if (!ok) {
-            response.sendRedirect("/Spiaa/login");
+            response.sendRedirect("/Spiaa/login/error");
         }
 
         return ok;

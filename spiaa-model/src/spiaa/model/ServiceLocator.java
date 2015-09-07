@@ -16,7 +16,7 @@ import spiaa.model.service.TipoImovelService;
 import spiaa.model.service.UsuarioService;
 
 public class ServiceLocator {
-
+ 
   public static BaseEstratoService getBaseEstratoService() {
     return new EstratoService();
 

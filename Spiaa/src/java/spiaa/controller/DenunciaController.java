@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import spiaa.model.ServiceLocator;
 import spiaa.model.entity.Bairro;
 import spiaa.model.entity.Denuncia;
+import spiaa.model.entity.Usuario;
 
 @Controller
 public class DenunciaController {
@@ -23,7 +23,7 @@ public class DenunciaController {
         List<Bairro> bairroList = new ArrayList<Bairro>();
         Map<String, Object> criteria = new HashMap<String, Object>();
         bairroList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
-        ModelAndView mv = new ModelAndView("denuncia/Form");
+        ModelAndView mv = new ModelAndView("denuncia/denunciaForm");
         mv.addObject("bairroList", bairroList);
 
         return mv;
@@ -34,10 +34,10 @@ public class DenunciaController {
         ModelAndView mv = null;
         try {
             ServiceLocator.getbaseDenunciaService().create(denuncia);
-            mv = new ModelAndView("denuncia/sucesso");
+            mv = new ModelAndView("denuncia/denunciaSucesso");
 
         } catch (Exception e) {
-        e.printStackTrace();
+            e.printStackTrace();
         }
 
         return mv;
@@ -66,7 +66,7 @@ public class DenunciaController {
         Map<String, Object> criteria = new HashMap<String, Object>();
         denunciaList = ServiceLocator.getbaseDenunciaService().readByCriteria(criteria);
 
-        mv = new ModelAndView("denuncia/list");
+        mv = new ModelAndView("denuncia/denunciaList");
         mv.addObject("denunciaList", denunciaList);
 
         return mv;
@@ -75,32 +75,35 @@ public class DenunciaController {
     @RequestMapping(value = "/denuncia/{id}/visualiza", method = RequestMethod.GET)
     public ModelAndView visualizar(@PathVariable Long id) throws Exception {
         ModelAndView mv = null;
-        
-            Denuncia denuncia = new Denuncia();
 
-            denuncia = ServiceLocator.getbaseDenunciaService().readById(id);
+        Denuncia denuncia = new Denuncia();
 
-            mv = new ModelAndView("denuncia/view");
-            mv.addObject("denuncia", denuncia);
+        denuncia = ServiceLocator.getbaseDenunciaService().readById(id);
 
-               return mv;
+        Map<String, Object> criteria = new HashMap<String, Object>();
+        List<Usuario> usuarioList = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
+        mv = new ModelAndView("denuncia/denunciaView");
+        mv.addObject("denuncia", denuncia);
+        mv.addObject("usuario", usuarioList);
+
+        return mv;
     }
-    
+
     @RequestMapping(value = "/denuncia/{id}/visualiza", method = RequestMethod.POST)
     public ModelAndView visualizar(@PathVariable Long id, Denuncia denuncia) throws Exception {
         ModelAndView mv = null;
-        
+
         ServiceLocator.getbaseDenunciaService().update(denuncia);
         try {
-            mv = new ModelAndView("denuncia/view");
+            mv = new ModelAndView("denuncia/denunciaView");
+            Map<String, Object> criteria = new HashMap<String, Object>();
+            List<Usuario> usuarioList = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
             mv.addObject("denuncia", denuncia);
+            mv.addObject("usuario", usuarioList);
             mv.addObject("mensagem", "Denuncia salva com sucesso");
-            
         } catch (Exception e) {
             mv.addObject("mensagem", "Erro ao Salvar a denuncia");
         }
-           
-
-               return mv;
+        return mv;
     }
 }

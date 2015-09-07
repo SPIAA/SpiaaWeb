@@ -12,12 +12,27 @@ public class InseticidaService implements BaseInseticidaService {
 
     @Override
     public void create(Inseticida entity) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        InseticidaDAO dao = new InseticidaDAO();
+        try {
+            dao.create(entity, conn);
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+        }
+
     }
 
     @Override
     public Inseticida readById(Long id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        InseticidaDAO dao = new InseticidaDAO();
+        Inseticida inseticida = dao.readById(id, conn);
+        conn.close();
+        return inseticida;
     }
 
     @Override
@@ -32,12 +47,32 @@ public class InseticidaService implements BaseInseticidaService {
 
     @Override
     public void update(Inseticida entity) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        InseticidaDAO dao = new InseticidaDAO();
+        try {
+            dao.update(entity, conn);
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+        }
+
     }
 
     @Override
     public void delete(Long id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        InseticidaDAO dao = new InseticidaDAO();
+        try {
+            dao.delete(id, conn);
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+        }
+
     }
 
 }

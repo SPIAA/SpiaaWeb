@@ -1,9 +1,14 @@
 package spiaa.controller;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,5 +41,18 @@ public class BairroController {
 
         mv = new ModelAndView("bairro/form");
         return mv;
+    }
+
+    @RequestMapping(value = "/bairro/relatorio", method = RequestMethod.GET)
+    public void relatorio() throws Exception {
+        List<Bairro> bairroList = new ArrayList<Bairro>();
+        Map<String, Object> criteria = new HashMap<String, Object>();
+        bairroList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
+
+        InputStream report = BairroController.class.getResourceAsStream("/spiaa/view/report/spiaaBairros.jasper");
+
+        JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(bairroList));
+        JasperExportManager.exportReportToPdfFile(print, "E:\\relat.pdf");
+
     }
 }

@@ -28,9 +28,13 @@ public class AtividadeService implements BaseAtividadeService {
     public Atividade readById(Long id) throws Exception {
         Atividade atividade = null;
         Connection conn = ConnectionManager.getInstance().getConnection();
-
+        try {
         AtividadeDAO dao = new AtividadeDAO();
         atividade = dao.readById(id, conn);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         conn.close();
 
         return atividade;

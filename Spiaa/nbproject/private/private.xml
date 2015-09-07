@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/William/Documents/GitHub/SPIAA/spiaaweb/Spiaa/web/WEB-INF/views/quarteirao/form.jsp</file>
-            <file>file:/C:/Users/William/Documents/GitHub/SPIAA/spiaaweb/Spiaa/src/java/spiaa/controller/QuarteiraoController.java</file>
-            <file>file:/C:/Users/William/Documents/GitHub/SPIAA/spiaaweb/Spiaa/web/WEB-INF/views/quarteirao/list.jsp</file>
+            <file>file:/C:/Users/Felipe%20de%20Souza/Documents/GitHub/spiaaweb/Spiaa/src/java/spiaa/controller/UsuarioController.java</file>
+            <file>file:/C:/Users/Felipe%20de%20Souza/Documents/GitHub/spiaaweb/Spiaa/web/WEB-INF/views/boletim/list.jsp</file>
+            <file>file:/C:/Users/Felipe%20de%20Souza/Documents/GitHub/spiaaweb/Spiaa/src/java/spiaa/controller/AtividadeController.java</file>
+            <file>file:/C:/Users/Felipe%20de%20Souza/Documents/GitHub/spiaaweb/Spiaa/web/WEB-INF/views/atividade/form.jsp</file>
         </group>
     </open-files>
 </project-private>
