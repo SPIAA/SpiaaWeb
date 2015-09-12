@@ -13,7 +13,7 @@ public class Atividade extends BaseEntity{
     private TipoImoveis tipoImoveis;
     private List<AtividadeCriadouro> atividadeCriadouroList;
     private List<AtividadeInseticida> atividadeInseticidasList;
-    private BoletimDiario boletimDiario;
+    private TratamentoAntiVetorial boletimDiario;
 
     public Atividade() {
         atividadeCriadouroList = new ArrayList<AtividadeCriadouro>();
@@ -61,11 +61,11 @@ public class Atividade extends BaseEntity{
         this.atividadeInseticidasList = atividadeInseticidasList;
     }
 
-    public BoletimDiario getBoletimDiario() {
+    public TratamentoAntiVetorial getBoletimDiario() {
         return boletimDiario;
     }
 
-    public void setBoletimDiario(BoletimDiario boletimDiario) {
+    public void setBoletimDiario(TratamentoAntiVetorial boletimDiario) {
         this.boletimDiario = boletimDiario;
     }
 

@@ -3,7 +3,7 @@
 
 <ul class="nav navbar-nav side-nav ">
     <li>
-        <a href="<c:url value="/boletim"/>" style="color: #fff"><i class="fa fa-2x fa-table"></i> Boletim Diário</a>
+        <a href="<c:url value="/boletim"/>" style="color: #fff"><i class="fa fa-2x fa-table"></i> T. Anti-Vetorial</a>
     </li>
 
     <li>
@@ -33,6 +33,9 @@
             </li>
             <li>
                 <a href="<c:url value="/criadouro"/>" style="color: #fff"><i class="fa fa-2x fa-cube"></i> Criadouro</a>
+            </li>
+            <li>
+                <a href="<c:url value="/pontoestrategico"/>" style="color: #fff"><i class="fa fa-2x fa-map-marker"></i> Ponto estratégico</a>
             </li>
         </ul>
     </li>

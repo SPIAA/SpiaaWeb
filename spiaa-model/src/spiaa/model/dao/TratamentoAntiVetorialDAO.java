@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Map;
 import spiaa.model.base.BaseDAO;
 import spiaa.model.entity.Bairro;
-import spiaa.model.entity.BoletimDiario;
+import spiaa.model.entity.TratamentoAntiVetorial;
 import spiaa.model.entity.Usuario;
 
-public class BoletimDiarioDAO implements BaseDAO<BoletimDiario> {
+public class TratamentoAntiVetorialDAO implements BaseDAO<TratamentoAntiVetorial> {
 
     @Override
-    public void create(BoletimDiario entity, Connection conn) throws Exception {
+    public void create(TratamentoAntiVetorial entity, Connection conn) throws Exception {
 
         String sql = "INSERT INTO boletim_diario(data_boletim, numero, semana_epidemiologica, turma, usuario_fk, bairro_fk,numero_atividade, tipo_atividade)VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -42,8 +42,8 @@ public class BoletimDiarioDAO implements BaseDAO<BoletimDiario> {
     }
 
     @Override
-    public BoletimDiario readById(Long id, Connection conn) throws Exception {
-        BoletimDiario entity = null;
+    public TratamentoAntiVetorial readById(Long id, Connection conn) throws Exception {
+        TratamentoAntiVetorial entity = null;
 
         String sql = "SELECT boletim_diario.*,usuario.id as usuario_id, usuario.nome as usuario_nome, bairro.id as bairro_id, bairro.nome as bairro_nome FROM boletim_diario LEFT JOIN usuario on usuario.id = boletim_diario.usuario_fk LEFT JOIN bairro on bairro.id = boletim_diario.bairro_fk WHERE boletim_diario.id = ?";
 
@@ -52,7 +52,7 @@ public class BoletimDiarioDAO implements BaseDAO<BoletimDiario> {
 
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
-            entity = new BoletimDiario();
+            entity = new TratamentoAntiVetorial();
             entity.setId(rs.getLong("id"));
             entity.setDataBoletim(rs.getDate("data_boletim"));
             entity.setNumero(rs.getString("numero"));
@@ -79,9 +79,9 @@ public class BoletimDiarioDAO implements BaseDAO<BoletimDiario> {
     }
 
     @Override
-    public List<BoletimDiario> readByCriteria(Map<String, Object> criteria, Connection conn) throws Exception {
-        BoletimDiario entity = null;
-        List<BoletimDiario> boletimDiarioList = new ArrayList<BoletimDiario>();
+    public List<TratamentoAntiVetorial> readByCriteria(Map<String, Object> criteria, Connection conn) throws Exception {
+        TratamentoAntiVetorial entity = null;
+        List<TratamentoAntiVetorial> boletimDiarioList = new ArrayList<TratamentoAntiVetorial>();
 
         String sql = "SELECT boletim_diario.*,usuario.id as usuario_id, usuario.nome as usuario_nome, bairro.id as bairro_id, bairro.nome as bairro_nome FROM boletim_diario LEFT JOIN usuario on usuario.id = boletim_diario.usuario_fk LEFT JOIN bairro on bairro.id = boletim_diario.bairro_fk WHERE 1 = 1";
         Statement s = conn.createStatement();
@@ -90,7 +90,7 @@ public class BoletimDiarioDAO implements BaseDAO<BoletimDiario> {
         ResultSet rs = s.executeQuery(sql);
 
         while (rs.next()) {
-            entity = new BoletimDiario();
+            entity = new TratamentoAntiVetorial();
             entity.setId(rs.getLong("id"));
             entity.setDataBoletim(rs.getDate("data_boletim"));
             entity.setNumero(rs.getString("numero"));
@@ -118,7 +118,7 @@ public class BoletimDiarioDAO implements BaseDAO<BoletimDiario> {
     }
 
     @Override
-    public void update(BoletimDiario entity, Connection conn) throws Exception {
+    public void update(TratamentoAntiVetorial entity, Connection conn) throws Exception {
 
         String sql = "UPDATE boletim_diario SET data_boletim=?, numero=?, semana=?, turma=?, usuario_fk=?, bairro_fk=?, numero_atividade=?, tipo_atividade=? WHERE id=? ";
 

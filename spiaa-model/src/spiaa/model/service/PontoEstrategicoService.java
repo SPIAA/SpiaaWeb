@@ -1,21 +1,21 @@
 package spiaa.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import spiaa.model.ConnectionManager;
-import spiaa.model.base.service.BaseBoletimDiarioService;
-import spiaa.model.dao.BoletimDiarioDAO;
-import spiaa.model.entity.BoletimDiario;
+import spiaa.model.base.BaseService;
+import spiaa.model.dao.PontoEstrategicoDAO;
+import spiaa.model.entity.PontoEstrategico;
 
-public class BoletimDiarioService implements BaseBoletimDiarioService {
-    
+public class PontoEstrategicoService implements BaseService<PontoEstrategico> {
+
     @Override
-    public void create(BoletimDiario entity) throws Exception {
-        
+    public void create(PontoEstrategico entity) throws Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
-            BoletimDiarioDAO dao = new BoletimDiarioDAO();
+            PontoEstrategicoDAO dao = new PontoEstrategicoDAO();
             dao.create(entity, conn);
             conn.commit();
             conn.close();
@@ -23,37 +23,33 @@ public class BoletimDiarioService implements BaseBoletimDiarioService {
             conn.rollback();
             conn.close();
         }
-        
     }
-    
+
     @Override
-    public BoletimDiario readById(Long id) throws Exception {
-        BoletimDiario boletimDiario = null;
+    public PontoEstrategico readById(Long id) throws Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
-        BoletimDiarioDAO dao = new BoletimDiarioDAO();
-        boletimDiario = dao.readById(id, conn);
+        PontoEstrategico ponto = new PontoEstrategico();
+        PontoEstrategicoDAO dao = new PontoEstrategicoDAO();
+        ponto = dao.readById(id, conn);
         conn.close();
-        return boletimDiario;
+        return ponto;
     }
-    
+
     @Override
-    public List<BoletimDiario> readByCriteria(Map<String, Object> criteria) throws Exception {
-        List<BoletimDiario> boletimDiarioList = null;
+    public List<PontoEstrategico> readByCriteria(Map<String, Object> criteria) throws Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
-        BoletimDiarioDAO dao = new BoletimDiarioDAO();
-        boletimDiarioList = dao.readByCriteria(criteria, conn);
-        if (boletimDiarioList.size() <= 0) {
-                boletimDiarioList = null;
-            }
-        conn.close();
-        return boletimDiarioList;
+        List<PontoEstrategico> pontoList = new ArrayList<>();
+        PontoEstrategicoDAO dao = new PontoEstrategicoDAO();
+        pontoList = dao.readByCriteria(criteria, conn);
+
+        return pontoList;
     }
-    
+
     @Override
-    public void update(BoletimDiario entity) throws Exception {
+    public void update(PontoEstrategico entity) throws Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
-            BoletimDiarioDAO dao = new BoletimDiarioDAO();
+            PontoEstrategicoDAO dao = new PontoEstrategicoDAO();
             dao.update(entity, conn);
             conn.commit();
             conn.close();
@@ -62,12 +58,12 @@ public class BoletimDiarioService implements BaseBoletimDiarioService {
             conn.close();
         }
     }
-    
+
     @Override
     public void delete(Long id) throws Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
-            BoletimDiarioDAO dao = new BoletimDiarioDAO();
+            PontoEstrategicoDAO dao = new PontoEstrategicoDAO();
             dao.delete(id, conn);
             conn.commit();
             conn.close();
@@ -76,5 +72,5 @@ public class BoletimDiarioService implements BaseBoletimDiarioService {
             conn.close();
         }
     }
-    
+
 }

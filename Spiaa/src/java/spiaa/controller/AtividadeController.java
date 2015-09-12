@@ -16,7 +16,7 @@ import spiaa.model.dao.QuarteiraoDAO;
 import spiaa.model.entity.Atividade;
 import spiaa.model.entity.AtividadeCriadouro;
 import spiaa.model.entity.AtividadeInseticida;
-import spiaa.model.entity.BoletimDiario;
+import spiaa.model.entity.TratamentoAntiVetorial;
 import spiaa.model.entity.Criadouro;
 import spiaa.model.entity.Inseticida;
 import spiaa.model.entity.Quarteirao;
@@ -28,7 +28,7 @@ public class AtividadeController {
     @RequestMapping(value = "/atividade/{id}", method = RequestMethod.GET)
     public ModelAndView listar(@PathVariable Long id) throws Exception {
         ModelAndView mv = null;
-        BoletimDiario boletimDiario = new BoletimDiario();
+        TratamentoAntiVetorial boletimDiario = new TratamentoAntiVetorial();
         Map<String, Object> criteria = new HashMap<String, Object>();
         List<Atividade> atividadeList = new ArrayList<Atividade>();
 
@@ -61,7 +61,7 @@ public class AtividadeController {
             criadouroList = ServiceLocator.getBaseCriadouroService().readByCriteria(criteria);
             inseticidaList = ServiceLocator.getbaseInseticidaService().readByCriteria(criteria);
             tipoImoveisList = ServiceLocator.getbasetipoImovelService().readByCriteria(criteria);
-            BoletimDiario boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(id);
+            TratamentoAntiVetorial boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(id);
             criteria.put(QuarteiraoDAO.CRITERION_BAIRRO_ID, boletimDiario.getBairro().getId());
             quarteiraoList = ServiceLocator.getbaseQuarteiraoService().readByCriteria(criteria);
             mv = new ModelAndView("atividade/form");
@@ -91,7 +91,7 @@ public class AtividadeController {
         TipoImoveis tipoImoveis = null;
         AtividadeInseticida atividadeInseticida = null;
         AtividadeCriadouro atividadeCriadouro = null;
-        BoletimDiario boletimDiario = null;
+        TratamentoAntiVetorial boletimDiario = null;
 
         try {
             List<AtividadeInseticida> atividadeInseticidaList = new ArrayList<AtividadeInseticida>();
@@ -138,7 +138,7 @@ public class AtividadeController {
                 atividade.setObservacao(observacaoVetor[0]);
             }
             //boletim diario
-            boletimDiario = new BoletimDiario();
+            boletimDiario = new TratamentoAntiVetorial();
             boletimDiario.setId(id);
 
             atividade.setAtividadeCriadouroList(atividadeCriadouroList);
@@ -169,7 +169,7 @@ public class AtividadeController {
             inseticidaList = ServiceLocator.getbaseInseticidaService().readByCriteria(criteria);
             tipoImoveisList = ServiceLocator.getbasetipoImovelService().readByCriteria(criteria);
             atividade = ServiceLocator.getbaseAtividadeService().readById(id);
-            BoletimDiario boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(atividade.getBoletimDiario().getId());
+            TratamentoAntiVetorial boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(atividade.getBoletimDiario().getId());
             criteria.put(QuarteiraoDAO.CRITERION_BAIRRO_ID, boletimDiario.getBairro().getId());
             quarteiraoList = ServiceLocator.getbaseQuarteiraoService().readByCriteria(criteria);
             mv = new ModelAndView("atividade/form");
@@ -200,7 +200,7 @@ public class AtividadeController {
         TipoImoveis tipoImoveis = null;
         AtividadeInseticida atividadeInseticida = null;
         AtividadeCriadouro atividadeCriadouro = null;
-        BoletimDiario boletimDiario = null;
+        TratamentoAntiVetorial boletimDiario = null;
 
         try {
             List<AtividadeInseticida> atividadeInseticidaList = new ArrayList<AtividadeInseticida>();
@@ -247,7 +247,7 @@ public class AtividadeController {
                 atividade.setObservacao(observacaoVetor[0]);
             }
             //boletim diario
-            boletimDiario = new BoletimDiario();
+            boletimDiario = new TratamentoAntiVetorial();
             boletimDiario.setId(Long.parseLong(boletimId));
 
             atividade.setAtividadeCriadouroList(atividadeCriadouroList);

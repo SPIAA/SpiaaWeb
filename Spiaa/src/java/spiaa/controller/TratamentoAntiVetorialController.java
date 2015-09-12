@@ -13,16 +13,16 @@ import spiaa.model.ServiceLocator;
 import spiaa.model.dao.AtividadeDAO;
 import spiaa.model.entity.Atividade;
 import spiaa.model.entity.Bairro;
-import spiaa.model.entity.BoletimDiario;
+import spiaa.model.entity.TratamentoAntiVetorial;
 import spiaa.model.entity.Usuario;
 
 @Controller
-public class BoletimDiarioController {
+public class TratamentoAntiVetorialController {
 
     @RequestMapping(value = "/boletim", method = RequestMethod.GET)
     public ModelAndView listar() throws Exception {
         ModelAndView mv = null;
-        List<BoletimDiario> boletimDiarioList = null;
+        List<TratamentoAntiVetorial> boletimDiarioList = null;
         Map<String, Object> criteria = new HashMap<String, Object>();
         try {
             boletimDiarioList = ServiceLocator.getbaseBoletimDiarioService().readByCriteria(criteria);
@@ -58,7 +58,7 @@ public class BoletimDiarioController {
     }
 
     @RequestMapping(value = "/boletim/novo", method = RequestMethod.POST)
-    public ModelAndView create(BoletimDiario boletimDiario) throws Exception {
+    public ModelAndView create(TratamentoAntiVetorial boletimDiario) throws Exception {
         ModelAndView mv = null;
         try {
             ServiceLocator.getbaseBoletimDiarioService().create(boletimDiario);
@@ -74,7 +74,7 @@ public class BoletimDiarioController {
         ModelAndView mv = null;
         List<Usuario> usuarioList = null;
         List<Bairro> bairrosList = null;
-        BoletimDiario boletimDiario = new BoletimDiario();
+        TratamentoAntiVetorial boletimDiario = new TratamentoAntiVetorial();
         Map<String, Object> criteria = new HashMap<String, Object>();
         try {
             usuarioList = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
@@ -92,7 +92,7 @@ public class BoletimDiarioController {
     }
 
     @RequestMapping(value = "/boletim/{id}/alterar", method = RequestMethod.POST)
-    public ModelAndView update(BoletimDiario boletimDiario) throws Exception {
+    public ModelAndView update(TratamentoAntiVetorial boletimDiario) throws Exception {
         ModelAndView mv = null;
         try {
 

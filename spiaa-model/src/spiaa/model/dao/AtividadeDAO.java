@@ -11,7 +11,7 @@ import spiaa.model.base.BaseDAO;
 import spiaa.model.entity.Atividade;
 import spiaa.model.entity.AtividadeCriadouro;
 import spiaa.model.entity.AtividadeInseticida;
-import spiaa.model.entity.BoletimDiario;
+import spiaa.model.entity.TratamentoAntiVetorial;
 import spiaa.model.entity.Criadouro;
 import spiaa.model.entity.Inseticida;
 import spiaa.model.entity.Quarteirao;
@@ -108,7 +108,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
                 tipoImoveis.setDescricao(rs.getString("tipo_imovel_descricao"));
 
                 //boletim diario
-                BoletimDiario boletimDiario = new BoletimDiario();
+                TratamentoAntiVetorial boletimDiario = new TratamentoAntiVetorial();
                 boletimDiario.setId(rs.getLong("boletim_fk"));
                 atividade.setBoletimDiario(boletimDiario);
 

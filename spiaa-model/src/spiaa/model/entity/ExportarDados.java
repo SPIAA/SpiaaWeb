@@ -12,13 +12,13 @@ import java.util.List;
  * @author Felipe de Souza
  */
 public class ExportarDados {		
-    private List<BoletimDiario> boletimDiarioList;		
+    private List<TratamentoAntiVetorial> boletimDiarioList;		
 		
-    public List<BoletimDiario> getBoletimDiarioList() {		
+    public List<TratamentoAntiVetorial> getBoletimDiarioList() {		
        return boletimDiarioList;		
     }		
 		
-    public void setBoletimDiarioList(List<BoletimDiario> boletimDiarioList) {		
+    public void setBoletimDiarioList(List<TratamentoAntiVetorial> boletimDiarioList) {		
         this.boletimDiarioList = boletimDiarioList;		
     }		
 }
