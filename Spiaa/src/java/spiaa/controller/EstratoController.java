@@ -27,7 +27,7 @@ public class EstratoController {
 
             estratoList = ServiceLocator.getBaseEstratoService().readByCriteria(criteria);
 
-            mv = new ModelAndView("estrato/list");
+            mv = new ModelAndView("estrato/estratoList");
             mv.addObject("estrato", estratoList);
 
         } catch (Exception e) {
@@ -44,7 +44,7 @@ public class EstratoController {
         try {
 
             bairroList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
-            mv = new ModelAndView("estrato/form");
+            mv = new ModelAndView("estrato/estratoForm");
             mv.addObject("bairroList", bairroList);
 
         } catch (Exception e) {
@@ -90,7 +90,7 @@ public class EstratoController {
             estrato = new Estrato();
             bairroList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
             estrato = ServiceLocator.getBaseEstratoService().readById(id);
-            mv = new ModelAndView("estrato/form");
+            mv = new ModelAndView("estrato/estratoForm");
             mv.addObject("estrato", estrato);
             mv.addObject("bairroList", bairroList);
 

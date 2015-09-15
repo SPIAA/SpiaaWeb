@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package spiaa.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -18,12 +14,35 @@ public class CriadouroDAO implements BaseDAO<Criadouro> {
 
     @Override
     public void create(Criadouro entity, Connection conn) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO criadouro( grupo, recipiente)  VALUES (?, ?) RETURNING id;";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        int i = 0;
+        ps.setString(++i, entity.getGrupo());
+        ps.setString(++i, entity.getRecipiente());
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            entity.setId(rs.getLong("id"));
+        }
+        ps.close();
+        rs.close();
     }
 
     @Override
     public Criadouro readById(Long id, Connection conn) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = " SELECT * FROM criadouro WHERE id  =? ";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setLong(1, id);
+        ResultSet rs = ps.executeQuery();
+        Criadouro criadouro = null;
+        if (rs.next()) {
+            criadouro = new Criadouro();
+            criadouro.setId(rs.getLong("id"));
+            criadouro.setGrupo(rs.getString("grupo"));
+            criadouro.setRecipiente(rs.getString("recipiente"));
+        }
+        ps.close();
+        rs.close();
+        return criadouro;
     }
 
     @Override
@@ -40,6 +59,7 @@ public class CriadouroDAO implements BaseDAO<Criadouro> {
             criadouro = new Criadouro();
             criadouro.setId(rs.getLong("id"));
             criadouro.setGrupo(rs.getString("grupo"));
+            criadouro.setRecipiente(rs.getString("recipiente"));
             criadouroList.add(criadouro);
 
         }
@@ -51,12 +71,22 @@ public class CriadouroDAO implements BaseDAO<Criadouro> {
 
     @Override
     public void update(Criadouro entity, Connection conn) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE criadouro   SET  grupo=?, recipiente=? WHERE id = ?;";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        int i = 0;
+        ps.setString(++i, entity.getGrupo());
+        ps.setString(++i, entity.getRecipiente());
+        ps.setLong(++i, entity.getId());
+        ps.execute();
+        ps.close();
     }
 
     @Override
     public void delete(Long id, Connection conn) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM criadouro WHERE id = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setLong(1, id);
+        ps.execute();
+        ps.close();
     }
-
 }

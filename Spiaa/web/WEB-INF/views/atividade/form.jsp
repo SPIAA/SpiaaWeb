@@ -32,10 +32,15 @@
 
                             <form role="form" method="POST">
                                 <input type="text" name="boletimId" hidden value="${atividade.boletimDiario.id}">
-                                <div class="form-group col-md-1" >
-                                    <label for="numero_quateirao">Nª Quart.</label>
-                                    <input type="text" class="form-control" name="quarteirao" value="${atividade.quarteirao}">
-                                </div>
+                                <div class="col-md-1">
+                                       <label for="numero_quateirao">Nª Quart.</label>
+                                        <select  class="form-control validate[required]" name="quarteirao.id" id="">
+                                            <c:forEach var="quarteirao" items="${quarteiraoList}">
+/                                                    <option value="${quarteirao.id}" <c:if test="${atividade.quarteirao.id eq quarteirao.id}">selected</c:if>> ${quarteirao.descricao}  </option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                                    
                                 <div class="form-group col-md-4">
                                     <label for="endereco">Endereço</label>
                                     <input type="text" class="form-control" name="endereco" value="${atividade.endereco}">
@@ -50,7 +55,7 @@
                                     <br/>
                                     <c:forEach var="imovel" items="${tipoImoveisList}">
                                         <label class="radio-inline col-md-2">
-                                            <input type="radio" name="tipoimovel" id="tipoimovel" value="${imovel.id}"
+                                            <input type="radio" name="tipoImovel" id="tipoimovel" value="${imovel.id}"
                                                    <c:if test="${imovel.id eq atividade.tipoImoveis.id}"> checked </c:if>
                                                    > ${imovel.sigla}
 
@@ -60,7 +65,7 @@
 
                                 <div class="form-group col-md-1">
                                     <label for="total_inspecionado">T.Insp.:</label>
-                                    <input type="text" class="form-control" name="totalInspecionado" value="${atividade.totalInspecionado}">
+                                    <input type="text" class="form-control" name="inspecionado" value="${atividade.inspecionado}">
                                 </div>
 
                                 <div class="form-group col-lg-4 ">
@@ -70,7 +75,7 @@
                                         <c:forEach var="inseticida" items="${inseticidaList}">
                                             <div class="form-group col-md-6">
                                                 <label for="endereco">${inseticida.nome}</label>
-                                                <input type="text" class="form-control" name="qtdeInseticida" value="">
+                                                <input type="text" class="form-control" name="quantidadeInseticida" value="">
                                                 <input type="hidden" name="inseticida" value="${inseticida.id}">
                                             </div>
                                         </c:forEach>
@@ -79,7 +84,7 @@
                                         <c:forEach var="inseticida" items="${atividade.atividadeInseticidasList}">
                                             <div class="form-group col-md-6">
                                                 <label for="endereco">${inseticida.inseticida.nome}</label>
-                                                <input type="text" class="form-control" name="qtdeInseticida" value="${inseticida.qtdeInseticida}">
+                                                <input type="text" class="form-control" name="quantidadeInseticida" value="${inseticida.quantidadeInseticida}">
                                                 <input type="hidden" name="inseticida" value="${inseticida.inseticida.id}">
                                             </div>
                                         </c:forEach>
@@ -113,7 +118,7 @@
 
                                             <div class="form-group col-md-1">
                                                 <label for="criadouro">${criadouro.grupo} :</label>
-                                                <input type="text" class="form-control"  name="qtdeCriadouro">
+                                                <input type="text" class="form-control"  name="quantidadeCriadouro">
                                                 <input type="hidden" name="criadouro" value="${criadouro.id}">
                                             </div>
 
@@ -123,7 +128,7 @@
                                         <c:forEach var="criadouro" items="${atividade.atividadeCriadouroList}">
                                             <div class="form-group col-md-1">
                                                 <label for="criadouro">${criadouro.criadouro.grupo} :</label>
-                                                <input type="text" class="form-control"  name="qtdeCriadouro" value="${criadouro.qtdeCriadouro}">
+                                                <input type="text" class="form-control"  name="quantidadeCriadouro" value="${criadouro.quantidadeCriadouro}">
                                                 <input type="hidden" name="criadouro" value="${criadouro.criadouro.id}">
                                             </div>
 
@@ -134,7 +139,7 @@
                                 <br/><br/><br/><br/>
                                 <div class="col-lg-12" align="center">
 
-                                    <button class="btn btn-success " > Salvar Atividade</button>  
+                                    <button class="btn btn-success" type="submit" > Salvar Atividade</button>  
 
                                 </div>
 

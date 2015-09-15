@@ -97,6 +97,8 @@ public class UsuarioService implements BaseUsuarioService {
                 } else {
                     if (!usuarioLogado.getSenha().equals(senha)) {
                         usuarioLogado = null;
+                    } else if (!usuarioLogado.getTipo().equalsIgnoreCase(UsuarioDAO.TIPO_ADMNISTRADOR)) {
+                        usuarioLogado = null;
                     }
                 }
             }

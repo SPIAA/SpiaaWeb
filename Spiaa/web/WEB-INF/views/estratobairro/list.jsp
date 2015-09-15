@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../imports.jspf" %>
 <!DOCTYPE html>
@@ -65,33 +64,31 @@
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="armazem">Total Armazem : </label>
-                                                                    <input type="text" class="form-control"  name="armazem" value="${bairros.totalArmazem}">
+                                                                    <input type="text" class="form-control"  name="armazem" value="${bairros.armazem}">
                                                                 </div>
-
                                                                 <div class="form-group col-md-4">
                                                                     <label for="residencia">Total Residência : </label>
-                                                                    <input type="text" class="form-control"  name="residencia" value="${bairros.totalResindencia}">
+                                                                    <input type="text" class="form-control"  name="residencia" value="${bairros.resindencia}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="imoveis">Total Imóveis :</label>
-                                                                    <input type="text" class="form-control"  name="imoveis" value="${bairros.totalImoveis}">
+                                                                    <input type="text" class="form-control"  name="imoveis" value="${bairros.imovel}">
                                                                 </div>  
                                                                 <div class="form-group col-md-4">
                                                                     <label for="comercio">Total Comércio : </label>
-                                                                    <input type="text" class="form-control" name="comercio"  value="${bairros.totalComercio}">
+                                                                    <input type="text" class="form-control" name="comercio"  value="${bairros.comercio}">
                                                                 </div>
-
                                                                 <div class="form-group col-md-4">
                                                                     <label for="predio">Total Prédios : </label>
-                                                                    <input type="text" class="form-control" name="predio" value="${bairros.totalPredios}">
+                                                                    <input type="text" class="form-control" name="predio" value="${bairros.predio}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="terrenobaldio">Terreno Baldio : </label>
-                                                                    <input type="text" class="form-control"  name="terrenobaldio" value="${bairros.totalTerrenoBaldio}">
+                                                                    <input type="text" class="form-control"  name="terrenobaldio" value="${bairros.terrenoBaldio}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="habitantes">Total Habitantes :</label>
-                                                                    <input type="text" class="form-control" name="habitantes" value="${bairros.totalHabitantes}">
+                                                                    <input type="text" class="form-control" name="habitantes" value="${bairros.habitante}">
                                                                 </div>  
                                                                 <div class="form-group col-md-4">
                                                                     <label for="outros">Outros :</label>

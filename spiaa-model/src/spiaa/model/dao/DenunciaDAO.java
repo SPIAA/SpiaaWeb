@@ -10,6 +10,7 @@ import java.util.Map;
 import spiaa.model.base.BaseDAO;
 import spiaa.model.entity.Bairro;
 import spiaa.model.entity.Denuncia;
+import spiaa.model.entity.Usuario;
 
 public class DenunciaDAO implements BaseDAO<Denuncia> {
 
@@ -54,8 +55,11 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
             Bairro bairro = new Bairro();
             bairro.setId(rs.getLong("bairro_id"));
             bairro.setNome(rs.getString("bairro_nome"));
-
             denuncia.setBairro(bairro);
+
+            Usuario usuario = new Usuario();
+            usuario.setId(rs.getLong("usuario_fk"));
+            denuncia.setUsuario(usuario);
         }
 
         return denuncia;
@@ -80,25 +84,30 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
             entity.setObservacao(rs.getString("observacao"));
             entity.setConclusao(rs.getString("conclusao"));
             entity.setStatus(rs.getString("status"));
+
             Bairro bairro = new Bairro();
             bairro.setId(rs.getLong("bairro_id"));
             bairro.setNome(rs.getString("bairro_nome"));
 
+            Usuario usuario = new Usuario();
+            usuario.setId(rs.getLong("usuario_fk"));
+
             entity.setBairro(bairro);
+            entity.setUsuario(usuario);
+
             denunciaList.add(entity);
         }
-
         return denunciaList;
-
     }
 
     @Override
     public void update(Denuncia entity, Connection conn) throws Exception {
-        String sql = " UPDATE denuncia  SET conclusao=?, status=? WHERE id=?";
+        String sql = " UPDATE denuncia  SET conclusao=?, status=?, usuario_fk=? WHERE id=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setString(++i, entity.getConclusao());
         ps.setString(++i, entity.getStatus());
+        ps.setLong(++i, entity.getUsuario().getId());
         ps.setLong(++i, entity.getId());
         ps.execute();
         ps.close();

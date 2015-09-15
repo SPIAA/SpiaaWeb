@@ -13,12 +13,25 @@ public class CriadouroService implements BaseCriadouroService {
 
     @Override
     public void create(Criadouro entity) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        try {
+            CriadouroDAO dao = new CriadouroDAO();
+            dao.create(entity, conn);
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.close();
+            conn.close();
+
+        }
     }
 
     @Override
     public Criadouro readById(Long id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        CriadouroDAO dao = new CriadouroDAO();
+        Criadouro criadouro = dao.readById(id, conn);
+        return criadouro;
     }
 
     @Override
@@ -34,12 +47,33 @@ public class CriadouroService implements BaseCriadouroService {
 
     @Override
     public void update(Criadouro entity) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        try {
+            CriadouroDAO dao = new CriadouroDAO();
+            dao.update(entity, conn);
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.close();
+            conn.close();
+
+        }
+
     }
 
     @Override
     public void delete(Long id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        try {
+            CriadouroDAO dao = new CriadouroDAO();
+            dao.delete(id, conn);
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.close();
+            conn.close();
+
+        }
     }
 
 }

@@ -11,7 +11,7 @@ import spiaa.model.base.BaseDAO;
 import spiaa.model.entity.Atividade;
 import spiaa.model.entity.AtividadeCriadouro;
 import spiaa.model.entity.AtividadeInseticida;
-import spiaa.model.entity.BoletimDiario;
+import spiaa.model.entity.TratamentoAntiVetorial;
 import spiaa.model.entity.Criadouro;
 import spiaa.model.entity.Inseticida;
 import spiaa.model.entity.Quarteirao;
@@ -24,10 +24,11 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     @Override
     public void create(Atividade entity, Connection conn) throws Exception {
 
-        String sql = "INSERT INTO atividade (rua, numero, observacao, inspecionado, tipo_imovel_fk, boletim_fk, quarteirao_fk) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id;";
+        String sql = "INSERT INTO atividade (endereco, numero, observacao, inspecionado, tipo_imovel_fk, boletim_fk, quarteirao_fk) VALUES (?, ?, ?, ?, ?, ?, ? ) RETURNING id;";
         PreparedStatement ps = conn.prepareStatement(sql);
 
         int i = 0;
+        
         ps.setString(++i, entity.getEndereco());
         ps.setString(++i, entity.getNumero());
         ps.setString(++i, entity.getObservacao());
@@ -104,10 +105,10 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
                 TipoImoveis tipoImoveis = new TipoImoveis();
                 tipoImoveis.setId(rs.getLong("tipo_imovel_id"));
                 tipoImoveis.setSigla(rs.getString("tipo_imovel_sigla"));
-                tipoImoveis.setDescricao(rs.getString("tipo_imovel_nome"));
+                tipoImoveis.setDescricao(rs.getString("tipo_imovel_descricao"));
 
                 //boletim diario
-                BoletimDiario boletimDiario = new BoletimDiario();
+                TratamentoAntiVetorial boletimDiario = new TratamentoAntiVetorial();
                 boletimDiario.setId(rs.getLong("boletim_fk"));
                 atividade.setBoletimDiario(boletimDiario);
 
@@ -191,7 +192,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     @Override
     public void update(Atividade entity, Connection conn) throws Exception {
 
-        String sql = "UPDATE atividade SET id=?, rua=?, numero=?, observacao=?, inspecionado=?, tipo_imovel_fk=?, boletim_fk=?, quarteirao_fk=? WHERE id=?";
+        String sql = "UPDATE atividade SET endereco=?, numero=?, observacao=?, inspecionado=?, tipo_imovel_fk=?, boletim_fk=?, quarteirao_fk=? WHERE id=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setString(++i, entity.getEndereco());
@@ -215,7 +216,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         //inserindo criadouro
         List<AtividadeCriadouro> atividadeCriadouroList = entity.getAtividadeCriadouroList();
         if (atividadeCriadouroList != null && atividadeCriadouroList.size() > 0) {
-            String sqlCriadouro = "INSERT INTO atividade_criadouro(atividade_fk, criadouro_fk, qtde)VALUES (?, ?, ?);";
+            String sqlCriadouro = "INSERT INTO atividade_criadouro(atividade_fk, criadouro_fk, quantidade)VALUES (?, ?, ?);";
             PreparedStatement psCriadouro = conn.prepareStatement(sqlCriadouro);
             for (AtividadeCriadouro atividadeCriadouro : atividadeCriadouroList) {
                 psCriadouro.setLong(1, entity.getId());

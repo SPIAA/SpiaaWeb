@@ -97,6 +97,7 @@
 
 
         <script>
+//                    L.mapbox.accessToken = 'pk.eyJ1Ijoic3BpYWEyMDE0IiwiYSI6ImxxMm02ME0ifQ.ea4Ix3YM1KK4oMj7ENLmfA';
                     L.mapbox.accessToken = 'pk.eyJ1Ijoic3BpYWEyMDE0IiwiYSI6ImxxMm02ME0ifQ.ea4Ix3YM1KK4oMj7ENLmfA';
                     var geojson = {"type": "FeatureCollection", "features": [
             <c:forEach items="${estratoList}" var="estratos">
@@ -115,14 +116,14 @@
                             },
                             "properties": {
                             "name": "${bairroestrato.bairro.nome}",
-                                    "armazem": "${bairroestrato.totalArmazem}",
-                                    "residencia": "${bairroestrato.totalResindencia}",
+                                    "armazem": "${bairroestrato.armazem}",
+                                    "residencia": "${bairroestrato.resindencia}",
                                     "estrato": "${estratos.nome}",
-                                    "imoveis": "${bairroestrato.totalImoveis}",
-                                    "comercio": "${bairroestrato.totalComercio}",
-                                    "predios": "${bairroestrato.totalPredios}",
-                                    "tbaldio": "${bairroestrato.totalTerrenoBaldio}",
-                                    "habitantes": "${bairroestrato.totalHabitantes}",
+                                    "imoveis": "${bairroestrato.imovel}",
+                                    "comercio": "${bairroestrato.comercio}",
+                                    "predios": "${bairroestrato.predio}",
+                                    "tbaldio": "${bairroestrato.terrenoBaldio}",
+                                    "habitantes": "${bairroestrato.habitante}",
                                     "stroke": " #fc4353 ",
                                     "stroke-width": 5
 
@@ -133,7 +134,7 @@
 
             </c:forEach>
                     ]};
-                    var map = L.mapbox.map('map', 'examples.map-i86nkdio')
+                    var map = L.mapbox.map('map', 'mapbox.streets-satellite')
                     .setView([ - 22.2490, - 45.7025], 15);
                     // control that shows state info on hover
                     var info = L.control();
@@ -144,7 +145,7 @@
                     };
                     info.update = function(props) {
                     this._div.innerHTML = '<h4><b>Santa Rita do Sapucaí</b></h4>' + (props ?
-                            '<b>' + props.name + '</b><br /> Habitantes :' + props.habitantes + '</b><br /> Comercios : ' + props.comercio + '</b><br /> Armazens :' + props.armazem + '</b><br /> Residências :' + props.residencia + '</b><br /> Imoveis :' + props.imoveis + '</b><br />' : 'Passe o mouse nos bairros');
+                            '<b>' + props.name + '</b><br /> Habitantes :' + props.habitantes + '</b><br /> Comercios : ' + props.comercio + '</b><br /> Armazens :' + props.armazem + '</b><br /> Residências :' + props.residencia + '</b><br /> Imoveis :' + props.imoveis + '</b><br /> Quantidade de focos : 12</b><br /> ': 'Passe o mouse nos bairros');
                     };
                     info.addTo(map);
                     function getColor(d) {
