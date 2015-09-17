@@ -1,0 +1,36 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package spiaa.controller.api;
+
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import spiaa.model.ServiceLocator;
+import spiaa.model.entity.Usuario;
+
+/**
+ *
+ * @author William
+ */
+@Controller
+@RequestMapping(value = "/agente")
+public class UsuarioApiController {
+
+   @RequestMapping(value = "/{email}/{senha}", method = RequestMethod.GET)
+   public @ResponseBody
+   Usuario login(@PathVariable String email, @PathVariable String senha) {
+      Usuario usuario;
+      try {
+         usuario = ServiceLocator.getBaseUsuarioService().login(email, senha);
+      } catch (Exception e) {
+         usuario = null;
+      }
+      return usuario;
+   }
+}

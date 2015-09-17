@@ -51,6 +51,11 @@ public class AAFilter extends HandlerInterceptorAdapter {
             if (uri.startsWith("/Spiaa/home")) {
                 ok = true;
             }
+            
+            if (uri.startsWith("/Spiaa/agente")) {
+                ok = true;
+            }
+            
             if (uri.startsWith("/Spiaa/login")) {
                 ok = true;
             }
