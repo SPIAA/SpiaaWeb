@@ -1,9 +1,7 @@
 package spiaa.model.entity;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import spiaa.model.base.BaseEntity;
 
-@XmlRootElement
 public class Usuario extends BaseEntity{
  
     private String nome;

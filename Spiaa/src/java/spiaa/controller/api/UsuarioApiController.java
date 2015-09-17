@@ -5,7 +5,10 @@
  */
 package spiaa.controller.api;
 
-import javax.servlet.http.HttpServletResponse;
+import com.google.gson.Gson;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,18 +22,21 @@ import spiaa.model.entity.Usuario;
  * @author William
  */
 @Controller
-@RequestMapping(value = "/agente")
 public class UsuarioApiController {
 
-   @RequestMapping(value = "/{email}/{senha}", method = RequestMethod.GET)
+   @RequestMapping(value = "/agente", method = RequestMethod.GET)
    public @ResponseBody
-   Usuario login(@PathVariable String email, @PathVariable String senha) {
-      Usuario usuario;
+   String getAgente() {
+      String json;
       try {
-         usuario = ServiceLocator.getBaseUsuarioService().login(email, senha);
+         Map<String, Object> criteria = new HashMap<String, Object>();
+         List<Usuario> usuarios = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
+         Usuario usuario = usuarios.get(0);
+         Gson gson = new Gson();
+         json = gson.toJson(usuario);
       } catch (Exception e) {
-         usuario = null;
+         json = null;
       }
-      return usuario;
+      return json;
    }
 }
