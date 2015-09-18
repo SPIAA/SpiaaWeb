@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,12 +40,13 @@ public class UsuarioApiController {
       return resposta;
    }
 
-   @RequestMapping(value = "/{usuario}/{senha}", method = RequestMethod.GET)
+   @RequestMapping(value = "/login", method = RequestMethod.POST)
    public @ResponseBody
-   String login(@PathVariable String usuario, @PathVariable String senha) {
+   String login(Usuario usuario) {
       String resposta;
       try {
-         Usuario agente = ServiceLocator.getBaseUsuarioService().login(usuario, senha);
+         Usuario agente = ServiceLocator.getBaseUsuarioService()
+                 .login(usuario.getUsuario(), usuario.getSenha());
          Gson gson = new Gson();
          resposta = gson.toJson(agente);
       } catch (Exception e) {
