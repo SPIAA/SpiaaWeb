@@ -7,10 +7,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Repository;
 import spiaa.model.base.BaseDAO;
 import spiaa.model.entity.RecuperarSenha;
 import spiaa.model.entity.Usuario;
 
+@Repository
 public class UsuarioDAO implements BaseDAO<Usuario> {
 
     public static final String CRITERION_USUARIO_EQ = "1";
