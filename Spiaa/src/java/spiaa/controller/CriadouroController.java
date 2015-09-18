@@ -58,7 +58,7 @@ public class CriadouroController {
         return retorno;
     }
 
-    @RequestMapping(value = "/criadouro/{id}/atualizar", method = RequestMethod.GET)
+    @RequestMapping(value = "/criadouro/{id}/alterar", method = RequestMethod.GET)
     public ModelAndView update(@PathVariable Long id) throws Exception {
         Criadouro criadouro = ServiceLocator.getBaseCriadouroService().readById(id);
         ModelAndView mv = new ModelAndView("criadouro/criadouroForm");
@@ -67,7 +67,7 @@ public class CriadouroController {
         return mv;
     }
 
-    @RequestMapping(value = "/criadouro/atualizar", method = RequestMethod.POST)
+    @RequestMapping(value = "/criadouro/alterar", method = RequestMethod.POST)
     @ResponseBody
     public String update(@RequestBody String jsonData, HttpServletResponse response) throws Exception {
         String retorno = "error";
@@ -83,7 +83,7 @@ public class CriadouroController {
         return retorno;
     }
 
-    @RequestMapping(value = "/criadouro/{id}/deletar", method = RequestMethod.GET)
+    @RequestMapping(value = "/criadouro/{id}/excluir", method = RequestMethod.GET)
     public ModelAndView deletar(@PathVariable Long id) throws Exception {
         ModelAndView mv = new ModelAndView("criadouro/criaoduroForm");
         try {

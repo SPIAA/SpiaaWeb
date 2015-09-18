@@ -26,7 +26,7 @@ public class BairroController {
             List<Bairro> bairroList = new ArrayList<Bairro>();
             Map<String, Object> criteria = new HashMap<String, Object>();
             bairroList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
-            mv = new ModelAndView("bairro/list");
+            mv = new ModelAndView("bairro/bairroList");
             mv.addObject("bairrolist", bairroList);
         } catch (Exception ex) {
             mv = new ModelAndView("erro/erro");
@@ -39,7 +39,7 @@ public class BairroController {
     public ModelAndView create() {
         ModelAndView mv = null;
 
-        mv = new ModelAndView("bairro/form");
+        mv = new ModelAndView("bairro/bairroForm");
         return mv;
     }
 

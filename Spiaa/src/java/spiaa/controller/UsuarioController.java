@@ -171,7 +171,7 @@ public class UsuarioController {
         return new ModelAndView("redirect:/usuario");
     }
 
-    @RequestMapping(value = "/usuario/{id}/atualizar", method = RequestMethod.GET)
+    @RequestMapping(value = "/usuario/{id}/alterar", method = RequestMethod.GET)
     public ModelAndView update(@PathVariable Long id) throws Exception {
         Usuario user = ServiceLocator.getBaseUsuarioService().readById(id);
         ModelAndView mv = new ModelAndView("usuario/form");
@@ -179,7 +179,7 @@ public class UsuarioController {
         return mv;
     }
 
-    @RequestMapping(value = "/usuario/{id}/atualizar", method = RequestMethod.POST)
+    @RequestMapping(value = "/usuario/{id}/alterar", method = RequestMethod.POST)
     public ModelAndView update(HttpSession session, Usuario usuario) throws Exception {
         ModelAndView mv;
         try {

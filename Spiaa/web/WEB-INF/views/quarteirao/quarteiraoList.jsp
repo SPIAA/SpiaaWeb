@@ -1,63 +1,57 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../imports.jspf" %>
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
     </head>
-
     <body>
-
         <div id="wrapper"  class="col-lg-12">
-
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
                 <jsp:include page="../template-admin/menutop.jsp"/>
-
             </nav>
-
             <div id="page-wrapper">
-
                 <div class="container-fluid">
-
+                    <!-- Page Heading -->
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Boletim Diário
+                                Quarteir&atilde;o
                                 <small>Listagem</small>
                             </h1>
-                            <br/>
-                                                      <br/>
-                            <a class="btn btn-primary" href="<c:url value="/boletim/novo"/>">Novo Boletim</a>
-                            <br/>
-                            <div class="col-lg-12">
-                                <br/><br/>
-                                <display:table class="table table-striped table-hover"  name="boletim" id="boletim" requestURI="" pagesize="7">
-                                    <display:column property="dataBoletim" format="{0,date,dd/MM/yyyy}" title="Data Boletim"/>
-                                    <display:column property="numero" title="Numero"/>
-                                    <display:column property="semana" title="Semana"/>
-                                    <display:column property="bairro.nome" title="Bairro"/>
-                                    <display:column property="usuario.nome" title="Agente"/>
-                                    <display:column value="<a href=\"boletim/${boletim.id}/alterar\">alterar</a>" title=""/>
-                                    <display:column value="<a href=\"atividade/${boletim.id}\">atividades</a>" title=""/>
-                                    <display:column value="<a href=\"boletim/${boletim.id}/excluir\">Excluir</a>" class="deleteLink" title=""/>
-                                </display:table>
-                            </div>
+                            <a href="<c:url value="/quarteirao/novo"/>" class="btn btn-default"><i class="fa fa-fw fa-plus"></i> Novo</a><br/><br/>
+                            <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Sigla</th>
+                                        <th>Bairro</th>
+                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:70px;" > </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${quarteiraoList}" var="quarteirao">
+                                        <tr>
+                                            <td>${quarteirao.descricao}</td>
+                                            <td>${quarteirao.bairro.nome}</td>
+                                            <td align="center"><a href="quarteirao/${quarteirao.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar"><i class="fa fa-2x fa-edit text-primary"></i></a></td>
+                                            <td align="center"><a href="quarteirao/${quarteirao.id}/excluir" class="btn_pag " data-toggle="tooltip" data-placement="top" title="Excluir"><i class="fa fa-2x fa-trash-o text-danger"></i></a></td>
+                                        </tr>
+                                    </c:forEach>
 
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- /.row -->
-
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- /#page-wrapper -->
-
         </div>
+        <!-- /#wrapper -->
         <!-- /#wrapper -->
         <div class="modal fade" id="confirmDelete">
             <div class="modal-dialog">
@@ -67,13 +61,9 @@
                         <h3 class="modal-title">Atenção</h3>
                     </div>
                     <div class="modal-body">
-                        <p>Você deseja realmente excluir?</p>
+                        <p>Deseja realmente excluir este Quarteir&atilde;o?</p>
                         <div class="alert alert-danger">
-                            Atenção: esta operação não pode ser desfeita.
-                        </div>
-                        <div class="alert alert-info">
-                            Atenção:Caso tenha alguma <strong>Atividade</strong> neste <strong>Boletim diário</strong> ele  <strong class="text-danger">não sera excluído!</strong>
-                        <br/>Para isso deve excluir todas as <strong>Atividade</strong> primeiro!
+                            <strong> Atenção: esta operação não pode ser desfeita.</strong> 
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -83,17 +73,12 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-        <script>
-            $(function() {
-                $("td.deleteLink a").click(function() {
+          <script>
+                $('.btn_pag').on("click", function () {
                     $('#confirmDelete').modal('show');
                     $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
                     return false;
                 });
-            });
-        </script>
-
-
+            </script>
     </body>
-
 </html>

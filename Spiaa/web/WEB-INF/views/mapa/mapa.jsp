@@ -87,7 +87,7 @@
         <div class="">
             <div class="row">
                 <div class=" col-lg-12">
-                    <div style="height: 800px;">
+                    <div >
                         <div id='map'></div>
                     </div>
                 </div>

@@ -38,7 +38,7 @@ public class AtividadeController {
 
             boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(id);
 
-            mv = new ModelAndView("atividade/list");
+            mv = new ModelAndView("atividade/atividadeList");
             mv.addObject("boletimDiario", boletimDiario);
             mv.addObject("atividadeList", atividadeList);
         } catch (Exception e) {
@@ -64,7 +64,7 @@ public class AtividadeController {
             TratamentoAntiVetorial boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(id);
             criteria.put(QuarteiraoDAO.CRITERION_BAIRRO_ID, boletimDiario.getBairro().getId());
             quarteiraoList = ServiceLocator.getbaseQuarteiraoService().readByCriteria(criteria);
-            mv = new ModelAndView("atividade/form");
+            mv = new ModelAndView("atividade/atividadeForm");
             mv.addObject("criadouroList", criadouroList);
             mv.addObject("inseticidaList", inseticidaList);
             mv.addObject("tipoImoveisList", tipoImoveisList);
@@ -172,7 +172,7 @@ public class AtividadeController {
             TratamentoAntiVetorial boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(atividade.getBoletimDiario().getId());
             criteria.put(QuarteiraoDAO.CRITERION_BAIRRO_ID, boletimDiario.getBairro().getId());
             quarteiraoList = ServiceLocator.getbaseQuarteiraoService().readByCriteria(criteria);
-            mv = new ModelAndView("atividade/form");
+            mv = new ModelAndView("atividade/atividadeForm");
             mv.addObject("criadouroList", criadouroList);
             mv.addObject("inseticidaList", inseticidaList);
             mv.addObject("tipoImoveisList", tipoImoveisList);

@@ -65,7 +65,7 @@ public class PontoEstrategicoController {
         return retorno;
     }
 
-    @RequestMapping(value = "/pontoestrategico/{id}/atualizar", method = RequestMethod.GET)
+    @RequestMapping(value = "/pontoestrategico/{id}/alterar", method = RequestMethod.GET)
     public ModelAndView update(@PathVariable Long id) throws Exception {
         ModelAndView mv = new ModelAndView("pontoestrategico/pontoEstrategicoForm");
         Map<String, Object> criteria = new HashMap<String, Object>();
@@ -80,7 +80,7 @@ public class PontoEstrategicoController {
         return mv;
     }
 
-    @RequestMapping(value = "/pontoestrategico/atualizar", method = RequestMethod.POST)
+    @RequestMapping(value = "/pontoestrategico/alterar", method = RequestMethod.POST)
     @ResponseBody
     public String update(@RequestBody String jsonData, HttpServletResponse response) throws Exception {
         String retorno = "error";
@@ -96,7 +96,7 @@ public class PontoEstrategicoController {
         return retorno;
     }
 
-    @RequestMapping(value = "/pontoestrategico/{id}/deletar", method = RequestMethod.GET)
+    @RequestMapping(value = "/pontoestrategico/{id}/excluir", method = RequestMethod.GET)
     public ModelAndView deletar(@PathVariable Long id) throws Exception {
         ModelAndView mv = new ModelAndView("pontoestrategico/pontoEstrategicoForm");
         try {

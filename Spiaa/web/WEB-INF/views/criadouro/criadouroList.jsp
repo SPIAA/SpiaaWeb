@@ -34,20 +34,32 @@
                                     <p class="text-center">${mensagem}</p> 
                                 </div>
                             </c:if>
-
                             <a href="<c:url value="criadouro/novo"/> "class="btn btn-default"><i class="fa fa-fw fa-plus"></i>Novo</a><br/><br/>
-
-                            <display:table class="table table-striped table-hover"  name="criadouroList" id="criadouroList" requestURI="" pagesize="7">
-                                <display:column property="grupo" title="Criadouro"/>
-                                <display:column property="recipiente" title="Recipientes"/>
-                                <display:column title="Alterar"><a href="<c:url value="/criadouro/${criadouroList.id}/atualizar"/>"><i class="fa fa-2x fa-edit"></i></a></display:column>
-                                <display:column title="Deletar" class="deleteLink"><a href="<c:url value="/criadouro/${criadouroList.id}/deletar"/>"><i class="fa fa-2x fa-trash-o text-danger"></i></a></display:column>
-                                </display:table>
+                                <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Criadouro</th>
+                                        <th>Recipientes</th>
+                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:70px;" > </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${criadouroList}" var="criadouro">
+                                        <tr>
+                                            <td>${criadouro.grupo}</td>
+                                            <td>${criadouro.recipiente}</td>
+                                            <td align="center"><a href="criadouro/${criadouro.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar"><i class="fa fa-2x fa-edit text-primary"></i></a></td>
+                                            <td align="center"><a href="criadouro/${criadouro.id}/excluir" class="btn_pag " data-toggle="tooltip" data-placement="top" title="Excluir"><i class="fa fa-2x fa-trash-o text-danger"></i></a></td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- /.row -->
                 </div>
-                <!-- /.container-fluid -->
+                <!-- /.contaiDner-fluid -->
             </div>
             <!-- /#page-wrapper -->
         </div>
@@ -76,13 +88,12 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <script>
-            $(function () {
-                $("td.deleteLink a").click(function () {
-                    $('#confirmDelete').modal('show');
-                    $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
-                    return false;
-                });
+            $('.btn_pag').on("click", function () {
+                $('#confirmDelete').modal('show');
+                $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
+                return false;
             });
+           
         </script>
     </body>
 

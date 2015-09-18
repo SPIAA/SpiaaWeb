@@ -32,7 +32,7 @@ public class QuarteiraoController {
       try {
          List<Quarteirao> quarteiaoList = ServiceLocator.getbaseQuarteiraoService()
                  .readByCriteria(new HashMap<String, Object>());
-         mv = new ModelAndView("quarteirao/list");
+         mv = new ModelAndView("quarteirao/quarteiraoList");
          mv.addObject("quarteiraoList", quarteiaoList);
       } catch (Exception e) {
          mv = new ModelAndView("erro/erro");
@@ -51,7 +51,7 @@ public class QuarteiraoController {
          criteria.put(QuarteiraoDAO.CRITERION_BAIRRO_ID, bairroID);
          List<Quarteirao> quarteiraoList = ServiceLocator.getbaseQuarteiraoService()
                  .readByCriteria(criteria);
-         mv = new ModelAndView("quarteirao/list");
+         mv = new ModelAndView("quarteirao/quarteiraoList");
          mv.addObject("quarteiraoList", quarteiraoList);
          mv.addObject("bairroID", bairroID);
       } catch (Exception e) {
@@ -76,7 +76,7 @@ public class QuarteiraoController {
       try {
          List<Bairro> bairroList = ServiceLocator.getBaseBairroService()
                  .readByCriteria(new HashMap<String, Object>());
-         mv = new ModelAndView("quarteirao/form");
+         mv = new ModelAndView("quarteirao/quarteiraoForm");
          mv.addObject("bairroList", bairroList);
       } catch (Exception e) {
          mv = new ModelAndView("erro/erro");
@@ -127,7 +127,7 @@ public class QuarteiraoController {
          Quarteirao quarteirao = ServiceLocator.getbaseQuarteiraoService().readById(id);
          List<Bairro> bairroList = ServiceLocator.getBaseBairroService()
                  .readByCriteria(new HashMap<String, Object>());
-         mv = new ModelAndView("quarteirao/form");
+         mv = new ModelAndView("quarteirao/quarteiraoForm");
          mv.addObject("quarteirao", quarteirao);
          mv.addObject("bairroList", bairroList);
       } catch (Exception e) {

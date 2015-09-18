@@ -2,26 +2,17 @@
 <%@include file="../imports.jspf" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
     </head>
-
     <body>
-
         <div id="wrapper"  class="col-lg-12">
-
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
                 <jsp:include page="../template-admin/menutop.jsp"/>
-
             </nav>
-
             <div id="page-wrapper">
-
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
@@ -30,34 +21,49 @@
                                 <small>Listagem</small>
                             </h1>
                             <div class="col-lg-12">
-                                <br/><br/>
-                                <display:table class="table table-striped table-hover"  name="denunciaList" id="denunciaList" requestURI="" pagesize="7">
-                                    <display:column property="bairro.nome" title="Bairro" sortable="true" />
-                                    <display:column property="endereco" title="Endereco"/>
-                                    <display:column property="numero" title="Numero"/>
-                                    <display:column property="telefone" title="Telefone"/>
-                                    <display:column property="status" title="Status" sortable="true"/>
-                                    
-                                    <display:column value="<a href=\"denuncia/${denunciaList.id}/visualiza\">Visualizar</a>" title=""/>
-                                    
-                                </display:table>
+                                <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Bairro</th>
+                                            <th>Endereco</th>
+                                            <th>Numero</th>
+                                            <th>Telefone</th>
+                                            <th>Status</th>
+                                            <th align="center" style="width:70px;" > </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${denunciaList}" var="denuncia">
+                                            <tr>
+                                                <td>${denuncia.bairro.nome}</td>
+                                                <td>${denuncia.endereco}</td>
+                                                <td>${denuncia.numero}</td>
+                                                <td>${denuncia.telefone}</td>
+                                                <td>${denuncia.status}</td>
+                                                <td align="center"><a href="denuncia/${denuncia.id}/visualiza" data-toggle="tooltip" data-placement="top" title="Visualizar"><i class="fa fa-2x fa-search-plus text-danger"></i></a></td>
+                                            </tr>
+                                        </c:forEach>
+
+                                    </tbody>
+                                </table>
                             </div>
 
                         </div>
                     </div>
                     <!-- /.row -->
-
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- /#page-wrapper -->
-
         </div>
         <!-- /#wrapper -->
-
-
-
+        <script>
+            $('.btn_pag').on("click", function () {
+                $('#confirmDelete').modal('show');
+                $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
+                return false;
+            });
+           
+        </script>
     </body>
-
 </html>

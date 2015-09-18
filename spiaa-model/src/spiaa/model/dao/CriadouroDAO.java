@@ -50,7 +50,7 @@ public class CriadouroDAO implements BaseDAO<Criadouro> {
 
         List<Criadouro> criadouroList = new ArrayList<Criadouro>();
         Criadouro criadouro = null;
-        String sql = "SELECT * FROM criadouro WHERE 1=1";
+        String sql = "SELECT * FROM criadouro WHERE 1=1 ORDER BY grupo ASC";
 
         Statement s = conn.createStatement();
         ResultSet rs = s.executeQuery(sql);

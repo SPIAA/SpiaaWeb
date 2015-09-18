@@ -64,7 +64,7 @@ public class InseticidaController {
         return retorno;
     }
 
-    @RequestMapping(value = "/inseticida/{id}/atualizar", method = RequestMethod.GET)
+    @RequestMapping(value = "/inseticida/{id}/alterar", method = RequestMethod.GET)
     public ModelAndView update(@PathVariable Long id) throws Exception {
         Inseticida inseticida = ServiceLocator.getbaseInseticidaService().readById(id);
         ModelAndView mv = new ModelAndView("inseticida/inseticidaForm");
@@ -73,7 +73,7 @@ public class InseticidaController {
         return mv;
     }
 
-    @RequestMapping(value = "/inseticida/atualizar", method = RequestMethod.POST)
+    @RequestMapping(value = "/inseticida/alterar", method = RequestMethod.POST)
     @ResponseBody
     public String update(@RequestBody String jsonData, HttpServletResponse response) throws Exception {
         String retorno = "error";
@@ -89,7 +89,7 @@ public class InseticidaController {
         return retorno;
     }
 
-    @RequestMapping(value = "/inseticida/{id}/deletar", method = RequestMethod.GET)
+    @RequestMapping(value = "/inseticida/{id}/excluir", method = RequestMethod.GET)
     public ModelAndView deletar(@PathVariable Long id) throws Exception {
         ModelAndView mv = new ModelAndView("inseticida/inseticidaForm");
         try {

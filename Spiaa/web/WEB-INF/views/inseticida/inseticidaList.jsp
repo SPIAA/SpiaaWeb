@@ -2,22 +2,15 @@
 <%@include file="../imports.jspf" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
     </head>
-
     <body>
-
         <div id="wrapper"  class="col-lg-12">
-
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
                 <jsp:include page="../template-admin/menutop.jsp"/>
-
             </nav>
-
             <div id="page-wrapper">
 
                 <div class="container-fluid">
@@ -34,15 +27,27 @@
                                     <p class="text-center">${mensagem}</p> 
                                 </div>
                             </c:if>
-
-                            <a href="<c:url value="inseticida/novo"/> "class="btn btn-default"><i class="fa fa-fw fa-plus"></i>Novo</a><br/><br/>
-
-                            <display:table class="table table-striped table-hover"  name="inseticidaList" id="inseticidaList" requestURI="" pagesize="7">
-                                <display:column property="nome" title="Inseticida"/>
-                                <display:column property="unidade" title="Unidade de medida"/>
-                                <display:column title="Alterar"><a href="<c:url value="/inseticida/${inseticidaList.id}/atualizar"/>"><i class="fa fa-2x fa-edit"></i></a></display:column>
-                                <display:column title="Deletar" class="deleteLink"><a href="<c:url value="/inseticida/${inseticidaList.id}/deletar"/>"><i class="fa fa-2x fa-trash-o text-danger"></i></a></display:column>
-                                </display:table>
+                            <a href="<c:url value="inseticida/novo"/> "class="btn btn-default"><i class="fa fa-fw fa-plus"></i> Novo</a><br/><br/>
+                            <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Inseticida</th>
+                                        <th>Unidade de medida</th>
+                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:70px;" > </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${inseticidaList}" var="inseticida">
+                                        <tr>
+                                            <td>${inseticida.nome}</td>
+                                            <td>${inseticida.unidade}</td>
+                                            <td align="center"><a href="inseticida/${inseticida.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar"><i class="fa fa-2x fa-edit text-primary"></i></a></td>
+                                            <td align="center"><a href="inseticida/${inseticida.id}/excluir" class="btn_pag " data-toggle="tooltip" data-placement="top" title="Excluir"><i class="fa fa-2x fa-trash-o text-danger"></i></a></td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- /.row -->
@@ -76,12 +81,10 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <script>
-            $(function () {
-                $("td.deleteLink a").click(function () {
-                    $('#confirmDelete').modal('show');
-                    $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
-                    return false;
-                });
+            $('.btn_pag').on("click", function () {
+                $('#confirmDelete').modal('show');
+                $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
+                return false;
             });
         </script>
     </body>

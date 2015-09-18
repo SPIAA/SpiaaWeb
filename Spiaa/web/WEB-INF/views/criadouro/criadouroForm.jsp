@@ -1,26 +1,19 @@
-
 <%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <%@include file="../imports.jspf" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
         <link href="<c:url value="/css/jquery-ui.min.css"/>" rel="stylesheet">
         <script src="<c:url value="/js/jquery-ui.min.js"/>"></script>
+        <script src="<c:url value="/js/views/criadouro.js"/>"></script>
     </head>
-
     <body>
-
         <div id="wrapper">
-
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
                 <jsp:include page="../template-admin/menutop.jsp"/>
-
             </nav>
-
             <div id="page-wrapper">
                 <div class="container-fluid">
                     <!-- Page Heading -->
@@ -47,7 +40,7 @@
                                 </div>
                                 <div class="col-lg-4" align="center">
                                     <br/>
-                                    <input class="btn btn-success " onclick="myFunction()" value="Gravar" />  
+                                    <input class="btn btn-success " onclick="getFormData()" value="Gravar" />  
                                 </div>
                             </form>
                             <!--<button onclick="myFunction()">report via ajax</button>-->
@@ -59,8 +52,6 @@
             </div>
             <!-- /#page-wrapper -->
         </div>
-
-
         <div class="modal fade" id="successCreate">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -79,54 +70,5 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
-        <!-- /#wrapper -->     
-        <script>
-            jQuery(document).ready(function () {
-                // binds form submission and fields to the validation engine
-                jQuery("#form").validationEngine('attach', {promptPosition: "bottomLeft", autoPositionUpdate: true});
-            });
-            function myFunction() {
-                var id = document.getElementById("id").value;
-
-                var url = "/Spiaa/criadouro/novo";
-                if (id != null && id != "") {
-                    url = "/Spiaa/criadouro/atualizar";
-                } else {
-                    id = null;
-                }
-                var grupo = document.getElementById("grupo").value;
-                var recipiente = document.getElementById("recipiente").value;
-                var jsonData = {
-                    id: id,
-                    grupo: grupo,
-                    recipiente: recipiente
-                };
-                $.ajax({
-                    url: url,
-                    data: JSON.stringify(jsonData),
-                    jsonData: jsonData,
-                    method: 'POST',
-                    dataType: 'text',
-                    contentType: 'application/x-www-form-urlencoded; charset=iso-8859-1',
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader("Accept", "application/text");
-                        xhr.setRequestHeader("Content-Type", "text/plain");
-                        xhr.overrideMimeType('text/html;charset=iso-8859-1');
-                    }
-                }).done(function (retorno) {
-                    if (retorno != null) {
-                        $('#successCreate').modal('show');
-                    }
-                    setTimeout(function () {
-                        document.location.assign('/Spiaa/criadouro');
-                    }, 3000);
-                }).fail(function () {
-
-                });
-            }
-
-
-        </script>
     </body>
 </html>

@@ -76,7 +76,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     public Atividade readById(Long id, Connection conn) throws Exception {
         Atividade atividade = null;
         String sql = "SELECT atividade .*,tipo_imovel.id as tipo_imovel_id, tipo_imovel.descricao as tipo_imovel_descricao, tipo_imovel.sigla as tipo_imovel_sigla, ";
-        sql += "atividade_criadouro.quantidade as atividade_criadouro_qtde, criadouro.id as criadouro_id, criadouro.grupo as criadouro_nome, ";
+        sql += "atividade_criadouro.quantidade as atividade_criadouro_qtde, criadouro.id as criadouro_id, criadouro.grupo as criadouro_nome,criadouro.recipiente as criadouro_recipiente, ";
         sql += "quarteirao.id as quarteirao_id, quarteirao.descricao as quarteirao_descricao ";
         sql += "FROM atividade ";
         sql += "LEFT JOIN tipo_imovel on tipo_imovel.id = atividade.tipo_imovel_fk  ";
@@ -126,6 +126,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
                 Criadouro criadouro = new Criadouro();
                 criadouro.setId(criadouro_id);
                 criadouro.setGrupo(rs.getString("criadouro_nome"));
+                criadouro.setRecipiente(rs.getString("criadouro_recipiente"));
 
                 //Consolidacao_criadouro
                 AtividadeCriadouro atividadeCriadouro = new AtividadeCriadouro();

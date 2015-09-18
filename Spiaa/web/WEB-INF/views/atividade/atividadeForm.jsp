@@ -5,6 +5,7 @@
 
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
+        <script src="<c:url value="/js/views/atividade.js"/>"></script>
     </head>
 
     <body>
@@ -26,21 +27,21 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Boletim Diário
+                                Tratamento Anti-Vetorial
                                 <small>Atividade</small>
                             </h1>
 
                             <form role="form" method="POST">
                                 <input type="text" name="boletimId" hidden value="${atividade.boletimDiario.id}">
                                 <div class="col-md-1">
-                                       <label for="numero_quateirao">Nª Quart.</label>
-                                        <select  class="form-control validate[required]" name="quarteirao.id" id="">
-                                            <c:forEach var="quarteirao" items="${quarteiraoList}">
-/                                                    <option value="${quarteirao.id}" <c:if test="${atividade.quarteirao.id eq quarteirao.id}">selected</c:if>> ${quarteirao.descricao}  </option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                                    
+                                    <label for="numero_quateirao">Nª Quart.</label>
+                                    <select  class="form-control validate[required]" name="quarteirao.id" id="">
+                                        <c:forEach var="quarteirao" items="${quarteiraoList}">
+                                            <option value="${quarteirao.id}" <c:if test="${atividade.quarteirao.id eq quarteirao.id}">selected</c:if>> ${quarteirao.descricao}  </option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
                                 <div class="form-group col-md-4">
                                     <label for="endereco">Endereço</label>
                                     <input type="text" class="form-control" name="endereco" value="${atividade.endereco}">
@@ -99,27 +100,27 @@
                                     <br/>
                                     <label class="radio-inline col-md-2">
                                         <input type="radio" name="observacao" id="observacao" value="Recusou" <c:if test="${atividade.observacao eq 'Recusou'}">checked</c:if>   > Recusou
-                                    </label>
-                                    <label class="radio-inline col-md-2">
-                                        <input type="radio" name="observacao" id="observacao" value="Fechado" <c:if test="${atividade.observacao eq 'Fechado'}">checked</c:if>  > Fechado
-                                    </label>
-                                    <label class="radio-inline col-md-2">
-                                        <input type="radio" name="observacao" id="observacao" value="Resgatado" <c:if test="${atividade.observacao eq 'Resgatado'}">checked</c:if> > Resgatado
-                                    </label>
+                                        </label>
+                                        <label class="radio-inline col-md-2">
+                                            <input type="radio" name="observacao" id="observacao" value="Fechado" <c:if test="${atividade.observacao eq 'Fechado'}">checked</c:if>  > Fechado
+                                        </label>
+                                        <label class="radio-inline col-md-2">
+                                            <input type="radio" name="observacao" id="observacao" value="Resgatado" <c:if test="${atividade.observacao eq 'Resgatado'}">checked</c:if> > Resgatado
+                                        </label>
 
-                                </div>
-                                <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+                                    </div>
+                                    <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
 
-                                <div class="form-group col-lg-12 ">
-                                    <label for="endereco" class="form-group">Tipo de criadouro :</label>
-                                    <br/>
+                                    <div class="form-group col-lg-12 ">
+                                        <label for="endereco" class="form-group">Tipo de criadouro :</label>
+                                        <br/>
                                     <c:if test="${empty atividade.atividadeCriadouroList}">
                                         <c:forEach var="criadouro" items="${criadouroList}">
 
                                             <div class="form-group col-md-1">
                                                 <label for="criadouro">${criadouro.grupo} :</label>
-                                                <input type="text" class="form-control"  name="quantidadeCriadouro">
-                                                <input type="hidden" name="criadouro" value="${criadouro.id}">
+                                                <input type="text" class="form-control" id="quantidadeCriadouro"  name="quantidadeCriadouro" >
+                                                <input type="hidden" name="criadouro" id="criadouro" value="${criadouro.id}">
                                             </div>
 
                                         </c:forEach>
@@ -127,9 +128,9 @@
                                     <c:if test="${not empty atividade.atividadeCriadouroList}">
                                         <c:forEach var="criadouro" items="${atividade.atividadeCriadouroList}">
                                             <div class="form-group col-md-1">
-                                                <label for="criadouro">${criadouro.criadouro.grupo} :</label>
-                                                <input type="text" class="form-control"  name="quantidadeCriadouro" value="${criadouro.quantidadeCriadouro}">
-                                                <input type="hidden" name="criadouro" value="${criadouro.criadouro.id}">
+                                                <label for="criadouro">${criadouro.criadouro.grupo} :<i class="fa fa-exclamation-circle text-info" data-toggle="tooltip" data-placement="top" title="${criadouro.criadouro.recipiente}"></i></label>
+                                                <input type="text" class="form-control" id="quantidadeCriadouro"  name="quantidadeCriadouro" value="${criadouro.quantidadeCriadouro}">
+                                                <input type="hidden" name="criadouro" id="criadouro" value="${criadouro.criadouro.id}">
                                             </div>
 
                                         </c:forEach>
@@ -142,32 +143,18 @@
                                     <button class="btn btn-success" type="submit" > Salvar Atividade</button>  
 
                                 </div>
-
-
                                 <br/>
                             </form>
                             <br/>
-
-
                             <!-- Modal -->
-
-
-
                         </div>
                     </div>
                     <!-- /.row -->
-
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- /#page-wrapper -->
-
         </div>
         <!-- /#wrapper -->
-
-
-
     </body>
-
 </html>

@@ -19,14 +19,14 @@ import spiaa.model.entity.Usuario;
 @Controller
 public class TratamentoAntiVetorialController {
 
-    @RequestMapping(value = "/boletim", method = RequestMethod.GET)
+    @RequestMapping(value = "/tratamento", method = RequestMethod.GET)
     public ModelAndView listar() throws Exception {
         ModelAndView mv = null;
         List<TratamentoAntiVetorial> boletimDiarioList = null;
         Map<String, Object> criteria = new HashMap<String, Object>();
         try {
             boletimDiarioList = ServiceLocator.getbaseBoletimDiarioService().readByCriteria(criteria);
-            mv = new ModelAndView("boletim/list");
+            mv = new ModelAndView("tratamento/tratamentoList");
             mv.addObject("boletim", boletimDiarioList);
         } catch (Exception e) {
 
@@ -36,7 +36,7 @@ public class TratamentoAntiVetorialController {
         return mv;
     }
 
-    @RequestMapping(value = "/boletim/novo", method = RequestMethod.GET)
+    @RequestMapping(value = "/tratamento/novo", method = RequestMethod.GET)
     public ModelAndView create() throws Exception {
         ModelAndView mv = null;
         List<Usuario> usuarioList = null;
@@ -46,7 +46,7 @@ public class TratamentoAntiVetorialController {
             usuarioList = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
             bairrosList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
 
-            mv = new ModelAndView("boletim/form");
+            mv = new ModelAndView("tratamento/tratamentoForm");
             mv.addObject("usuarioList", usuarioList);
             mv.addObject("bairrosList", bairrosList);
 
@@ -57,7 +57,7 @@ public class TratamentoAntiVetorialController {
         return mv;
     }
 
-    @RequestMapping(value = "/boletim/novo", method = RequestMethod.POST)
+    @RequestMapping(value = "/tratamento/novo", method = RequestMethod.POST)
     public ModelAndView create(TratamentoAntiVetorial boletimDiario) throws Exception {
         ModelAndView mv = null;
         try {
@@ -69,7 +69,7 @@ public class TratamentoAntiVetorialController {
         return mv;
     }
 
-    @RequestMapping(value = "/boletim/{id}/alterar", method = RequestMethod.GET)
+    @RequestMapping(value = "/tratamento/{id}/alterar", method = RequestMethod.GET)
     public ModelAndView update(@PathVariable Long id) throws Exception {
         ModelAndView mv = null;
         List<Usuario> usuarioList = null;
@@ -81,7 +81,7 @@ public class TratamentoAntiVetorialController {
             bairrosList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
             boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(id);
 
-            mv = new ModelAndView("boletim/form");
+            mv = new ModelAndView("tratamento/tratamentoForm");
             mv.addObject("usuarioList", usuarioList);
             mv.addObject("bairrosList", bairrosList);
             mv.addObject("boletimDiario", boletimDiario);
@@ -91,21 +91,21 @@ public class TratamentoAntiVetorialController {
         return mv;
     }
 
-    @RequestMapping(value = "/boletim/{id}/alterar", method = RequestMethod.POST)
+    @RequestMapping(value = "/tratamento/{id}/alterar", method = RequestMethod.POST)
     public ModelAndView update(TratamentoAntiVetorial boletimDiario) throws Exception {
         ModelAndView mv = null;
         try {
 
             ServiceLocator.getbaseBoletimDiarioService().update(boletimDiario);
 
-            mv = new ModelAndView("redirect:/boletim");
+            mv = new ModelAndView("redirect:/tratamento");
         } catch (Exception e) {
         }
 
         return mv;
     }
 
-    @RequestMapping(value = "/boletim/{id}/excluir", method = RequestMethod.GET)
+    @RequestMapping(value = "/tratamento/{id}/excluir", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable Long id) throws Exception {
         ModelAndView mv = null;
         List<Atividade> atividadeList = new ArrayList<Atividade>();
@@ -114,7 +114,7 @@ public class TratamentoAntiVetorialController {
         try {
             criteria.put(AtividadeDAO.CRITERION_BOLETIM_ID_EQ, id);
             atividadeList = ServiceLocator.getbaseAtividadeService().readByCriteria(criteria);
-            mv = new ModelAndView("redirect:/boletim");
+            mv = new ModelAndView("redirect:/tratamento");
             if (atividadeList == null) {
 
                 ServiceLocator.getbaseBoletimDiarioService().delete(id);

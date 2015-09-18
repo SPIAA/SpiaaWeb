@@ -36,16 +36,33 @@
                             </c:if>
 
                             <a href="<c:url value="pontoestrategico/novo"/> "class="btn btn-default"><i class="fa fa-fw fa-plus"></i>Novo</a><br/><br/>
+                            <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Rua</th>
+                                        <th>Numero</th>
+                                        <th>Complemento</th>
+                                        <th>Bairro</th>
+                                        <th>Agente Reposnsável</th>
+                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:70px;" > </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${pontoEstrategicoList}" var="pontoEstrategico">
+                                        <tr>
+                                            <td>${pontoEstrategico.rua}</td>
+                                            <td>${pontoEstrategico.numero}</td>
+                                            <td>${pontoEstrategico.complemento}</td>
+                                            <td>${pontoEstrategico.bairro.nome}</td>
+                                            <td>${pontoEstrategico.usuario.usuario}</td>
+                                            <td align="center"><a href="pontoestrategico/${pontoEstrategico.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar"><i class="fa fa-2x fa-edit text-primary"></i></a></td>
+                                            <td align="center"><a href="pontoestrategico/${pontoEstrategico.id}/excluir" class="btn_pag" data-toggle="tooltip" data-placement="top" title="Excluir"><i class="fa fa-2x fa-trash-o text-danger"></i></a></td>
+                                        </tr>
+                                    </c:forEach>
 
-                            <display:table class="table table-striped table-hover"  name="pontoEstrategicoList" id="pontoEstrategicoList" requestURI="" pagesize="7">
-                                <display:column property="rua" title="Rua"/>
-                                <display:column property="numero" title="Numero"/>
-                                <display:column property="complemento" title="Complemento"/>
-                                <display:column property="bairro.nome" title="Bairro"/>
-                                <display:column property="usuario.usuario" title="Agente Reposnsável"/>
-                                <display:column title="Alterar"><a href="<c:url value="/pontoestrategico/${pontoEstrategicoList.id}/atualizar"/>"><i class="fa fa-2x fa-edit"></i></a></display:column>
-                                <display:column title="Deletar" class="deleteLink"><a href="<c:url value="/pontoestrategico/${pontoEstrategicoList.id}/deletar"/>"><i class="fa fa-2x fa-trash-o text-danger"></i></a></display:column>
-                                </display:table>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- /.row -->
@@ -79,12 +96,10 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <script>
-            $(function () {
-                $("td.deleteLink a").click(function () {
-                    $('#confirmDelete').modal('show');
-                    $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
-                    return false;
-                });
+            $('.btn_pag').on("click", function () {
+                $('#confirmDelete').modal('show');
+                $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
+                return false;
             });
         </script>
     </body>
