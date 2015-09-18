@@ -22,21 +22,36 @@ import spiaa.model.entity.Usuario;
  * @author William
  */
 @Controller
+@RequestMapping(value = "/agente")
 public class UsuarioApiController {
 
-   @RequestMapping(value = "/agente", method = RequestMethod.GET)
+   @RequestMapping(method = RequestMethod.GET)
    public @ResponseBody
    String getAgente() {
-      String json;
+      String resposta;
       try {
          Map<String, Object> criteria = new HashMap<String, Object>();
          List<Usuario> usuarios = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
          Usuario usuario = usuarios.get(0);
          Gson gson = new Gson();
-         json = gson.toJson(usuario);
+         resposta = gson.toJson(usuario);
       } catch (Exception e) {
-         json = null;
+         resposta = null;
       }
-      return json;
+      return resposta;
+   }
+
+   @RequestMapping(value = "/{usuario}/{senha}", method = RequestMethod.GET)
+   public @ResponseBody
+   String login(@PathVariable String usuario, @PathVariable String senha) {
+      String resposta;
+      try {
+         Usuario agente = ServiceLocator.getBaseUsuarioService().login(usuario, senha);
+         Gson gson = new Gson();
+         resposta = gson.toJson(agente);
+      } catch (Exception e) {
+         resposta = null;
+      }
+      return resposta;
    }
 }
