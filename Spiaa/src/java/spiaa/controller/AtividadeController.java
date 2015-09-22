@@ -36,7 +36,7 @@ public class AtividadeController {
             criteria.put(AtividadeDAO.CRITERION_BOLETIM_ID_EQ, id);
             atividadeList = ServiceLocator.getbaseAtividadeService().readByCriteria(criteria);
 
-            boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(id);
+            boletimDiario = ServiceLocator.getbaseTratamentoAntiVetorialService().readById(id);
 
             mv = new ModelAndView("atividade/atividadeList");
             mv.addObject("boletimDiario", boletimDiario);
@@ -61,7 +61,7 @@ public class AtividadeController {
             criadouroList = ServiceLocator.getBaseCriadouroService().readByCriteria(criteria);
             inseticidaList = ServiceLocator.getbaseInseticidaService().readByCriteria(criteria);
             tipoImoveisList = ServiceLocator.getbasetipoImovelService().readByCriteria(criteria);
-            TratamentoAntiVetorial boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(id);
+            TratamentoAntiVetorial boletimDiario = ServiceLocator.getbaseTratamentoAntiVetorialService().readById(id);
             criteria.put(QuarteiraoDAO.CRITERION_BAIRRO_ID, boletimDiario.getBairro().getId());
             quarteiraoList = ServiceLocator.getbaseQuarteiraoService().readByCriteria(criteria);
             mv = new ModelAndView("atividade/atividadeForm");
@@ -169,7 +169,7 @@ public class AtividadeController {
             inseticidaList = ServiceLocator.getbaseInseticidaService().readByCriteria(criteria);
             tipoImoveisList = ServiceLocator.getbasetipoImovelService().readByCriteria(criteria);
             atividade = ServiceLocator.getbaseAtividadeService().readById(id);
-            TratamentoAntiVetorial boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(atividade.getBoletimDiario().getId());
+            TratamentoAntiVetorial boletimDiario = ServiceLocator.getbaseTratamentoAntiVetorialService().readById(atividade.getBoletimDiario().getId());
             criteria.put(QuarteiraoDAO.CRITERION_BAIRRO_ID, boletimDiario.getBairro().getId());
             quarteiraoList = ServiceLocator.getbaseQuarteiraoService().readByCriteria(criteria);
             mv = new ModelAndView("atividade/atividadeForm");

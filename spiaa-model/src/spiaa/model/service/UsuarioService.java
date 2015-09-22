@@ -1,7 +1,6 @@
 package spiaa.model.service;
 
 import java.math.BigInteger;
-import java.net.URL;
 import java.security.MessageDigest;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -86,7 +85,7 @@ public class UsuarioService implements BaseUsuarioService {
         try {
             Connection conn = ConnectionManager.getInstance().getConnection();
             UsuarioDAO dao = new UsuarioDAO();
-            Map<String, Object> criteria = new HashMap<String, Object>();
+            Map<String, Object> criteria = new HashMap<>();
             criteria.put(UsuarioDAO.CRITERION_USUARIO_EQ, usuario);
             criteria.put(UsuarioDAO.CRITERION_SENHA_EQ, senha);
             List<Usuario> usuarioList = dao.readByCriteria(criteria, conn);

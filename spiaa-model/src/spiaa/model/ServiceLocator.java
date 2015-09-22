@@ -47,7 +47,7 @@ public class ServiceLocator {
         return new DenunciaService();
     }
 
-    public static TratamentoAntiVetorialService getbaseBoletimDiarioService() {
+    public static TratamentoAntiVetorialService getbaseTratamentoAntiVetorialService() {
         return new TratamentoAntiVetorialService();
     }
 

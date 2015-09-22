@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package spiaa.controller.api;
 
 import com.google.gson.Gson;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,33 +18,33 @@ import spiaa.model.entity.Usuario;
 @RequestMapping(value = "/agente")
 public class UsuarioApiController {
 
-   @RequestMapping(method = RequestMethod.GET)
+   @RequestMapping(value = "/atualizar", method = RequestMethod.PUT)
    public @ResponseBody
-   String getAgente() {
+   String update(Usuario agente, HttpServletResponse response) {
       String resposta;
       try {
-         Map<String, Object> criteria = new HashMap<String, Object>();
-         List<Usuario> usuarios = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
-         Usuario usuario = usuarios.get(0);
-         Gson gson = new Gson();
-         resposta = gson.toJson(usuario);
+         ServiceLocator.getBaseUsuarioService().update(agente);
+         resposta = "{\"resposta\":success}";
+         response.setStatus(200);
       } catch (Exception e) {
          resposta = null;
+         response.setStatus(500);
       }
       return resposta;
    }
 
    @RequestMapping(value = "/login", method = RequestMethod.POST)
    public @ResponseBody
-   String login(Usuario usuario) {
+   String login(String nomeUsuario,String senha, HttpServletResponse response) {
       String resposta;
       try {
          Usuario agente = ServiceLocator.getBaseUsuarioService()
-                 .login(usuario.getUsuario(), usuario.getSenha());
+                 .login(nomeUsuario, senha);
          Gson gson = new Gson();
          resposta = gson.toJson(agente);
       } catch (Exception e) {
          resposta = null;
+         response.setStatus(500);
       }
       return resposta;
    }
