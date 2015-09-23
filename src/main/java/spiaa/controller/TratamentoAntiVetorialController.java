@@ -25,7 +25,7 @@ public class TratamentoAntiVetorialController {
         List<TratamentoAntiVetorial> boletimDiarioList = null;
         Map<String, Object> criteria = new HashMap<String, Object>();
         try {
-            boletimDiarioList = ServiceLocator.getbaseTratamentoAntiVetorialService().readByCriteria(criteria);
+            boletimDiarioList = ServiceLocator.getbaseBoletimDiarioService().readByCriteria(criteria);
             mv = new ModelAndView("tratamento/tratamentoList");
             mv.addObject("boletim", boletimDiarioList);
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class TratamentoAntiVetorialController {
     public ModelAndView create(TratamentoAntiVetorial boletimDiario) throws Exception {
         ModelAndView mv = null;
         try {
-            ServiceLocator.getbaseTratamentoAntiVetorialService().create(boletimDiario);
+            ServiceLocator.getbaseBoletimDiarioService().create(boletimDiario);
             mv = new ModelAndView("redirect:/atividade/" + boletimDiario.getId());
         } catch (Exception e) {
         }
@@ -79,7 +79,7 @@ public class TratamentoAntiVetorialController {
         try {
             usuarioList = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
             bairrosList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
-            boletimDiario = ServiceLocator.getbaseTratamentoAntiVetorialService().readById(id);
+            boletimDiario = ServiceLocator.getbaseBoletimDiarioService().readById(id);
 
             mv = new ModelAndView("tratamento/tratamentoForm");
             mv.addObject("usuarioList", usuarioList);
@@ -96,7 +96,7 @@ public class TratamentoAntiVetorialController {
         ModelAndView mv = null;
         try {
 
-            ServiceLocator.getbaseTratamentoAntiVetorialService().update(boletimDiario);
+            ServiceLocator.getbaseBoletimDiarioService().update(boletimDiario);
 
             mv = new ModelAndView("redirect:/tratamento");
         } catch (Exception e) {
@@ -117,7 +117,7 @@ public class TratamentoAntiVetorialController {
             mv = new ModelAndView("redirect:/tratamento");
             if (atividadeList == null) {
 
-                ServiceLocator.getbaseTratamentoAntiVetorialService().delete(id);
+                ServiceLocator.getbaseBoletimDiarioService().delete(id);
 
             }
 

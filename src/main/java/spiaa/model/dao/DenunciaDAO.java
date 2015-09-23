@@ -7,15 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Repository;
 import spiaa.model.base.BaseDAO;
 import spiaa.model.entity.Bairro;
 import spiaa.model.entity.Denuncia;
 import spiaa.model.entity.Usuario;
 
+@Repository
 public class DenunciaDAO implements BaseDAO<Denuncia> {
 
    public static final String CRITERION_AGENTE_ID = "0";
-   public static final String CRITERION_STATUS_ILIKE = "1";
 
    @Override
    public void create(Denuncia entity, Connection conn) throws Exception {
@@ -77,11 +78,6 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
       Long criterionUsuarioId = (Long) criteria.get(CRITERION_AGENTE_ID);
       if (criterionUsuarioId != null) {
          sql += " and denuncia.usuario_fk=" + criterionUsuarioId;
-      }
-
-      String criterionStatusIlike = (String) criteria.get(CRITERION_STATUS_ILIKE);
-      if (criterionStatusIlike != null && !criterionStatusIlike.isEmpty()) {
-         sql += " and denuncia.status ilike '" + criterionStatusIlike + "'";
       }
 
       Statement s = conn.createStatement();
