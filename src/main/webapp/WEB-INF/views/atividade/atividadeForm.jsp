@@ -118,7 +118,7 @@
                                         <c:forEach var="criadouro" items="${criadouroList}">
 
                                             <div class="form-group col-md-1">
-                                                <label for="criadouro">${criadouro.grupo} :</label>
+                                                <label for="criadouro">${criadouro.grupo} :<i class="fa fa-exclamation-circle text-info" data-toggle="tooltip" data-placement="top" title="${criadouro.recipiente}"></i></label>
                                                 <input type="text" class="form-control" id="quantidadeCriadouro"  name="quantidadeCriadouro" >
                                                 <input type="hidden" name="criadouro" id="criadouro" value="${criadouro.id}">
                                             </div>
@@ -156,5 +156,10 @@
             <!-- /#page-wrapper -->
         </div>
         <!-- /#wrapper -->
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+        </script>
     </body>
 </html>

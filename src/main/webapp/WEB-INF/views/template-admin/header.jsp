@@ -1,12 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../imports.jspf" %>
-
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>SPIAA - FAITEC 2014</title>
+<title>SPIAA - Sistema de Prevenção de infestação do Aedes Aegypti </title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/css/bootstrap.min-3.css"/>" rel="stylesheet">

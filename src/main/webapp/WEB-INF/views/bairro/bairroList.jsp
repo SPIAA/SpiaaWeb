@@ -33,7 +33,7 @@
                             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th style="width:70px;">Código</th>
+                                        
                                         <th>Nome</th>
                                         <th align="center" style="width:70px;" > Quarteirão</th>
                                     </tr>
@@ -41,7 +41,7 @@
                                 <tbody>
                                     <c:forEach items="${bairrolist}" var="bairro">
                                         <tr>
-                                            <td>${bairro.codigo}</td>
+                                            
                                             <td>${bairro.nome}</td>
                                             <td align="center"><a href="quarteirao/${bairro.id}"><i class="fa fa-2x fa-edit text-primary"></i> </a></td>
                                         </tr>

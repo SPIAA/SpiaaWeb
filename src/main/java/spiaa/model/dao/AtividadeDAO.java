@@ -24,7 +24,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     @Override
     public void create(Atividade entity, Connection conn) throws Exception {
 
-        String sql = "INSERT INTO atividade (endereco, numero, observacao, inspecionado, tipo_imovel_fk, boletim_fk, quarteirao_fk) VALUES (?, ?, ?, ?, ?, ?, ? ) RETURNING id;";
+        String sql = "INSERT INTO atividade (endereco, numero, observacao, inspecionado, tipo_imovel_fk, tratamento_antivetorial_fk, quarteirao_fk) VALUES (?, ?, ?, ?, ?, ?, ? ) RETURNING id;";
         PreparedStatement ps = conn.prepareStatement(sql);
 
         int i = 0;
@@ -109,7 +109,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
 
                 //boletim diario
                 TratamentoAntiVetorial boletimDiario = new TratamentoAntiVetorial();
-                boletimDiario.setId(rs.getLong("boletim_fk"));
+                boletimDiario.setId(rs.getLong("tratamento_antivetorial_fk"));
                 atividade.setBoletimDiario(boletimDiario);
 
                 atividade.setTipoImoveis(tipoImoveis);
@@ -156,7 +156,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         Long criterionBoletimIdEq = (Long) criteria.get(CRITERION_BOLETIM_ID_EQ);
         if (criterionBoletimIdEq != null && criterionBoletimIdEq > 0) {
 
-            sql += " AND boletim_fk ='" + criterionBoletimIdEq + "'";
+            sql += " AND tratamento_antivetorial_fk ='" + criterionBoletimIdEq + "'";
         }
 
         ResultSet rs = s.executeQuery(sql);
@@ -193,7 +193,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     @Override
     public void update(Atividade entity, Connection conn) throws Exception {
 
-        String sql = "UPDATE atividade SET endereco=?, numero=?, observacao=?, inspecionado=?, tipo_imovel_fk=?, boletim_fk=?, quarteirao_fk=? WHERE id=?";
+        String sql = "UPDATE atividade SET endereco=?, numero=?, observacao=?, inspecionado=?, tipo_imovel_fk=?, tratamento_antivetorial_fk=?, quarteirao_fk=? WHERE id=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setString(++i, entity.getEndereco());

@@ -8,7 +8,7 @@ public class BairroEstrato {
 
     private Integer codigo;
     private Integer armazem;
-    private Integer resindencia;
+    private Integer residencia;
     private Integer imovel;
     private Integer comercio;
     private Integer predio;
@@ -43,12 +43,12 @@ public class BairroEstrato {
         this.armazem = armazem;
     }
 
-    public Integer getResindencia() {
-        return resindencia;
+    public Integer getResidencia() {
+        return residencia;
     }
 
-    public void setResindencia(Integer resindencia) {
-        this.resindencia = resindencia;
+    public void setResidencia(Integer residencia) {
+        this.residencia = residencia;
     }
 
     public Integer getImovel() {

@@ -18,7 +18,7 @@ public class TratamentoAntiVetorialDAO implements BaseDAO<TratamentoAntiVetorial
     @Override
     public void create(TratamentoAntiVetorial entity, Connection conn) throws Exception {
 
-        String sql = "INSERT INTO boletim_diario(data_boletim, numero, semana_epidemiologica, turma, usuario_fk, bairro_fk,numero_atividade, tipo_atividade)VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
+        String sql = "INSERT INTO tratamento_antivetorial(data_boletim, numero, semana_epidemiologica, turma, usuario_fk, bairro_fk,numero_atividade, tipo_atividade)VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
         PreparedStatement ps = conn.prepareStatement(sql);
 
         int i = 0;
@@ -45,7 +45,7 @@ public class TratamentoAntiVetorialDAO implements BaseDAO<TratamentoAntiVetorial
     public TratamentoAntiVetorial readById(Long id, Connection conn) throws Exception {
         TratamentoAntiVetorial entity = null;
 
-        String sql = "SELECT boletim_diario.*,usuario.id as usuario_id, usuario.nome as usuario_nome, bairro.id as bairro_id, bairro.nome as bairro_nome FROM boletim_diario LEFT JOIN usuario on usuario.id = boletim_diario.usuario_fk LEFT JOIN bairro on bairro.id = boletim_diario.bairro_fk WHERE boletim_diario.id = ?";
+        String sql = "SELECT tratamento_antivetorial.*,usuario.id as usuario_id, usuario.nome as usuario_nome, bairro.id as bairro_id, bairro.nome as bairro_nome FROM tratamento_antivetorial LEFT JOIN usuario on usuario.id = tratamento_antivetorial.usuario_fk LEFT JOIN bairro on bairro.id = tratamento_antivetorial.bairro_fk WHERE tratamento_antivetorial.id = ?";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setLong(1, id);
@@ -83,7 +83,7 @@ public class TratamentoAntiVetorialDAO implements BaseDAO<TratamentoAntiVetorial
         TratamentoAntiVetorial entity = null;
         List<TratamentoAntiVetorial> boletimDiarioList = new ArrayList<TratamentoAntiVetorial>();
 
-        String sql = "SELECT boletim_diario.*,usuario.id as usuario_id, usuario.nome as usuario_nome, bairro.id as bairro_id, bairro.nome as bairro_nome FROM boletim_diario LEFT JOIN usuario on usuario.id = boletim_diario.usuario_fk LEFT JOIN bairro on bairro.id = boletim_diario.bairro_fk WHERE 1 = 1";
+        String sql = "SELECT tratamento_antivetorial.*,usuario.id as usuario_id, usuario.nome as usuario_nome, bairro.id as bairro_id, bairro.nome as bairro_nome FROM tratamento_antivetorial LEFT JOIN usuario on usuario.id = tratamento_antivetorial.usuario_fk LEFT JOIN bairro on bairro.id = tratamento_antivetorial.bairro_fk WHERE 1 = 1";
         Statement s = conn.createStatement();
 
         //criterios
@@ -120,7 +120,7 @@ public class TratamentoAntiVetorialDAO implements BaseDAO<TratamentoAntiVetorial
     @Override
     public void update(TratamentoAntiVetorial entity, Connection conn) throws Exception {
 
-        String sql = "UPDATE boletim_diario SET data_boletim=?, numero=?, semana=?, turma=?, usuario_fk=?, bairro_fk=?, numero_atividade=?, tipo_atividade=? WHERE id=? ";
+        String sql = "UPDATE tratamento_antivetorial SET data_boletim=?, numero=?, semana=?, turma=?, usuario_fk=?, bairro_fk=?, numero_atividade=?, tipo_atividade=? WHERE id=? ";
 
         PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -141,7 +141,7 @@ public class TratamentoAntiVetorialDAO implements BaseDAO<TratamentoAntiVetorial
 
     @Override
     public void delete(Long id, Connection conn) throws Exception {
-        String sql = "DELETE FROM boletim_diario  WHERE id = ?";
+        String sql = "DELETE FROM tratamento_antivetorial  WHERE id = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setLong(1, id);
         ps.execute();

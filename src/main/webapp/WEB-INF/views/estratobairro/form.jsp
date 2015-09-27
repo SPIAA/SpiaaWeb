@@ -2,11 +2,9 @@
 <%@include file="../imports.jspf" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
     </head>
-
     <body>
         <div id="wrapper"  class="col-lg-12">
 
@@ -71,41 +69,41 @@
                                                             <div class="form-inline col-md-12">
                                                                 <div class="form-group col-md-4 ">
                                                                     <label for="codigo">codigo :</label>
-                                                                    <input type="text" class="form-control"  name="codigo" value="${dadosbairro.codigo}">
+                                                                    <input type="text" class="form-control"  name="codigo" value="${bairros.codigo}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="armazem">Total Armazem : </label>
-                                                                    <input type="text" class="form-control"  name="armazem" value="${dadosbairro.totalArmazem}">
+                                                                    <input type="text" class="form-control"  name="armazem" value="${bairros.armazem}">
                                                                 </div>
 
                                                                 <div class="form-group col-md-4">
                                                                     <label for="residencia">Total Residência : </label>
-                                                                    <input type="text" class="form-control"  name="residencia" value="${dadosbairro.totalResindencia}">
+                                                                    <input type="text" class="form-control"  name="residencia" value="${bairros.residencia}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="imoveis">Total Imóveis :</label>
-                                                                    <input type="text" class="form-control"  name="imoveis" value="${dadosbairro.totalImoveis}">
+                                                                    <input type="text" class="form-control"  name="imoveis" value="${bairros.imovel}">
                                                                 </div>  
                                                                 <div class="form-group col-md-4">
                                                                     <label for="comercio">Total Comércio : </label>
-                                                                    <input type="text" class="form-control" name="comercio"  value="${dadosbairro.totalComercio}">
+                                                                    <input type="text" class="form-control" name="comercio"  value="${bairros.comercio}">
                                                                 </div>
 
                                                                 <div class="form-group col-md-4">
                                                                     <label for="predio">Total Prédios : </label>
-                                                                    <input type="text" class="form-control" name="predio" value="${dadosbairro.totalPredios}">
+                                                                    <input type="text" class="form-control" name="predio" value="${bairros.predio}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="terrenobaldio">T. Terreno Baldio : </label>
-                                                                    <input type="text" class="form-control"  name="terrenobaldio" value="${dadosbairro.totalTerrenoBaldio}">
+                                                                    <input type="text" class="form-control"  name="terrenobaldio" value="${bairros.terrenoBaldio}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="habitantes">Total Habitantes :</label>
-                                                                    <input type="text" class="form-control" name="habitantes" value="${dadosbairro.totalHabitantes}">
+                                                                    <input type="text" class="form-control" name="habitantes" value="${bairros.habitante}">
                                                                 </div>  
                                                                 <div class="form-group col-md-4">
                                                                     <label for="outros">Outros :</label>
-                                                                    <input type="text" class="form-control"  name="outros" value="${dadosbairro.outros}"> 
+                                                                    <input type="text" class="form-control"  name="outros" value="${bairros.outros}"> 
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -113,29 +111,25 @@
                                                 </c:forEach>
                                             </c:if>
                                         </div> 
+                                        <div class="col-lg-1 row"></div>   
 
-
+                                        <br/><br/> <br/><br/>
+                                    </div>
                                 </form>
-
-
-                                <div class="col-lg-1 row"></div>   
-
-                                <br/><br/> <br/><br/>
                             </div>
+                            <!-- /.row -->
+
                         </div>
-                        <!-- /.row -->
+                        <!-- /.container-fluid -->
 
                     </div>
-                    <!-- /.container-fluid -->
+                    <!-- /#page-wrapper -->
 
                 </div>
-                <!-- /#page-wrapper -->
-
-            </div>
-            <!-- /#wrapper -->
+                <!-- /#wrapper -->
 
 
 
-    </body>
+                </body>
 
-</html>
+                </html>

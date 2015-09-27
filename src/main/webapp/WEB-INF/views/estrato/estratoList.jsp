@@ -39,7 +39,7 @@
                                         <tr>
                                             <td>${estrato.nome}</td>
                                             <td align="center"><a href="estrato/${estrato.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar"><i class="fa fa-2x fa-edit text-primary"></i></a></td>
-                                            <td align="center"><a href="estratobairro/${estrato.id}" class="btn_pag " data-toggle="tooltip" data-placement="top" title="Dados Bairros"><i class="fa fa-2x fa-database text-success"></i></a></td>
+                                            <td align="center"><a href="estratobairro/${estrato.id}" data-toggle="tooltip" data-placement="top" title="Dados Bairros"><i class="fa fa-2x fa-database text-success"></i></a></td>
                                         </tr>
                                     </c:forEach>
 
@@ -54,12 +54,6 @@
             <!-- /#page-wrapper -->
         </div>
         <!-- /#wrapper -->
-         <script>
-                $('.btn_pag').on("click", function () {
-                    $('#confirmDelete').modal('show');
-                    $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
-                    return false;
-                });
-            </script>
+      
     </body>
 </html>

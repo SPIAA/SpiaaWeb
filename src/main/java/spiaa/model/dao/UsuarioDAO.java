@@ -23,7 +23,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
 
     @Override
     public void create(Usuario entity, Connection conn) throws Exception {
-        String sql = "INSERT INTO usuario(nome, usuario, senha, email, tipo) VALUES (?, ?, ?, ?, ?) RETURNING id";
+        String sql = "INSERT INTO usuario(nome, usuario, senha, email, tipo, numero, turma) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setString(++i, entity.getNome().trim());
@@ -31,6 +31,8 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         ps.setString(++i, entity.getSenha().trim());
         ps.setString(++i, entity.getEmail().trim());
         ps.setString(++i, entity.getTipo().trim());
+        ps.setString(++i, entity.getNumero().trim());
+        ps.setString(++i, entity.getTurma());
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             entity.setId(rs.getLong("id"));
@@ -54,6 +56,8 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
             usuario.setTipo(rs.getString("tipo"));
             usuario.setEmail(rs.getString("email"));
             usuario.setSenha(rs.getString("senha"));
+            usuario.setNumero(rs.getString("numero"));
+            usuario.setTurma(rs.getString("turma"));
         }
         ps.close();
         rs.close();
@@ -90,7 +94,9 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
             usuario.setSenha(rs.getString("senha"));
             usuario.setUsuario(rs.getString("usuario"));
             usuario.setNome(rs.getString("nome"));
-             usuario.setTipo(rs.getString("tipo"));
+            usuario.setTipo(rs.getString("tipo"));
+            usuario.setNumero(rs.getString("numero"));
+            usuario.setTurma(rs.getString("turma"));
             usuarioList.add(usuario);
         }
         s.close();
@@ -100,7 +106,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
 
     @Override
     public void update(Usuario entity, Connection conn) throws Exception {
-        String sql = "UPDATE usuario SET nome=?, usuario=?, senha=?, email=?, tipo=? WHERE id=?";
+        String sql = "UPDATE usuario SET nome=?, usuario=?, senha=?, email=?, tipo=?, numero=?, turma=?  WHERE id=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setString(++i, entity.getNome());
@@ -108,6 +114,8 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         ps.setString(++i, entity.getSenha());
         ps.setString(++i, entity.getEmail());
         ps.setString(++i, entity.getTipo());
+        ps.setString(++i, entity.getNumero());
+        ps.setString(++i, entity.getTurma());
         ps.setLong(++i, entity.getId());
         ps.execute();
         ps.close();

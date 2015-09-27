@@ -18,6 +18,9 @@ public class AAFilter extends HandlerInterceptorAdapter {
       if (uri.startsWith("/css/") && uri.endsWith(".css")) {
          ok = true;
       }
+      if (uri.startsWith("/css/images/") && uri.endsWith(".png")) {
+         ok = true;
+      }
       //JS
       if (uri.startsWith("/js/") && uri.endsWith(".js")) {
          ok = true;

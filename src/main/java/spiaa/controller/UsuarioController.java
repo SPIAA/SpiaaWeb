@@ -22,6 +22,7 @@ public class UsuarioController {
         ModelAndView mv = new ModelAndView("login/form");
         return mv;
     }
+
     @RequestMapping(value = "login/error", method = RequestMethod.GET)
     public ModelAndView error() {
         ModelAndView mv = new ModelAndView("erro/erro");
@@ -108,7 +109,7 @@ public class UsuarioController {
         try {
             List<Usuario> usuarioList = ServiceLocator.getBaseUsuarioService()
                     .readByCriteria(new HashMap<String, Object>());
-            mv = new ModelAndView("usuario/list");
+            mv = new ModelAndView("usuario/usuarioList");
             mv.addObject("usuario", usuarioList);
         } catch (Exception ex) {
             mv = new ModelAndView("erro");
@@ -122,7 +123,7 @@ public class UsuarioController {
         ModelAndView mv;
         try {
 
-            mv = new ModelAndView("usuario/form");
+            mv = new ModelAndView("usuario/usuarioForm");
 
         } catch (Exception e) {
             mv = new ModelAndView("erro/erro");
@@ -141,7 +142,7 @@ public class UsuarioController {
                 mv = new ModelAndView("redirect:/usuario");
                 mv.addObject("usuarioList", usuarioList);
             } else {
-                mv = new ModelAndView("usuario/form");
+                mv = new ModelAndView("usuario/usuarioForm");
                 mv.addObject("mensagem", "Senhas não conferem");
                 mv.addObject("usuario", usuario);
             }
@@ -174,7 +175,7 @@ public class UsuarioController {
     @RequestMapping(value = "/usuario/{id}/alterar", method = RequestMethod.GET)
     public ModelAndView update(@PathVariable Long id) throws Exception {
         Usuario user = ServiceLocator.getBaseUsuarioService().readById(id);
-        ModelAndView mv = new ModelAndView("usuario/form");
+        ModelAndView mv = new ModelAndView("usuario/usuarioForm");
         mv.addObject("usuario", user);
         return mv;
     }

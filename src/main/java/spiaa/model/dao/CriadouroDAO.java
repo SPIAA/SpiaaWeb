@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import spiaa.model.base.BaseDAO;
+import spiaa.model.entity.AtividadeCriadouro;
 import spiaa.model.entity.Criadouro;
 
 public class CriadouroDAO implements BaseDAO<Criadouro> {
@@ -88,5 +89,32 @@ public class CriadouroDAO implements BaseDAO<Criadouro> {
         ps.setLong(1, id);
         ps.execute();
         ps.close();
+    }
+
+    public List<AtividadeCriadouro> findCriadouroByBairroId(Connection conn, Long id) throws Exception {
+
+        List<AtividadeCriadouro> atividadeCriadouroList = new ArrayList<>();
+
+        String sql = " select sum(atividade_criadouro.quantidade)as total, criadouro.grupo from atividade_criadouro ";
+        sql += "left join criadouro on criadouro.id = atividade_criadouro.criadouro_fk ";
+        sql += "left join atividade on atividade.id = atividade_criadouro.atividade_fk ";
+        sql += "left join quarteirao on quarteirao.id = atividade.quarteirao_fk ";
+        sql += "left join bairro on bairro.id = quarteirao.bairro_fk ";
+        sql += "where bairro.id = ? ";
+        sql += "group by criadouro.grupo ORDER BY criadouro.grupo ASC ";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setLong(1, id);
+        ResultSet rs = ps.executeQuery();
+        Criadouro criadouro = null;
+        while (rs.next()) {
+            criadouro = new Criadouro();
+            criadouro.setGrupo(rs.getString("grupo"));
+            AtividadeCriadouro atividade = new AtividadeCriadouro();
+            atividade.setCriadouro(criadouro);
+            atividade.setQuantidadeCriadouro(rs.getInt("total"));
+            atividadeCriadouroList.add(atividade);
+        }
+        return atividadeCriadouroList;
     }
 }

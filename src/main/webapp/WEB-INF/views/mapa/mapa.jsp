@@ -12,7 +12,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SPIAA - FAITEC 2014</title>
+        <title>SPIAA - Sistema de Prevenção de infestação do Aedes Aegypti </title>
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">

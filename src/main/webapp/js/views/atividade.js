@@ -6,7 +6,7 @@ function getFormData(obj) {
 
     var url = "/Spiaa/atividade/novo";
     if (id != null && id != "") {
-        url = "/Spiaa/atividade/atualizar";
+        url = "/Spiaa/atividade/alterar";
     } else {
         id = null;
     }
@@ -40,3 +40,6 @@ function getFormData(obj) {
 
     });
 }
+$(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });

@@ -1,18 +1,23 @@
 package spiaa.controller;
 
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import spiaa.model.ServiceLocator;
 import spiaa.model.entity.Bairro;
 import spiaa.model.entity.BairroEstrato;
+import spiaa.model.entity.Criadouro;
 import spiaa.model.entity.Estrato;
 
 @Controller
@@ -100,78 +105,20 @@ public class EstratoController {
         return mv;
     }
 
-    @RequestMapping(value = "/estrato/{id}/alterar", method = RequestMethod.POST)
-    public ModelAndView alterar(Estrato estrato, HttpServletRequest request) {
-        String bairros[] = request.getParameterValues("bairro");
-        String codigo[] = request.getParameterValues("codigo");
-        String armazem[] = request.getParameterValues("armazem");
-        String residencia[] = request.getParameterValues("residencia");
-        String imoveis[] = request.getParameterValues("imoveis");
-        String comercio[] = request.getParameterValues("comercio");
-        String predio[] = request.getParameterValues("predio");
-        String terrenobaldio[] = request.getParameterValues("terrenobaldio");
-        String habitantes[] = request.getParameterValues("habitantes");
-        String outros[] = request.getParameterValues("outros");
-        ModelAndView mv = null;
-        Bairro bairro = null;
-        BairroEstrato bairroEstrato = null;
-        List<BairroEstrato> bairroEstratolist = new ArrayList<BairroEstrato>();
+    @RequestMapping(value = "/estrato/alterar", method = RequestMethod.POST)
+    @ResponseBody
+    public String alterar(@RequestBody String jsonData, HttpServletResponse response) {
+        String retorno = "error";
         try {
-            for (int i = 0; i < bairros.length; i++) {
-                bairro = new Bairro();
-                bairro.setId(Long.parseLong(bairros[i]));
-                if (i < codigo.length) {
-                    bairroEstrato = new BairroEstrato();
-                    bairroEstrato.setCodigo(Integer.parseInt(codigo[i]));
-                    bairroEstrato.setArmazem(Integer.parseInt(armazem[i]));
-                    bairroEstrato.setResindencia(Integer.parseInt(residencia[i]));
-                    bairroEstrato.setImovel(Integer.parseInt(imoveis[i]));
-                    bairroEstrato.setComercio(Integer.parseInt(comercio[i]));
-                    bairroEstrato.setPredio(Integer.parseInt(predio[i]));
-                    bairroEstrato.setTerrenoBaldio(Integer.parseInt(terrenobaldio[i]));
-                    bairroEstrato.setHabitante(Integer.parseInt(habitantes[i]));
-                    bairroEstrato.setOutros(Integer.parseInt(outros[i]));
-                }
-
-                bairroEstrato.setBairro(bairro);
-                if (bairroEstrato.getCodigo() == null) {
-                    bairroEstrato.setCodigo(0);
-                }
-                if ((bairroEstrato.getArmazem() == null)) {
-                    bairroEstrato.setArmazem(0);
-                }
-                if ((bairroEstrato.getResindencia() == null)) {
-                    bairroEstrato.setResindencia(0);
-                }
-                if ((bairroEstrato.getImovel() == null)) {
-                    bairroEstrato.setImovel(0);
-                }
-                if ((bairroEstrato.getComercio() == null)) {
-                    bairroEstrato.setComercio(0);
-                }
-                if ((bairroEstrato.getPredio() == null)) {
-                    bairroEstrato.setPredio(0);
-                }
-                if ((bairroEstrato.getTerrenoBaldio() == null)) {
-                    bairroEstrato.setTerrenoBaldio(0);
-                }
-                if ((bairroEstrato.getHabitante() == null)) {
-                    bairroEstrato.setHabitante(0);
-                }
-                if ((bairroEstrato.getOutros() == null)) {
-                    bairroEstrato.setOutros(0);
-                }
-
-                bairroEstratolist.add(bairroEstrato);
-            }
-            estrato.setBairroEstratoList(bairroEstratolist);
+            Gson gson = new Gson();
+            Estrato estrato = gson.fromJson(jsonData, Estrato.class);
             ServiceLocator.getBaseEstratoService().update(estrato);
-            mv = new ModelAndView("redirect:/estrato");
-
+            retorno = "success";
+            response.setStatus(200);
         } catch (Exception e) {
-            e.printStackTrace();
+            response.setStatus(500);
         }
-        return mv;
+        return retorno;
     }
 
 }

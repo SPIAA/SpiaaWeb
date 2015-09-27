@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import spiaa.model.ServiceLocator;
+import spiaa.model.entity.Criadouro;
 import spiaa.model.entity.Estrato;
 
 @Controller
@@ -18,14 +19,19 @@ public class MapaController {
     @RequestMapping(value = "/mapa", method = RequestMethod.GET)
     public ModelAndView novo() throws Exception {
 
-        ModelAndView mv = new ModelAndView("mapa/mapa");
+        ModelAndView mv = new ModelAndView("mapa/mapa_1");
         List<Estrato> estratoList = new ArrayList<Estrato>();
+        List<Estrato> estratos = new ArrayList<Estrato>();
+        List<Criadouro> criadouroList = new ArrayList<>();
         Map<String, Object> criteria = new HashMap<String, Object>();
-//        Estrato estrato = new Estrato();
-//        estrato = ServiceLocator.getBaseEstratoService().readById(3L);
         estratoList = ServiceLocator.getBaseEstratoService().readByCriteria(criteria);
+        estratos = ServiceLocator.getBaseEstratoService().readAll();
+        criadouroList = ServiceLocator.getBaseCriadouroService().readByCriteria(criteria);
+        mv.addObject("criadouroList", criadouroList);
         mv.addObject("estratoList", estratoList);
-//         mv.addObject("estratoList", estrato);
+        mv.addObject("estratos", estratos);
+        mv.addObject("corEstrato", estratos);
+        mv.addObject("totalCriadouro", criadouroList);
 
         return mv;
     }
@@ -39,7 +45,6 @@ public class MapaController {
             Map<String, Object> criteria = new HashMap<String, Object>();
 
             estratoList = ServiceLocator.getbaseMapaService().readByCriteriaMapaEstrato(criteria);
-
             mv = new ModelAndView("mapa/list");
             mv.addObject("estratoList", estratoList);
         } catch (Exception e) {

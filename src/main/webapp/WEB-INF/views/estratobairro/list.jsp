@@ -68,7 +68,7 @@
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="residencia">Total Residência : </label>
-                                                                    <input type="text" class="form-control"  name="residencia" value="${bairros.resindencia}">
+                                                                    <input type="text" class="form-control"  name="residencia" value="${bairros.residencia}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">
                                                                     <label for="imoveis">Total Imóveis :</label>

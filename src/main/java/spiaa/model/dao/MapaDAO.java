@@ -126,7 +126,7 @@ public class MapaDAO implements BaseDAO<Mapa> {
                 bairroEstrato.setBairro(bairro);
                 bairroEstrato.setCodigo(rs.getInt("codigo"));
                 bairroEstrato.setArmazem(rs.getInt("armazem"));
-                bairroEstrato.setResindencia(rs.getInt("residencia"));
+                bairroEstrato.setResidencia(rs.getInt("residencia"));
                 bairroEstrato.setImovel(rs.getInt("imovel"));
                 bairroEstrato.setComercio(rs.getInt("comercio"));
                 bairroEstrato.setPredio(rs.getInt("predio"));

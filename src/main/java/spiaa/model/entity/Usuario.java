@@ -9,6 +9,8 @@ public class Usuario extends BaseEntity{
     private String usuario;
     private String senha;
     private String tipo;
+    private String numero;
+    private String turma;
 
     public String getNome() {
         return nome;
@@ -48,5 +50,21 @@ public class Usuario extends BaseEntity{
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getTurma() {
+        return turma;
+    }
+
+    public void setTurma(String turma) {
+        this.turma = turma;
     }
 }

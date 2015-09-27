@@ -7,6 +7,7 @@ import spiaa.model.base.BaseEntity;
 public class Estrato extends BaseEntity {
 
     private String nome;
+    private String cor;
     private List<BairroEstrato> bairroEstratoList;
 
     public Estrato() {
@@ -29,4 +30,11 @@ public class Estrato extends BaseEntity {
         this.bairroEstratoList = bairroEstratoList;
     }
 
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
 }

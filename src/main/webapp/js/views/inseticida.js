@@ -7,7 +7,7 @@ function getFormData() {
 
     var url = "/Spiaa/inseticida/novo";
     if (id != null && id != "") {
-        url = "/Spiaa/inseticida/atualizar";
+        url = "/Spiaa/inseticida/alterar";
     } else {
         id = null;
     }

@@ -66,7 +66,7 @@ public class EstratoBairroController {
                 bairroEstrato = new BairroEstrato();
                 bairroEstrato.setCodigo(Integer.parseInt(codigo[i]));
                 bairroEstrato.setArmazem(Integer.parseInt(armazem[i]));
-                bairroEstrato.setResindencia(Integer.parseInt(residencia[i]));
+                bairroEstrato.setResidencia(Integer.parseInt(residencia[i]));
                 bairroEstrato.setImovel(Integer.parseInt(imoveis[i]));
                 bairroEstrato.setComercio(Integer.parseInt(comercio[i]));
                 bairroEstrato.setPredio(Integer.parseInt(predio[i]));
@@ -81,8 +81,8 @@ public class EstratoBairroController {
                 if ((bairroEstrato.getArmazem() == null)) {
                     bairroEstrato.setArmazem(0);
                 }
-                if ((bairroEstrato.getResindencia() == null)) {
-                    bairroEstrato.setResindencia(0);
+                if ((bairroEstrato.getResidencia() == null)) {
+                    bairroEstrato.setResidencia(0);
                 }
                 if ((bairroEstrato.getImovel() == null)) {
                     bairroEstrato.setImovel(0);

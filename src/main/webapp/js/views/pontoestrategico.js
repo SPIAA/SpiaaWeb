@@ -8,7 +8,7 @@ function getFormData() {
 
     var url = "/Spiaa/pontoestrategico/novo";
     if (id != null && id != "") {
-        url = "/Spiaa/pontoestrategico/atualizar";
+        url = "/Spiaa/pontoestrategico/alterar";
     } else {
         id = null;
     }
