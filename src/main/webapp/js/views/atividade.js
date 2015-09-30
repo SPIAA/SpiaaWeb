@@ -3,11 +3,14 @@ function getFormData(obj) {
     var criadouro = document.getElementById("criadouro");
     
     var id = document.getElementById("id").value;
-
-    var url = "/Spiaa/atividade/novo";
+var url = "";
+    if (document.domain == "localhost") {
+        url = "/Spiaa"
+    }
     if (id != null && id != "") {
-        url = "/Spiaa/atividade/alterar";
+        url += "/atividade/alterar";
     } else {
+     url += "/atividade/novo";
         id = null;
     }
     var grupo = document.getElementById("grupo").value;

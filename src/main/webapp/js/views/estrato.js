@@ -66,11 +66,16 @@ function getFormData() {
     var id = $("input[name=id").val();
     var nome = $("input[name=nome").val();
     var cor = $("input[name=cor").val();
-
-    var url = "/Spiaa/estrato/novo";
+    
+    var url = "";
+    if (document.domain == "localhost") {
+        url = "/Spiaa"
+    }
+    
     if (id != null && id != "") {
-        url = "/Spiaa/estrato/alterar";
+        url += "/estrato/alterar";
     } else {
+    url += "/estrato/novo";
         id = null;
     }
     var jsonData = {
