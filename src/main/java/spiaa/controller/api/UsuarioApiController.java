@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package spiaa.controller.api;
 
 import com.google.gson.Gson;
@@ -29,7 +24,7 @@ public class UsuarioApiController {
    String getAgente() {
       String resposta;
       try {
-         Map<String, Object> criteria = new HashMap<String, Object>();
+         Map<String, Object> criteria = new HashMap<>();
          List<Usuario> usuarios = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
          Usuario usuario = usuarios.get(0);
          Gson gson = new Gson();
