@@ -4,11 +4,14 @@ jQuery(document).ready(function () {
 });
 function getFormData() {
     var id = document.getElementById("id").value;
-
-    var url = "/Spiaa/inseticida/novo";
+    var url = "";
+    if (document.domain == "localhost") {
+        url = "/Spiaa"
+    }
     if (id != null && id != "") {
-        url = "/Spiaa/inseticida/alterar";
+        url += "/inseticida/alterar";
     } else {
+    url += "/inseticida/novo";
         id = null;
     }
     var nome = document.getElementById("nome").value;
@@ -37,8 +40,8 @@ function getFormData() {
             document.location.assign('/Spiaa/inseticida');
         }, 3000);
     }).fail(function () {
-
     });
+
 }
 
 

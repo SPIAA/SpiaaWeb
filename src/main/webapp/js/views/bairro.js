@@ -5,11 +5,14 @@ jQuery(document).ready(function () {
 });
 function getFormData() {
     var id = document.getElementById("id").value;
-
-    var url = "/Spiaa/criadouro/novo";
+var url = "";
+    if (document.domain == "localhost") {
+        url = "/Spiaa"
+    }
     if (id != null && id != "") {
-        url = "/Spiaa/criadouro/alterar";
+        url += "/bairro/alterar";
     } else {
+     url += "/bairro/novo";
         id = null;
     }
     var grupo = document.getElementById("grupo").value;

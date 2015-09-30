@@ -5,11 +5,15 @@ jQuery(document).ready(function () {
 });
 function getFormData() {
     var id = document.getElementById("id").value;
+    var url  = "";
+    if(document.domain=="localhost"){
+        url = "/Spiaa"
+    }
 
-    var url = "/Spiaa/criadouro/novo";
     if (id != null && id != "") {
-        url = "/Spiaa/criadouro/alterar";
+        url += "/criadouro/alterar";
     } else {
+    url += "/criadouro/novo";
         id = null;
     }
     var grupo = document.getElementById("grupo").value;
@@ -36,7 +40,7 @@ function getFormData() {
             $('#successCreate').modal('show');
         }
         setTimeout(function () {
-            document.location.assign('/Spiaa/criadouro');
+            document.location.assign('/criadouro');
         }, 3000);
     }).fail(function () {
 
