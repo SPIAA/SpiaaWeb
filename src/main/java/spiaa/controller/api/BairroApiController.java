@@ -5,34 +5,38 @@
  */
 package spiaa.controller.api;
 
+import com.google.gson.Gson;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import spiaa.model.ServiceLocator;
-import spiaa.model.entity.TratamentoAntiVetorial;
+import spiaa.model.entity.Bairro;
 
 /**
  *
  * @author William
  */
 @Controller
-public class TratamentoAntiVetorialApiController {
- 
-   private static final String RESPONSE_SUCCESS = "{\"success\":true}";
+public class BairroApiController {
+
    private static final String RESPONSE_ERROR = "{\"success\":false}";
 
-   @RequestMapping(value = "/boletim", method = RequestMethod.POST)
+   @RequestMapping(value = "/bairro/agente/{id}", method = RequestMethod.GET)
    public @ResponseBody
-   String create(@RequestBody List<TratamentoAntiVetorial> tavs) {
+   String getBairros(@RequestBody @PathVariable Long id) {
       String resposta;
       try {
-         for (TratamentoAntiVetorial tav : tavs) {
-            ServiceLocator.getbaseBoletimDiarioService().create(tav);
-         }
-         resposta = RESPONSE_SUCCESS;
+         Map<String, Object> criteria = new HashMap<>();
+         //TODO criterio
+         List<Bairro> bairros = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
+         Gson gson = new Gson();
+         resposta = gson.toJson(bairros);
       } catch (Exception e) {
          resposta = RESPONSE_ERROR;
       }
