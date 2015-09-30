@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import spiaa.model.ServiceLocator;
 import spiaa.model.dao.DenunciaDAO;
 import spiaa.model.entity.Denuncia;
+import spiaa.model.entity.Usuario;
 
 /**
  *
@@ -24,13 +25,13 @@ public class DenunciaApiController {
    private static final String RESPONSE_ERROR = "{\"success\":false}";
    private static final String REPONSE_SUCCESS = "{\"success\":true}";
 
-   @RequestMapping(value = "/denuncias/agente/{id}", method = RequestMethod.GET)
+   @RequestMapping(value = "/denuncias", method = RequestMethod.GET)
    public @ResponseBody
-   String getDenuncias(@RequestBody @PathVariable Long id) {
+   String getDenuncias(@RequestBody @PathVariable Long id, Usuario agente) {
       String resposta;
       try {
          Map<String, Object> criteria = new HashMap<>();
-         criteria.put(DenunciaDAO.CRITERION_AGENTE_ID, id);
+         criteria.put(DenunciaDAO.CRITERION_AGENTE_ID, agente.getId());
          List<Denuncia> denuncias = ServiceLocator.getbaseDenunciaService().readByCriteria(criteria);
 
          Gson gson = new Gson();

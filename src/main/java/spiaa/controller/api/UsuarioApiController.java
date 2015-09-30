@@ -30,7 +30,7 @@ public class UsuarioApiController {
     String getAgente() {
         String resposta;
         try {
-            Map<String, Object> criteria = new HashMap<String, Object>();
+            Map<String, Object> criteria = new HashMap<>();
             List<Usuario> usuarios = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
             Usuario usuario = usuarios.get(0);
             Gson gson = new Gson();

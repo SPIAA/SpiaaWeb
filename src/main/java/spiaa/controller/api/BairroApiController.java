@@ -33,7 +33,7 @@ public class BairroApiController {
       String resposta;
       try {
          Map<String, Object> criteria = new HashMap<>();
-         //TODO criterio
+         
          List<Bairro> bairros = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
          Gson gson = new Gson();
          resposta = gson.toJson(bairros);
