@@ -66,16 +66,17 @@ function getFormData() {
     var id = $("input[name=id").val();
     var nome = $("input[name=nome").val();
     var cor = $("input[name=cor").val();
-    
+
     var url = "";
+    var domain = "";
     if (document.domain == "localhost") {
-        url = "/Spiaa"
+        domain = "/Spiaa"
     }
-    
+
     if (id != null && id != "") {
-        url += "/estrato/alterar";
+        url = domain + "/estrato/alterar";
     } else {
-    url += "/estrato/novo";
+        url = domain + "/estrato/novo";
         id = null;
     }
     var jsonData = {
@@ -101,7 +102,7 @@ function getFormData() {
             $('#successCreate').modal('show');
         }
         setTimeout(function () {
-            document.location.assign('/Spiaa/estrato');
+            document.location.assign(domain+'/estrato');
         }, 3000);
     }).fail(function () {
 

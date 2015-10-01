@@ -41,12 +41,7 @@ public class MapaController {
         ModelAndView mv = null;
         List<Estrato> estratoList = new ArrayList<Estrato>();
         try {
-
-            Map<String, Object> criteria = new HashMap<String, Object>();
-
-            estratoList = ServiceLocator.getbaseMapaService().readByCriteriaMapaEstrato(criteria);
             mv = new ModelAndView("mapa/list");
-            mv.addObject("estratoList", estratoList);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -99,7 +99,7 @@
                                 </div>
                             </div>
                             <div class="item">
-                                <img alt="" src="img/LogoFaitec2.png">
+                                <img alt="" src="img/logo_faitec.png">
                                 <div class="carousel-caption">
                                     <h4>
 
@@ -127,7 +127,7 @@
                     <p>
                         O SPIAA é um software desenvolvido para Secretaria Municipal de Saúde de Santa Rita do Sapucaí-MG com objetivo de 
                         auxiliar na tomada de decisão e monitoramento de infestação da Dengue. O Software permite visualizar o mapa da 
-                        cidade divido por bairros, mostrando informações importantes de cada bairro necessário para o controle do mosquito
+                        cidade dividido por bairros, mostrando informações importantes de cada bairro necessário para o controle do foco do mosquito
                         aedes aegypti.                    </p>
                     <br/><br/><br/><br/>
                 </div>

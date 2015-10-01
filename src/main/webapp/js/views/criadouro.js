@@ -6,12 +6,13 @@ jQuery(document).ready(function () {
 function getFormData() {
     var id = document.getElementById("id").value;
     var url  = "";
-    if(document.domain=="localhost"){
-        url = "/Spiaa"
+    var domain = "";
+     if(document.domain=="localhost"){
+        domain = "/Spiaa"
     }
 
     if (id != null && id != "") {
-        url += "/criadouro/alterar";
+        url = domain+"/criadouro/alterar";
     } else {
     url += "/criadouro/novo";
         id = null;
@@ -40,7 +41,7 @@ function getFormData() {
             $('#successCreate').modal('show');
         }
         setTimeout(function () {
-            document.location.assign('/criadouro');
+            document.location.assign(domain+'/criadouro');
         }, 3000);
     }).fail(function () {
 
