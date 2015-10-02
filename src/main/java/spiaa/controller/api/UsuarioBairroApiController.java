@@ -7,25 +7,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import spiaa.model.ServiceLocator;
-import spiaa.model.entity.TratamentoAntiVetorial;
+import spiaa.model.entity.Bairro;
+import spiaa.model.entity.Usuario;
+import spiaa.model.entity.UsuarioBairro;
 
 /**
  *
  * @author William
  */
 @Controller
-public class TratamentoAntiVetorialApiController {
- 
-   @RequestMapping(value = "/boletim", method = RequestMethod.POST)
+public class UsuarioBairroApiController {
+
+   @RequestMapping(value = "/bairro/agente", method = RequestMethod.GET)
    public @ResponseBody
-   void create(@RequestBody List<TratamentoAntiVetorial> tavs) throws Exception{
+   List<Bairro> getBairrosByUser(@RequestBody Usuario agenteSaude) throws Exception {
+      List<Bairro> bairroList = null;
       try {
-         for (TratamentoAntiVetorial tav : tavs) {
-            ServiceLocator.getbaseBoletimDiarioService().create(tav);
-         }
+         UsuarioBairro ub = ServiceLocator.getbaseUsuarioBairroService().readById(agenteSaude.getId());
+         bairroList = ub.getBairros();
       } catch (Exception e) {
          throw e;
       }
+      return bairroList;
    }
 
 }

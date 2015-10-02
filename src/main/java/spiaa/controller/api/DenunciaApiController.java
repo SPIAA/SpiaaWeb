@@ -1,11 +1,9 @@
 package spiaa.controller.api;
 
-import com.google.gson.Gson;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,38 +20,33 @@ import spiaa.model.entity.Usuario;
 @Controller
 public class DenunciaApiController {
 
-   private static final String RESPONSE_ERROR = "{\"success\":false}";
-   private static final String REPONSE_SUCCESS = "{\"success\":true}";
-
    @RequestMapping(value = "/denuncias", method = RequestMethod.GET)
    public @ResponseBody
-   String getDenuncias(@RequestBody @PathVariable Long id, Usuario agente) {
-      String resposta;
+   List<Denuncia> getDenuncias(@RequestBody Usuario agente) throws Exception {
+
+      List<Denuncia> denunciaList = null;
       try {
          Map<String, Object> criteria = new HashMap<>();
          criteria.put(DenunciaDAO.CRITERION_AGENTE_ID, agente.getId());
-         List<Denuncia> denuncias = ServiceLocator.getbaseDenunciaService().readByCriteria(criteria);
-
-         Gson gson = new Gson();
-         resposta = gson.toJson(denuncias);
+         denunciaList = ServiceLocator.getbaseDenunciaService().readByCriteria(criteria);
       } catch (Exception e) {
-         resposta = RESPONSE_ERROR;
+         e.printStackTrace();
+         throw e;
+
       }
-      return resposta;
+      return denunciaList;
    }
 
    @RequestMapping(value = "/denuncias", method = RequestMethod.PUT)
    @ResponseBody
-   public String finalizarDenuncias(@RequestBody List<Denuncia> denuncias) {
-      String resposta;
+   public void finalizarDenuncias(@RequestBody List<Denuncia> denuncias) throws Exception {
       try {
          for (Denuncia denuncia : denuncias) {
             ServiceLocator.getbaseDenunciaService().update(denuncia);
          }
-         resposta = REPONSE_SUCCESS;
       } catch (Exception e) {
-         resposta = RESPONSE_ERROR;
+         throw e;
       }
-      return resposta;
+
    }
 }

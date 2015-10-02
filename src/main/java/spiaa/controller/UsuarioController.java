@@ -143,7 +143,7 @@ public class UsuarioController {
                 mv.addObject("usuarioList", usuarioList);
             } else {
                 mv = new ModelAndView("usuario/usuarioForm");
-                mv.addObject("mensagem", "Senhas n√£o conferem");
+                mv.addObject("mensagem", "Senhas n„oo conferem");
                 mv.addObject("usuario", usuario);
             }
 
