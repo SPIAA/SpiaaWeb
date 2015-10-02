@@ -1,16 +1,17 @@
 function getFormData(obj) {
     var quantidadeCriadouro = document.getElementById("quantidadeCriadouro").value;
     var criadouro = document.getElementById("criadouro");
-    
+
     var id = document.getElementById("id").value;
-var url = "";
+    var url = "";
+    var domain = "";
     if (document.domain == "localhost") {
-        url = "/Spiaa"
+        domain = "/Spiaa"
     }
     if (id != null && id != "") {
-        url += "/atividade/alterar";
+        url += domain + "/atividade/alterar";
     } else {
-     url += "/atividade/novo";
+        url += domain + "/atividade/novo";
         id = null;
     }
     var grupo = document.getElementById("grupo").value;
@@ -37,12 +38,12 @@ var url = "";
             $('#successCreate').modal('show');
         }
         setTimeout(function () {
-            document.location.assign('/Spiaa/criadouro');
+            document.location.assign(domain + '/criadouro');
         }, 3000);
     }).fail(function () {
 
     });
 }
 $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    });
+    $('[data-toggle="tooltip"]').tooltip()
+});

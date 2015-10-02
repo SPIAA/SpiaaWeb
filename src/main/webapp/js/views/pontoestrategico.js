@@ -5,12 +5,17 @@ jQuery(document).ready(function () {
 });
 function getFormData() {
     var id = document.getElementById("id").value;
+    var url = ""
+    var domain = "";
+    if (document.domain == "localhost") {
+        domain = "/Spiaa"
+    }
 
-    var url = "/Spiaa/pontoestrategico/novo";
     if (id != null && id != "") {
-        url = "/Spiaa/pontoestrategico/alterar";
+        url = domain + "/pontoestrategico/alterar";
     } else {
         id = null;
+        url = domain + "/pontoestrategico/novo";
     }
     var rua = document.getElementById("rua").value;
     var numero = document.getElementById("numero").value;
@@ -53,7 +58,7 @@ function getFormData() {
             $('#successCreate').modal('show');
         }
         setTimeout(function () {
-            document.location.assign('/Spiaa/pontoestrategico');
+            document.location.assign(domain + '/pontoestrategico');
         }, 3000);
     }).fail(function () {
 

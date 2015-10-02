@@ -34,15 +34,15 @@
             </div>
         </div>
         <div class="panel panel-default"id='legend1'>
-            <div class="panel panel-primary">
+<!--            <div class="panel panel-primary">
                 <div class="panel-heading">Estratos</div>
                 <div class="panel-body">
                     <c:forEach items="${estratos}" var="estratos">
                         <span style="background:${estratos.cor}"><b> &nbsp;&nbsp;&nbsp;&nbsp; </b></span><label> &nbsp;&nbsp;${estratos.nome}</label><br/>
                     </c:forEach>
                 </div>
-            </div>
-            <div class="panel panel-primary">
+            </div>-->
+            <div class="panel panel-primary" style="margin-bottom: -18px;">
                 <div class="panel-heading">Tipos de Criadouros</div>
                 <div class="panel-body">
                     <c:forEach items="${criadouroList}" var="criadouro">
@@ -152,11 +152,11 @@
                                     ' <br/><b>Prédios :</b>' + layer.feature.properties.predios +
                                     ' <br/><b>Armazem :</b>' + layer.feature.properties.armazem +
                                     ' <br/><b>Terrenos Baldio :</b>' + layer.feature.properties.tbaldio +
-                                    '<br/><b>Criadouros Encontrados :</b>' +
+                                    '<br/><div class="panel panel-primary" style="margin-bottom: -8px;margin-left: -8px;margin-right: -8px;"> <div class="panel-heading">Criadouros Encontrados :</div><div class="panel-body"> ' +
             <c:forEach items="${totalCriadouro}" var="total">
-                            ' <br/><b>${total.grupo} :</b> ' + layer.feature.properties.${total.grupo} +
+                            '<div class="col-sm-6"><b> ${total.grupo} :</b> ' + layer.feature.properties.${total.grupo} +'</div>'+
             </c:forEach>
-                            ' </div>   </div>');
+                            ' </div></div>   </div>');
                             if (!popup._map)
                             popup.openOn(map);
                             window.clearTimeout(closeTooltip);

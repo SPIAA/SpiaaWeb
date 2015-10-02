@@ -5,13 +5,15 @@ jQuery(document).ready(function () {
 function getFormData() {
     var id = document.getElementById("id").value;
     var url = "";
+    var domain = "";
+    
     if (document.domain == "localhost") {
-        url = "/Spiaa"
+        domain = "/Spiaa"
     }
     if (id != null && id != "") {
-        url += "/inseticida/alterar";
+        url = domain + "/inseticida/alterar";
     } else {
-    url += "/inseticida/novo";
+        url = domain + "/inseticida/novo";
         id = null;
     }
     var nome = document.getElementById("nome").value;
@@ -37,7 +39,7 @@ function getFormData() {
             $('#successCreate').modal('show');
         }
         setTimeout(function () {
-            document.location.assign('/Spiaa/inseticida');
+            document.location.assign(domain + '/inseticida');
         }, 3000);
     }).fail(function () {
     });
