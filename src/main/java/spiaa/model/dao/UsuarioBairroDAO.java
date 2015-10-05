@@ -37,7 +37,6 @@ public class UsuarioBairroDAO implements BaseDAO<UsuarioBairro> {
       while (rs.next()) {
          Bairro bairro = new Bairro();
          bairro.setId(rs.getLong("id"));
-         bairro.setCoordenadas(rs.getString("coordenadas"));
          bairro.setNome(rs.getString("nome"));
          bairros.add(bairro);
       }

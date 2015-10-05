@@ -1,6 +1,7 @@
 package spiaa.model.entity;
 
 import java.util.Date;
+import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 import spiaa.model.base.BaseEntity;
 
@@ -15,6 +16,7 @@ public class TratamentoAntiVetorial extends BaseEntity {
     private String tipoAtividade;
     private Usuario usuario;
     private Bairro bairro;
+    private List<Atividade> atividadeList;
 
     public String getNumero() {
         return numero;
@@ -80,4 +82,11 @@ public class TratamentoAntiVetorial extends BaseEntity {
         this.tipoAtividade = tipoAtividade;
     }
 
+    public List<Atividade> getAtividadeList() {
+        return atividadeList;
+    }
+
+    public void setAtividadeList(List<Atividade> atividadeList) {
+        this.atividadeList = atividadeList;
+    }
 }

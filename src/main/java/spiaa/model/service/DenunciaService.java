@@ -94,4 +94,19 @@ public class DenunciaService implements BaseDenunciaService {
 
     }
 
+    @Override
+    public void fechar(Denuncia entity) throws Exception {
+
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        try {
+            DenunciaDAO dao = new DenunciaDAO();
+            dao.fechar(entity, conn);
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+        }
+    }
+
 }

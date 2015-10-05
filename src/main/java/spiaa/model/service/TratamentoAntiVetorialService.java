@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 import spiaa.model.ConnectionManager;
 import spiaa.model.base.service.BaseTratamentoAntiVetorialService;
+import spiaa.model.dao.AtividadeDAO;
 import spiaa.model.dao.TratamentoAntiVetorialDAO;
+import spiaa.model.entity.Atividade;
 import spiaa.model.entity.TratamentoAntiVetorial;
 
 public class TratamentoAntiVetorialService implements BaseTratamentoAntiVetorialService {
@@ -17,6 +19,12 @@ public class TratamentoAntiVetorialService implements BaseTratamentoAntiVetorial
         try {
             TratamentoAntiVetorialDAO dao = new TratamentoAntiVetorialDAO();
             dao.create(entity, conn);
+            if (entity.getAtividadeList() != null && entity.getAtividadeList().size() > 0) {
+                AtividadeDAO daoAtividade = new AtividadeDAO();
+                for (Atividade atividade : entity.getAtividadeList()) {
+                    dao.create(entity, conn);
+                }
+            }
             conn.commit();
             conn.close();
         } catch (Exception e) {
@@ -43,8 +51,8 @@ public class TratamentoAntiVetorialService implements BaseTratamentoAntiVetorial
         TratamentoAntiVetorialDAO dao = new TratamentoAntiVetorialDAO();
         boletimDiarioList = dao.readByCriteria(criteria, conn);
         if (boletimDiarioList.size() <= 0) {
-                boletimDiarioList = null;
-            }
+            boletimDiarioList = null;
+        }
         conn.close();
         return boletimDiarioList;
     }

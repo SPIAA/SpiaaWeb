@@ -12,20 +12,28 @@ import spiaa.model.entity.TratamentoAntiVetorial;
 /**
  *
  * @author William
+ * @param
  */
 @Controller
 public class TratamentoAntiVetorialApiController {
- 
-   @RequestMapping(value = "/boletim", method = RequestMethod.POST)
-   public @ResponseBody
-   void create(@RequestBody List<TratamentoAntiVetorial> tavs) throws Exception{
-      try {
-         for (TratamentoAntiVetorial tav : tavs) {
-            ServiceLocator.getbaseBoletimDiarioService().create(tav);
-         }
-      } catch (Exception e) {
-         throw e;
-      }
-   }
+
+    @RequestMapping(value = "/api/boletim/create", method = RequestMethod.POST)
+    public @ResponseBody
+    String setBoletim(@RequestBody List<TratamentoAntiVetorial> TratamentoAntiVetorialList) throws Exception {
+        String response = "SUCCESS";
+        try {
+            if (TratamentoAntiVetorialList != null && TratamentoAntiVetorialList.size() > 0) {
+                for (TratamentoAntiVetorial tav : TratamentoAntiVetorialList) {
+                    ServiceLocator.getbaseBoletimDiarioService().create(tav);
+                }
+            } else {
+                throw new Exception(" Null - Lista de Tratamento vazia");
+            }
+        } catch (Exception e) {
+            response = "ERROR";
+            throw e;
+        }
+        return response;
+    }
 
 }

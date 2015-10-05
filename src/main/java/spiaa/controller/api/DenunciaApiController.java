@@ -20,33 +20,34 @@ import spiaa.model.entity.Usuario;
 @Controller
 public class DenunciaApiController {
 
-   @RequestMapping(value = "/denuncias", method = RequestMethod.GET)
-   public @ResponseBody
-   List<Denuncia> getDenuncias(@RequestBody Usuario agente) throws Exception {
+    @RequestMapping(value = "/api/denuncia/agente", method = RequestMethod.POST)
+    public @ResponseBody
+    List<Denuncia> getDenuncias(@RequestBody Usuario agenteSaude) throws Exception {
 
-      List<Denuncia> denunciaList = null;
-      try {
-         Map<String, Object> criteria = new HashMap<>();
-         criteria.put(DenunciaDAO.CRITERION_AGENTE_ID, agente.getId());
-         denunciaList = ServiceLocator.getbaseDenunciaService().readByCriteria(criteria);
-      } catch (Exception e) {
-         e.printStackTrace();
-         throw e;
+        List<Denuncia> denunciaList = null;
+        try {
+            Map<String, Object> criteria = new HashMap<>();
+            criteria.put(DenunciaDAO.CRITERION_AGENTE_ID, agenteSaude.getId());
+            denunciaList = ServiceLocator.getbaseDenunciaService().readByCriteria(criteria);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+        return denunciaList;
+    }
 
-      }
-      return denunciaList;
-   }
-
-   @RequestMapping(value = "/denuncias", method = RequestMethod.PUT)
-   @ResponseBody
-   public void finalizarDenuncias(@RequestBody List<Denuncia> denuncias) throws Exception {
-      try {
-         for (Denuncia denuncia : denuncias) {
-            ServiceLocator.getbaseDenunciaService().update(denuncia);
-         }
-      } catch (Exception e) {
-         throw e;
-      }
-
-   }
+    @RequestMapping(value = "/api/denuncia/update", method = RequestMethod.PUT)
+    public @ResponseBody
+    String setDenuncias(@RequestBody List<Denuncia> denunciaList) throws Exception {
+        String response = "SUCCESS";
+        try {
+            for (Denuncia denuncia : denunciaList) {
+                ServiceLocator.getbaseDenunciaService().fechar(denuncia);
+            }
+        } catch (Exception e) {
+            response = "ERROR -" + e.getMessage();
+            throw e;
+        }
+        return response;
+    }
 }

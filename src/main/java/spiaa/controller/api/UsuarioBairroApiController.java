@@ -18,17 +18,32 @@ import spiaa.model.entity.UsuarioBairro;
 @Controller
 public class UsuarioBairroApiController {
 
-   @RequestMapping(value = "/bairro/agente", method = RequestMethod.GET)
-   public @ResponseBody
-   List<Bairro> getBairrosByUser(@RequestBody Usuario agenteSaude) throws Exception {
-      List<Bairro> bairroList = null;
-      try {
-         UsuarioBairro ub = ServiceLocator.getbaseUsuarioBairroService().readById(agenteSaude.getId());
-         bairroList = ub.getBairros();
-      } catch (Exception e) {
-         throw e;
-      }
-      return bairroList;
-   }
+    @RequestMapping(value = "/api/bairro/agente", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Bairro> getBairrosByUser(@RequestBody Usuario agenteSaude) throws Exception {
+        List<Bairro> bairroList = null;
+        try {
+            UsuarioBairro ub = ServiceLocator.getbaseUsuarioBairroService().readById(agenteSaude.getId());
+            bairroList = ub.getBairros();
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return bairroList;
+    }
+
+    @RequestMapping(value = "/api/bairro/agente", method = RequestMethod.POST)
+    public @ResponseBody
+    List<Bairro> getBairros(@RequestBody Usuario agenteSaude) throws Exception {
+        List<Bairro> bairroList = null;
+        try {
+            UsuarioBairro ub = ServiceLocator.getbaseUsuarioBairroService().readById(agenteSaude.getId());
+            bairroList = ub.getBairros();
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return bairroList;
+    }
 
 }

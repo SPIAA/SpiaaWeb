@@ -9,6 +9,8 @@ public class Atividade extends BaseEntity{
     private Quarteirao quarteirao;
     private String numero;
     private String observacao;
+    private String latitude;
+    private String longitude;
     private Integer inspecionado;
     private TipoImoveis tipoImoveis;
     private List<AtividadeCriadouro> atividadeCriadouroList;
@@ -91,6 +93,22 @@ public class Atividade extends BaseEntity{
 
     public void setQuarteirao(Quarteirao quarteirao) {
         this.quarteirao = quarteirao;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
     
 }
