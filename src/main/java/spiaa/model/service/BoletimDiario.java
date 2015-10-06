@@ -1,21 +1,33 @@
-package spiaa.model.entity;
+package spiaa.model.service;
 
 import java.util.Date;
 import spiaa.model.base.BaseEntity;
+import spiaa.model.entity.Bairro;
+import spiaa.model.entity.Usuario;
 
-public class TratamentoAntiVetorial extends BaseEntity {
+/**
+ *
+ * @author Felipe de Souza
+ */
+public class BoletimDiario extends BaseEntity {
 
-//    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataBoletim;
     private String numero;
     private String semana;
     private String turma;
+    private String categoria;
     private String numeroAtividade;
     private String tipoAtividade;
     private Usuario usuario;
     private Bairro bairro;
-    private String categoria;
-//    private List<Atividade> atividadeList;
+
+    public Date getDataBoletim() {
+        return dataBoletim;
+    }
+
+    public void setDataBoletim(Date dataBoletim) {
+        this.dataBoletim = dataBoletim;
+    }
 
     public String getNumero() {
         return numero;
@@ -41,28 +53,12 @@ public class TratamentoAntiVetorial extends BaseEntity {
         this.turma = turma;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Bairro getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(Bairro bairro) {
-        this.bairro = bairro;
-    }
-
-    public Date getDataBoletim() {
-        return dataBoletim;
-    }
-
-    public void setDataBoletim(Date dataBoletim) {
-        this.dataBoletim = dataBoletim;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getNumeroAtividade() {
@@ -81,20 +77,21 @@ public class TratamentoAntiVetorial extends BaseEntity {
         this.tipoAtividade = tipoAtividade;
     }
 
-//    public List<Atividade> getAtividadeList() {
-//        return atividadeList;
-//    }
-//
-//    public void setAtividadeList(List<Atividade> atividadeList) {
-//        this.atividadeList = atividadeList;
-//    }
-
-    public String getCategoria() {
-        return categoria;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
+
+    public Bairro getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(Bairro bairro) {
+        this.bairro = bairro;
+    }
+
     
 }

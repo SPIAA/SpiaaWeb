@@ -19,12 +19,12 @@ public class TratamentoAntiVetorialService implements BaseTratamentoAntiVetorial
         try {
             TratamentoAntiVetorialDAO dao = new TratamentoAntiVetorialDAO();
             dao.create(entity, conn);
-            if (entity.getAtividadeList() != null && entity.getAtividadeList().size() > 0) {
-                AtividadeDAO daoAtividade = new AtividadeDAO();
-                for (Atividade atividade : entity.getAtividadeList()) {
-                    dao.create(entity, conn);
-                }
-            }
+//            if (entity.getAtividadeList() != null && entity.getAtividadeList().size() > 0) {
+//                AtividadeDAO daoAtividade = new AtividadeDAO();
+//                for (Atividade atividade : entity.getAtividadeList()) {
+//                    dao.create(entity, conn);
+//                }
+//            }
             conn.commit();
             conn.close();
         } catch (Exception e) {

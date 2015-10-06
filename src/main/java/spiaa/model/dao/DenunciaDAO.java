@@ -111,7 +111,7 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
 
     @Override
     public void update(Denuncia entity, Connection conn) throws Exception {
-        String sql = " UPDATE denuncia  SET observacao=?, status=?, WHERE id=?";
+        String sql = " UPDATE denuncia  SET observacao=?, status=?, usuario_fk=? WHERE id=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setString(++i, entity.getObservacao());
