@@ -9,6 +9,7 @@ public class Bairro extends BaseEntity {
     private String coordenadas;
     private Long codigo;
     private List<AtividadeCriadouro> totalCriadouro;
+    private List<Quarteirao> quarteiraoList;
 
     public String getNome() {
         return nome;
@@ -42,6 +43,12 @@ public class Bairro extends BaseEntity {
         this.totalCriadouro = totalCriadouro;
     }
 
-    
+    public List<Quarteirao> getQuarteiraoList() {
+        return quarteiraoList;
+    }
+
+    public void setQuarteiraoList(List<Quarteirao> quarteiraoList) {
+        this.quarteiraoList = quarteiraoList;
+    }
 
 }

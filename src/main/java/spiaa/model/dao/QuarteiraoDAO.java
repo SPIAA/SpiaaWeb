@@ -8,7 +8,6 @@ package spiaa.model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +65,7 @@ public class QuarteiraoDAO implements BaseDAO<Quarteirao> {
     @Override
     public List<Quarteirao> readByCriteria(Map<String, Object> criteria, Connection conn) throws Exception {
         List<Quarteirao> quarteiraoList = new ArrayList<>();
-        String sql = "SELECT q.*, b.id as b_id, b.nome, b.coordenadas FROM quarteirao q "
+        String sql = "SELECT q.*, b.id as b_id, b.nome FROM quarteirao q "
                 + "LEFT JOIN bairro b ON q.bairro_fk=b.id WHERE 1=1 ";
 
         Long criterionBairroId = (Long) criteria.get(CRITERION_BAIRRO_ID);
@@ -82,7 +81,6 @@ public class QuarteiraoDAO implements BaseDAO<Quarteirao> {
             Bairro bairro = new Bairro();
             bairro.setId(rs.getLong("b_id"));
             bairro.setNome(rs.getString("nome"));
-            bairro.setCoordenadas(rs.getString("coordenadas"));
 
             quarteirao = new Quarteirao();
             quarteirao.setId(rs.getLong("id"));

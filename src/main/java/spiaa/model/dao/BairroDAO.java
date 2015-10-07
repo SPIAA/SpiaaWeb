@@ -60,6 +60,8 @@ public class BairroDAO implements BaseDAO<Bairro> {
             sql += " AND nome ILKE '%" + criterionNomeILike + "%'";
         }
 
+        sql += " order By bairro.nome ASC";
+        
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {

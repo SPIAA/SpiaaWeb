@@ -79,7 +79,7 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
         if (criterionUsuarioId != null) {
             sql += " and denuncia.usuario_fk=" + criterionUsuarioId;
         }
-
+        
         Statement s = conn.createStatement();
 
         ResultSet rs = s.executeQuery(sql);
