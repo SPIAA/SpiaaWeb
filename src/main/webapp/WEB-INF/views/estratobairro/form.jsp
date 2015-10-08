@@ -23,15 +23,17 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Novo Estrato
-                            </h1>
-                            <br/>
-                            <div class="col-lg-1 row"></div>      
-                            <div class="col-lg-12 row">
-                                <form class="form-inline" role="form" method="POST">
-                                    <div class="form-group col-md-5">
-                                        <label class="" for="estrato">Nome :</label><br/>
-                                        <input type="hidden" value="${estrato.id}" name="id">
+                                Estrato
+                                <c:if test="${not empty criadouro}"><small>Alterar</small></c:if>
+                                <c:if test="${empty criadouro}"><small>Novo</small></c:if>
+                                </h1>
+                                <br/>
+                                <div class="col-lg-1 row"></div>      
+                                <div class="col-lg-12 row">
+                                    <form class="form-inline" role="form" method="POST">
+                                        <div class="form-group col-md-5">
+                                            <label class="" for="estrato">Nome :</label><br/>
+                                            <input type="hidden" value="${estrato.id}" name="id">
                                         <div class="input-group margin-bottom-sm">
                                             <span class="input-group-addon"><i class="fa fa-globe "></i></span>
                                             <input class="form-control" type="text" id="nome" name="nome" value="${estrato.nome}" placeholder="Digite o Nome do estrato">
@@ -39,7 +41,7 @@
                                     </div>
                                     <div class="form-group col-md-2 ">
                                         <label class="" for="dataInicio">&nbsp;</label><br/>
-                                        <input type="submit" class="btn btn-success btn-block" value=" Gravar" />
+                                        <input type="submit" class="btn btn-success btn-block" value=" Salvar" />
 
                                     </div>
 

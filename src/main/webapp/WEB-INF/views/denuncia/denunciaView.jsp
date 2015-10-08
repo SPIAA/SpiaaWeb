@@ -72,10 +72,10 @@
                                 <div class="col-md-6 column">
                                     <div class="form-group">
                                         <label for="InputStatus"> Responsável : </label>
-                                        <select  class="form-control validate[required]" name="usuario.id" id="">
+                                        <select  class="form-control validate[required]" name="usuario.id" id="" <c:if test="${denuncia.status eq 'Finalizada'}"> disabled</c:if>>
                                             <c:forEach var="usuario" items="${usuario}">
                                                 <c:if test="${usuario.tipo eq 'AGS'}">
-/                                                    <option value="${usuario.id}" <c:if test="${denuncia.usuario.id eq usuario.id}">selected</c:if>> ${usuario.nome}  </option>
+                                                    <option value="${usuario.id}" <c:if test="${denuncia.usuario.id eq usuario.id}">selected</c:if>> ${usuario.nome}  </option>
                                                 </c:if>
 
                                             </c:forEach>
@@ -83,16 +83,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="InputStatus">  Status : </label>
-                                        <select class="form-control col-lg-11"  name="status" <c:if test="${denuncia.status eq 'fechado'}"> disabled</c:if>>
-                                            <option value="aberto" <c:if test="${denuncia.status eq 'aberto'}"> selected</c:if> >Aberto</option>
-                                            <option value="encaminhado" <c:if test="${denuncia.status eq 'encaminhado'}"> selected</c:if>>Encaminhado</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputConclusao">Conclusão :</label><textarea  class="form-control" name="conclusao" readonly >${denuncia.conclusao}</textarea>
-                                        </div>
-                                        <div class="col-sm-4"> <p> &nbsp;</p></div>
-                                        <div class="col-sm-4"> <input class="btn btn-lg btn-block btn-default" type="submit"  value="Salvar" <c:if test="${denuncia.status eq 'fechado'}"> disabled</c:if> /> </div>
+                                        <select class="form-control col-lg-11"  name="status" <c:if test="${denuncia.status eq 'Finalizada'}"> disabled</c:if>>
+                                            <option value="Aberta" <c:if test="${denuncia.status eq 'Aberta'}"> selected</c:if> >Aberta</option>
+                                            <option value="Encaminhada" <c:if test="${denuncia.status eq 'Encaminhada'}"> selected</c:if>>Encaminhada</option>
+                                            <c:if test="${denuncia.status eq 'Finalizada'}"><option value="Finalizada" <c:if test="${denuncia.status eq 'Finalizada'}"> selected</c:if>>Finalizada</option></c:if>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" hidden="">
+                                                <label for="InputConclusao">Conclusão :</label><textarea  class="form-control" name="conclusao" readonly >${denuncia.conclusao}</textarea>
+                                    </div>
+                                    <div class="col-sm-4"> <p> &nbsp;</p></div>
+                                    <div class="col-sm-4"> <input class="btn btn-lg btn-block btn-default" style="margin-top: 30px;" type="submit"  value="Salvar" <c:if test="${denuncia.status eq 'fechado'}"> disabled</c:if> /> </div>
                                     <div class="col-sm-4"> <p> &nbsp;</p>
                                     </div>
                                 </div>

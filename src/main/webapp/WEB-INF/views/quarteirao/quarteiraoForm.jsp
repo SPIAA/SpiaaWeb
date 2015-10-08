@@ -24,7 +24,8 @@
                   <div class="col-lg-12">
                      <h1 class="page-header">
                         Quartei&atilde;o
-                        <small>Novo</small>
+                        <c:if test="${not empty quarteirao}"><small>Alterar</small></c:if>
+                                <c:if test="${empty quarteirao}"><small>Novo</small></c:if>
                      </h1>
                      <c:if test="${not empty mensagem}">  <div class="alert alert-danger alert-dismissible" role="alert">
                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

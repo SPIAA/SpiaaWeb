@@ -26,7 +26,7 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 Bairro
-                                <small>Listagem</small>
+                                <small>Resposnsáveis</small>
                             </h1>
                             <!--<a href="bairro/relatorio" class="btn btn-primary">Exportar Relatório</a>-->
                             <a href="bairro/novo" class="btn btn-default"><i class="fa fa-fw fa-plus"></i> Novo </a><br/><br/>
@@ -44,7 +44,7 @@
                                         <tr>
 
                                             <td>${bairro.nome}</td>
-                                            <td align="center"><a href="#"><i class="fa fa-2x fa-users text-warning"></i> </a></td>
+                                            <td align="center"><a href="quarteirao/${bairro.id}"><i class="fa fa-2x fa-users text-warning"></i> </a></td>
                                             <td align="center"><a href="quarteirao/${bairro.id}"><i class="fa fa-2x fa-edit text-primary"></i> </a></td>
                                         </tr>
                                     </c:forEach>

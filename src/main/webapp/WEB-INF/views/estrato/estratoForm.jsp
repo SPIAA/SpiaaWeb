@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="form-group col-md-2 ">
                                         <label class="" for="dataInicio">&nbsp;</label><br/>
-                                        <input class="btn btn-success " onclick="getFormData()" value="Gravar" />  
+                                        <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
                                     </div>
 
                                     <br/> <br/>    <br/> <br/> <br/> 

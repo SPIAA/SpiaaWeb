@@ -4,6 +4,10 @@ import spiaa.model.base.BaseEntity;
 
 public class Denuncia extends BaseEntity {
 
+    public static final String STATUS_ABERTA = "Aberta";
+    public static final String STATUS_FECHADA = "Fechada";
+    public static final String STATUS_ENCAMINHADA= "Encaminhada";
+    
     private String endereco;
     private String numero;
     private String telefone;

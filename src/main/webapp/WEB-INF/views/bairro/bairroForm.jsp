@@ -28,7 +28,8 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 Bairro
-                                <small>Novo</small>
+                                <c:if test="${not empty bairro}"><small>Alterar</small></c:if>
+                                <c:if test="${empty bairro}"><small>Novo</small></c:if>
                             </h1>
                             <form class="form-group" method="POST">
                                 <div class="form-group col-md-4 ">
@@ -38,7 +39,7 @@
 
                                 <br/><br/><br/><br/><br/><br/><br/><br/>
                                 <div class="col-lg-12" align="center">
-                                    <button class="btn btn-success " >Gravar</button>  
+                                    <button class="btn btn-success " >Salvar</button>  
                                 </div>
                             </form>
                             <br/>

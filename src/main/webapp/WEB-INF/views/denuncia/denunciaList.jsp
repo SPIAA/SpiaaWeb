@@ -27,7 +27,7 @@
                                             <th>Bairro</th>
                                             <th>Endereco</th>
                                             <th>Numero</th>
-                                            <th>Telefone</th>
+                                            <th>Usuario</th>
                                             <th>Status</th>
                                             <th align="center" style="width:70px;" > </th>
                                         </tr>
@@ -38,8 +38,12 @@
                                                 <td>${denuncia.bairro.nome}</td>
                                                 <td>${denuncia.endereco}</td>
                                                 <td>${denuncia.numero}</td>
-                                                <td>${denuncia.telefone}</td>
-                                                <td>${denuncia.status}</td>
+                                                <td>${denuncia.usuario.nome}</td>
+                                                <td 
+                                                    <c:if test="${denuncia.status eq 'Aberta'}"> class="text-success "</c:if>
+                                                    <c:if test="${denuncia.status eq 'Encaminhada'}"> class="text-warning "</c:if>
+                                                    <c:if test="${denuncia.status eq 'Finalizada'}"> class="text-primary "</c:if>>
+                                                    <b>${denuncia.status}</b>                                            </td>
                                                 <td align="center"><a href="denuncia/${denuncia.id}/visualiza" data-toggle="tooltip" data-placement="top" title="Visualizar"><i class="fa fa-2x fa-search-plus text-danger"></i></a></td>
                                             </tr>
                                         </c:forEach>
@@ -63,7 +67,7 @@
                 $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
                 return false;
             });
-           
+
         </script>
     </body>
 </html>

@@ -108,16 +108,17 @@
                         <div class="form-group">
                             <label for="Inputnumero">Numero:</label><input type="text" class="form-control validate[required]" name="numero" />
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" hidden="">
                             <label for="Inputtelefone">Telefone:</label><input type="text" class="form-control" id="telefone" name="telefone"/>
 
                         </div>
                         <div class="form-group">
-                            <label for="Inputtipoirregularidade">Tipo de irregularidades:</label><textarea  class="form-control validate[required]" name="irregularidade" ></textarea>
+                            <label for="Inputtipoirregularidade">Irregularidades:</label><textarea  class="form-control validate[required]" name="irregularidade" ></textarea>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" hidden="">
                             <label for="Inputobservacao">Observação:</label><textarea  class="form-control" name="observacao" ></textarea>
                         </div>
+                        
                         <div class="form-group text-center">
                             <input class="btn btn-lg btn-success" type="submit" value=" Enviar Denuncia" /> 
                         </div>
@@ -153,18 +154,18 @@
             </div>
         </div>
         <script>
-            $('#telefone').focusout(function(){
-			var phone, element;
-			element = $(this);
-			element.unmask();
-			phone = element.val().replace(/\D/g, '');
-			if(phone.length > 10) {
-				element.mask("(99) 99999-999?9");
-			} else {
-				element.mask("(99) 9999-9999?9");
-			}
-		}).trigger('focusout');
-            
+            $('#telefone').focusout(function () {
+                var phone, element;
+                element = $(this);
+                element.unmask();
+                phone = element.val().replace(/\D/g, '');
+                if (phone.length > 10) {
+                    element.mask("(99) 99999-999?9");
+                } else {
+                    element.mask("(99) 9999-9999?9");
+                }
+            }).trigger('focusout');
+
             jQuery(document).ready(function () {
                 // binds form submission and fields to the validation engine
                 jQuery("#formDenuncia").validationEngine('attach', {promptPosition: "bottomLeft", autoPositionUpdate: true});

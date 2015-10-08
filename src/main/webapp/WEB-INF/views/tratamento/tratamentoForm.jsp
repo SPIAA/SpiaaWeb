@@ -92,7 +92,7 @@
                                 <br/><br/><br/><br/><br/><br/><br/><br/>
                                 <div class="col-lg-12" align="center">
 
-                                    <button class="btn btn-success " > Salvar Boletim Diário</button>  
+                                    <button class="btn btn-success " > Salvar</button>  
 
                                 </div>
 

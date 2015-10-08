@@ -21,8 +21,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Ponto etratégico
-                                <small>Novo</small>
+                                Ponto Estratégico
+                                <c:if test="${not empty pontoEstrategico}"><small>Alterar</small></c:if>
+                                <c:if test="${empty pontoEstrategico}"><small>Novo</small></c:if>
                             </h1>
                             <c:if test="${not empty mensagem}">  <div class="alert alert-danger alert-dismissible" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -93,7 +94,7 @@
 
                                 <div class="form-group form-inline col-lg-12 text-center ">
                                     <br/>
-                                    <input class="btn btn-success " onclick="getFormData()" value="Gravar" />  
+                                    <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
                                 </div>
                             </form>
                             <!--<button onclick="myFunction()">report via ajax</button>-->

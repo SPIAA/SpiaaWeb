@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import spiaa.model.ServiceLocator;
 import spiaa.model.entity.Bairro;
+import spiaa.model.entity.UsuarioBairro;
 
 @Controller
 public class BairroController {
@@ -60,8 +61,8 @@ public class BairroController {
         JasperExportManager.exportReportToPdfFile(print, "E:\\relat.pdf");
 
     }
-    
-     @RequestMapping(value = "/bairro/{id}/alterar", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/bairro/{id}/alterar", method = RequestMethod.GET)
     public ModelAndView update(@PathVariable Long id) throws Exception {
         Bairro criadouro = ServiceLocator.getBaseBairroService().readById(id);
         ModelAndView mv = new ModelAndView("criadouro/criadouroForm");
@@ -69,7 +70,7 @@ public class BairroController {
 
         return mv;
     }
-    
+
     @RequestMapping(value = "/bairro/alterar", method = RequestMethod.POST)
     @ResponseBody
     public String update(@RequestBody String jsonData, HttpServletResponse response) throws Exception {
@@ -86,5 +87,20 @@ public class BairroController {
         return retorno;
     }
 
-    
+    @RequestMapping(value = "/bairrousuario/{id}", method = RequestMethod.GET)
+    public ModelAndView readUser(@PathVariable Long id) throws Exception {
+        ModelAndView mv = null;
+        try {
+            List<UsuarioBairro> bairroList = new ArrayList<UsuarioBairro>();
+            Map<String, Object> criteria = new HashMap<String, Object>();
+            bairroList = ServiceLocator.getbaseUsuarioBairroService().readByCriteria(criteria);
+            mv = new ModelAndView("bairrousuario/bairroUsuarioList");
+            mv.addObject("bairroUsuario", bairroList);
+        } catch (Exception ex) {
+            mv = new ModelAndView("erro/erro");
+            mv.addObject("erro", ex);
+        }
+        return mv;
+    }
+
 }

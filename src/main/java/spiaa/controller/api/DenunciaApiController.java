@@ -28,6 +28,7 @@ public class DenunciaApiController {
         try {
             Map<String, Object> criteria = new HashMap<>();
             criteria.put(DenunciaDAO.CRITERION_AGENTE_ID, agenteSaude.getId());
+            criteria.put(DenunciaDAO.CRITERION_STATUS_ENCAMINHADA, Denuncia.STATUS_ENCAMINHADA);
             denunciaList = ServiceLocator.getbaseDenunciaService().readByCriteria(criteria);
         } catch (Exception e) {
             e.printStackTrace();
