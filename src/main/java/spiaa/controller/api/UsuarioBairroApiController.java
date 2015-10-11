@@ -1,5 +1,6 @@
 package spiaa.controller.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +26,9 @@ public class UsuarioBairroApiController {
     @RequestMapping(value = "/api/bairro/agente", method = RequestMethod.POST)
     public @ResponseBody
     List<Bairro> getBairros(@RequestBody Usuario agenteSaude) throws Exception {
-        List<UsuarioBairro> usuarioBairroList = null;
+        List<UsuarioBairro> usuarioBairroList = new ArrayList<>();
         Map<String, Object> criteria = new HashMap<>();
-        List<Bairro> bairroList = null;
+        List<Bairro> bairroList = new ArrayList<>();
         try {
             criteria.put(UsuarioBairroDAO.CRITERION_USUARIO_ID_EQ, agenteSaude.getId());
             usuarioBairroList = ServiceLocator.getbaseUsuarioBairroService().readByCriteria(criteria);
@@ -43,9 +44,9 @@ public class UsuarioBairroApiController {
     @RequestMapping(value = "/api/bairroquarteirao/agente", method = RequestMethod.POST)
     public @ResponseBody
     List<Bairro> getBairrosQuarteiroes(@RequestBody Usuario agenteSaude) throws Exception {
-        List<UsuarioBairro> usuarioBairroList = null;
+        List<UsuarioBairro> usuarioBairroList = new ArrayList<>();
         Map<String, Object> criteria = new HashMap<>();
-        List<Bairro> bairroList = null;
+        List<Bairro> bairroList = new ArrayList<>();
         try {
             criteria.put(UsuarioBairroDAO.CRITERION_USUARIO_ID_EQ, agenteSaude.getId());
             usuarioBairroList = ServiceLocator.getbaseUsuarioBairroService().readByCriteria(criteria);
