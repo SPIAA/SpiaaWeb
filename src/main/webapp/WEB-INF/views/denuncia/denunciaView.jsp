@@ -82,10 +82,7 @@
                                         <select  class="form-control validate[required]" name="usuario_id" id="usuario_id" <c:if test="${denuncia.status eq 'Finalizada'}"> disabled</c:if>>
                                                 <option value=""> selecione... </option>
                                             <c:forEach var="usuario" items="${usuario}">
-                                                <c:if test="${usuario.tipo eq 'AGS'}">
-                                                    <option value="${usuario.id}" <c:if test="${denuncia.usuario.id eq usuario.id}">selected</c:if>> ${usuario.nome}  </option>
-                                                </c:if>
-
+                                                <option value="${usuario.id}" <c:if test="${denuncia.usuario.id eq usuario.id}">selected</c:if>> ${usuario.nome}  </option>
                                             </c:forEach>
                                         </select>
                                     </div>
