@@ -117,7 +117,7 @@
                         <div class="alert alert-success">
                             <strong> Ponto Estratégico salvo com Sucesso</strong> <br/>
                             <i class="fa fa-2x fa-spinner fa-pulse"></i>
-                            <p>Você esta sendo redimensionado....</p>
+                             <p>Você está sendo redirecionado.....</p>
                         </div>
 
                     </div>

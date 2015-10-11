@@ -92,7 +92,7 @@
                         <br/>
                         <p class="text-success"><i class="fa fa-4x fa-smile-o"></i></p>
                         <br/>
-                        <a href="<c:url value="/home"/>" class="btn btn-success">Voltar a Página Inicial!</a>
+                        <a href="<c:url value="/denunciaform"/>" class="btn btn-success">Nova denúncia!</a>
                         <br/><br/><br/>
                     </div>
 

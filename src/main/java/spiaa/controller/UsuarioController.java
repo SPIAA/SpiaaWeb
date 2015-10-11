@@ -1,18 +1,26 @@
 package spiaa.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import spiaa.model.ServiceLocator;
+import spiaa.model.dao.UsuarioBairroDAO;
 import spiaa.model.dao.UsuarioDAO;
+import spiaa.model.entity.Bairro;
 import spiaa.model.entity.RecuperarSenha;
 import spiaa.model.entity.Usuario;
+import spiaa.model.entity.UsuarioBairro;
 
 @Controller
 public class UsuarioController {
@@ -241,5 +249,51 @@ public class UsuarioController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:login";
+    }
+
+    @RequestMapping(value = "usuario/{id}/bairrousuario", method = RequestMethod.GET)
+    public ModelAndView readUsuario(@PathVariable Long id) throws Exception {
+        ModelAndView mv = null;
+        try {
+            Usuario usuario = new Usuario();
+            usuario = ServiceLocator.getBaseUsuarioService().readById(id);
+
+            List<Bairro> bairroList = new ArrayList<Bairro>();
+            Map<String, Object> criteria = new HashMap<String, Object>();
+            bairroList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
+
+            List<UsuarioBairro> usuarioBairroList = new ArrayList<>();
+            Map<String, Object> criteriaBairro = new HashMap<String, Object>();
+            criteriaBairro.put(UsuarioBairroDAO.CRITERION_USUARIO_ID_EQ, id);
+            usuarioBairroList = ServiceLocator.getbaseUsuarioBairroService().readByCriteria(criteriaBairro);
+            mv = new ModelAndView("bairrousuario/usuarioBairroForm");
+
+            mv.addObject("bairroList", bairroList);
+            mv.addObject("usuario", usuario);
+            mv.addObject("usuarioBairroList", usuarioBairroList);
+
+        } catch (Exception ex) {
+            mv = new ModelAndView("erro/erro");
+            mv.addObject("erro", ex);
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "usuario/bairrousuario/create", method = RequestMethod.POST)
+    @ResponseBody
+    public String saveByUsuario(@RequestBody String jsonData) throws Exception {
+        String response = "error";
+        try {
+            Gson gson = new Gson();
+            TypeToken<List<UsuarioBairro>> token = new TypeToken<List<UsuarioBairro>>() {
+            };
+            List<UsuarioBairro> usuarioBairroList = (List<UsuarioBairro>) gson.fromJson(jsonData, token.getType());
+
+            ServiceLocator.getbaseUsuarioBairroService().createByUsuario(usuarioBairroList);
+            response = "Success";
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return response;
     }
 }

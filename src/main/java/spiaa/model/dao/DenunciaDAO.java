@@ -1,6 +1,7 @@
 package spiaa.model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -21,7 +22,7 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
 
     @Override
     public void create(Denuncia entity, Connection conn) throws Exception {
-        String sql = "INSERT INTO denuncia(endereco, numero, telefone, irregularidade, observacao, status ,bairro_fk)VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO denuncia(endereco, numero, telefone, irregularidade, observacao, status ,bairro_fk, now())VALUES (?, ?, ?, ?, ?, ?, ?);";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
@@ -57,6 +58,8 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
             denuncia.setIrregularidade(rs.getString("irregularidade"));
             denuncia.setConclusao(rs.getString("conclusao"));
             denuncia.setStatus(rs.getString("status"));
+            denuncia.setDataAbertura(rs.getDate("data_abertura"));
+            denuncia.setDataFinalizacao(rs.getDate("data_finalizacao"));
 
             Bairro bairro = new Bairro();
             bairro.setId(rs.getLong("bairro_id"));
@@ -89,6 +92,8 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
             sql += " and denuncia.status = '" + criterionStatusEncaminhada + "' ";
         }
 
+        sql += " ORDER BY data_abertura DESC";
+
         Statement s = conn.createStatement();
 
         ResultSet rs = s.executeQuery(sql);
@@ -102,6 +107,8 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
             entity.setObservacao(rs.getString("observacao"));
             entity.setConclusao(rs.getString("conclusao"));
             entity.setStatus(rs.getString("status"));
+            entity.setDataAbertura(rs.getDate("data_abertura"));
+            entity.setDataFinalizacao(rs.getDate("data_finalizacao"));
 
             Bairro bairro = new Bairro();
             bairro.setId(rs.getLong("bairro_id"));
@@ -133,11 +140,12 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
     }
 
     public void fechar(Denuncia entity, Connection conn) throws Exception {
-        String sql = " UPDATE denuncia  SET observacao=?, status=? WHERE id=?";
+        String sql = " UPDATE denuncia  SET observacao=?, status=?, data_finalizacao=? WHERE id=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setString(++i, entity.getObservacao());
         ps.setString(++i, entity.getStatus());
+        ps.setDate(++i, new Date(entity.getDataAbertura().getTime()));
         ps.setLong(++i, entity.getId());
         ps.execute();
         ps.close();

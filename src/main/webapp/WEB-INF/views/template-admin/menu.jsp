@@ -26,9 +26,6 @@
                 <a href="<c:url value="/bairro"/>" style="color: #fff"><i class="fa  fa-edit"></i> Bairro</a>
             </li>
             <li>
-                <a href="<c:url value="/quarteirao"/>" style="color: #fff"><i class="fa  fa-edit"></i> Quarteir&atilde;o</a>
-            </li>
-            <li>
                 <a href="<c:url value="/inseticida"/>" style="color: #fff"><i class="fa  fa-flask"></i> Inseticida</a>
             </li>
             <li>

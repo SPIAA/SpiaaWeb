@@ -1,30 +1,35 @@
-
 jQuery(document).ready(function () {
     // binds form submission and fields to the validation engine
     jQuery("#form").validationEngine('attach', {promptPosition: "bottomLeft", autoPositionUpdate: true});
 });
 function getFormData() {
-     if(!$("#form").validationEngine('validate')){
-       return;
-   }
-    var id = document.getElementById("id").value;
+    if (!$("#form").validationEngine('validate')) {
+        return;
+    }
+    var responsavel = $('#usuario_id option:selected').val();
+
+    if (responsavel.trim() == "") {
+        $('#obrigatorio').modal('show');
+        return;
+    }
+
+    var id = $("input[name=id").val();
+    var status = $('#status option:selected').val()
+
     var url = "";
     var domain = "";
     if (document.domain == "localhost") {
         domain = "/Spiaa"
     }
-    if (id != null && id != "") {
-        url = domain + "/bairro/alterar";
-    } else {
-        url = domain + "/bairro/novo";
-        id = null;
-    }
-    var grupo = document.getElementById("grupo").value;
-    var recipiente = document.getElementById("recipiente").value;
+
+    url = domain + "/denuncia/visualiza";
+
     var jsonData = {
         id: id,
-        grupo: grupo,
-        recipiente: recipiente
+        usuario: {
+            id: responsavel,
+        },
+        status: status
     };
     $.ajax({
         url: url,
@@ -43,10 +48,9 @@ function getFormData() {
             $('#successCreate').modal('show');
         }
         setTimeout(function () {
-            document.location.assign(domain+'/criadouro');
+            document.location.assign(domain + '/denuncia');
         }, 3000);
     }).fail(function () {
 
     });
 }
-

@@ -1,7 +1,14 @@
+jQuery(document).ready(function () {
+    // binds form submission and fields to the validation engine
+    jQuery("#form").validationEngine('attach', {promptPosition: "bottomLeft", autoPositionUpdate: true});
+});
 $(function () {
     $('.demo2').colorpicker();
 });
 function getFormData() {
+    if (!$("#form").validationEngine('validate')) {
+        return;
+    }
     var bairro = new Array();
     $("input[type=checkbox][name='bairro']:checked").each(function () {
         bairro.push($(this).val());
@@ -102,7 +109,7 @@ function getFormData() {
             $('#successCreate').modal('show');
         }
         setTimeout(function () {
-            document.location.assign(domain+'/estrato');
+            document.location.assign(domain + '/estrato');
         }, 3000);
     }).fail(function () {
 

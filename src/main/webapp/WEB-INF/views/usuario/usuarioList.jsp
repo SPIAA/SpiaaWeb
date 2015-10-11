@@ -24,8 +24,9 @@
                                     <tr>
                                         <th>Usuário</th>
                                         <th>E-mail</th>
-                                        <th align="center" style="width:70px;" > </th>
-                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:80px;" > Bairros </th>
+                                        <th align="center" style="width:80px;" > Alterar</th>
+                                        <th align="center" style="width:80px;" > Excluir</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,6 +34,7 @@
                                         <tr>
                                             <td>${user.nome}</td>
                                             <td>${user.email}</td>
+                                            <td align="center"><a href="usuario/${user.id}/bairrousuario" data-toggle="tooltip" data-placement="top" title="Bairros sobre Responsabilidade"><i class="fa fa-2x fa-cubes text-warning"></i> </a></td>
                                             <td align="center"><a href="usuario/${user.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar"><i class="fa fa-2x fa-edit text-primary"></i></a></td>
                                             <td align="center"><a href="usuario/${user.id}/excluir" class="btn_pag" data-toggle="tooltip" data-placement="top" title="Excluir"><i class="fa fa-2x fa-trash-o text-danger"></i></a></td>
                                         </tr>

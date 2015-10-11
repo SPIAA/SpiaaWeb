@@ -1,13 +1,14 @@
 package spiaa.model.entity;
 
+import java.util.Date;
 import spiaa.model.base.BaseEntity;
 
 public class Denuncia extends BaseEntity {
 
     public static final String STATUS_ABERTA = "Aberta";
     public static final String STATUS_FECHADA = "Fechada";
-    public static final String STATUS_ENCAMINHADA= "Encaminhada";
-    
+    public static final String STATUS_ENCAMINHADA = "Encaminhada";
+
     private String endereco;
     private String numero;
     private String telefone;
@@ -17,6 +18,8 @@ public class Denuncia extends BaseEntity {
     private String conclusao;
     private Bairro bairro;
     private Usuario usuario;
+    private Date dataAbertura;
+    private Date dataFinalizacao;
 
     public String getEndereco() {
         return endereco;
@@ -88,6 +91,22 @@ public class Denuncia extends BaseEntity {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Date getDataAbertura() {
+        return dataAbertura;
+    }
+
+    public void setDataAbertura(Date dataAbertura) {
+        this.dataAbertura = dataAbertura;
+    }
+
+    public Date getDataFinalizacao() {
+        return dataFinalizacao;
+    }
+
+    public void setDataFinalizacao(Date dataFinalizacao) {
+        this.dataFinalizacao = dataFinalizacao;
     }
 
 }

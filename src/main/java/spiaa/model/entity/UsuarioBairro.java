@@ -9,13 +9,23 @@ import spiaa.model.base.BaseEntity;
  */
 public class UsuarioBairro extends BaseEntity {
 
-   private List<Bairro> bairros;
+    private Bairro bairro;
+    private Usuario usuario;
 
-   public List<Bairro> getBairros() {
-      return bairros;
-   }
+    public Bairro getBairro() {
+        return bairro;
+    }
 
-   public void setBairros(List<Bairro> bairros) {
-      this.bairros = bairros;
-   }
+    public void setBairro(Bairro bairro) {
+        this.bairro = bairro;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
 }

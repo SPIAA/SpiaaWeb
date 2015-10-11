@@ -25,7 +25,7 @@
                             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Sigla</th>
+                                        <th>Descrição</th>
                                         <th>Bairro</th>
                                         <th align="center" style="width:70px;" > </th>
                                         <th align="center" style="width:70px;" > </th>

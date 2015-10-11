@@ -18,6 +18,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
     public static final String CRITERION_USUARIO_EQ = "1";
     public static final String CRITERION_SENHA_EQ = "2";
     public static final String CRITERION_EMAIL_EQ = "3";
+    public static final String CRITERION_TIPO_EQ = "4";
     public static final String TIPO_ADMNISTRADOR = "ADM";
     public static final String TIPO_AGENTE = "AGS";
 
@@ -83,6 +84,11 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         String criterionEmailEq = (String) criteria.get(CRITERION_EMAIL_EQ);
         if (criterionEmailEq != null && !criterionEmailEq.trim().isEmpty()) {
             sql += " AND email = '" + criterionEmailEq + "'";
+        }
+
+        String criterionTipoEq = (String) criteria.get(CRITERION_TIPO_EQ);
+        if (criterionTipoEq != null && !criterionTipoEq.trim().isEmpty()) {
+            sql += " AND tipo = '" + criterionTipoEq + "'";
         }
         Statement s = conn.createStatement();
         ResultSet rs = s.executeQuery(sql);

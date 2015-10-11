@@ -24,6 +24,7 @@
                                 <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
+                                            <th>Data de abertura</th>
                                             <th>Bairro</th>
                                             <th>Endereco</th>
                                             <th>Numero</th>
@@ -35,14 +36,15 @@
                                     <tbody>
                                         <c:forEach items="${denunciaList}" var="denuncia">
                                             <tr>
+                                                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${denuncia.dataAbertura}" /></td>
                                                 <td>${denuncia.bairro.nome}</td>
                                                 <td>${denuncia.endereco}</td>
                                                 <td>${denuncia.numero}</td>
                                                 <td>${denuncia.usuario.nome}</td>
                                                 <td 
-                                                    <c:if test="${denuncia.status eq 'Aberta'}"> class="text-success "</c:if>
+                                                    <c:if test="${denuncia.status eq 'Aberta'}"> class="text-danger "</c:if>
                                                     <c:if test="${denuncia.status eq 'Encaminhada'}"> class="text-warning "</c:if>
-                                                    <c:if test="${denuncia.status eq 'Finalizada'}"> class="text-primary "</c:if>>
+                                                    <c:if test="${denuncia.status eq 'Finalizada'}"> class="text-success "</c:if>>
                                                     <b>${denuncia.status}</b>                                            </td>
                                                 <td align="center"><a href="denuncia/${denuncia.id}/visualiza" data-toggle="tooltip" data-placement="top" title="Visualizar"><i class="fa fa-2x fa-search-plus text-danger"></i></a></td>
                                             </tr>
@@ -67,7 +69,6 @@
                 $("#confirmDelete .btn-danger").attr("href", $(this).attr("href"));
                 return false;
             });
-
         </script>
     </body>
 </html>

@@ -64,7 +64,7 @@
                         <div class="alert alert-success">
                             <strong> Criadouro salvo com sucesso</strong> <br/>
                             <i class="fa fa-2x fa-spinner fa-pulse"></i>
-                            <p>Você esta sendo redimensionado....</p>
+                            <p>Você está sendo redirecionado.....</p>
                         </div>
 
                     </div>

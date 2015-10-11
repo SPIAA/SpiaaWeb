@@ -1,18 +1,23 @@
 package spiaa.controller;
 
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import spiaa.model.ServiceLocator;
+import spiaa.model.dao.UsuarioBairroDAO;
 import spiaa.model.entity.Bairro;
 import spiaa.model.entity.Denuncia;
 import spiaa.model.entity.Usuario;
+import spiaa.model.entity.UsuarioBairro;
 
 @Controller
 public class DenunciaController {
@@ -79,9 +84,20 @@ public class DenunciaController {
         Denuncia denuncia = new Denuncia();
 
         denuncia = ServiceLocator.getbaseDenunciaService().readById(id);
+        List<Usuario> usuarioList = new ArrayList<>();
 
-        Map<String, Object> criteria = new HashMap<String, Object>();
-        List<Usuario> usuarioList = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
+        List<UsuarioBairro> usuarioBairroList = new ArrayList<>();
+        Map<String, Object> criteriaUsuarioBairro = new HashMap<>();
+        criteriaUsuarioBairro.put(UsuarioBairroDAO.CRITERION_BAIRRO_ID_EQ, denuncia.getBairro().getId());
+        usuarioBairroList = ServiceLocator.getbaseUsuarioBairroService().readByCriteria(criteriaUsuarioBairro);
+
+        for (UsuarioBairro ub : usuarioBairroList) {
+            Usuario usuario = new Usuario();
+            usuario.setId(ub.getUsuario().getId());
+            usuario.setNome(ub.getUsuario().getNome());
+            usuarioList.add(usuario);
+        }
+
         mv = new ModelAndView("denuncia/denunciaView");
         mv.addObject("denuncia", denuncia);
         mv.addObject("usuario", usuarioList);
@@ -89,21 +105,18 @@ public class DenunciaController {
         return mv;
     }
 
-    @RequestMapping(value = "/denuncia/{id}/visualiza", method = RequestMethod.POST)
-    public ModelAndView visualizar(@PathVariable Long id, Denuncia denuncia) throws Exception {
-        ModelAndView mv = null;
-
-        ServiceLocator.getbaseDenunciaService().update(denuncia);
+    @RequestMapping(value = "/denuncia/visualiza", method = RequestMethod.POST)
+    @ResponseBody
+    public String visualizar(@RequestBody String jsonData) throws Exception {
+        String retorno = "error";
         try {
-            mv = new ModelAndView("denuncia/denunciaView");
-            Map<String, Object> criteria = new HashMap<String, Object>();
-            List<Usuario> usuarioList = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
-            mv.addObject("denuncia", denuncia);
-            mv.addObject("usuario", usuarioList);
-            mv.addObject("mensagem", "Denuncia salva com sucesso");
+            Gson gson = new Gson();
+            Denuncia denuncia = gson.fromJson(jsonData, Denuncia.class);
+            ServiceLocator.getbaseDenunciaService().update(denuncia);
+            retorno = "success";
         } catch (Exception e) {
-            mv.addObject("mensagem", "Erro ao Salvar a denuncia");
+            retorno = "retorno";
         }
-        return mv;
+        return retorno;
     }
 }

@@ -1,4 +1,7 @@
 function getFormData(obj) {
+     if(!$("#form").validationEngine('validate')){
+       return;
+   }
     var quantidadeCriadouro = document.getElementById("quantidadeCriadouro").value;
     var criadouro = document.getElementById("criadouro");
 

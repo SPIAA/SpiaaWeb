@@ -32,20 +32,20 @@
                             <br/>
                             <div class="col-lg-1 row"></div>      
                             <div class="col-lg-12 row">
-                                <form class="form-inline" role="form" method="POST">
+                                <form class="form-inline" role="form" method="POST" id="form">
                                     <div class="form-group col-md-5">
                                         <label class="" for="estrato">Nome :</label><br/>
                                         <input type="hidden" value="${estrato.id}" name="id">
                                         <div class="input-group margin-bottom-sm">
                                             <span class="input-group-addon"><i class="fa fa-globe "></i></span>
-                                            <input class="form-control" type="text" id="nome" name="nome" value="${estrato.nome}" placeholder="Digite o Nome do estrato">
+                                            <input class="form-control validate[required]" type="text" id="nome" name="nome" value="${estrato.nome}" placeholder="Digite o Nome do estrato">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5  demo2">
                                         <label class="" for="estrato">Cor para o mapa :</label><br/>
                                         <div class="input-group margin-bottom-sm">
                                             <span class="input-group-addon"><i  class="fa fa-circle-o"></i></span>
-                                            <input type="text" value="${estrato.cor}" name="cor" class="form-control" />
+                                            <input type="text" value="${estrato.cor}" name="cor" class="form-control validate[required]"  />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-2 ">
@@ -142,7 +142,7 @@
                             <div class="alert alert-success">
                                 <strong> Estrato salvo com sucesso</strong> <br/>
                                 <i class="fa fa-2x fa-spinner fa-pulse"></i>
-                                <p>Você esta sendo redimensionado....</p>
+                                 <p>Você está sendo redirecionado.....</p>
                             </div>
 
                         </div>

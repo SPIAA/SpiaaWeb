@@ -3,6 +3,11 @@ jQuery(document).ready(function () {
     jQuery("#form").validationEngine('attach', {promptPosition: "bottomLeft", autoPositionUpdate: true});
 });
 function getFormData() {
+    
+   if(!$("#form").validationEngine('validate')){
+       return;
+   }
+    
     var id = document.getElementById("id").value;
     var url = "";
     var domain = "";

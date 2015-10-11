@@ -9,23 +9,32 @@ import spiaa.model.base.BaseEntity;
 
 public class Quarteirao extends BaseEntity {
 
-  private String Descricao;
-  private Bairro bairro;
+    private String descricao;
+    private Bairro bairro;
+    private Integer quantidade;
 
-  public String getDescricao() {
-    return Descricao;
-  }
+    public String getDescricao() {
+        return descricao;
+    }
 
-  public void setDescricao(String Descricao) {
-    this.Descricao = Descricao;
-  }
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-  public Bairro getBairro() {
-    return bairro;
-  }
+    public Bairro getBairro() {
+        return bairro;
+    }
 
-  public void setBairro(Bairro bairro) {
-    this.bairro = bairro;
-  }
+    public void setBairro(Bairro bairro) {
+        this.bairro = bairro;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
 
 }

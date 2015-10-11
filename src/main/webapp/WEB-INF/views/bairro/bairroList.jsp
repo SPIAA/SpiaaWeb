@@ -44,8 +44,8 @@
                                         <tr>
 
                                             <td>${bairro.nome}</td>
-                                            <td align="center"><a href="#"><i class="fa fa-2x fa-users text-warning"></i> </a></td>
-                                            <td align="center"><a href="quarteirao/${bairro.id}"><i class="fa fa-2x fa-edit text-primary"></i> </a></td>
+                                            <td align="center"><a href="bairro/${bairro.id}/bairrousuario"><i class="fa fa-2x fa-users text-warning"></i> </a></td>
+                                            <td align="center"><a href="bairro/${bairro.id}/quarteirao"><i class="fa fa-2x fa-edit text-primary"></i> </a></td>
                                         </tr>
                                     </c:forEach>
 
