@@ -138,7 +138,7 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
     }
 
     public void recuperarSenhaCreate(RecuperarSenha recuperar, Connection conn) throws Exception {
-        String sql = "INSERT INTO recupera_senha( usuario_fk, email, token)  VALUES ( ?, ?, ?) RETURNING id;";
+        String sql = "INSERT INTO recupera_senha( usuario_fk, email, token, data_pedido)  VALUES ( ?, ?, ?, now()) RETURNING id;";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setLong(++i, recuperar.getUsuario().getId());
@@ -155,7 +155,11 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
     }
 
     public void recuperarSenhaDelete(Long id, Connection conn) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM recupera_senha  WHERE id=? ";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setLong(1, id);
+        ps.execute();
+        ps.close();
     }
 
     public RecuperarSenha recuperarSenhaReadByUserToken(String usuario, String token, Connection conn) throws Exception {
@@ -166,14 +170,28 @@ public class UsuarioDAO implements BaseDAO<Usuario> {
         ResultSet rs = s.executeQuery(sql);
         while (rs.next()) {
             Usuario usuarioObj = new Usuario();
-            usuarioObj.setId(rs.getLong("id"));
+            usuarioObj.setId(rs.getLong("usuario_fk"));
             usuarioObj.setEmail(rs.getString("email"));
 
+            recuperarSenha.setId(rs.getLong("id"));
+            recuperarSenha.setToken(rs.getString("token"));
             recuperarSenha.setUsuario(usuarioObj);
         }
         s.close();
         rs.close();
 
         return recuperarSenha;
+    }
+
+    public void redefinirSenha(RecuperarSenha recuperar, Connection conn) throws Exception {
+        String sql = "UPDATE usuario SET senha=?  WHERE id=?;";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        int i = 0;
+        ps.setString(++i, recuperar.getUsuario().getSenha());
+        ps.setLong(++i, recuperar.getUsuario().getId());
+
+        ps.execute();
+        ps.close();
+
     }
 }

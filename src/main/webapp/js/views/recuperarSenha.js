@@ -9,25 +9,35 @@ function getFormData() {
     if (!$("#form").validationEngine('validate')) {
         return;
     }
-    var id = $("input[name=id").val();
+    var confirmaSenha = $("input[name=confirmaSenha").val();
+    var senha = $("input[name=senha").val();
+
+    if (senha != confirmaSenha) {
+        $('#warning').modal('show');
+        return;
+    }
+
     var url = "";
     var domain = "";
     if (document.domain == "localhost") {
         domain = "/Spiaa"
     }
-    if (id != null && id != "") {
-        url = domain + "/bairro/alterar";
-    } else {
-        url = domain + "/bairro/novo";
-        id = null;
-    }
-    var nome = $("input[name=nome").val();
-    var coordenadas = document.getElementById("coordenadas").value;
+
+    url = domain + "/login/redefinirsenha";
+
+    var userId = $("input[name=userId").val();
+    var id = $("input[name=id").val();
+    var token = $("input[name=token").val();
+    var email = $("input[name=email").val();
 
     var jsonData = {
+        usuario: {
+            id: userId,
+            email: email,
+            senha: senha
+        },
         id: id,
-        nome: nome,
-        coordenadas: coordenadas
+        token: token,
     };
     $.ajax({
         url: url,
@@ -45,10 +55,12 @@ function getFormData() {
         if (retorno != null) {
             if (retorno == "success") {
                 $('#successCreate').modal('show');
+            } else if (retorno == "error") {
+                $('#errorCreate').modal('show');
             }
         }
         setTimeout(function () {
-            document.location.assign(domain + '/bairro');
+            document.location.assign(domain + '/login');
         }, 3000);
     }).fail(function () {
 

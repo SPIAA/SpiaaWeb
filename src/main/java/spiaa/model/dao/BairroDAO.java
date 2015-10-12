@@ -15,9 +15,10 @@ public class BairroDAO implements BaseDAO<Bairro> {
 
     @Override
     public void create(Bairro entity, Connection conn) throws Exception {
-        String sql = "INSERT INTO bairro(nome) VALUES (?)RETURNING id;";
+        String sql = "INSERT INTO bairro(nome, coordenadas) VALUES (?,?)RETURNING id;";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, entity.getNome());
+        ps.setString(2, entity.getCoordenadas());
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             entity.setId(rs.getLong("id"));
@@ -54,14 +55,14 @@ public class BairroDAO implements BaseDAO<Bairro> {
         Bairro bairro = null;
 
         String sql = "SELECT * FROM bairro WHERE 1=1  ";
-        
+
         String criterionNomeILike = (String) criteria.get(CRITERION_NOME_ILIKE);
         if (criterionNomeILike != null && (!criterionNomeILike.isEmpty())) {
             sql += " AND nome ILKE '%" + criterionNomeILike + "%'";
         }
 
         sql += " order By bairro.nome ASC";
-        
+
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
@@ -78,10 +79,11 @@ public class BairroDAO implements BaseDAO<Bairro> {
 
     @Override
     public void update(Bairro entity, Connection conn) throws Exception {
-        String sql = "UPDATE bairro nome=? WHERE id=?;";
+        String sql = "UPDATE bairro SET nome=?, coordenadas=? WHERE id=? ";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, entity.getNome());
-        ps.setLong(2, entity.getId());
+        ps.setString(2, entity.getCoordenadas());
+        ps.setLong(3, entity.getId());
         ps.execute();
         ps.close();
     }

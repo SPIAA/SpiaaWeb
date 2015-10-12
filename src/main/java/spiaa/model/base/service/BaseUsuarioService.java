@@ -17,4 +17,7 @@ public interface BaseUsuarioService extends BaseService<Usuario> {
     public RecuperarSenha recuperarSenhaReadByUserToken(String usuario, String token) throws Exception;
 
     public void enviarEmailRecuperarSenha(RecuperarSenha recuperarSenha) throws Exception;
+
+    public void redefinirSenha(RecuperarSenha recuperar) throws Exception;
+
 }

@@ -96,4 +96,9 @@ public class AgenteSaudeService implements BaseUsuarioService {
       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    }
 
+    @Override
+    public void redefinirSenha(RecuperarSenha recuperar) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

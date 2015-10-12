@@ -67,7 +67,7 @@ public class UsuarioController {
             List<Usuario> usuarioList = ServiceLocator.getBaseUsuarioService().readByCriteria(criteria);
             if (usuarioList.size() > 1 || usuarioList.size() <= 0) {
                 mv = new ModelAndView("login/recuperarSenhaForm");
-                mv.addObject("msg", "Prcesso não pode ser concluído. Por favor verifique com o administrador!");
+                mv.addObject("msg", "Processo n&atilde;o pode ser conclu&iacute;do. Por favor verifique com o administrador!");
             } else {
                 RecuperarSenha recuperarSenha = new RecuperarSenha();
                 recuperarSenha.setUsuario(usuarioList.get(0));
@@ -85,11 +85,10 @@ public class UsuarioController {
     public ModelAndView redefinirSenha(String usuario, String confirmacao) throws Exception {
         ModelAndView mv = null;
         try {
-            Usuario usuarioobj = new Usuario();
             RecuperarSenha recuperarSenha = null;
             recuperarSenha = ServiceLocator.getBaseUsuarioService().recuperarSenhaReadByUserToken(usuario, confirmacao);
             if (recuperarSenha != null) {
-                mv = new ModelAndView("redirect:/login/redefinirsenha");
+                mv = new ModelAndView("login/redefinirsenha");
                 mv.addObject("redefinirsenha", recuperarSenha);
             } else {
                 mv = new ModelAndView("login/errorredefinirsenha");
@@ -102,13 +101,19 @@ public class UsuarioController {
     }
 
     @RequestMapping(value = "/login/redefinirsenha", method = RequestMethod.POST)
-    public ModelAndView redefinirSenha() throws Exception {
-        ModelAndView mv = null;
+    @ResponseBody
+    public String redefinirSenha(@RequestBody String jsonData) throws Exception {
+        String resposta = "error";
         try {
-
+            Gson gson = new Gson();
+            RecuperarSenha recuperar = gson.fromJson(jsonData, RecuperarSenha.class);
+            ServiceLocator.getBaseUsuarioService().redefinirSenha(recuperar);
+            resposta = "success";
         } catch (Exception e) {
+            resposta = "error";
+            e.printStackTrace();
         }
-        return mv;
+        return resposta;
     }
 
     @RequestMapping(value = "/usuario", method = RequestMethod.GET)

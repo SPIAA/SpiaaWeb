@@ -35,6 +35,7 @@
                                     <tr>
 
                                         <th>Nome</th>
+                                        <th align="center" style="width:70px;" > Alterar</th>
                                         <th align="center" style="width:70px;" > Responsáveis</th>
                                         <th align="center" style="width:70px;" > Quarteirão</th>
                                     </tr>
@@ -44,8 +45,9 @@
                                         <tr>
 
                                             <td>${bairro.nome}</td>
-                                            <td align="center"><a href="bairro/${bairro.id}/bairrousuario"><i class="fa fa-2x fa-users text-warning"></i> </a></td>
-                                            <td align="center"><a href="bairro/${bairro.id}/quarteirao"><i class="fa fa-2x fa-edit text-primary"></i> </a></td>
+                                            <td align="center"><a href="bairro/${bairro.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar Bairro"><i class="fa fa-2x fa-edit text-primary"></i> </a></td>
+                                            <td align="center"><a href="bairro/${bairro.id}/bairrousuario" data-toggle="tooltip" data-placement="top" title="Agentes Responsáveis"><i class="fa fa-2x fa-users text-warning"></i> </a></td>
+                                            <td align="center"><a href="bairro/${bairro.id}/quarteirao" data-toggle="tooltip" data-placement="top" title="Listagem de quarteirões"><i class="fa fa-2x fa-object-group text-info"></i> </a></td>
                                         </tr>
                                     </c:forEach>
 

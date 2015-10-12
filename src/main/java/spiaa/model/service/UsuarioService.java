@@ -1,6 +1,7 @@
 package spiaa.model.service;
 
 import java.math.BigInteger;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -10,8 +11,10 @@ import java.util.Map;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.HtmlEmail;
 import spiaa.model.ConnectionManager;
+import spiaa.model.ServiceLocator;
 import spiaa.model.base.service.BaseUsuarioService;
 import spiaa.model.dao.UsuarioDAO;
+import spiaa.model.entity.Parametros;
 import spiaa.model.entity.RecuperarSenha;
 import spiaa.model.entity.Usuario;
 
@@ -103,7 +106,7 @@ public class UsuarioService implements BaseUsuarioService {
             }
             conn.close();
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
             throw e;
         }
         return usuarioLogado;
@@ -146,7 +149,16 @@ public class UsuarioService implements BaseUsuarioService {
 
     @Override
     public void recuperarSenhaDelete(Long id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        try {
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.recuperarSenhaDelete(id, conn);
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+        }
     }
 
     @Override
@@ -166,27 +178,52 @@ public class UsuarioService implements BaseUsuarioService {
 
     @Override
     public void enviarEmailRecuperarSenha(RecuperarSenha recuperarSenha) throws Exception {
+        Map<String, Object> criteria = new HashMap<>();
+        List<Parametros> parametrosList = ServiceLocator.getbaseParametrosService().readByCriteria(criteria);
+        Parametros parametros = null;
+        if (parametrosList != null && parametrosList.size() > 0) {
+            parametros = parametrosList.get(0);
+        } else {
+            return;
+        }
 
         // Create the email message
         HtmlEmail email = new HtmlEmail();
-        email.setHostName("smtp.googlemail.com");
-        email.setSmtpPort(465);
-        email.setAuthenticator(new DefaultAuthenticator("coloque o email aqui", "coloque a senha aqui"));
+        email.setHostName(parametros.getSmtp());
+        email.setSmtpPort(parametros.getPorta());
+        email.setAuthenticator(new DefaultAuthenticator(parametros.getEmail(), parametros.getSenha()));
         email.setSSLOnConnect(true);
         email.addTo(recuperarSenha.getUsuario().getEmail(), recuperarSenha.getUsuario().getNome());
-        email.setFrom("felipepdsouza@gmail.com", "SPIAA");
+        email.setFrom(parametros.getEmail(), "SPIAA");
         email.setSubject("SPIAA - Recuperar Senha");
 
+        URL url = new URL(parametros.getCaminhoHostName());
         String msg = "<html>";
         msg += "<p>Ola " + recuperarSenha.getUsuario().getNome() + "!</p>";
         msg += "<p>Clique no link para redefinir sua senha :<p/>";
-        msg += "<a href='localhost:8084/Spiaa/redefinirsenha?usuario=" + recuperarSenha.getUsuario().getEmail() + "&confirmacao=" + recuperarSenha.getToken() + "'> redefnir senha</a>";
-        msg += "<p>Caso o link não estiver habilitado copie o texto e cole no seu navegador :<p/>";
-        msg += "localhost:8084/Spiaa/redefinirsenha?usuario=" + recuperarSenha.getUsuario().getEmail() + "&confirmacao=" + recuperarSenha.getToken();
+        msg += "<a href='" + url + "/login/redefinirsenha?usuario=" + recuperarSenha.getUsuario().getEmail() + "&confirmacao=" + recuperarSenha.getToken() + "'> redefnir senha</a>";
+        msg += "<p>Caso o link n&atildeo;o estiver habilitado copie o texto e cole no seu navegador :<p/>";
+        msg += url + "/login/redefinirsenha?usuario=" + recuperarSenha.getUsuario().getEmail() + "&confirmacao=" + recuperarSenha.getToken();
         msg += "</html>";
         // set the html message
         email.setHtmlMsg(msg);
         // send the email
         email.send();
+    }
+
+    @Override
+    public void redefinirSenha(RecuperarSenha recuperar) throws Exception {
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        try {
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.redefinirSenha(recuperar, conn);
+            recuperarSenhaDelete(recuperar.getId());
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+            throw e;
+        }
     }
 }

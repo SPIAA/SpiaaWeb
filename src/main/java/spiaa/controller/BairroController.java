@@ -68,27 +68,25 @@ public class BairroController {
 
     }
 
-    @RequestMapping(value = "/bairro/{id}/alterar", method = RequestMethod.GET)
+    @RequestMapping(value = "bairro/{id}/alterar", method = RequestMethod.GET)
     public ModelAndView update(@PathVariable Long id) throws Exception {
-        Bairro criadouro = ServiceLocator.getBaseBairroService().readById(id);
-        ModelAndView mv = new ModelAndView("criadouro/criadouroForm");
-        mv.addObject("criadouro", criadouro);
-
+        Bairro bairro = ServiceLocator.getBaseBairroService().readById(id);
+        ModelAndView mv = new ModelAndView("bairro/bairroForm");
+        mv.addObject("bairro", bairro);
         return mv;
     }
 
-    @RequestMapping(value = "/bairro/alterar", method = RequestMethod.POST)
+    @RequestMapping(value = "bairro/alterar", method = RequestMethod.POST)
     @ResponseBody
-    public String update(@RequestBody String jsonData, HttpServletResponse response) throws Exception {
+    public String update(@RequestBody String jsonData) throws Exception {
         String retorno = "error";
         try {
             Gson gson = new Gson();
             Bairro bairro = gson.fromJson(jsonData, Bairro.class);
             ServiceLocator.getBaseBairroService().update(bairro);
             retorno = "success";
-            response.setStatus(200);
         } catch (Exception e) {
-            response.setStatus(500);
+            e.printStackTrace();
         }
         return retorno;
     }
@@ -114,7 +112,7 @@ public class BairroController {
             mv.addObject("agenteList", agente);
             mv.addObject("bairro", bairro);
             mv.addObject("usuarioBairroList", usuarioBairroList);
-            
+
         } catch (Exception ex) {
             mv = new ModelAndView("erro/erro");
             mv.addObject("erro", ex);

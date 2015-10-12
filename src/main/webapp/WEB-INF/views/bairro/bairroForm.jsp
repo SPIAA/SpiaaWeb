@@ -3,22 +3,15 @@
 <%@include file="../imports.jspf" %>
 <!DOCTYPE html>
 <html lang="pt-br">
-
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
-        <link href="<c:url value="/css/jquery-ui.min.css"/>" rel="stylesheet">
-        <script src="<c:url value="/js/jquery-ui.min.js"/>"></script>
+        <script src="<c:url value="/js/views/bairro.js"/>"></script>
     </head>
-
     <body>
-
         <div id="wrapper">
-
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
                 <jsp:include page="../template-admin/menutop.jsp"/>
-
             </nav>
 
             <div id="page-wrapper">
@@ -30,16 +23,24 @@
                                 Bairro
                                 <c:if test="${not empty bairro}"><small>Alterar</small></c:if>
                                 <c:if test="${empty bairro}"><small>Novo</small></c:if>
-                            </h1>
-                            <form class="form-group" method="POST">
-                                <div class="form-group col-md-4 ">
+                                </h1>
+                                <form class="form-group" method="POST">
+                                    <input type="hidden"  name="id" value="${bairro.id}"/>
+                                <div class="form-group col-md-12">
                                     <label for="nome">Nome: </label>
-                                    <input type="text" class="form-control"  name="nome" value="${user.nome}"/>
+                                    <input type="text" class="form-control validate[required]"  name="nome" value="${bairro.nome}"/>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="coordenadas">Coordenadas: </label>
+                                    <textarea class="form-control validate[required]" rows="5" name="coordenadas" id="coordenadas">${bairro.coordenadas}</textarea>
                                 </div>
 
-                                <br/><br/><br/><br/><br/><br/><br/><br/>
                                 <div class="col-lg-12" align="center">
-                                    <button class="btn btn-success " >Salvar</button>  
+                                    <div class="form-group col-md-5 "></div>
+                                    <div class="form-group col-md-2 ">
+                                        <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
+                                    </div>
+                                    <div class="form-group col-md-5 "></div>
                                 </div>
                             </form>
                             <br/>
@@ -51,5 +52,23 @@
             <!-- /#page-wrapper -->
         </div>
         <!-- /#wrapper -->     
+        <div class="modal fade" id="successCreate">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header btn-success">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title">SPIAA</h3>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="alert alert-success">
+                            <strong > Salvando Bairro, aguarde por favor..</strong> <br/>
+                            <i class="fa fa-2x fa-spinner fa-pulse"></i>
+                            <p>Você será redirecionado.....</p>
+                        </div>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </body>
 </html>

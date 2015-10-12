@@ -70,6 +70,11 @@ public class AAFilter extends HandlerInterceptorAdapter {
             if (uri.startsWith("/login")) {
                 ok = true;
             }
+
+            if (uri.startsWith("/login/redefinirsenha")) {
+                ok = true;
+            }
+
             if (uri.startsWith("/autenticar/agente")) {
                 ok = true;
             }
@@ -98,7 +103,7 @@ public class AAFilter extends HandlerInterceptorAdapter {
 
         //Finalizando
         if (!ok) {
-            response.sendRedirect("/login/error");
+            response.sendRedirect("login/error");
         }
 
         return ok;

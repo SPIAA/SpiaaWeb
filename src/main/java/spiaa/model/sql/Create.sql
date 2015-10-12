@@ -51,13 +51,6 @@ CREATE TABLE quarteirao
 
 ALTER TABLE  quarteirao ADD CONSTRAINT quarteirao_bairro_fk FOREIGN KEY(bairro_fk)REFERENCES bairro(id); 
 
--- periodo_tratamento
-CREATE TABLE periodo_tratamento(
-id bigserial NOT NULL,
-ano Date NOT NULL,
- CONSTRAINT periodo_tratamento_id_pk PRIMARY KEY (id)
-);
-
 --Estrato
 CREATE TABLE estrato(
 id BIGSERIAL NOT NULL,
@@ -225,3 +218,20 @@ FOREIGN KEY(usuario_fk)REFERENCES usuario(id);
 
 ALTER TABLE  usuario_bairro ADD CONSTRAINT usuario_bairro_bairro_fk
 FOREIGN KEY(bairro_fk)REFERENCES bairro(id); 
+
+-- parametros
+CREATE TABLE parametros(
+id bigserial NOT NULL,
+hostname character varying  NOT NULL,
+porta integer  NOT NULL,
+email character varying  NOT NULL,
+senha character varying  NOT NULL,
+CONSTRAINT parametros_id_pk PRIMARY KEY (id)
+);
+
+-- periodo_tratamento
+CREATE TABLE periodo_tratamento(
+id bigserial NOT NULL,
+ano Date NOT NULL,
+ CONSTRAINT periodo_tratamento_id_pk PRIMARY KEY (id)
+);

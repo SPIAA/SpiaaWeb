@@ -16,18 +16,24 @@ function getFormData() {
         domain = "/Spiaa"
     }
     if (id != null && id != "") {
-        url = domain + "/bairro/alterar";
+        url = domain + "/parametros/alterar";
     } else {
-        url = domain + "/bairro/novo";
+        url = domain + "/parametros/novo";
         id = null;
     }
-    var nome = $("input[name=nome").val();
-    var coordenadas = document.getElementById("coordenadas").value;
+    var caminhoHostName = $("input[name=caminhoHostName").val();
+    var smtp = $("input[name=smtp").val();
+    var porta = $("input[name=porta").val();
+    var email = $("input[name=email").val();
+    var senha = $("input[name=senha").val();
 
     var jsonData = {
         id: id,
-        nome: nome,
-        coordenadas: coordenadas
+        smtp: smtp,
+        caminhoHostName: caminhoHostName,
+        porta: porta,
+        email: email,
+        senha: senha,
     };
     $.ajax({
         url: url,
@@ -48,7 +54,7 @@ function getFormData() {
             }
         }
         setTimeout(function () {
-            document.location.assign(domain + '/bairro');
+            document.location.assign(domain + '/parametros');
         }, 3000);
     }).fail(function () {
 

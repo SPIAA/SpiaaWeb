@@ -16,7 +16,10 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${usuarioLogado.nome} <b class="caret"></b></a>
         <ul class="dropdown-menu">
             <li>
-                <a href="<c:url value="/usuario/${usuarioLogado.id}/perfil"/>"> <i class="fa fa-cog"></i> Perfil</a>
+                <a href="<c:url value="/usuario/${usuarioLogado.id}/perfil"/>"> <i class="fa fa-user"></i> Perfil</a>
+            </li>
+            <li>
+                <a href="<c:url value="/parametros"/>"> <i class="fa fa-cog"></i> Configura&ccedil;&otilde;es</a>
             </li>
             <li>
                 <a href="<c:url value="/logout"/>"> <i class="fa fa-sign-out"></i> Sair</a>
