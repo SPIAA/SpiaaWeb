@@ -145,7 +145,7 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
         int i = 0;
         ps.setString(++i, entity.getObservacao());
         ps.setString(++i, entity.getStatus());
-        ps.setDate(++i, new Date(entity.getDataAbertura().getTime()));
+        ps.setDate(++i, new Date(entity.getDataFinalizacao().getTime()));
         ps.setLong(++i, entity.getId());
         ps.execute();
         ps.close();
