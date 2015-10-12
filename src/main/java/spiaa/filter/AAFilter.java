@@ -103,7 +103,7 @@ public class AAFilter extends HandlerInterceptorAdapter {
 
         //Finalizando
         if (!ok) {
-            response.sendRedirect("login/error");
+            response.sendRedirect("/login/error");
         }
 
         return ok;
