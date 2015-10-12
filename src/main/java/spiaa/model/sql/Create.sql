@@ -1,6 +1,6 @@
 -- USUARIO
 CREATE TABLE usuario(
-id bigserial NOT NULL,
+ id bigserial NOT NULL,
   nome character varying(100) NOT NULL,
   usuario character varying(100) NOT NULL,
   senha character varying(50) NOT NULL,
@@ -23,16 +23,18 @@ CREATE TABLE bairro
 --Denuncia
 CREATE TABLE denuncia
 (
-  id bigserial NOT NULL,
+ id bigserial NOT NULL,
   endereco character varying(50),
   numero character varying(20),
   telefone character varying(20),
   irregularidade text,
   observacao text,
   conclusao text,
-  status character varying(10),
+  status character varying(20),
   bairro_fk bigint NOT NULL,
   usuario_fk bigint,
+  data_abertura date,
+  data_finalizacao date,
   CONSTRAINT denuncia_pkey PRIMARY KEY (id)
 );
 
@@ -46,7 +48,8 @@ CREATE TABLE quarteirao
   id bigserial NOT NULL,
   descricao character varying(10),
   bairro_fk bigint NOT NULL,
-  CONSTRAINT quarteirao_pkey PRIMARY KEY (id)
+  CONSTRAINT quarteirao_pkey PRIMARY KEY (id),
+ CONSTRAINT quarteirao_descricao_uk UNIQUE (descricao)
 );
 
 ALTER TABLE  quarteirao ADD CONSTRAINT quarteirao_bairro_fk FOREIGN KEY(bairro_fk)REFERENCES bairro(id); 
@@ -64,7 +67,7 @@ ALTER TABLE estrato ADD CONSTRAINT estrato_periodo_tratamento_fk  FOREIGN KEY(pe
 --Bairro Estrato
 CREATE TABLE bairro_estrato
 (
-  bairro_fk bigint NOT NULL,
+ bairro_fk bigint NOT NULL,
   estrato_fk bigint NOT NULL,
   codigo integer,
   armazem integer,
@@ -75,7 +78,7 @@ CREATE TABLE bairro_estrato
   terreno_baldio integer,
   habitante integer,
   outros integer,
-  ultima_atualizacao timestamp without time zone
+  ultima_atualizacao timestamp without time zone,
 );
 
 ALTER TABLE  bairro_estrato ADD CONSTRAINT bairro_estrato_bairro_fk FOREIGN KEY(bairro_fk)REFERENCES bairro(id); 
@@ -199,12 +202,11 @@ FOREIGN KEY(bairro_fk)REFERENCES bairro(id);
 
 CREATE TABLE recupera_senha
 (
-  id bigserial NOT NULL,
+ id bigserial NOT NULL,
   usuario_fk bigint NOT NULL,
   email character varying NOT NULL,
   token character varying NOT NULL,
   data_pedido timestamp with time zone,
-  CONSTRAINT recuperar_senha_id_pk PRIMARY KEY (id)
 );
 
 --usuario_bairro
@@ -220,13 +222,15 @@ ALTER TABLE  usuario_bairro ADD CONSTRAINT usuario_bairro_bairro_fk
 FOREIGN KEY(bairro_fk)REFERENCES bairro(id); 
 
 -- parametros
-CREATE TABLE parametros(
-id bigserial NOT NULL,
-hostname character varying  NOT NULL,
-porta integer  NOT NULL,
-email character varying  NOT NULL,
-senha character varying  NOT NULL,
-CONSTRAINT parametros_id_pk PRIMARY KEY (id)
+CREATE TABLE parametros
+(
+  id bigserial NOT NULL,
+  hostname character varying,
+  porta integer NOT NULL,
+  email character varying,
+  senha character varying,
+  smtp character varying,
+  CONSTRAINT parametros_id_pk PRIMARY KEY (id)
 );
 
 -- periodo_tratamento

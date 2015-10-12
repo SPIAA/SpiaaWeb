@@ -71,10 +71,6 @@ public class AAFilter extends HandlerInterceptorAdapter {
                 ok = true;
             }
 
-            if (uri.startsWith("/login/redefinirsenha")) {
-                ok = true;
-            }
-
             if (uri.startsWith("/autenticar/agente")) {
                 ok = true;
             }
