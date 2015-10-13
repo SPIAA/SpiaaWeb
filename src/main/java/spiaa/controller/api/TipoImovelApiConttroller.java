@@ -24,7 +24,7 @@ public class TipoImovelApiConttroller {
 
     @RequestMapping(value = "/api/tipoImovel", method = RequestMethod.POST)
     public @ResponseBody
-    List<TipoImoveis> getInseticidas(@RequestBody Usuario agenteSaude) throws Exception {
+    List<TipoImoveis> getTiposImoveis(@RequestBody Usuario agenteSaude) throws Exception {
         List<TipoImoveis> tipoImovelList = null;
         try {
             Map<String, Object> criteria = new HashMap<String, Object>();
