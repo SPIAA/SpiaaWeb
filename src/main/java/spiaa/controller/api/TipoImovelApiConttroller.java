@@ -8,6 +8,7 @@ package spiaa.controller.api;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,9 +21,10 @@ import spiaa.model.entity.Usuario;
  *
  * @author Felipe de Souza
  */
+@Controller
 public class TipoImovelApiConttroller {
 
-    @RequestMapping(value = "/api/tipoImovel", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/tipoimovel", method = RequestMethod.POST)
     public @ResponseBody
     List<TipoImoveis> getTiposImoveis(@RequestBody Usuario agenteSaude) throws Exception {
         List<TipoImoveis> tipoImovelList = null;
