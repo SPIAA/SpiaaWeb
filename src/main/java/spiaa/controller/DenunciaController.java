@@ -23,29 +23,31 @@ import spiaa.model.entity.UsuarioBairro;
 public class DenunciaController {
 
     @RequestMapping(value = "/denunciaform", method = RequestMethod.GET)
-    public ModelAndView novo() throws Exception {
+    @ResponseBody
+    public List<Bairro> novo() throws Exception {
 
         List<Bairro> bairroList = new ArrayList<Bairro>();
         Map<String, Object> criteria = new HashMap<String, Object>();
         bairroList = ServiceLocator.getBaseBairroService().readByCriteria(criteria);
-        ModelAndView mv = new ModelAndView("denuncia/denunciaForm");
-        mv.addObject("bairroList", bairroList);
 
-        return mv;
+        return bairroList;
     }
 
     @RequestMapping(value = "/denunciaform", method = RequestMethod.POST)
-    public ModelAndView novo(Denuncia denuncia) {
-        ModelAndView mv = null;
+    @ResponseBody
+    public String novo(@RequestBody String jsonData) {
+        String retorno = "error";
         try {
+            Gson gson = new Gson();
+            Denuncia denuncia = gson.fromJson(jsonData, Denuncia.class);
             ServiceLocator.getbaseDenunciaService().create(denuncia);
-            mv = new ModelAndView("denuncia/denunciaSucesso");
-
+            retorno = "success";
         } catch (Exception e) {
+            retorno = "error";
             e.printStackTrace();
         }
 
-        return mv;
+        return retorno;
     }
 
     @RequestMapping(value = "/denuncia/list", method = RequestMethod.GET)

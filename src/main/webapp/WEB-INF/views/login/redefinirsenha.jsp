@@ -1,148 +1,138 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>SPIAA - FAITEC 2014</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-
-        <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
-        <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
-        <!--script src="js/less-1.3.3.min.js"></script-->
-        <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
-        <!-- Bootstrap Core CSS -->
-        <link href="<c:url value="/css/bootstrap.min-3.css"/>" rel="stylesheet">
-        <!-- Custom CSS -->  
-        <link href="<c:url value="/css/sb-admin.css"/>" rel="stylesheet">
-        <!-- Custom Fonts -->
-        <link href="<c:url value="/css/font-awesome.min.css"/>" rel="stylesheet">
-        <!-- data tables -->
-
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <title>SPIAA - Sistema de Prevenção de infestação do Aedes Aegypti</title>
+        <!-- core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/animate.min.css" rel="stylesheet">
+        <link href="../css/owl.carousel.css" rel="stylesheet">
+        <link href="../css/owl.transitions.css" rel="stylesheet">
+        <link href="../css/prettyPhoto.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <link href="../css/responsive.css" rel="stylesheet">
         <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-        <![endif]-->
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->       
+        <link rel="shortcut icon" href="../img/icone_spiaa.png">
+    </head><!--/head-->
 
-        <link rel="shortcut icon" href="<c:url value="/img/icone_spiaa.png"/>">
-        <!-- jQuery Version 1.11.0 -->
-        <script src="<c:url value="/js/jquery.min.js"/>"></script>
+    <body id="home" class="homepage">
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="<c:url value="/js/jquery.dataTables.js"/>"></script>
-        <script src="<c:url value="/js/dataTables.bootstrap.min.js"/>"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+        <header id="header">
+            <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="<c:url value="/"/>"><img src="../img/logo.png" alt="logo"></a>
+                    </div>
 
-        <script src="<c:url value="/js/jquery.validationEngine-pt_BR.js"/>" type="text/javascript" charset="utf-8"></script>
-        <script src="<c:url value="/js/jquery.validationEngine.js"/>" type="text/javascript" charset="utf-8"></script>
+                    <div class="collapse navbar-collapse navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li class="scroll "><a href="<c:url value="/"/>">Início</a></li>
+                            <li class="scroll"><a href="<c:url value="/mapa"/>"  target="_blank">Mapa</a></li>
+                            <li class="scroll"><a href="<c:url value="/#"/>">Recursos</a></li>
+                            <li class="scroll"><a href="<c:url value="/"/>">Equipe</a></li>
+                            <li class="scroll"><a href="<c:url value="/"/>">Denuncia</a></li>
+                            <li class="scroll active"><a href="<c:url value="/login"/>">Restrito</a></li>                        
+                        </ul>
+                    </div>
+                </div><!--/.container-->
+            </nav><!--/nav-->
+        </header><!--/header-->
+        <section id="features">
+            <div class="container">
+                <div class="row clearfix">
 
-        <script src="<c:url value="/js/views/recuperarSenha.js"/>"></script>
-    </head>
 
-    <body>
-        <div class="container">
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <div class="row clearfix">
-                        <div class="col-md-12 column">
-                            <div class="col-md-2 column">
-                                <img alt="" src="<c:url value="/img/MiniLogo.png"/>" class="img-responsive"> 
+                    <div class="col-md-2 column"></div>
+                    <div class="col-md-8 column" style="border: 1px silver solid; border-radius: 15px;">
+                        <div class="col-md-12 text-center">
+                            <h3>Recupera&ccedil;&atilde;o de senha</h3>
+                        </div>
+                        <form role="form" class="form-group" method="POST">
+                            <input type="hidden" id="id" name="id" value="${redefinirsenha.id}" />
+                            <input type="hidden" id="token" name="token" value="${redefinirsenha.token}" />
+                            <input type="hidden" id="token" name="userId" value="${redefinirsenha.usuario.id}" />
+
+                            <div class="form-group col-md-12">
+                                <div class="alert alert-success text-center" role="alert">Digite uma senha e a confirma&ccedil;&atilde;o de senha e pressione Redefinir para concluir a troca de senha. </div>
                             </div>
-                            <div class="col-md-10 column">
-                                <h3><b> Todos contra a Dengue!</b></h3>
+                            <div class="form-group col-md-12">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control validate[required]" id="email" name="email" value="${redefinirsenha.usuario.email}" disabled="" />
                             </div>
+                            <div class="form-group col-md-12">
+                                <label for="senha">Senha:</label>
+                                <input type="password" class="form-control validate[required]" id="senha" name="senha" value="" placeholder="Min. 8 caracteres"/>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="confirmaSenha">Confirme a Senha:</label>
+                                <input type="password" id="confirmaSenha"class="form-control validate[required]" onchange="" name="confirmaSenha" id="confirmaSenha"/>
+                            </div>
+
+
+                            <div class="form-group col-sm-12 ">
+                                <input class="btn btn-success btn-block " onclick="getFormData()" value="Redefinir" />  
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="col-md-2 column"></div>
+                </div>
+        </section>
+        <section id="cta2">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span style="color:red">JUNTE-SE</span> COM A GENTE NESTA BATALHA</h2>
+                     <div class="text-center">
+                        <div class="col-md-4" align="center">
+                            <a href="http://www.fai-mg.br/portal/index.php/faitec/apresentacao" target="-Blank">
+                                <img class="img-responsive wow fadeIn" src="img/cta2/faitec_logo_mini.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+                            </a>
+                        </div>
+                        <!--<div class="col-md-3" align="center">
+                        <img class="img-responsive wow fadeIn" src="img/cta2/logoSUS.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+                        </div> -->
+
+                        <div class="col-md-4" align="center">
+                            <a href="http://www.fai-mg.br/portal/" target="-Blank">
+                                <img class="img-responsive wow fadeIn" src="img/cta2/fai_mg.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+                            </a>
+                        </div>
+                        <div class="col-md-4" align="center">
+                            <br/>
+                            <a href="http://www.compels.net/" target="-Blank">
+                                <img class="img-responsive wow fadeIn" src="img/cta2/logo-compels.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+                            </a>
                         </div>
                     </div>
-                    <nav class="navbar navbar-default" role="navigation">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
-                                <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span>
-                                <span class="icon-bar"></span></button> <a class="navbar-brand" href="<c:url value="/home"/>">Início</a>
-                        </div>
-
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="">
-                                    <a href="<c:url value="/mapa"/>">Mapa da cidade</a>
-                                </li>
-                                <li>
-                                    <a href="<c:url value="/denunciaform"/>">Denuncie</a>
-                                </li>
-
-                            </ul>
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="<c:url value="/login"/>">Acesso restrito</a>
-                                </li>
-
-                            </ul>
-                        </div>
-
-                    </nav>
+                    <img class="img-responsive wow fadeIn" src="../img/cta2/cta2-img.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
                 </div>
             </div>
-
-            <div class="row clearfix">
-
-                <div class="col-md-2 column"></div>
-                <div class="col-md-8 column" style="border: 1px silver solid; border-radius: 15px;">
-                    <div class="col-md-12 text-center">
-                        <h3>Recupera&ccedil;&atilde;o de senha</h3>
-                    </div>
-                    <form role="form" class="form-group" method="POST">
-                        <input type="hidden" id="id" name="id" value="${redefinirsenha.id}" />
-                        <input type="hidden" id="token" name="token" value="${redefinirsenha.token}" />
-                        <input type="hidden" id="token" name="userId" value="${redefinirsenha.usuario.id}" />
-
-                        <div class="form-group col-md-12">
-                            <div class="alert alert-success text-center" role="alert">Digite uma senha e a confirma&ccedil;&atilde;o de senha e pressione Redefinir para concluir a troca de senha. </div>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control validate[required]" id="email" name="email" value="${redefinirsenha.usuario.email}" disabled="" />
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="senha">Senha:</label>
-                            <input type="password" class="form-control validate[required]" id="senha" name="senha" value="" placeholder="Min. 8 caracteres"/>
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="confirmaSenha">Confirme a Senha:</label>
-                            <input type="password" id="confirmaSenha"class="form-control validate[required]" onchange="" name="confirmaSenha" id="confirmaSenha"/>
-                        </div>
-
-
-                        <div class="form-group col-sm-12 ">
-                            <input class="btn btn-success btn-block " onclick="getFormData()" value="Redefinir" />  
-                        </div>
-
-
-                    </form>
-                </div>
-                <div class="col-md-2 column"></div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <hr>
-                    <div class="col-lg-3">
-                        <img alt=""  height="75" src="<c:url value="/img/fai_mg.jpg"/>">
-                    </div>
-                    <div class="col-lg-3">
-                        <img alt="" height="75" src="<c:url value="/img/selo_fai.jpg"/>">
-                    </div>
-                    <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="<c:url value="/img/MiniLogo.png"/>" class="img-responsive">
-                    </div>
-                    <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="<c:url value="/img/LogoFaitec2.png"/>" class="img-responsive">
+        </section>
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        &copy; 2015 SPIAA
                     </div>
                 </div>
             </div>
-        </div>
+        </footer><!--/#footer-->
         <div class="modal fade" id="warning">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -198,7 +188,22 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/jquery.prettyPhoto.js"></script>
+        <script src="../js/jquery.isotope.min.js"></script>
+        <script src="../js/jquery.inview.min.js"></script>
+        <script src="../js/wow.min.js"></script> 
+        <script src="../js/main.js"></script>
+        <script type="text/javascript" src="<c:url value="../js/scripts.js"/>"></script>
+        <script src="<c:url value="../js/views/recuperarSenha.js"/>"></script>
+        <script src="<c:url value="../js/jquery.validationEngine-pt_BR.js"/>" type="text/javascript" charset="utf-8"></script>
+        <script src="<c:url value="../js/jquery.validationEngine.js"/>" type="text/javascript" charset="utf-8"></script>
+        <script>
+                                    jQuery(document).ready(function () {
+                                        // binds form submission and fields to the validation engine
+                                        jQuery("#formRecuperarSenha").validationEngine('attach', {promptPosition: "bottomLeft", autoPositionUpdate: true});
+                                    });
+        </script>
     </body>
 </html>
-

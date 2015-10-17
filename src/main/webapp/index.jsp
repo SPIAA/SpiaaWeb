@@ -4,151 +4,366 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>SPIAA - Sistema de Prevenção de infestação do Aedes Aegypti </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-
-        <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
-        <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
-        <!--script src="js/less-1.3.3.min.js"></script-->
-        <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
-
+        <title>SPIAA - Sistema de Prevenção de infestação do Aedes Aegypti</title>
+        <!-- core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/animate.min.css" rel="stylesheet">
+        <link href="css/owl.carousel.css" rel="stylesheet">
+        <link href="css/owl.transitions.css" rel="stylesheet">
+        <link href="css/prettyPhoto.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+        <link href="css/responsive.css" rel="stylesheet">
         <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-        <![endif]-->
-
-        <!-- Fav and touch icons -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->       
         <link rel="shortcut icon" href="img/icone_spiaa.png">
 
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
-    </head>
+    </head><!--/head-->
 
-    <body>
-        <div class="container">
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <div class="row clearfix">
-                        <div class="col-md-12 column">
-                            <div class="col-md-2 column">
-                                <img alt="" src="img/MiniLogo.png" class="img-responsive"> 
-                            </div>
-                            <div class="col-md-10 column">
-                                <h3><b> Todos contra a Dengue!</b></h3>
+    <body id="home" class="homepage">
+
+        <header id="header">
+            <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="<c:url value="/"/>"><img src="img/logo.png" alt="logo"></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li class="scroll active"><a href="<c:url value="/"/>" >Início</a></li>
+                            <li class="scroll"><a href="<c:url value="/mapa"/>" target="_blank">Mapa</a></li>
+                            <li class="scroll"><a href="#features">Recursos</a></li>
+                            <li class="scroll"><a href="#meet-team">Equipe</a></li>
+                            <li class="scroll"><a href="#get-in-touch">Denuncia</a></li>
+                            <li class="scroll"><a href="<c:url value="/login"/>">Restrito</a></li>                        
+                        </ul>
+                    </div>
+                </div><!--/.container-->
+            </nav><!--/nav-->
+        </header><!--/header-->
+
+        <section id="main-slider">
+            <div class="owl-carousel">
+                <div class="item" style="background-image: url(img/slider/bg1.jpg);">
+                    <div class="slider-inner">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="carousel-content">
+                                        <h2><span style="color:black">Mapeamento, controle e agilidade</span></h2>
+                                        <a class="btn btn-danger btn-lg" target="_blank" href="<c:url value="/mapa"/>">Mapa da cidade</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <nav class="navbar navbar-default" role="navigation">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Início</a>
+                </div><!--/.item-->
+                <div class="item" style="background-image: url(img/slider/bg2.jpg);">
+                    <div class="slider-inner">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="carousel-content">
+                                        <h2>Santa Rita do Sapucaí <span style="color:white">Contra a Dengue</span></h2>
+                                        <a class="btn btn-danger btn-lg" target="_blank" href="<c:url value="/mapa"/>">Mapa da Cidade</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.owl-carousel-->
+        </section><!--/#main-slider-->
+
+        <section id="cta" class="wow fadeIn">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h2>SPIAA</h2>
+                        <p>O SPIAA é um software desenvolvido para Secretaria Municipal de Saúde de Santa Rita do Sapucaí-MG com objetivo de auxiliar na tomada de decisão e monitoramento de infestação da Dengue. O Software permite visualizar o mapa da cidade dividido por bairros, mostrando informações importantes de cada bairro necessário para o controle do foco do mosquito aedes aegypti.
+                        </p>
+                    </div>
+                    <!--<div class="col-sm-3 text-right">
+                        <a class="btn btn-primary btn-lg" href="#">Download Now!</a>
+                    </div>-->
+                </div>
+            </div>
+        </section><!--/#cta-->
+
+        <section id="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title text-center wow fadeInDown">Recursos</h2>
+                    <p class="text-center wow fadeInDown">Acreditando em ideias simples, que trazem grandes resultados</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 wow fadeInLeft">
+                        <img class="img-responsive" src="img/main-feature.jpg" alt="">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="media service-box wow fadeInRight">
+                            <div class="pull-left">
+                                <i class="fa fa-line-chart"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Gerenciamento de atividades</h4>
+                                <p>Gerencie todas as atividades realizadas pelos Agentes de Saúde através do seu navegador</p>
+                            </div>
                         </div>
 
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="">
-                                    <a href="<c:url value="/mapa"/>">Mapa da cidade</a>
-                                </li>
-                                <li>
-                                    <a href="<c:url value="/denunciaform"/>">Denuncie</a>
-                                </li>
+                        <div class="media service-box wow fadeInRight">
+                            <div class="pull-left">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Mapeamento do foco do mosquito transmissor</h4>
+                                <p>Verifique as Regiões mais ifectadas através de um mapa dinamico e customizavel.</p>
+                            </div>
+                        </div>
 
+                        <div class="media service-box wow fadeInRight">
+                            <div class="pull-left">
+                                <i class="fa  fa-refresh"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Otimização de processos</h4>
+                                <p>Com o Spiaa versão para mobile, os agentes de Saúde realizam as busca em campo com mais facilidade enviando dados coletados a gestão de forma agil.</p>
+                            </div>
+                        </div>
+
+                        <div class="media service-box wow fadeInRight">
+                            <div class="pull-left">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Interatividade com a população</h4>
+                                <p>A população tambem participa realizando denúcias e podem visualizar os focos encontrados por bairro no mapa da cidade</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta2">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span style="color:red">JUNTE-SE</span> COM A GENTE NESTA BATALHA</h2>
+                    <div class="text-center">
+                        <div class="col-md-4" align="center">
+                            <a href="http://www.fai-mg.br/portal/index.php/faitec/apresentacao" target="-Blank">
+                                <img class="img-responsive wow fadeIn" src="img/cta2/faitec_logo_mini.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+                            </a>
+                        </div>
+                        <!--<div class="col-md-3" align="center">
+                        <img class="img-responsive wow fadeIn" src="img/cta2/logoSUS.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+                        </div> -->
+
+                        <div class="col-md-4" align="center">
+                            <a href="http://www.fai-mg.br/portal/" target="-Blank">
+                                <img class="img-responsive wow fadeIn" src="img/cta2/fai_mg.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+                            </a>
+                        </div>
+                        <div class="col-md-4" align="center">
+                            <br/>
+                            <a href="http://www.compels.net/" target="-Blank">
+                                <img class="img-responsive wow fadeIn" src="img/cta2/logo-compels.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+                            </a>
+                        </div>
+                    </div>
+                    <img class="img-responsive wow fadeIn" src="img/cta2/cta2-img.png" alt="" data-wow-duration="300ms" data-wow-delay="300ms">
+                </div>
+            </div>
+        </section>
+
+        <section id="meet-team">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title text-center wow fadeInDown">Conheça a equipe</h2>
+                    <p class="text-center wow fadeInDown">Equipe formada para a elaboração deste projeto.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="0ms">
+                            <div class="team-img">
+                                <img class="img-responsive" src="img/team/01.jpg" alt="">
+                            </div>
+                            <div class="team-info">
+                                <h3>Elessandra Estevão</h3>
+                                <span>Manager / Mobile Dev</span>
+                            </div>
+
+                            <ul class="social-icons">
+                                <li><a href="https://www.facebook.com/elessandra.estevao" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/EleEstevao" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://plus.google.com/+ElessandraEstevão" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="http://br.linkedin.com/in/elessandraestevao" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/elessandraestevao" target="_blank"><i class="fa fa-github"></i></a></li>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="100ms">
+                            <div class="team-img">
+                                <img class="img-responsive" src="img/team/02.jpg" alt="">
+                            </div>
+                            <div class="team-info">
+                                <h3>Dênis Leonardo</h3>
+                                <span>Designer / Front-end Dev</span>
+                            </div>
 
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="login">Acesso restrito</a>
-                                </li>
-
+                            <ul class="social-icons">
+                                <li><a href="https://www.facebook.com/dlcgomes" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://br.linkedin.com/pub/leonardo-gomes/98/108/255"target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/LeonardoGomes182" target="_blank"><i class="fa fa-github"></i></a></li>
                             </ul>
                         </div>
-
-                    </nav>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <div class="carousel slide" id="carousel-102796">
-                        <ol class="carousel-indicators">
-                            <li data-slide-to="0" data-target="#carousel-102796">
-                            </li>
-                            <li data-slide-to="1" data-target="#carousel-102796">
-                            </li>
-                            <li data-slide-to="2" data-target="#carousel-102796" class="active">
-                            </li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item">
-                                <img alt="" src="img/spiaa_mapa_carrossel.png">
-                                <div class="carousel-caption">
-                                    <h4>
-
-                                    </h4>
-                                    <p>
-
-                                    </p>
-                                </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="200ms">
+                            <div class="team-img">
+                                <img class="img-responsive" src="img/team/03.jpg" alt="">
                             </div>
-                            <div class="item">
-                                <img alt="" src="img/logo_faitec.png">
-                                <div class="carousel-caption">
-                                    <h4>
-
-                                    </h4>
-                                    <p>
-
-                                    </p>
-                                </div>
+                            <div class="team-info">
+                                <h3>Felipe de Souza</h3>
+                                <span>Front-end / Back-end Dev</span>
                             </div>
-                            <div class="item active">
-                                <img alt="" src="img/spiaa.png" >
-                                <div class="carousel-caption">
-                                    <h3 class="col-lg-offset-4" style="color: #000;">
-                                        Sistema de Prevenção de infestação do Aedes Aegypti                                    </h3>
-                                    <p>
 
-                                    </p>
-                                </div>
+                            <ul class="social-icons">
+                                <li><a href="https://www.facebook.com/felipe.pereira.1426" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/felipepdsouza" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://plus.google.com/u/0/+FelipePereiradeSouzaSi/posts" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://www.linkedin.com/pub/felipe-pereira-de-souza/92/840/86" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/felipepdsouzasi" target="_blank"><i class="fa fa-github"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                            <div class="team-img">
+                                <img class="img-responsive" src="img/team/04.jpg" alt="">
                             </div>
-                        </div> <a class="left carousel-control" href="#carousel-102796" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-102796" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-                    </div>
-                    <h2>
-                        SPIAA
-                    </h2>
-                    <p>
-                        O SPIAA é um software desenvolvido para Secretaria Municipal de Saúde de Santa Rita do Sapucaí-MG com objetivo de 
-                        auxiliar na tomada de decisão e monitoramento de infestação da Dengue. O Software permite visualizar o mapa da 
-                        cidade dividido por bairros, mostrando informações importantes de cada bairro necessário para o controle do foco do mosquito
-                        aedes aegypti.                    </p>
-                    <br/><br/><br/><br/>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <div class="col-lg-3">
-                        <img alt=""  height="75" src="img/fai_mg.jpg">
-                    </div>
-                    <div class="col-lg-3">
-                        <img alt="" height="75" src="img/selo_fai.jpg">
-                    </div>
-                    <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="img/MiniLogo.png" class="img-responsive">
-                    </div>
-                    <div class="col-lg-3">
-                        <img alt="" width="174" height="75" src="img/LogoFaitec2.png" class="img-responsive">
+                            <div class="team-info">
+                                <h3>William Daniel</h3>
+                                <span>Front-end / Back-end Dev</span>
+                            </div>
+
+                            <ul class="social-icons">
+                                <li><a href="https://www.facebook.com/william.daniel.oliveira" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://br.linkedin.com/pub/william-daniel-de-oliveira/4a/421/423" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/WilliamDaniel" target="_blank"><i class="fa fa-github"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
+                <div class="divider"></div>
+
             </div>
-        </div>
+        </section><!--/#meet-team-->
+
+        <section id="get-in-touch">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title text-center wow fadeInDown">Ajude-nos</h2>
+                    <p class="text-center wow fadeInDown">Caso souber de alguma irregularidade, avise-nos através do formulário de denúncia para que possamos vencer junto essa batalha.</p>
+                </div>
+            </div>
+        </section><!--/#get-in-touch-->
+
+        <section id="contact">
+            <div id="google-map" style="height:650px" data-latitude="-22.25512281604783" data-longitude="-45.7041751"></div>
+            <div class="container-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-8">
+                            <div class="contact-form">
+                                <h3>Denúnica</h3>
+                                <form id="main-contact-form" name="contact-form" method="post" action="#">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Bairro:</label>
+                                        <select  class="form-control validate[required]" name="bairro" id="options">
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Inputendereco">Endereço:</label><input type="text" class="form-control validate[required]" name="endereco" id="endereco" value=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Inputnumero">Numero:</label><input type="text" class="form-control validate[required]" name="numero" id="numero" value=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Inputtipoirregularidade">Irregularidades:</label><textarea  class="form-control validate[required]" name="irregularidade" id="irregularidade" ></textarea>
+                                    </div>
+
+                                    <div class="form-group text-center">
+                                        <input class="btn btn-success " onclick="getFormData()" value="Enviar" />  
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!--/#bottom-->
+
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        &copy; 2015 SPIAA.
+                    </div>
+
+                </div>
+            </div>
+        </footer><!--/#footer-->
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/mousescroll.js"></script>
+        <script src="js/smoothscroll.js"></script>
+        <script src="js/jquery.prettyPhoto.js"></script>
+        <script src="js/jquery.isotope.min.js"></script>
+        <script src="js/jquery.inview.min.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="<c:url value="/js/views/denunciaForm.js"/>"></script>
+
+        <div class="modal fade" id="successCreate">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header btn-success">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title">SPIAA</h3>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="alert alert-success">
+                            <strong > Denúncia enviada com sucesso..</strong> <br/>
+                            <i class="fa fa-2x  fa-smile-o"></i>
+                            <p>Obrigado por colaborar</p>
+                        </div>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </body>
 </html>
-

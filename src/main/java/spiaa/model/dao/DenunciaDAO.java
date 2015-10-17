@@ -22,7 +22,7 @@ public class DenunciaDAO implements BaseDAO<Denuncia> {
 
     @Override
     public void create(Denuncia entity, Connection conn) throws Exception {
-        String sql = "INSERT INTO denuncia(endereco, numero, telefone, irregularidade, observacao, status ,bairro_fk, now())VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO denuncia(endereco, numero, telefone, irregularidade, observacao, status ,bairro_fk, data_abertura)VALUES (?, ?, ?, ?, ?, ?, ?, now());";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
