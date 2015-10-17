@@ -17,7 +17,7 @@ function getFormData() {
     var bairro = $('#options option:selected').val();
     var endereco = $("input[name=endereco").val();
     var numero = $("input[name=numero").val();
-    var irregularidade = $("input[name=irregularidade").val();
+    var irregularidade = document.getElementById("irregularidade").value;
 
     var url = "";
     var domain = "";
