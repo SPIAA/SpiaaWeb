@@ -98,7 +98,7 @@
                                 <input type="text" class="form-control validate[required]"  maxlength="6" name="descricao" id="descricaoQuarteirao" value="${quarteirao.descricao}"/>                                    
                             </div>
                             <div class="form-group" >
-                                <label for="quantidade" id="labelQuantidade" >Quantidade de Quartei&otilde;es: </label>
+                                <label for="quantidade" id="labelQuantidade" >Quantidade de Quarteir&otilde;es: </label>
                                 <input type="number" class="form-control" id="quantidadeQuarteirao" name="quantidade" />                                    
                             </div>
                         </form>

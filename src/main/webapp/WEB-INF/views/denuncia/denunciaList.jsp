@@ -27,8 +27,8 @@
                                             <th>Data de abertura</th>
                                             <th>Bairro</th>
                                             <th>Endereco</th>
-                                            <th>Numero</th>
-                                            <th>Usuario</th>
+                                            <th>Número</th>
+                                            <th>Usuário</th>
                                             <th>Status</th>
                                             <th align="center" style="width:70px;" > </th>
                                         </tr>

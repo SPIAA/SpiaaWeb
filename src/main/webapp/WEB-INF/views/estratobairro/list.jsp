@@ -59,11 +59,11 @@
                                                         <div class="panel-body">
                                                             <div class="form-inline col-md-12">
                                                                 <div class="form-group col-md-4 ">
-                                                                    <label for="codigo">codigo :</label>
+                                                                    <label for="codigo">Código :</label>
                                                                     <input type="text" class="form-control"  name="codigo" value="${bairros.codigo}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">
-                                                                    <label for="armazem">Total Armazem : </label>
+                                                                    <label for="armazem">Total Armazém : </label>
                                                                     <input type="text" class="form-control"  name="armazem" value="${bairros.armazem}">
                                                                 </div>
                                                                 <div class="form-group col-md-4">

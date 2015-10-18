@@ -42,7 +42,7 @@
 
                     <div class="collapse navbar-collapse navbar-right">
                         <ul class="nav navbar-nav">
-                            <li class="scroll active"><a href="<c:url value="/"/>" >Início</a></li>
+                            <li class="scroll active"><a href="#" >Início</a></li>
                             <li class="scroll"><a href="<c:url value="/mapa"/>" target="_blank">Mapa</a></li>
                             <li class="scroll"><a href="#features">Recursos</a></li>
                             <li class="scroll"><a href="#meet-team">Equipe</a></li>
@@ -92,7 +92,10 @@
                 <div class="row">
                     <div class="col-sm-9">
                         <h2>SPIAA</h2>
-                        <p>O SPIAA é um software desenvolvido para Secretaria Municipal de Saúde de Santa Rita do Sapucaí-MG com objetivo de auxiliar na tomada de decisão e monitoramento de infestação da Dengue. O Software permite visualizar o mapa da cidade dividido por bairros, mostrando informações importantes de cada bairro necessário para o controle do foco do mosquito aedes aegypti.
+                        <p>
+                            Para auxiliar a Secretaria Municipal de Saúde de Santa Rita do Sapucaí - MG a tomar decisões e monitorar a infestação da Dengue, 
+                            foi desenvolvido o Sistema de Prevenção de Infestação do Aedes Aegypti (SPIAA). Este software permite visualizar e identificar informações 
+                            importantes para o controle de focos em todos os bairros, através do mapa municipal.
                         </p>
                     </div>
                     <!--<div class="col-sm-3 text-right">
@@ -106,7 +109,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title text-center wow fadeInDown">Recursos</h2>
-                    <p class="text-center wow fadeInDown">Acreditando em ideias simples, que trazem grandes resultados</p>
+                    <p class="text-center wow fadeInDown"></p>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 wow fadeInLeft">
@@ -119,7 +122,8 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">Gerenciamento de atividades</h4>
-                                <p>Gerencie todas as atividades realizadas pelos Agentes de Saúde através do seu navegador</p>
+                                <p> As atividades realizadas pelos Agentes de Saúde podem ser gerenciadas através do navegador.</p>
+
                             </div>
                         </div>
 
@@ -129,7 +133,7 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">Mapeamento do foco do mosquito transmissor</h4>
-                                <p>Verifique as Regiões mais ifectadas através de um mapa dinamico e customizavel.</p>
+                                <p>As regiões mais infectadas podem ser identificadas através de um mapa dinâmico e customizável.</p>
                             </div>
                         </div>
 
@@ -139,7 +143,8 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">Otimização de processos</h4>
-                                <p>Com o Spiaa versão para mobile, os agentes de Saúde realizam as busca em campo com mais facilidade enviando dados coletados a gestão de forma agil.</p>
+                                <p>Com a versão do software para mobile, os agentes de Saúde podem realizar suas atividades, 
+                                    buscas em campo e envio dos dados coletados, com mais facilidade e agilidade.</p>
                             </div>
                         </div>
 
@@ -149,7 +154,9 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">Interatividade com a população</h4>
-                                <p>A população tambem participa realizando denúcias e podem visualizar os focos encontrados por bairro no mapa da cidade</p>
+                                <p>
+                                    A população, além de visualizar o mapeamento do foco através do mapa, pode denunciar outros possíveis focos.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -160,7 +167,7 @@
         <section id="cta2">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span style="color:red">JUNTE-SE</span> COM A GENTE NESTA BATALHA</h2>
+                    <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span style="color:red">VENHA CONOSCO</span> ENFRENTAR ESTA BATALHA</h2>
                     <div class="text-center">
                         <div class="col-md-4" align="center">
                             <a href="http://www.fai-mg.br/portal/index.php/faitec/apresentacao" target="-Blank">
@@ -192,7 +199,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title text-center wow fadeInDown">Conheça a equipe</h2>
-                    <p class="text-center wow fadeInDown">Equipe formada para a elaboração deste projeto.</p>
+                    <p class="text-center wow fadeInDown">Equipe responsável pela elaboração e desenvolvimento deste projeto.</p>
                 </div>
 
                 <div class="row">
@@ -228,7 +235,7 @@
                             <ul class="social-icons">
                                 <li><a href="https://www.facebook.com/dlcgomes" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://plus.google.com/u/0/104283172531695275708/about"target="_blank"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a href="https://br.linkedin.com/pub/leonardo-gomes/98/108/255"target="_blank"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a href="https://github.com/LeonardoGomes182" target="_blank"><i class="fa fa-github"></i></a></li>
                             </ul>
@@ -283,7 +290,9 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title text-center wow fadeInDown">Ajude-nos</h2>
-                    <p class="text-center wow fadeInDown">Caso souber de alguma irregularidade, avise-nos através do formulário de denúncia para que possamos vencer junto essa batalha.</p>
+                    <p class="text-center wow fadeInDown">
+                       Em caso de irregularidade, entre em contato conosco através do formulário de denúncia abaixo. 
+                    </p>
                 </div>
             </div>
         </section><!--/#get-in-touch-->
@@ -295,7 +304,7 @@
                     <div class="row">
                         <div class="col-sm-4 col-sm-offset-8">
                             <div class="contact-form">
-                                <h3>Denúnica</h3>
+                                <h3>Denúncia</h3>
                                 <form id="main-contact-form" name="contact-form" method="post" action="#">
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Bairro:</label>
@@ -306,7 +315,7 @@
                                         <label for="Inputendereco">Endereço:</label><input type="text" class="form-control validate[required]" name="endereco" id="endereco" value=""/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Inputnumero">Numero:</label><input type="text" class="form-control validate[required]" name="numero" id="numero" value=""/>
+                                        <label for="Inputnumero">Número:</label><input type="text" class="form-control validate[required]" name="numero" id="numero" value=""/>
                                     </div>
                                     <div class="form-group">
                                         <label for="Inputtipoirregularidade">Irregularidades:</label><textarea  class="form-control validate[required]" name="irregularidade" id="irregularidade" ></textarea>

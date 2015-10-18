@@ -17,7 +17,7 @@ function getFormData() {
     if (id != null && id != "") {
         url = domain+"/criadouro/alterar";
     } else {
-    url += "/criadouro/novo";
+    url += domain+"/criadouro/novo";
         id = null;
     }
     var grupo = document.getElementById("grupo").value;

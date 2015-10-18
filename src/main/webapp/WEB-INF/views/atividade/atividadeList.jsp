@@ -39,7 +39,7 @@
                                     <br/>${boletimDiario.turma}
                                 </div> 
                                 <div class="form-group col-md-3">
-                                    <label class="">Numero : </label>
+                                    <label class="">Número : </label>
                                     <br/>${boletimDiario.numero}
                                 </div> 
                                 <div class="form-group col-md-3">
@@ -66,7 +66,7 @@
                                     <tr>
                                         <th>Quarteirão</th>
                                         <th>Endereço</th>
-                                        <th>Numero</th>
+                                        <th>Número</th>
                                         <th>Observação</th>
                                         <th>T. Inspec.</th>
                                         <th align="center" style="width:70px;" > </th>

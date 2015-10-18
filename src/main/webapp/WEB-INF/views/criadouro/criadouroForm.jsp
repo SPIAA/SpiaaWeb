@@ -36,7 +36,7 @@
                                     <input type="text" class="form-control form-control validate[required]" id="grupo" name="grupo" value="${criadouro.grupo}"/>
                                 </div>
                                 <div class="form-group col-md-4 ">
-                                    <label for="unidade">Unidade de medida : </label>
+                                    <label for="unidade">Recipiente : </label>
                                     <input type="text" class="form-control form-control validate[required]" id="recipiente"  name="recipiente" value="${criadouro.recipiente}"/>
                                 </div>
                                 <div class="col-lg-4" align="center">

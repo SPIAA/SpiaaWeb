@@ -47,7 +47,7 @@
                                     <input type="text" class="form-control" name="endereco" value="${atividade.endereco}">
                                 </div>
                                 <div class="form-group col-md-1">
-                                    <label for="numero">nº:</label>
+                                    <label for="numero">Nº:</label>
                                     <input type="text" class="form-control" name="numero" value="${atividade.numero}" >
                                 </div>
 

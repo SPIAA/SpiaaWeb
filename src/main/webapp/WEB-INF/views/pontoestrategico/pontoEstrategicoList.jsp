@@ -40,7 +40,7 @@
                                 <thead>
                                     <tr>
                                         <th>Rua</th>
-                                        <th>Numero</th>
+                                        <th>Número</th>
                                         <th>Complemento</th>
                                         <th>Bairro</th>
                                         <th>Agente Reposnsável</th>

@@ -80,7 +80,7 @@
                                     <input type="text" class="form-control" name="semana" value="${boletimDiario.semana}">
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="predio">nº Atividade :</label>
+                                    <label for="predio">Nº Atividade :</label>
                                     <input type="text" class="form-control" name="numeroAtividade" value="${boletimDiario.numeroAtividade}">
                                 </div>
                                 <div class="form-group col-md-2">

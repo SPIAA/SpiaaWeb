@@ -88,7 +88,7 @@
         <section id="cta2">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span style="color:red">JUNTE-SE</span> COM A GENTE NESTA BATALHA</h2>
+                    <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span style="color:red">VENHA CONOSCO</span> ENFRENTAR ESTA BATALHA</h2>
                     <div class="text-center">
                         <div class="col-md-4" align="center">
                             <a href="http://www.fai-mg.br/portal/index.php/faitec/apresentacao" target="-Blank">

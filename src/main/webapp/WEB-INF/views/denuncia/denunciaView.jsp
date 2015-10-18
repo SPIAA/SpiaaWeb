@@ -39,7 +39,7 @@
                                 <div class="col-lg-6 column">
 
                                     <div class="panel panel-danger">
-                                        <div class="panel-heading">Dados da Denuncia</div>
+                                        <div class="panel-heading">Dados da Denúncia</div>
                                         <div class="panel-body">
                                             <div class="form-group col-md-6">
                                                 <label for="Inputendereco">Data da  Abertura : </label><input type="text"  class="form-control" readonly name="dataAbertura" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${denuncia.dataAbertura}" />"/>
@@ -57,7 +57,7 @@
                                             </div>
 
                                             <div class="form-group col-md-12">
-                                                <label for="Inputnumero">Numero:</label><input type="text"  class="form-control" readonly name="numero" value="${denuncia.numero}" />
+                                                <label for="Inputnumero">Número:</label><input type="text"  class="form-control" readonly name="numero" value="${denuncia.numero}" />
                                             </div>
                                             <div class="form-group col-md-12" hidden="">
                                                 <label for="Inputtelefone">Telefone:</label><input type="text"  class="form-control" readonly id="telefone" name="telefone" value="${denuncia.telefone}"/>
