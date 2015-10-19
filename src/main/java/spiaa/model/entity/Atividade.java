@@ -1,6 +1,5 @@
 package spiaa.model.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 import spiaa.model.base.BaseEntity;
 
@@ -17,11 +16,6 @@ public class Atividade extends BaseEntity{
     private List<AtividadeInseticida> atividadeInseticidasList;
     private TratamentoAntiVetorial boletimDiario;
 
-    public Atividade() {
-        atividadeCriadouroList = new ArrayList<AtividadeCriadouro>();
-        atividadeInseticidasList = new ArrayList<AtividadeInseticida>();
-    }
-   
     public String getEndereco() {
         return endereco;
     }
@@ -30,13 +24,52 @@ public class Atividade extends BaseEntity{
         this.endereco = endereco;
     }
 
-   
+    public Quarteirao getQuarteirao() {
+        return quarteirao;
+    }
+
+    public void setQuarteirao(Quarteirao quarteirao) {
+        this.quarteirao = quarteirao;
+    }
+
     public String getNumero() {
         return numero;
     }
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public Integer getInspecionado() {
+        return inspecionado;
+    }
+
+    public void setInspecionado(Integer inspecionado) {
+        this.inspecionado = inspecionado;
     }
 
     public TipoImoveis getTipoImoveis() {
@@ -70,45 +103,4 @@ public class Atividade extends BaseEntity{
     public void setBoletimDiario(TratamentoAntiVetorial boletimDiario) {
         this.boletimDiario = boletimDiario;
     }
-
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-
-    public Integer getInspecionado() {
-        return inspecionado;
-    }
-
-    public void setInspecionado(Integer inspecionado) {
-        this.inspecionado = inspecionado;
-    } 
-
-    public Quarteirao getQuarteirao() {
-        return quarteirao;
-    }
-
-    public void setQuarteirao(Quarteirao quarteirao) {
-        this.quarteirao = quarteirao;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-    
 }

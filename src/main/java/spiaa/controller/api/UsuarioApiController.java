@@ -34,17 +34,21 @@ public class UsuarioApiController {
         return agente;
     }
 
-    @RequestMapping(value = "/api/agente/login/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/agente/alterar", method = RequestMethod.POST)
     public @ResponseBody
-    String loginList(@RequestBody List<Usuario> usuarioList) {
+    String alterarUsuario(@RequestBody Usuario usuario) {
         String resposta = "SUCCESS";
-        Usuario agente = null;
+
         try {
+            if (usuario != null && usuario.getId() > 0) {
+                ServiceLocator.getBaseUsuarioService().update(usuario);
+            } else {
+                resposta = "ERROR - id = null";
+            }
         } catch (Exception e) {
             resposta = "ERROR";
             e.printStackTrace();
         }
         return resposta;
     }
-
 }

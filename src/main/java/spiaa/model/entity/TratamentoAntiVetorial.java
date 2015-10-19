@@ -1,6 +1,7 @@
 package spiaa.model.entity;
 
 import java.util.Date;
+import java.util.List;
 import spiaa.model.base.BaseEntity;
 
 public class TratamentoAntiVetorial extends BaseEntity {
@@ -15,7 +16,7 @@ public class TratamentoAntiVetorial extends BaseEntity {
     private Usuario usuario;
     private Bairro bairro;
     private String categoria;
-//    private List<Atividade> atividadeList;
+    private List<Atividade> atividadeList;
 
     public String getNumero() {
         return numero;
@@ -81,14 +82,13 @@ public class TratamentoAntiVetorial extends BaseEntity {
         this.tipoAtividade = tipoAtividade;
     }
 
-//    public List<Atividade> getAtividadeList() {
-//        return atividadeList;
-//    }
-//
-//    public void setAtividadeList(List<Atividade> atividadeList) {
-//        this.atividadeList = atividadeList;
-//    }
+    public List<Atividade> getAtividadeList() {
+        return atividadeList;
+    }
 
+    public void setAtividadeList(List<Atividade> atividadeList) {
+        this.atividadeList = atividadeList;
+    }
     public String getCategoria() {
         return categoria;
     }
@@ -96,5 +96,5 @@ public class TratamentoAntiVetorial extends BaseEntity {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+
 }
