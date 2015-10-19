@@ -28,7 +28,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         PreparedStatement ps = conn.prepareStatement(sql);
 
         int i = 0;
-        
+
         ps.setString(++i, entity.getEndereco());
         ps.setString(++i, entity.getNumero());
         ps.setString(++i, entity.getObservacao());
@@ -75,68 +75,55 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     @Override
     public Atividade readById(Long id, Connection conn) throws Exception {
         Atividade atividade = null;
-        String sql = "SELECT atividade .*,tipo_imovel.id as tipo_imovel_id, tipo_imovel.descricao as tipo_imovel_descricao, tipo_imovel.sigla as tipo_imovel_sigla, ";
-        sql += "atividade_criadouro.quantidade as atividade_criadouro_qtde, criadouro.id as criadouro_id, criadouro.grupo as criadouro_nome,criadouro.recipiente as criadouro_recipiente, ";
-        sql += "quarteirao.id as quarteirao_id, quarteirao.descricao as quarteirao_descricao ";
-        sql += "FROM atividade ";
-        sql += "LEFT JOIN tipo_imovel on tipo_imovel.id = atividade.tipo_imovel_fk  ";
-        sql += "LEFT JOIN quarteirao on quarteirao.id = atividade.quarteirao_fk ";
-        sql += "LEFT JOIN atividade_criadouro on atividade_criadouro.atividade_fk = atividade.id ";
-        sql += "LEFT JOIN criadouro on criadouro.id = atividade_criadouro.criadouro_fk ";
+        String sql = " SELECT atividade .*,tipo_imovel.id as tipo_imovel_id, tipo_imovel.descricao as tipo_imovel_descricao, tipo_imovel.sigla as tipo_imovel_sigla, ";
+        sql += "  quarteirao.id as quarteirao_id, quarteirao.descricao as quarteirao_descricao  ";
+        sql += " FROM atividade  ";
+        sql += "LEFT JOIN tipo_imovel on tipo_imovel.id = atividade.tipo_imovel_fk   ";
+        sql += "LEFT JOIN quarteirao on quarteirao.id = atividade.quarteirao_fk  ";
         sql += "WHERE atividade.id = ?";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setLong(1, id);
         ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            if (atividade == null) {
-                atividade = new Atividade();
-                atividade.setId(rs.getLong("id"));
-                atividade.setEndereco(rs.getString("endereco"));
-                Quarteirao quarteirao = new Quarteirao();
-                quarteirao.setId(rs.getLong("quarteirao_id"));
-                quarteirao.setDescricao(rs.getString("quarteirao_descricao"));
-                atividade.setQuarteirao(quarteirao);
-                atividade.setNumero(rs.getString("numero"));
-                atividade.setObservacao(rs.getString("observacao"));
-                atividade.setInspecionado(rs.getInt("inspecionado"));
+        if (rs.next()) {
 
-                //Tipo Imóvel
-                TipoImoveis tipoImoveis = new TipoImoveis();
-                tipoImoveis.setId(rs.getLong("tipo_imovel_id"));
-                tipoImoveis.setSigla(rs.getString("tipo_imovel_sigla"));
-                tipoImoveis.setDescricao(rs.getString("tipo_imovel_descricao"));
+            atividade = new Atividade();
+            atividade.setId(rs.getLong("id"));
+            atividade.setEndereco(rs.getString("endereco"));
+            Quarteirao quarteirao = new Quarteirao();
+            quarteirao.setId(rs.getLong("quarteirao_id"));
+            quarteirao.setDescricao(rs.getString("quarteirao_descricao"));
+            atividade.setQuarteirao(quarteirao);
+            atividade.setNumero(rs.getString("numero"));
+            atividade.setObservacao(rs.getString("observacao"));
+            atividade.setInspecionado(rs.getInt("inspecionado"));
 
-                //boletim diario
-                TratamentoAntiVetorial boletimDiario = new TratamentoAntiVetorial();
-                boletimDiario.setId(rs.getLong("tratamento_antivetorial_fk"));
-                atividade.setBoletimDiario(boletimDiario);
+            //Tipo Imóvel
+            TipoImoveis tipoImoveis = new TipoImoveis();
+            tipoImoveis.setId(rs.getLong("tipo_imovel_id"));
+            tipoImoveis.setSigla(rs.getString("tipo_imovel_sigla"));
+            tipoImoveis.setDescricao(rs.getString("tipo_imovel_descricao"));
 
-                atividade.setTipoImoveis(tipoImoveis);
+            //boletim diario
+            TratamentoAntiVetorial boletimDiario = new TratamentoAntiVetorial();
+            boletimDiario.setId(rs.getLong("tratamento_antivetorial_fk"));
+            atividade.setBoletimDiario(boletimDiario);
 
-                //Atividade inseticida
-                List<AtividadeInseticida> atividadeInseticidaList = new ArrayList<AtividadeInseticida>();
-                atividadeInseticidaList = getInseticida(id, conn);
-                atividade.setAtividadeInseticidasList(atividadeInseticidaList);
-            }
+            atividade.setTipoImoveis(tipoImoveis);
 
-            Long criadouro_id = rs.getLong("criadouro_id");
-            if (criadouro_id > 0) {
-                //criadouro
-                Criadouro criadouro = new Criadouro();
-                criadouro.setId(criadouro_id);
-                criadouro.setGrupo(rs.getString("criadouro_nome"));
-                criadouro.setRecipiente(rs.getString("criadouro_recipiente"));
+            //Atividade inseticida
+            List<AtividadeInseticida> atividadeInseticidaList = new ArrayList<AtividadeInseticida>();
+            atividadeInseticidaList = getInseticida(id, conn);
+            atividade.setAtividadeInseticidasList(atividadeInseticidaList);
 
-                //Consolidacao_criadouro
-                AtividadeCriadouro atividadeCriadouro = new AtividadeCriadouro();
-                atividadeCriadouro.setCriadouro(criadouro);
-                atividadeCriadouro.setQuantidadeCriadouro(rs.getInt("atividade_criadouro_qtde"));
-                atividade.getAtividadeCriadouroList().add(atividadeCriadouro);
-            }
+            //AtividadeCriadouro
+            List<AtividadeCriadouro> atividadeCriadouroList = new ArrayList<>();
+            atividadeCriadouroList = getCriadouro(id, conn);
+            atividade.setAtividadeCriadouroList(atividadeCriadouroList);
 
         }
-
+        rs.close();
+        ps.close();
         return atividade;
     }
 
@@ -278,7 +265,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
 
     public List<AtividadeInseticida> getInseticida(Long id, Connection conn) throws Exception {
         Inseticida inseticida = null;
-        AtividadeInseticida atividadeInseticida = null;
+        AtividadeInseticida atividadeInseticida = new AtividadeInseticida();
         List<AtividadeInseticida> atividadeInseticidaList = new ArrayList<AtividadeInseticida>();
         String sql = "SELECT atividade_inseticida.*, atividade_inseticida.quantidade as atividade_inseticida_qtde, inseticida.id as inseticida_id, inseticida.nome as inseticida_nome FROM atividade_inseticida LEFT JOIN inseticida on inseticida.id = atividade_inseticida.inseticida_fk LEFT JOIN atividade on atividade.id = atividade_inseticida.atividade_fk WHERE atividade.id = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -295,8 +282,40 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
 
             atividadeInseticidaList.add(atividadeInseticida);
         }
-
+        rs.close();
+        ps.close();
         return atividadeInseticidaList;
+    }
+
+    public List<AtividadeCriadouro> getCriadouro(Long id, Connection conn) throws Exception {
+        List<AtividadeCriadouro> atividadeCriadouroList = new ArrayList<>();
+        Criadouro criadouro = null;
+        String sql = "SELECT atividade_criadouro.*, atividade_criadouro.quantidade as atividade_criadouro_qtde, criadouro.id as criadouro_id, ";
+        sql += " criadouro.grupo as criadouro_grupo,  criadouro.recipiente as criadouro_recipiente";
+        sql += " FROM atividade_criadouro ";
+        sql += " LEFT JOIN criadouro on criadouro.id = atividade_criadouro.criadouro_fk ";
+        sql += " LEFT JOIN atividade on atividade.id = atividade_criadouro.atividade_fk ";
+        sql += " WHERE atividade.id = ?";
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setLong(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            criadouro = new Criadouro();
+            criadouro.setId(rs.getLong("criadouro_id"));
+            criadouro.setGrupo(rs.getString("criadouro_grupo"));
+            criadouro.setRecipiente(rs.getString("criadouro_recipiente"));
+
+            AtividadeCriadouro atividadeCriadouro = new AtividadeCriadouro();
+            atividadeCriadouro.setQuantidadeCriadouro(rs.getInt("atividade_criadouro_qtde"));
+            atividadeCriadouro.setCriadouro(criadouro);
+
+            atividadeCriadouroList.add(atividadeCriadouro);
+        }
+        rs.close();
+        ps.close();
+        return atividadeCriadouroList;
     }
 
 }

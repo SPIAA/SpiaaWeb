@@ -99,13 +99,13 @@
                                     <label for="endereco" class="form-group">Observações :</label>
                                     <br/>
                                     <label class="radio-inline col-md-2">
-                                        <input type="radio" name="observacao" id="observacao" value="Recusou" <c:if test="${atividade.observacao eq 'Recusou'}">checked</c:if>   > Recusou
+                                        <input type="radio" name="observacao" id="observacao" value="RECEBIDO" <c:if test="${atividade.observacao eq 'RECEBIDO'}">checked</c:if>   > RECEBIDO
                                         </label>
                                         <label class="radio-inline col-md-2">
-                                            <input type="radio" name="observacao" id="observacao" value="Fechado" <c:if test="${atividade.observacao eq 'Fechado'}">checked</c:if>  > Fechado
+                                            <input type="radio" name="observacao" id="observacao" value="FECHADO" <c:if test="${atividade.observacao eq 'FECHADO'}">checked</c:if>  > FECHADO
                                         </label>
                                         <label class="radio-inline col-md-2">
-                                            <input type="radio" name="observacao" id="observacao" value="Resgatado" <c:if test="${atividade.observacao eq 'Resgatado'}">checked</c:if> > Resgatado
+                                            <input type="radio" name="observacao" id="observacao" value="RESGATADO" <c:if test="${atividade.observacao eq 'RESGATADO'}">checked</c:if> > RESGATADO
                                         </label>
 
                                     </div>

@@ -6,6 +6,8 @@ import java.util.Map;
 import spiaa.model.ConnectionManager;
 import spiaa.model.base.service.BaseAtividadeService;
 import spiaa.model.dao.AtividadeDAO;
+import spiaa.model.dao.CriadouroDAO;
+import spiaa.model.dao.InseticidaDAO;
 import spiaa.model.entity.Atividade;
 
 public class AtividadeService implements BaseAtividadeService {
@@ -29,9 +31,13 @@ public class AtividadeService implements BaseAtividadeService {
         Atividade atividade = null;
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
-        AtividadeDAO dao = new AtividadeDAO();
-        atividade = dao.readById(id, conn);
-            
+            AtividadeDAO dao = new AtividadeDAO();
+            atividade = dao.readById(id, conn);
+
+            InseticidaDAO inseticidaDAO = new InseticidaDAO();
+
+            CriadouroDAO criadouroDAO = new CriadouroDAO();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,8 +53,8 @@ public class AtividadeService implements BaseAtividadeService {
         AtividadeDAO dao = new AtividadeDAO();
         atividadeList = dao.readByCriteria(criteria, conn);
         if (atividadeList.size() <= 0) {
-                atividadeList = null;
-            }
+            atividadeList = null;
+        }
         conn.close();
         return atividadeList;
     }
@@ -71,7 +77,7 @@ public class AtividadeService implements BaseAtividadeService {
     @Override
     public void delete(Long id) throws Exception {
 
-      Connection conn = ConnectionManager.getInstance().getConnection();
+        Connection conn = ConnectionManager.getInstance().getConnection();
         try {
             AtividadeDAO dao = new AtividadeDAO();
             dao.delete(id, conn);
@@ -80,6 +86,7 @@ public class AtividadeService implements BaseAtividadeService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
-        }}
+        }
+    }
 
 }

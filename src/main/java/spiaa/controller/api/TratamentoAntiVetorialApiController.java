@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import spiaa.model.ServiceLocator;
 import spiaa.model.entity.TratamentoAntiVetorial;
 import spiaa.model.service.BoletimDiario;
 
 /**
  *
  * @author William
+ * @author Felipe de Souza
  * @param
  */
 @Controller
@@ -41,6 +43,7 @@ public class TratamentoAntiVetorialApiController {
             };
             try {
                 List<TratamentoAntiVetorial> tratamentoList = (List<TratamentoAntiVetorial>) gson.fromJson(tratamentoAntiVetorial, token.getType());
+                ServiceLocator.getbaseBoletimDiarioService().createTratamentoByApi(tratamentoList);
                 String teste = "ola";
             } catch (Exception e) {
                 response = "ERROR - Problema na Conversão do Json para Objeto TratamentoAntiVeorial";

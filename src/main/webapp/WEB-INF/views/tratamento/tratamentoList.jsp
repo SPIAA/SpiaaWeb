@@ -41,7 +41,7 @@
                                             <td>${bol.numero}</td>
                                             <td>${bol.semana}</td>
                                             <td>${bol.bairro.nome}</td>
-                                            <td>${bol.usuario.usuario}</td>
+                                            <td>${bol.usuario.nome}</td>
                                             <td align="center"><a href="atividade/${bol.id}" data-toggle="tooltip" data-placement="top" title="Atividade"><i class="fa fa-2x fa-home text-success"></i></a></td>
                                             <td align="center"><a href="tratamento/${bol.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar"><i class="fa fa-2x fa-edit text-primary"></i></a></td>
                                             <td align="center"><a href="tratamento/${bol.id}/excluir" class="btn_pag" data-toggle="tooltip" data-placement="top" title="Excluir"><i class="fa fa-2x fa-trash-o text-danger"></i></a></td>

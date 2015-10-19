@@ -11,29 +11,23 @@ import spiaa.model.entity.Atividade;
 import spiaa.model.entity.TratamentoAntiVetorial;
 
 public class TratamentoAntiVetorialService implements BaseTratamentoAntiVetorialService {
-    
+
     @Override
     public void create(TratamentoAntiVetorial entity) throws Exception {
-        
+
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
             TratamentoAntiVetorialDAO dao = new TratamentoAntiVetorialDAO();
             dao.create(entity, conn);
-//            if (entity.getAtividadeList() != null && entity.getAtividadeList().size() > 0) {
-//                AtividadeDAO daoAtividade = new AtividadeDAO();
-//                for (Atividade atividade : entity.getAtividadeList()) {
-//                    dao.create(entity, conn);
-//                }
-//            }
             conn.commit();
             conn.close();
         } catch (Exception e) {
             conn.rollback();
             conn.close();
         }
-        
+
     }
-    
+
     @Override
     public TratamentoAntiVetorial readById(Long id) throws Exception {
         TratamentoAntiVetorial boletimDiario = null;
@@ -43,7 +37,7 @@ public class TratamentoAntiVetorialService implements BaseTratamentoAntiVetorial
         conn.close();
         return boletimDiario;
     }
-    
+
     @Override
     public List<TratamentoAntiVetorial> readByCriteria(Map<String, Object> criteria) throws Exception {
         List<TratamentoAntiVetorial> boletimDiarioList = null;
@@ -56,7 +50,7 @@ public class TratamentoAntiVetorialService implements BaseTratamentoAntiVetorial
         conn.close();
         return boletimDiarioList;
     }
-    
+
     @Override
     public void update(TratamentoAntiVetorial entity) throws Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
@@ -70,7 +64,7 @@ public class TratamentoAntiVetorialService implements BaseTratamentoAntiVetorial
             conn.close();
         }
     }
-    
+
     @Override
     public void delete(Long id) throws Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
@@ -84,5 +78,30 @@ public class TratamentoAntiVetorialService implements BaseTratamentoAntiVetorial
             conn.close();
         }
     }
-    
+
+    @Override
+    public void createTratamentoByApi(List<TratamentoAntiVetorial> tratamentoList) throws Exception {
+
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        try {
+            TratamentoAntiVetorialDAO tratamentoDAO = new TratamentoAntiVetorialDAO();
+            AtividadeDAO atividadeDAO = new AtividadeDAO();
+            for (TratamentoAntiVetorial tratamento : tratamentoList) {
+                tratamentoDAO.create(tratamento, conn);
+                if (tratamento.getAtividadeList() != null && tratamento.getAtividadeList().size() > 0) {
+                    for (Atividade atividade : tratamento.getAtividadeList()) {
+                        atividade.getBoletimDiario().setId(tratamento.getId());
+                        atividadeDAO.create(atividade, conn);
+                    }
+                }
+            }
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+        }
+
+    }
+
 }
