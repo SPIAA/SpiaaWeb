@@ -28,7 +28,6 @@
                 <div class="col-lg-10"></div>
                 <div class="btn-group-vertical col-lg-2">
                     <a href="<c:url value="/home"/>" class="btn btn-default">Inicio</a>
-                    <a href="<c:url value="/denunciaform"/>" class="btn btn-default">Denuncie</a>
                     <a href="<c:url value="/login"/>" class="btn btn-default">Restrito</a>
                 </div>
             </div>

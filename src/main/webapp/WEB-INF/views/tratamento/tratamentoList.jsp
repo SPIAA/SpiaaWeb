@@ -38,7 +38,7 @@
                                 <tbody>
                                     <c:forEach items="${boletim}" var="bol">
                                         <tr>
-                                            <td>${bol.numero}</td>
+                                            <td>${bol.id}</td>
                                             <td>${bol.semana}</td>
                                             <td>${bol.bairro.nome}</td>
                                             <td>${bol.usuario.nome}</td>
