@@ -46,7 +46,7 @@
                             <li class="scroll"><a href="<c:url value="/mapa"/>" target="_blank">Mapa</a></li>
                             <li class="scroll"><a href="#features">Recursos</a></li>
                             <li class="scroll"><a href="#meet-team">Equipe</a></li>
-                            <li class="scroll"><a href="#get-in-touch">Denuncia</a></li>
+                            <li class="scroll"><a href="#get-in-touch">Denúncia</a></li>
                             <li class="scroll"><a href="<c:url value="/login"/>">Restrito</a></li>                        
                         </ul>
                     </div>
@@ -229,7 +229,7 @@
                             </div>
                             <div class="team-info">
                                 <h3>Dênis Leonardo</h3>
-                                <span>Designer / Front-end Dev</span>
+                                <span>Designer / Nusiness Analyst</span>
                             </div>
 
                             <ul class="social-icons">
@@ -291,7 +291,7 @@
                 <div class="section-header">
                     <h2 class="section-title text-center wow fadeInDown">Ajude-nos</h2>
                     <p class="text-center wow fadeInDown">
-                       Em caso de irregularidade, entre em contato conosco através do formulário de denúncia abaixo. 
+                        Em caso de irregularidade, entre em contato conosco através do formulário de denúncia abaixo. 
                     </p>
                 </div>
             </div>

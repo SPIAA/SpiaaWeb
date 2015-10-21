@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>SPIAA - FAITEC 2014</title>
+         <title>SPIAA - Sistema de Prevenção de infestação do Aedes Aegypti </title>
         <link href="<c:url value="/css/bootstrap.min-3.css"/>" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="<c:url value="/css/mapbox.css"/>" rel="stylesheet">

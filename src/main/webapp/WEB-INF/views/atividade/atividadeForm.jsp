@@ -44,11 +44,11 @@
 
                                 <div class="form-group col-md-4">
                                     <label for="endereco">Endereço</label>
-                                    <input type="text" class="form-control" name="endereco" value="${atividade.endereco}">
+                                    <input type="text" class="form-control" name="endereco" id="endereco" value="${atividade.endereco}">
                                 </div>
                                 <div class="form-group col-md-1">
                                     <label for="numero">Nº:</label>
-                                    <input type="text" class="form-control" name="numero" value="${atividade.numero}" >
+                                    <input type="text" class="form-control" name="numero" id="numero" value="${atividade.numero}" >
                                 </div>
 
                                 <div class="form-group col-md-5">
@@ -137,10 +137,19 @@
 
                                     </c:if>
                                 </div>
+                                <div class="form-group col-md-2">
+                                    <label for="total_inspecionado">Latitude</label>
+                                    <input type="text" class="form-control" name="latitude" id="latitude" value="${atividade.latitude}">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="total_inspecionado">Longitude</label>
+                                    <input type="text" class="form-control" name="longitude" id="longitude" value="${atividade.longitude}">
+                                </div>
                                 <br/><br/><br/><br/>
                                 <div class="col-lg-12" align="center">
 
                                     <button class="btn btn-success" type="submit" > Salvar Atividade</button>  
+                                    <a class="btn btn-primary" href="#" onclick="geocodeAddress()"><i class="fa fa-map-marker fa-fw"></i> Coordenadas</a>
 
                                 </div>
                                 <br/>
@@ -160,6 +169,20 @@
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             });
+
+            function geocodeAddress(resultsMap) {
+                var geocoder = new google.maps.Geocoder();
+                var address = "Santa Rita do Sapucai," + document.getElementById('endereco').value + "," + document.getElementById('numero').value;
+                geocoder.geocode({'address': address}, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        $("#latitude").attr("value", results[0].geometry.location.lat());
+                        $("#longitude").attr("value", results[0].geometry.location.lng());
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
         </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABlmqhgaqNRF4iaanJFZw_gzKAsc1VNU0&signed_in=true&callback=initMap" async defer></script>
     </body>
 </html>

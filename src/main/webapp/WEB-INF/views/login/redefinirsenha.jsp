@@ -45,7 +45,7 @@
                             <li class="scroll"><a href="<c:url value="/mapa"/>"  target="_blank">Mapa</a></li>
                             <li class="scroll"><a href="<c:url value="/#"/>">Recursos</a></li>
                             <li class="scroll"><a href="<c:url value="/"/>">Equipe</a></li>
-                            <li class="scroll"><a href="<c:url value="/"/>">Denuncia</a></li>
+                            <li class="scroll"><a href="<c:url value="/"/>">Denúncia</a></li>
                             <li class="scroll active"><a href="<c:url value="/login"/>">Restrito</a></li>                        
                         </ul>
                     </div>

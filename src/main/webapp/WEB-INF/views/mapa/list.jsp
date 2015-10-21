@@ -5,6 +5,8 @@
 
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
+
+
     </head>
 
     <body>
@@ -29,20 +31,24 @@
                                 Mapa
                                 <small>Administrativo</small>
                             </h1>
-                            <div class="col-lg-12 text-center">
-                                <br/><br/><br/><br/>
-                                <h1 class="text-center text-danger">Módulo em Desenvolvimento</h1>
-                                <br/>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
-                                        <span class="sr-only">45% Complete</span>
-                                    </div>
+
+                            <form role="form" target="_blank" action="<c:url value="/mapa/visualizarMapaAdministrador"/>" method="POST">
+
+                                <div class="form-group">
+                                    <label for="bairro">Bairro:</label>
+                                    <select  class="form-control validate[required]" name="bairro_id" id="bairro.id">
+                                        <option value="" > Todos os Bairros  </option>
+                                        <c:forEach var="bairroList" items="${bairroList}">
+                                            <option value="${bairroList.id}" > ${bairroList.nome}  </option>
+                                        </c:forEach>
+                                    </select>
+
                                 </div>
-                                <img src="<c:url value="/img/mapa_dev.png"/>" alt="..." class="img-rounded img-thumbnail">
-                            </div>
-
-
-
+                                <div class="col-lg-12 text-center">
+                                    <a class="btn btn-primary" target="_blank" href=<c:url value="/mapa/visualizarMapaAdministrador"/> ><i class="fa fa-map-marker fa-fw"></i> Visualizar Mapa</a>
+                                    <input class="btn btn-lg btn-success" type="submit" value=" Visualizar Mapa" /> 
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!-- /.row -->

@@ -20,11 +20,13 @@ import spiaa.model.entity.TipoImoveis;
 public class AtividadeDAO implements BaseDAO<Atividade> {
 
     public static final String CRITERION_BOLETIM_ID_EQ = "1";
+    public static final String CRITERION_LAT_LNG_OK = "2";
+    public static final String CRITERION_BAIRRO_ID_EQ = "3";
 
     @Override
     public void create(Atividade entity, Connection conn) throws Exception {
 
-        String sql = "INSERT INTO atividade (endereco, numero, observacao, inspecionado, tipo_imovel_fk, tratamento_antivetorial_fk, quarteirao_fk) VALUES (?, ?, ?, ?, ?, ?, ? ) RETURNING id;";
+        String sql = "INSERT INTO atividade (endereco, numero, observacao, inspecionado, tipo_imovel_fk, tratamento_antivetorial_fk, quarteirao_fk, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? ) RETURNING id;";
         PreparedStatement ps = conn.prepareStatement(sql);
 
         int i = 0;
@@ -36,6 +38,8 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         ps.setLong(++i, entity.getTipoImoveis().getId());
         ps.setLong(++i, entity.getBoletimDiario().getId());
         ps.setLong(++i, entity.getQuarteirao().getId());
+        ps.setString(++i, entity.getLatitude());
+        ps.setString(++i, entity.getLongitude());
 
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
@@ -97,6 +101,8 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
             atividade.setNumero(rs.getString("numero"));
             atividade.setObservacao(rs.getString("observacao"));
             atividade.setInspecionado(rs.getInt("inspecionado"));
+            atividade.setLatitude(rs.getString("latitude"));
+            atividade.setLongitude(rs.getString("longitude"));
 
             //Tipo Imóvel
             TipoImoveis tipoImoveis = new TipoImoveis();
@@ -133,9 +139,10 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         Atividade atividade = null;
         TipoImoveis tipoImoveis = null;
         String sql = "SELECT atividade .*,tipo_imovel.id as tipo_imovel_id, tipo_imovel.descricao as tipo_imovel_descricao, tipo_imovel.sigla as tipo_imovel_sigla,";
-        sql += " quarteirao.id as quarteirao_id, quarteirao.descricao as quarteirao_descricao ";
+        sql += " quarteirao.id as quarteirao_id, quarteirao.descricao as quarteirao_descricao, bairro.nome as bairo_nome ";
         sql += "FROM atividade LEFT JOIN tipo_imovel on tipo_imovel.id = atividade.tipo_imovel_fk  ";
         sql += "LEFT JOIN quarteirao on quarteirao.id = atividade.quarteirao_fk ";
+        sql += "LEFT JOIN bairro on bairro.id = quarteirao.bairro_fk ";
         sql += "WHERE 1 = 1";
 
         Statement s = conn.createStatement();
@@ -144,6 +151,15 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         if (criterionBoletimIdEq != null && criterionBoletimIdEq > 0) {
 
             sql += " AND tratamento_antivetorial_fk ='" + criterionBoletimIdEq + "'";
+        }
+        Long criterionBairroIdEq = (Long) criteria.get(CRITERION_BAIRRO_ID_EQ);
+        if (criterionBairroIdEq != null && criterionBairroIdEq > 0) {
+            sql += " AND and bairro.id = '" + criterionBairroIdEq + "' ";
+        }
+
+        String criterioLatLngOk = (String) criteria.get(CRITERION_LAT_LNG_OK);
+        if (criterioLatLngOk == "1") {
+            sql += " AND latitude != '' and longitude != '' ";
         }
 
         ResultSet rs = s.executeQuery(sql);
@@ -159,6 +175,8 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
             atividade.setNumero(rs.getString("numero"));
             atividade.setObservacao(rs.getString("observacao"));
             atividade.setInspecionado(rs.getInt("inspecionado"));
+            atividade.setLatitude(rs.getString("latitude"));
+            atividade.setLongitude(rs.getString("longitude"));
 
             //Tipo Imóvel
             tipoImoveis = new TipoImoveis();
@@ -180,7 +198,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     @Override
     public void update(Atividade entity, Connection conn) throws Exception {
 
-        String sql = "UPDATE atividade SET endereco=?, numero=?, observacao=?, inspecionado=?, tipo_imovel_fk=?, tratamento_antivetorial_fk=?, quarteirao_fk=? WHERE id=?";
+        String sql = "UPDATE atividade SET endereco=?, numero=?, observacao=?, inspecionado=?, tipo_imovel_fk=?, tratamento_antivetorial_fk=?, quarteirao_fk=?, latitude=?, longitude=? WHERE id=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         int i = 0;
         ps.setString(++i, entity.getEndereco());
@@ -190,6 +208,8 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         ps.setLong(++i, entity.getTipoImoveis().getId());
         ps.setLong(++i, entity.getBoletimDiario().getId());
         ps.setLong(++i, entity.getQuarteirao().getId());
+        ps.setString(++i, entity.getLatitude());
+        ps.setString(++i, entity.getLongitude());
         ps.setLong(++i, entity.getId());
         ps.execute();
         ps.close();
