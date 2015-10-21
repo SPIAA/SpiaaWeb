@@ -68,7 +68,7 @@ public class MapaController {
                 Long id = Long.parseLong(bairro_id);
                 bairro = ServiceLocator.getBaseBairroService().readById(id);
                 bairroList.add(bairro);
-                criteriaAtividade.put(AtividadeDAO.CRITERION_BAIRRO_ID_EQ, Long.getLong(bairro_id));
+                criteriaAtividade.put(AtividadeDAO.CRITERION_BAIRRO_ID_EQ, id);
             } else {
                 bairroList = ServiceLocator.getBaseBairroService().readByCriteria(criteriaBairro);
             }

@@ -229,7 +229,7 @@
                             </div>
                             <div class="team-info">
                                 <h3>Dênis Leonardo</h3>
-                                <span>Designer / Nusiness Analyst</span>
+                                <span>Designer / Business Analyst</span>
                             </div>
 
                             <ul class="social-icons">

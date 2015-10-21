@@ -45,7 +45,7 @@
 
                                 </div>
                                 <div class="col-lg-12 text-center">
-                                    <a class="btn btn-primary" target="_blank" href=<c:url value="/mapa/visualizarMapaAdministrador"/> ><i class="fa fa-map-marker fa-fw"></i> Visualizar Mapa</a>
+                                    <!--<a class="btn btn-primary" target="_blank" href=<c:url value="/mapa/visualizarMapaAdministrador"/> ><i class="fa fa-map-marker fa-fw"></i> Visualizar Mapa</a>-->
                                     <input class="btn btn-lg btn-success" type="submit" value=" Visualizar Mapa" /> 
                                 </div>
                             </form>

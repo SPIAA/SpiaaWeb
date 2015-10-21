@@ -154,7 +154,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         }
         Long criterionBairroIdEq = (Long) criteria.get(CRITERION_BAIRRO_ID_EQ);
         if (criterionBairroIdEq != null && criterionBairroIdEq > 0) {
-            sql += " AND and bairro.id = '" + criterionBairroIdEq + "' ";
+            sql += " AND bairro.id = '" + criterionBairroIdEq + "' ";
         }
 
         String criterioLatLngOk = (String) criteria.get(CRITERION_LAT_LNG_OK);
