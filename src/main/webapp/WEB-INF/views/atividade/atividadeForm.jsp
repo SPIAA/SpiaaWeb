@@ -32,7 +32,21 @@
                             </h1>
 
                             <form role="form" method="POST">
+
                                 <input type="text" name="boletimId" hidden value="${atividade.boletimDiario.id}">
+
+                                <div class="form-group col-md-12">
+                                    <div class="form-group col-md-2 ">
+                                        <label for="codigo">Data Inicial:</label>
+                                        <input type="text" class="form-control"  name="dataInicial" value="<fmt:formatDate pattern="dd/MM/yyyy hh:mm" value="${atividade.dataInicial}" />" id="default_datetimepickerIn" >
+                                    </div>
+
+                                    <div class="form-group col-md-2 ">
+                                        <label for="codigo">Data Final:</label>
+                                        <input type="text" class="form-control"  name="dataFinal" value="<fmt:formatDate pattern="dd/MM/yyyy hh:mm" value="${atividade.dataFinal}" />" id="default_datetimepickerFin" >
+                                    </div>
+
+                                </div>
                                 <div class="col-md-1">
                                     <label for="numero_quateirao">Nª Quart.</label>
                                     <select  class="form-control validate[required]" name="quarteirao.id" id="">
@@ -42,7 +56,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <label for="endereco">Endereço</label>
                                     <input type="text" class="form-control" name="endereco" id="endereco" value="${atividade.endereco}">
                                 </div>
@@ -50,6 +64,7 @@
                                     <label for="numero">Nº:</label>
                                     <input type="text" class="form-control" name="numero" id="numero" value="${atividade.numero}" >
                                 </div>
+
 
                                 <div class="form-group col-md-5">
                                     <label for="endereco" class="form-group">Tipo de unidade :</label>
@@ -165,24 +180,44 @@
             <!-- /#page-wrapper -->
         </div>
         <!-- /#wrapper -->
+        <link href="<c:url value="/css/jquery.datetimepicker.css"/>" rel="stylesheet"/>
+        <link href="<c:url value="/css/jquery-ui.min.css"/>" rel="stylesheet">
+        <script src="<c:url value="/js/jquery-ui.min.js"/>"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABlmqhgaqNRF4iaanJFZw_gzKAsc1VNU0&signed_in=true&callback=initMap" async defer></script>
+        <script type="text/javascript" src="<c:url value="/js/jquery.datetimepicker.js"/>"></script>
+        <script>
+                                        $(function () {
+                                            $('[data-toggle="tooltip"]').tooltip()
+                                        });
+
+                                        function geocodeAddress(resultsMap) {
+                                            var geocoder = new google.maps.Geocoder();
+                                            var address = "Santa Rita do Sapucai," + document.getElementById('endereco').value + "," + document.getElementById('numero').value;
+                                            geocoder.geocode({'address': address}, function (results, status) {
+                                                if (status === google.maps.GeocoderStatus.OK) {
+                                                    document.getElementById('latitude').value = results[0].geometry.location.lat();
+                                                    document.getElementById('longitude').value = results[0].geometry.location.lng();
+                                                } else {
+                                                    alert('Geocode was not successful for the following reason: ' + status);
+                                                }
+                                            });
+                                        }
+        </script>
         <script>
             $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
+                $('#default_datetimepickerIn').datetimepicker({
+                    lang: 'pt',
+                    format: 'd/m/Y H:i',
+                    step: 30
+                });
+                $('#default_datetimepickerFin').datetimepicker({
+                    lang: 'pt',
+                    format: 'd/m/Y H:i',
+                    step: 30
+                });
+
             });
 
-            function geocodeAddress(resultsMap) {
-                var geocoder = new google.maps.Geocoder();
-                var address = "Santa Rita do Sapucai," + document.getElementById('endereco').value + "," + document.getElementById('numero').value;
-                geocoder.geocode({'address': address}, function (results, status) {
-                    if (status === google.maps.GeocoderStatus.OK) {
-                        $("#latitude").attr("value", results[0].geometry.location.lat());
-                        $("#longitude").attr("value", results[0].geometry.location.lng());
-                    } else {
-                        alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                });
-            }
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABlmqhgaqNRF4iaanJFZw_gzKAsc1VNU0&signed_in=true&callback=initMap" async defer></script>
     </body>
 </html>

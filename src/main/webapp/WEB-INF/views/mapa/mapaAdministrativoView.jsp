@@ -9,6 +9,7 @@
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
         <!--<script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>-->
         <!--<link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />-->
+        <link rel="shortcut icon" href="<c:url value="/img/icone_spiaa.png"/>">
         <script src="<c:url value="/js/mapbox.js"/>"></script>
         <link href="<c:url value="/css/mapbox.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/font-awesome.min.css"/>" rel="stylesheet">

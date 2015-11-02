@@ -31,7 +31,7 @@
             <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
                 <div class="container">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" id="menutop">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -42,11 +42,11 @@
 
                     <div class="collapse navbar-collapse navbar-right">
                         <ul class="nav navbar-nav">
-                            <li class="scroll active"><a href="#" >Início</a></li>
+                            <li class="scroll active"><a href="#" onclick="hideMenu()" >Início</a></li>
                             <li class="scroll"><a href="<c:url value="/mapa"/>" target="_blank">Mapa</a></li>
-                            <li class="scroll"><a href="#features">Recursos</a></li>
-                            <li class="scroll"><a href="#meet-team">Equipe</a></li>
-                            <li class="scroll"><a href="#get-in-touch">Denúncia</a></li>
+                            <li class="scroll"><a href="#features" onclick="hideMenu()">Recursos</a></li>
+                            <li class="scroll"><a href="#meet-team" onclick="hideMenu()">Equipe</a></li>
+                            <li class="scroll"><a href="#get-in-touch" onclick="hideMenu()">Denúncia</a></li>
                             <li class="scroll"><a href="<c:url value="/login"/>">Restrito</a></li>                        
                         </ul>
                     </div>
@@ -343,18 +343,24 @@
             </div>
         </footer><!--/#footer-->
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="<c:url value="/js/jquery.min.js"/>"></script>
+        <script src="<c:url value="/js/bootstrap.min.js"/>"></script>
         <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/mousescroll.js"></script>
-        <script src="js/smoothscroll.js"></script>
-        <script src="js/jquery.prettyPhoto.js"></script>
-        <script src="js/jquery.isotope.min.js"></script>
-        <script src="js/jquery.inview.min.js"></script>
-        <script src="js/wow.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="<c:url value="/js/owl.carousel.min.js"/>"></script>
+        <script src="<c:url value="/js/mousescroll.js"/>"></script>
+        <script src="<c:url value="/js/smoothscroll.js"/>"></script>
+        <script src="<c:url value="/js/jquery.prettyPhoto.js"/>"></script>
+        <script src="<c:url value="/js/jquery.isotope.min.js"/>"></script>
+        <script src="<c:url value="/js/jquery.inview.min.js"/>"></script>
+        <script src="<c:url value="/js/wow.min.js"/>"></script>
+        <script src="<c:url value="/js/main.js"/>"></script>
         <script src="<c:url value="/js/views/denunciaForm.js"/>"></script>
+
+        <script type="text/javascript">
+                                         function hideMenu() {
+                                             $('.navbar-collapse').collapse('hide');
+                                         }
+        </script>
 
         <div class="modal fade" id="successCreate">
             <div class="modal-dialog">

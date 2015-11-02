@@ -1,9 +1,12 @@
 package spiaa.model.entity;
 
+import java.util.Date;
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
 import spiaa.model.base.BaseEntity;
 
-public class Atividade extends BaseEntity{
+public class Atividade extends BaseEntity {
+
     private String endereco;
     private Quarteirao quarteirao;
     private String numero;
@@ -11,6 +14,10 @@ public class Atividade extends BaseEntity{
     private String latitude;
     private String longitude;
     private Integer inspecionado;
+    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+    private Date dataInicial;
+    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+    private Date dataFinal;
     private TipoImoveis tipoImoveis;
     private List<AtividadeCriadouro> atividadeCriadouroList;
     private List<AtividadeInseticida> atividadeInseticidasList;
@@ -103,4 +110,21 @@ public class Atividade extends BaseEntity{
     public void setBoletimDiario(TratamentoAntiVetorial boletimDiario) {
         this.boletimDiario = boletimDiario;
     }
+
+    public Date getDataInicial() {
+        return dataInicial;
+    }
+
+    public void setDataInicial(Date dataInicial) {
+        this.dataInicial = dataInicial;
+    }
+
+    public Date getDataFinal() {
+        return dataFinal;
+    }
+
+    public void setDataFinal(Date dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
 }
