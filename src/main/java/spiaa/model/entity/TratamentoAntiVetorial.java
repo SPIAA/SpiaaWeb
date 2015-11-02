@@ -2,11 +2,12 @@ package spiaa.model.entity;
 
 import java.util.Date;
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
 import spiaa.model.base.BaseEntity;
 
 public class TratamentoAntiVetorial extends BaseEntity {
 
-//    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataBoletim;
     private String numero;
     private String semana;

@@ -1,6 +1,7 @@
 package spiaa.model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -106,8 +107,8 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
             atividade.setInspecionado(rs.getInt("inspecionado"));
             atividade.setLatitude(rs.getString("latitude"));
             atividade.setLongitude(rs.getString("longitude"));
-             atividade.setDataInicial(rs.getDate("data_inicial"));
-            atividade.setDataFinal(rs.getDate("data_Final"));
+            atividade.setDataInicial(rs.getTimestamp("data_inicial"));
+            atividade.setDataFinal(rs.getTimestamp("data_Final"));
 
             //Tipo Imóvel
             TipoImoveis tipoImoveis = new TipoImoveis();

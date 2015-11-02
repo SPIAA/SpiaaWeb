@@ -14,10 +14,12 @@ public class Atividade extends BaseEntity {
     private String latitude;
     private String longitude;
     private Integer inspecionado;
-    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date dataInicial;
-    @DateTimeFormat(pattern = "dd/MM/yyyy hh:mm")
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date dataFinal;
+
     private TipoImoveis tipoImoveis;
     private List<AtividadeCriadouro> atividadeCriadouroList;
     private List<AtividadeInseticida> atividadeInseticidasList;

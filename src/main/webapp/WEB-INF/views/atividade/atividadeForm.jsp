@@ -38,12 +38,12 @@
                                 <div class="form-group col-md-12">
                                     <div class="form-group col-md-2 ">
                                         <label for="codigo">Data Inicial:</label>
-                                        <input type="text" class="form-control"  name="dataInicial" value="<fmt:formatDate pattern="dd/MM/yyyy hh:mm" value="${atividade.dataInicial}" />" id="default_datetimepickerIn" >
+                                        <input type="text" class="form-control"  name="dataInicial" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${atividade.dataInicial}" />" id="default_datetimepickerIn" >
                                     </div>
 
                                     <div class="form-group col-md-2 ">
                                         <label for="codigo">Data Final:</label>
-                                        <input type="text" class="form-control"  name="dataFinal" value="<fmt:formatDate pattern="dd/MM/yyyy hh:mm" value="${atividade.dataFinal}" />" id="default_datetimepickerFin" >
+                                        <input type="text" class="form-control"  name="dataFinal" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${atividade.dataFinal}" />" id="default_datetimepickerFin" >
                                     </div>
 
                                 </div>

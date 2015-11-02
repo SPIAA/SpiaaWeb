@@ -120,7 +120,7 @@ public class TratamentoAntiVetorialDAO implements BaseDAO<TratamentoAntiVetorial
     @Override
     public void update(TratamentoAntiVetorial entity, Connection conn) throws Exception {
 
-        String sql = "UPDATE tratamento_antivetorial SET data_boletim=?, numero=?, semana=?, turma=?, usuario_fk=?, bairro_fk=?, numero_atividade=?, tipo_atividade=? WHERE id=? ";
+        String sql = "UPDATE tratamento_antivetorial SET data_boletim=?, numero=?, semana_epidemiologica=?, turma=?, usuario_fk=?, bairro_fk=?, numero_atividade=?, tipo_atividade=? WHERE id=? ";
 
         PreparedStatement ps = conn.prepareStatement(sql);
 
