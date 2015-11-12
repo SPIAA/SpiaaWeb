@@ -35,7 +35,7 @@ public class MapaDAO implements BaseDAO<Mapa> {
                 + "Left join atividade on atividade.id = atividade_criadouro.atividade_fk "
                 + "left join boletim_diario on boletim_diario.id = atividade.boletim_fk "
                 + "Left Join bairro on bairro.id = boletim_diario.bairro_fk "
-                + "where bairro.id = 7";
+                + "where bairro.id = ?";
 
         return mapaListcriadouro;
 

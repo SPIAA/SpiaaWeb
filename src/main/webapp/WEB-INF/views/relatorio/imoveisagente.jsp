@@ -5,8 +5,6 @@
 
     <head>
         <jsp:include page="../template-admin/header.jsp"/>
-
-
     </head>
 
     <body>
@@ -19,6 +17,8 @@
                 <jsp:include page="../template-admin/menutop.jsp"/>
                 <link href="<c:url value="/css/jquery-ui.min.css"/>" rel="stylesheet">
                 <script src="<c:url value="/js/jquery-ui.min.js"/>"></script>
+        <script src="<c:url value="/js/views/relatorioImoveisVisitados.js"/>"></script>
+               
 
             </nav>
 
@@ -30,37 +30,52 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                Mapa
-                                <small>Administrativo</small>
-                            </h1>
+                                Emissão de Relatório
+                                <!--<small>subTitulo</small>-->
 
-                            <form role="form" target="_blank" action="<c:url value="/mapa/visualizarMapaAdministrador"/>" method="POST">
+                            </h1>
+                            <form role="form" action="<c:url value="/relatorio/imoveisagentes"/>" method="POST">
                                 <div class="form-group col-md-12">
                                     <div class="form-group col-md-2 ">
                                         <label for="codigo">Data Inicial:</label>
-                                        <input type="text" class="form-control"  name="dataInicial" id="datepickerIn" >
+                                        <input type="text" class="form-control"  name="dataInicial" id="datepickerIn" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${dataInicial}" />">
                                     </div>
                                     <div class="form-group col-md-2 ">
                                         <label for="codigo">Data Final:</label>
-                                        <input type="text" class="form-control"  name="dataFinal" id="datepickerFin" >
+                                        <input type="text" class="form-control"  name="dataFinal" id="datepickerFin" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${dataFinal}" />">
+                                    </div>
+                                    <div class="form-group col-md-1 ">
+                                        <label for="codigo">&nbsp;&nbsp;</label>
+                                        <br/>
+                                        <input class="btn btn btn-default" type="submit" value="Selecionar" /> 
+                                    </div>
+                                    <div class="form-group col-md-2 ">
+                                        <label for="codigo">&nbsp;&nbsp;</label>
+                                        <br/>
+                                         <input class="btn btn-primary " onclick="getFormData()" value="Gerar Relatório" />  
                                     </div>
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <div class="form-group col-md-12">
-                                        <label for="bairro">Bairro:</label>
-                                        <select  class="form-control validate[required]" name="bairro_id" id="bairro.id">
-                                            <option value="" > Todos os Bairros  </option>
-                                            <c:forEach var="bairroList" items="${bairroList}">
-                                                <option value="${bairroList.id}" > ${bairroList.nome}  </option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 text-center">
-                                <!--<a class="btn btn-primary" target="_blank" href=<c:url value="/mapa/visualizarMapaAdministrador"/> ><i class="fa fa-map-marker fa-fw"></i> Visualizar Mapa</a>-->
-                                    <input class="btn btn-lg btn-success" type="submit" value=" Visualizar Mapa" /> 
-                                </div>
+
                             </form>
+                            <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Agente</th>
+                                        <th align="right"> Dias Trabalhados</th>
+                                        <th align="rigth"> Imóveis Visitados</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${imoveisVisitadosList}" var="imoveisVisitados">
+                                        <tr>
+                                            <td>${imoveisVisitados.usuario.nome}</td>
+                                            <td>${imoveisVisitados.diasTrabalhados}</td>
+                                            <td>${imoveisVisitados.imoveisVisitados}</td>
+                                        </tr>
+                                    </c:forEach>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- /.row -->
@@ -73,6 +88,7 @@
 
         </div>
         <!-- /#wrapper -->
+
         <script>
             $(function () {
                 $("#datepickerIn").datepicker(
@@ -89,7 +105,6 @@
                         });
             });
         </script>
-
 
     </body>
 

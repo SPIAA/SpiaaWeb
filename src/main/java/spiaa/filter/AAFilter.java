@@ -86,6 +86,9 @@ public class AAFilter extends HandlerInterceptorAdapter {
             if (uri.startsWith("/api")) {
                 ok = true;
             }
+            if (uri.startsWith("/relatorio")) {
+                ok = true;
+            }
         }
 
         //Verificar Autenticação

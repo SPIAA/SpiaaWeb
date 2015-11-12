@@ -65,8 +65,12 @@
                     "sSortDescending": ": Ordenar colunas de forma descendente"
                 }
             },
-             "order": [ 0, 'desc' ]
-          });
+            buttons: [
+                'copy', 'excel', 'pdf'
+            ],
+            "order": [0, 'desc']
+            
+        });
 
     });
     $('.btn_pag').on("click", function () {

@@ -24,6 +24,8 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
     public static final String CRITERION_BOLETIM_ID_EQ = "1";
     public static final String CRITERION_LAT_LNG_OK = "2";
     public static final String CRITERION_BAIRRO_ID_EQ = "3";
+    public static final String CRITERION_DATA_INICIAL_EQ = "4";
+    public static final String CRITERION_DATA_FINAL_EQ = "5";
 
     @Override
     public void create(Atividade entity, Connection conn) throws Exception {
@@ -158,6 +160,7 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
 
             sql += " AND tratamento_antivetorial_fk ='" + criterionBoletimIdEq + "'";
         }
+
         Long criterionBairroIdEq = (Long) criteria.get(CRITERION_BAIRRO_ID_EQ);
         if (criterionBairroIdEq != null && criterionBairroIdEq > 0) {
             sql += " AND bairro.id = '" + criterionBairroIdEq + "' ";
@@ -166,6 +169,16 @@ public class AtividadeDAO implements BaseDAO<Atividade> {
         String criterioLatLngOk = (String) criteria.get(CRITERION_LAT_LNG_OK);
         if (criterioLatLngOk == "1") {
             sql += " AND latitude != '' and longitude != '' ";
+        }
+
+        java.util.Date criterionDataInicialEq = (java.util.Date) criteria.get(CRITERION_DATA_INICIAL_EQ);
+        if (criterionDataInicialEq != null) {
+            sql += " AND data_inicial >= '" + criterionDataInicialEq.toString() + "'";
+        }
+
+        java.util.Date criterionDataFinalEq = (java.util.Date) criteria.get(CRITERION_DATA_FINAL_EQ);
+        if (criterionDataFinalEq != null) {
+            sql += " AND data_final <= '" + criterionDataFinalEq.toString() + "'";
         }
 
         ResultSet rs = s.executeQuery(sql);

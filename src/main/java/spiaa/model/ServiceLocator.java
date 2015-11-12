@@ -16,6 +16,7 @@ import spiaa.model.service.MapaService;
 import spiaa.model.service.ParametrosService;
 import spiaa.model.service.PontoEstrategicoService;
 import spiaa.model.service.QuarteiraoService;
+import spiaa.model.service.RelatorioService;
 import spiaa.model.service.TipoImovelService;
 import spiaa.model.service.UsuarioService;
 
@@ -88,5 +89,9 @@ public class ServiceLocator {
 
     public static ParametrosService getbaseParametrosService() {
         return new ParametrosService();
+    }
+
+    public static RelatorioService getbaseRelatorioService() {
+        return new RelatorioService();
     }
 }

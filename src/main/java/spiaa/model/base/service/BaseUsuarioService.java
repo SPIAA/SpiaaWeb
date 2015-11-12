@@ -8,9 +8,7 @@ public interface BaseUsuarioService extends BaseService<Usuario> {
 
     public Usuario login(String usuario, String senha) throws Exception;
 
-    public String encodeStrToUTF8(Usuario usuario);
-
-    public void recuperarSenhaCreate(RecuperarSenha recuperar) throws Exception;
+   public void recuperarSenhaCreate(RecuperarSenha recuperar) throws Exception;
 
     public void recuperarSenhaDelete(Long id) throws Exception;
 

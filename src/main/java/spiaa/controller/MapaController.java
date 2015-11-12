@@ -1,10 +1,11 @@
 package spiaa.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,7 +57,7 @@ public class MapaController {
     }
 
     @RequestMapping(value = "/mapa/visualizarMapaAdministrador", method = RequestMethod.POST)
-    public ModelAndView visualizaMapa(String bairro_id) throws Exception {
+    public ModelAndView visualizaMapa(String bairro_id, @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataInicial, @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataFinal) throws Exception {
         ModelAndView mv = null;
         List<Atividade> atividadeList = new ArrayList<Atividade>();
         List<Bairro> bairroList = new ArrayList<>();
@@ -71,6 +72,12 @@ public class MapaController {
                 criteriaAtividade.put(AtividadeDAO.CRITERION_BAIRRO_ID_EQ, id);
             } else {
                 bairroList = ServiceLocator.getBaseBairroService().readByCriteria(criteriaBairro);
+            }
+            if (dataInicial != null) {
+                criteriaAtividade.put(AtividadeDAO.CRITERION_DATA_INICIAL_EQ, dataInicial);
+            }
+            if (dataFinal != null) {
+                criteriaAtividade.put(AtividadeDAO.CRITERION_DATA_FINAL_EQ, dataFinal);
             }
 
             criteriaAtividade.put(AtividadeDAO.CRITERION_LAT_LNG_OK, "1");

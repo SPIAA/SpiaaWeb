@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="spiaaBairros" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="389f66f9-f6db-4c65-b241-8e8074631409">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="usuario.nome" class="java.lang.String"/>
+	<field name="diasTrabalhados" class="java.lang.Integer"/>
+	<field name="imoveisVisitados" class="java.lang.Integer"/>
+	<group name="Group2">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#FF0000" uuid="16f490ba-75dc-4621-b90e-1261bcf10550"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="5951989d-78f5-4f11-bcd3-aef521b7c31e"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SPIAA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="330" y="43" width="245" height="20" forecolor="#FFFFFF" uuid="5afb77da-f613-44ba-8f5a-50a559838682"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Imóveis visitados por agentes]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="18"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30">
+			<staticText>
+				<reportElement x="0" y="0" width="137" height="30" uuid="9afe2db1-b964-41ee-9ed3-0d53865ab446"/>
+				<text><![CDATA[Agente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="0" width="151" height="30" uuid="9b3471af-b496-4319-b499-904fdc9bae3f"/>
+				<text><![CDATA[Dias trabalhados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="1" width="160" height="29" uuid="3c508953-428c-4980-a9bc-a191bdb0a11a"/>
+				<text><![CDATA[Imóveis visitados]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="137" height="20" uuid="446dd93f-c49f-4a89-bebd-221f94931ec1"/>
+				<textFieldExpression><![CDATA[$F{usuario.nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="0" width="151" height="20" uuid="2e183a46-2655-4448-bfa9-927858aeb642"/>
+				<textFieldExpression><![CDATA[$F{diasTrabalhados}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="0" width="160" height="20" uuid="9ff19f85-0fcc-4ae5-99c8-28885386b3e1"/>
+				<textFieldExpression><![CDATA[$F{imoveisVisitados}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="8042e616-9d69-4a9a-9a26-8ccee28f501a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="a10e63a3-29fc-48ad-8d5a-c7df034c4ced"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="d5aacbab-3bb6-493b-aa09-078aaf09ed64"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

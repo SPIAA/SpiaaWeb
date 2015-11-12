@@ -47,11 +47,6 @@ public class AgenteSaudeService implements BaseUsuarioService {
    }
 
    @Override
-   public String encodeStrToUTF8(Usuario usuario) {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-   }
-
-   @Override
    public void recuperarSenhaCreate(RecuperarSenha recuperar) throws Exception {
       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    }

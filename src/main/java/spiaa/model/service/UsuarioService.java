@@ -5,6 +5,7 @@ import java.net.URL;
 import java.security.MessageDigest;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,8 @@ public class UsuarioService implements BaseUsuarioService {
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
             UsuarioDAO dao = new UsuarioDAO();
+            String senha = encodeStrToUTF8(entity.getSenha());
+            entity.setSenha(senha);
             dao.create(entity, conn);
             conn.commit();
             conn.close();
@@ -59,6 +62,7 @@ public class UsuarioService implements BaseUsuarioService {
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
             UsuarioDAO dao = new UsuarioDAO();
+            entity.setSenha(encodeStrToUTF8(entity.getSenha()));
             dao.update(entity, conn);
             conn.commit();
             conn.close();
@@ -89,6 +93,7 @@ public class UsuarioService implements BaseUsuarioService {
             Connection conn = ConnectionManager.getInstance().getConnection();
             UsuarioDAO dao = new UsuarioDAO();
             Map<String, Object> criteria = new HashMap<>();
+            senha = encodeStrToUTF8(senha);
             criteria.put(UsuarioDAO.CRITERION_USUARIO_EQ, usuario);
             criteria.put(UsuarioDAO.CRITERION_SENHA_EQ, senha);
             List<Usuario> usuarioList = dao.readByCriteria(criteria, conn);
@@ -112,9 +117,8 @@ public class UsuarioService implements BaseUsuarioService {
         return usuarioLogado;
     }
 
-    @Override
-    public String encodeStrToUTF8(Usuario usuario) {
-        String hash = usuario.getEmail() + "spiaaweb2015";
+    public String encodeStrToUTF8(String obj) {
+        String hash = obj + "spiaaweb2015";
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(hash.getBytes());
@@ -131,7 +135,7 @@ public class UsuarioService implements BaseUsuarioService {
 
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
-            String token = encodeStrToUTF8(recuperar.getUsuario());
+            String token = encodeStrToUTF8(recuperar.getUsuario().getEmail() + new Date().toString());
             recuperar.setToken(token);
 
             UsuarioDAO dao = new UsuarioDAO();
@@ -216,6 +220,7 @@ public class UsuarioService implements BaseUsuarioService {
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
             UsuarioDAO dao = new UsuarioDAO();
+            recuperar.getUsuario().setSenha(encodeStrToUTF8(recuperar.getUsuario().getSenha()));
             dao.redefinirSenha(recuperar, conn);
             recuperarSenhaDelete(recuperar.getId());
             conn.commit();

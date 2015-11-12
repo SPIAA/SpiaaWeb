@@ -14,6 +14,14 @@
         <a href="<c:url value="/mapa/admin"/>" style="color: #fff"><i class="fa fa-globe"></i> Mapa</a>
     </li>
     <li>
+        <a href="javascript:;" data-toggle="collapse" style="color: #fff" data-target="#demo"><i class="fa fa-file-pdf-o"></i> Relatório<i class="fa fa-fw fa-caret-down"></i></a>
+        <ul id="demo" class="in">
+            <li>
+                <a href="<c:url value="/relatorio/imoveisagentes"/>" style="color: #fff"><i class="fa  fa-home"></i> Imoveis visitados</a>
+            </li>
+        </ul>
+    </li>
+    <li>
         <a href="javascript:;" data-toggle="collapse" style="color: #fff" data-target="#demo"><i class="fa  fa-plus-square-o"></i> Cadastros <i class="fa fa-fw fa-caret-down"></i></a>
         <ul id="demo" class="in">
             <li>
