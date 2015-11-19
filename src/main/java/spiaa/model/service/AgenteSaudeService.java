@@ -1,5 +1,7 @@
 package spiaa.model.service;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +25,7 @@ public class AgenteSaudeService implements BaseUsuarioService {
          Connection conn = ConnectionManager.getInstance().getConnection();
          AgenteSaudeDAO dao = new AgenteSaudeDAO();
          Map<String, Object> criteria = new HashMap<>();
+         senha = encodeStrToUTF8(senha);
          criteria.put(AgenteSaudeDAO.CRITERION_USUARIO_EQ, usuario);
          criteria.put(AgenteSaudeDAO.CRITERION_SENHA_EQ, senha);
          List<Usuario> usuarioList = dao.readByCriteria(criteria, conn);
@@ -95,5 +98,16 @@ public class AgenteSaudeService implements BaseUsuarioService {
     public void redefinirSenha(RecuperarSenha recuperar) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    public String encodeStrToUTF8(String obj) {
+        String hash = obj + "spiaaweb2015";
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(hash.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            return number.toString(16);
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
 
+    }
 }

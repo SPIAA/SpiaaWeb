@@ -44,7 +44,6 @@ public class TratamentoAntiVetorialApiController {
             try {
                 List<TratamentoAntiVetorial> tratamentoList = (List<TratamentoAntiVetorial>) gson.fromJson(tratamentoAntiVetorial, token.getType());
                 ServiceLocator.getbaseBoletimDiarioService().createTratamentoByApi(tratamentoList);
-                String teste = "ola";
             } catch (Exception e) {
                 response = "ERROR - Problema na Conversão do Json para Objeto TratamentoAntiVeorial";
             }

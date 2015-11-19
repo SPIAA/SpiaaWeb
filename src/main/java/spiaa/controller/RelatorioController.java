@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -48,30 +50,48 @@ public class RelatorioController {
         return mv;
     }
 
+//    @RequestMapping(value = "/relatorio/imoveisagentes", method = RequestMethod.POST)
+//    public ModelAndView read(@DateTimeFormat(pattern = "dd/MM/yyyy") Date dataInicial, @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataFinal) throws Exception {
+//        ModelAndView mv = null;
+//
+//        try {
+//            List<ImoveisVisitadorPorAgentes> imoveisVisitadosList = new ArrayList<>();
+//            imoveisVisitadosList = ServiceLocator.getbaseRelatorioService().readImoveisVisitadorPorAgentes(dataInicial, dataFinal);
+//
+//            mv = new ModelAndView("relatorio/imoveisagente");
+//            mv.addObject("imoveisVisitadosList", imoveisVisitadosList);
+//            mv.addObject("dataInicial", dataInicial);
+//            mv.addObject("dataFinal", dataFinal);
+//        } catch (Exception e) {
+//            mv = new ModelAndView("erro/erro");
+//            mv.addObject("erro", e);
+//        }
+//        return mv;
+//    }
     @RequestMapping(value = "/relatorio/imoveisagentes", method = RequestMethod.POST)
-    public ModelAndView read(@DateTimeFormat(pattern = "dd/MM/yyyy") Date dataInicial, @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataFinal) throws Exception {
+    public void readaaa(@DateTimeFormat(pattern = "dd/MM/yyyy") Date dataInicial, @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataFinal, HttpServletResponse response) throws Exception {
         ModelAndView mv = null;
 
-        try {
-            List<ImoveisVisitadorPorAgentes> imoveisVisitadosList = new ArrayList<>();
-            imoveisVisitadosList = ServiceLocator.getbaseRelatorioService().readImoveisVisitadorPorAgentes(dataInicial, dataFinal);
+        List<ImoveisVisitadorPorAgentes> imoveisVisitadosList = new ArrayList<>();
+        imoveisVisitadosList = ServiceLocator.getbaseRelatorioService().readImoveisVisitadorPorAgentes(dataInicial, dataFinal);
+        InputStream isReport = RelatorioController.class.getResourceAsStream("/imoveisVisitados.jasper");
 
-            mv = new ModelAndView("relatorio/imoveisagente");
-            mv.addObject("imoveisVisitadosList", imoveisVisitadosList);
-            mv.addObject("dataInicial", dataInicial);
-            mv.addObject("dataFinal", dataFinal);
-        } catch (Exception e) {
-            mv = new ModelAndView("erro/erro");
-            mv.addObject("erro", e);
-        }
-        return mv;
+        //Gerando o relatório
+        JasperPrint print = JasperFillManager.fillReport(isReport, null, new JRBeanCollectionDataSource(imoveisVisitadosList));
+
+        byte[] pdf = JasperExportManager.exportReportToPdf(print);
+
+        response.setContentType("application/pdf");
+        response.getOutputStream().write(pdf);
+        response.flushBuffer();
+
+//        return mv;
     }
 
     @RequestMapping(value = "/relatorio/imoveisagentespdf", method = RequestMethod.POST)
-    @ResponseBody
-    public String relatoriopdf(@RequestBody String jsonData) throws Exception {
-        byte report[] = null;
-        String base64 = "";
+    public void relatoriopdf(@RequestBody String jsonData, HttpServletResponse response) throws Exception {
+//        byte report[] = null;
+        String resposnse = "";
         try {
             Gson gson = new Gson();
             ImoveisVisitadorPorAgentes imoveisVisitados = (ImoveisVisitadorPorAgentes) GSONConverter.convert(jsonData, ImoveisVisitadorPorAgentes.class);
@@ -84,15 +104,38 @@ public class RelatorioController {
             //Gerando o relatório
             JasperPrint print = JasperFillManager.fillReport(isReport, null, new JRBeanCollectionDataSource(imoveisVisitadosList));
 
-            report = JasperExportManager.exportReportToPdf(print);
-            BASE64Encoder base64Encoder = new BASE64Encoder();
-            base64 = "data:application/pdf;base64,";
-            base64 += base64Encoder.encode(report);
+            byte[] pdf = JasperExportManager.exportReportToPdf(print);
 
+            response.setContentType("application/pdf");
+            response.getOutputStream().write(pdf);
+            response.flushBuffer();
+
+//            report = JasperExportManager.exportReportToPdf(print);
+//            BASE64Encoder base64Encoder = new BASE64Encoder();
+//            base64 = "data:application/pdf;base64,";
+//            base64 += base64Encoder.encode(report);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return base64;
+//        return response;
     }
+//    @RequestMapping(value = "/TipoProduto/Relatorio2", method = RequestMethod.GET)
+//    public void streamImagem2(HttpServletResponse response) throws Exception {
+//        //Fonte dados
+//        Connection conn = ConnectionManager.getInstance().getConnection();
+//        //Parametros
+//        Map parameters = new HashMap();
+//        parameters.put("LOGO", TipoProdutoController.class.getResource("/aula/res/logo.jpg"));
+//        //parameters.put("SUB_REPORT", TipoProdutoController.class.getResource("/aula/res/subreport.jasper"));
+//        //Criando o relatório.
+//        InputStream report = TipoProdutoController.class.getResourceAsStream("/aula/res/report2.jasper");
+//        JasperPrint print = JasperFillManager.fillReport(report, parameters, conn);
+//        //Exportando em PDF
+//        byte[] pdf = JasperExportManager.exportReportToPdf(print);
+//
+//        response.setContentType("application/pdf");
+//        response.getOutputStream().write(pdf);
+//        response.flushBuffer();
+//    }
 
 }

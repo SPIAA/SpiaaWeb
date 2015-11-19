@@ -34,7 +34,7 @@
                                 <!--<small>subTitulo</small>-->
 
                             </h1>
-                            <form role="form" action="<c:url value="/relatorio/imoveisagentes"/>" method="POST">
+                            <form role="form" action="<c:url value="/relatorio/imoveisagentes"/>" target="_blank" method="POST">
                                 <div class="form-group col-md-12">
                                     <div class="form-group col-md-2 ">
                                         <label for="codigo">Data Inicial:</label>

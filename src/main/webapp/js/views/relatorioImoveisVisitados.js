@@ -28,6 +28,7 @@ function getFormData() {
         jsonData: jsonData,
         method: 'POST',
         dataType: 'text',
+        target: '_blank',
         contentType: 'application/x-www-form-urlencoded; charset=iso-8859-1',
         beforeSend: function (xhr) {
             xhr.setRequestHeader("Accept", "application/text");
