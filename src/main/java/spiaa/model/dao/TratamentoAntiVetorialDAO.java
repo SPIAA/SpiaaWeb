@@ -83,7 +83,7 @@ public class TratamentoAntiVetorialDAO implements BaseDAO<TratamentoAntiVetorial
         TratamentoAntiVetorial entity = null;
         List<TratamentoAntiVetorial> boletimDiarioList = new ArrayList<TratamentoAntiVetorial>();
 
-        String sql = "SELECT tratamento_antivetorial.*,usuario.id as usuario_id, usuario.nome as usuario_nome, bairro.id as bairro_id, zbairro.nome as bairro_nome FROM tratamento_antivetorial LEFT JOIN usuario on usuario.id = tratamento_antivetorial.usuario_fk LEFT JOIN bairro on bairro.id = tratamento_antivetorial.bairro_fk WHERE 1 = 1";
+        String sql = "SELECT tratamento_antivetorial.*,usuario.id as usuario_id, usuario.nome as usuario_nome, bairro.id as bairro_id, bairro.nome as bairro_nome FROM tratamento_antivetorial LEFT JOIN usuario on usuario.id = tratamento_antivetorial.usuario_fk LEFT JOIN bairro on bairro.id = tratamento_antivetorial.bairro_fk WHERE 1 = 1";
         Statement s = conn.createStatement();
 
         //criterios

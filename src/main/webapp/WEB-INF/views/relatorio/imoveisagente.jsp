@@ -17,8 +17,7 @@
                 <jsp:include page="../template-admin/menutop.jsp"/>
                 <link href="<c:url value="/css/jquery-ui.min.css"/>" rel="stylesheet">
                 <script src="<c:url value="/js/jquery-ui.min.js"/>"></script>
-        <script src="<c:url value="/js/views/relatorioImoveisVisitados.js"/>"></script>
-               
+
 
             </nav>
 
@@ -47,12 +46,7 @@
                                     <div class="form-group col-md-1 ">
                                         <label for="codigo">&nbsp;&nbsp;</label>
                                         <br/>
-                                        <input class="btn btn btn-default" type="submit" value="Selecionar" /> 
-                                    </div>
-                                    <div class="form-group col-md-2 ">
-                                        <label for="codigo">&nbsp;&nbsp;</label>
-                                        <br/>
-                                         <input class="btn btn-primary " onclick="getFormData()" value="Gerar Relatório" />  
+                                        <input class="btn btn btn-default" type="submit" value="Gerar Relatório" /> 
                                     </div>
                                 </div>
 
