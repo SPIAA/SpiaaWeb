@@ -32,8 +32,8 @@
                                         <th hidden="true">id</th>
                                         <th>Descrição</th>
                                         <th>Bairro</th>
-                                        <th align="center" style="width:70px;" > </th>
-                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
                                     </tr>
                                 </thead>
                                 <tbody>

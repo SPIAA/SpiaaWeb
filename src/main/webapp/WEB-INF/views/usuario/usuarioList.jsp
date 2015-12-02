@@ -24,9 +24,9 @@
                                     <tr>
                                         <th>Usuário</th>
                                         <th>E-mail</th>
-                                        <th align="center" style="width:80px;" > Bairros </th>
-                                        <th align="center" style="width:80px;" > Alterar</th>
-                                        <th align="center" style="width:80px;" > Excluir</th>
+                                        <th align="center" style="width:80px;" class="no-sort"> Bairros </th>
+                                        <th align="center" style="width:80px;" class="no-sort"> Alterar</th>
+                                        <th align="center" style="width:80px;" class="no-sort"> Excluir</th>
                                     </tr>
                                 </thead>
                                 <tbody>

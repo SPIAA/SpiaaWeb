@@ -302,9 +302,11 @@
             <div class="container-wrapper">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-4 col-sm-offset-8">
+                        <div class="col-sm-6 col-sm-offset-8">
                             <div class="contact-form">
                                 <h3>Denúncia</h3>
+
+                                <div class="alert alert-danger" role="alert">Este site está em desenvolvimento e as denuncias efetuadas aqui não serão levadas ao conhecimento da secretaria de saúde.Por favor entre em contato diretamente na <strong>Secretaria de Saúde de Santa Rita do Sapucaí</strong></div>
                                 <form id="main-contact-form" name="contact-form" method="post" action="#">
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Bairro:</label>
@@ -357,9 +359,9 @@
         <script src="<c:url value="/js/views/denunciaForm.js"/>"></script>
 
         <script type="text/javascript">
-                                         function hideMenu() {
-                                             $('.navbar-collapse').collapse('hide');
-                                         }
+                                            function hideMenu() {
+                                                $('.navbar-collapse').collapse('hide');
+                                            }
         </script>
 
         <div class="modal fade" id="successCreate">

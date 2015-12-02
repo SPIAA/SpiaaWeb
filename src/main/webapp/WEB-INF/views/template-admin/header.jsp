@@ -68,8 +68,11 @@
             buttons: [
                 'copy', 'excel', 'pdf'
             ],
-            "order": [0, 'desc']
-            
+            "order": [1, 'desc'],
+            "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
         });
 
     });

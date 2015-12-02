@@ -41,16 +41,17 @@
                                             <input class="form-control validate[required]" type="text" id="nome" name="nome" value="${estrato.nome}" placeholder="Digite o Nome do estrato">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-5  demo2">
+                                    <div class="form-group col-md-4  demo2">
                                         <label class="" for="estrato">Cor para o mapa :</label><br/>
                                         <div class="input-group margin-bottom-sm">
                                             <span class="input-group-addon"><i  class="fa fa-circle-o"></i></span>
                                             <input type="text" value="${estrato.cor}" name="cor" class="form-control validate[required]"  />
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-2 ">
+                                    <div class="form-group col-md-3 ">
                                         <label class="" for="dataInicio">&nbsp;</label><br/>
                                         <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
+                                        <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                     </div>
 
                                     <br/> <br/>    <br/> <br/> <br/> 
@@ -142,7 +143,7 @@
                             <div class="alert alert-success">
                                 <strong> Estrato salvo com sucesso</strong> <br/>
                                 <i class="fa fa-2x fa-spinner fa-pulse"></i>
-                                 <p>Você está sendo redirecionado.....</p>
+                                <p>Você está sendo redirecionado.....</p>
                             </div>
 
                         </div>

@@ -20,6 +20,7 @@
                                 Denúncia
                                 <small>Listagem</small>
                             </h1>
+                           
                             <div class="col-lg-12">
                                 <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                     <thead>
@@ -30,7 +31,7 @@
                                             <th>Número</th>
                                             <th>Usuário</th>
                                             <th>Status</th>
-                                            <th align="center" style="width:70px;" > </th>
+                                            <th align="center" style="width:70px;" class="no-sort"> </th>
                                         </tr>
                                     </thead>
                                     <tbody>

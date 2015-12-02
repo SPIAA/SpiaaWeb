@@ -29,14 +29,16 @@
                              <table id="table_id" class="table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
+                                        <th hidden>Código</th>
                                         <th>Estrato</th>
-                                        <th align="center" style="width:70px;" > </th>
-                                        <th align="center" style="width:70px;" >Dados Bairros </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
+                                        <th align="center" style="width:70px;" class="no-sort">Dados Bairros </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <c:forEach items="${estrato}" var="estrato">
                                         <tr>
+                                            <td hidden>${estrato.id}</td>
                                             <td>${estrato.nome}</td>
                                             <td align="center"><a href="estrato/${estrato.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar"><i class="fa fa-2x fa-edit text-primary"></i></a></td>
                                             <td align="center"><a href="estratobairro/${estrato.id}" data-toggle="tooltip" data-placement="top" title="Dados Bairros"><i class="fa fa-2x fa-database text-success"></i></a></td>

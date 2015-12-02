@@ -6,6 +6,7 @@
 package spiaa.controller;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -48,12 +49,19 @@ public class RelatorioController {
     public void readaaa(@DateTimeFormat(pattern = "dd/MM/yyyy") Date dataInicial, @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataFinal, HttpServletResponse response) throws Exception {
         ModelAndView mv = null;
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String dataIn = sdf.format(dataInicial);
+        String dataFin = sdf.format(dataFinal);
+
+        HashMap parameters = new HashMap<String, Object>();
+        parameters.put("periodo", dataIn + " a " + dataFin);
+
         List<ImoveisVisitadorPorAgentes> imoveisVisitadosList = new ArrayList<>();
         imoveisVisitadosList = ServiceLocator.getbaseRelatorioService().readImoveisVisitadorPorAgentes(dataInicial, dataFinal);
         InputStream isReport = RelatorioController.class.getResourceAsStream("/imoveisVisitados.jasper");
 
         //Gerando o relatório
-        JasperPrint print = JasperFillManager.fillReport(isReport, null, new JRBeanCollectionDataSource(imoveisVisitadosList));
+        JasperPrint print = JasperFillManager.fillReport(isReport, parameters, new JRBeanCollectionDataSource(imoveisVisitadosList));
 
         byte[] pdf = JasperExportManager.exportReportToPdf(print);
 

@@ -30,9 +30,9 @@
                                         <th>Semana</th>
                                         <th>Bairro</th>
                                         <th>Usuário</th>
-                                        <th align="center" style="width:70px;" >Atividade</th>
-                                        <th align="center" style="width:70px;" > </th>
-                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:70px;" class="no-sort">Atividade</th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
                                     </tr>
                                 </thead>
                                 <tbody>

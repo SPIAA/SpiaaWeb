@@ -33,17 +33,17 @@
                             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-
+                                        <th align="center" style="width:70px;" hidden>Código</th>
                                         <th>Nome</th>
-                                        <th align="center" style="width:70px;" > Alterar</th>
-                                        <th align="center" style="width:70px;" > Responsáveis</th>
-                                        <th align="center" style="width:70px;" > Quarteirão</th>
+                                        <th align="center" style="width:70px;" class="no-sort"> Alterar</th>
+                                        <th align="center" style="width:70px;" class="no-sort"> Responsáveis</th>
+                                        <th align="center" style="width:70px;" class="no-sort"> Quarteirão</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <c:forEach items="${bairrolist}" var="bairro">
                                         <tr>
-
+                                            <td hidden>${bairro.id}</td>
                                             <td>${bairro.nome}</td>
                                             <td align="center"><a href="bairro/${bairro.id}/alterar" data-toggle="tooltip" data-placement="top" title="Alterar Bairro"><i class="fa fa-2x fa-edit text-primary"></i> </a></td>
                                             <td align="center"><a href="bairro/${bairro.id}/bairrousuario" data-toggle="tooltip" data-placement="top" title="Agentes Responsáveis"><i class="fa fa-2x fa-users text-warning"></i> </a></td>

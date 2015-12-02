@@ -33,8 +33,8 @@
                                     <tr>
                                         <th>Inseticida</th>
                                         <th>Unidade de medida</th>
-                                        <th align="center" style="width:70px;" > </th>
-                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
                                     </tr>
                                 </thead>
                                 <tbody>

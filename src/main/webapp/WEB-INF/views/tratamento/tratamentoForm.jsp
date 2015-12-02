@@ -91,9 +91,8 @@
 
                                 <br/><br/><br/><br/><br/><br/><br/><br/>
                                 <div class="col-lg-12" align="center">
-
                                     <button class="btn btn-success " > Salvar</button>  
-
+                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                 </div>
 
 

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import spiaa.model.base.BaseDAO;
 import spiaa.model.entity.Bairro;
+import spiaa.model.entity.Quarteirao;
 
 public class BairroDAO implements BaseDAO<Bairro> {
 
@@ -54,7 +55,7 @@ public class BairroDAO implements BaseDAO<Bairro> {
         List<Bairro> bairroList = new ArrayList<Bairro>();
         Bairro bairro = null;
 
-        String sql = "SELECT * FROM bairro WHERE 1=1  ";
+        String sql = "SELECT bairro.*,(select count(id) from quarteirao where quarteirao.bairro_fk = bairro.id) as quarteirao FROM bairro WHERE 1=1 ";
 
         String criterionNomeILike = (String) criteria.get(CRITERION_NOME_ILIKE);
         if (criterionNomeILike != null && (!criterionNomeILike.isEmpty())) {
@@ -70,6 +71,14 @@ public class BairroDAO implements BaseDAO<Bairro> {
             bairro.setId(rs.getLong("id"));
             bairro.setNome(rs.getString("nome"));
             bairro.setCoordenadas(rs.getString("coordenadas"));
+            
+            //verofica a quantidade de quarteirao
+            Quarteirao quarteirao = new Quarteirao();
+            quarteirao.setId(rs.getLong("quarteirao"));
+            List<Quarteirao> quarteiraoList = new ArrayList<>();
+            quarteiraoList.add(quarteirao);
+            bairro.setQuarteiraoList(quarteiraoList);
+
             bairroList.add(bairro);
         }
         rs.close();

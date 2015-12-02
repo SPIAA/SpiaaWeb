@@ -24,7 +24,7 @@
                                 Ponto Estratégico
                                 <c:if test="${not empty pontoEstrategico}"><small>Alterar</small></c:if>
                                 <c:if test="${empty pontoEstrategico}"><small>Novo</small></c:if>
-                            </h1>
+                                </h1>
                             <c:if test="${not empty mensagem}">  <div class="alert alert-danger alert-dismissible" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <p class="text-center">${mensagem}</p> 
@@ -95,6 +95,7 @@
                                 <div class="form-group form-inline col-lg-12 text-center ">
                                     <br/>
                                     <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
+                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                 </div>
                             </form>
                             <!--<button onclick="myFunction()">report via ajax</button>-->
@@ -117,7 +118,7 @@
                         <div class="alert alert-success">
                             <strong> Ponto Estratégico salvo com Sucesso</strong> <br/>
                             <i class="fa fa-2x fa-spinner fa-pulse"></i>
-                             <p>Você está sendo redirecionado.....</p>
+                            <p>Você está sendo redirecionado.....</p>
                         </div>
 
                     </div>

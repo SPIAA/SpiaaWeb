@@ -19,9 +19,9 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 Usuário
-                                 <c:if test="${not empty usuario}"><small>Alterar</small></c:if>
+                                <c:if test="${not empty usuario}"><small>Alterar</small></c:if>
                                 <c:if test="${empty usuario}"><small>Novo</small></c:if>
-                            </h1>
+                                </h1>
                             <c:if test="${not empty mensagem}">  <div class="alert alert-danger alert-dismissible" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <p class="text-center">${mensagem}</p> 
@@ -68,6 +68,7 @@
                                 <br/><br/><br/><br/><br/><br/><br/><br/>
                                 <div class="col-lg-12" align="center">
                                     <input class="btn btn-success" type="submit" name="salvar" onclick="verificarSenhas()"  value="Salvar"/>  
+                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                 </div>
 
                             </form>

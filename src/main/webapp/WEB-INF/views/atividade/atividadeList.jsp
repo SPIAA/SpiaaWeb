@@ -69,8 +69,8 @@
                                         <th>Número</th>
                                         <th>Observação</th>
                                         <th>T. Inspec.</th>
-                                        <th align="center" style="width:70px;" > </th>
-                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
                                     </tr>
                                 </thead>
                                 <tbody>

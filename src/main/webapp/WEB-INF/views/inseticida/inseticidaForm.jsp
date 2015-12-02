@@ -6,7 +6,7 @@
         <jsp:include page="../template-admin/header.jsp"/>
         <link href="<c:url value="/css/jquery-ui.min.css"/>" rel="stylesheet">
         <script src="<c:url value="/js/jquery-ui.min.js"/>"></script>
-         <script src="<c:url value="/js/views/inseticida.js"/>"></script>
+        <script src="<c:url value="/js/views/inseticida.js"/>"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -22,9 +22,9 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">
                                 Inseticida
-                                 <c:if test="${not empty inseticida}"><small>Alterar</small></c:if>
+                                <c:if test="${not empty inseticida}"><small>Alterar</small></c:if>
                                 <c:if test="${empty inseticida}"><small>Novo</small></c:if>
-                            </h1>
+                                </h1>
                             <c:if test="${not empty mensagem}">  <div class="alert alert-danger alert-dismissible" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <p class="text-center">${mensagem}</p> 
@@ -44,6 +44,7 @@
                                 <div class="col-lg-4" align="center">
                                     <br/>
                                     <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
+                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                 </div>
                             </form>
                             <!--<button onclick="myFunction()">report via ajax</button>-->
@@ -66,7 +67,7 @@
                         <div class="alert alert-success">
                             <strong> Inseticida salvo com sucesso</strong> <br/>
                             <i class="fa fa-2x fa-spinner fa-pulse"></i>
-                             <p>Você está sendo redirecionado.....</p>
+                            <p>Você está sendo redirecionado.....</p>
                         </div>
 
                     </div>

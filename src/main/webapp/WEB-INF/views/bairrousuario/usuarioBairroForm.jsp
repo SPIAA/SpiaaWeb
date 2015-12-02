@@ -32,20 +32,27 @@
                             </h1>
                             <input type="hidden" id="bairroid"  name="usuarioId" value="${usuario.id}"/>
                             <c:if test="${usuario.tipo eq 'AGS'}">
-                                <div class="form-group col-lg-12">
+                                
                                     <h3>Selecione os Bairros que são de responsabilidade deste agente :</h3>
+                                
+                                <div class="alert alert-info" role="alert">
+                                    <strong>Atenção!</strong> O bairros <strong>desabilitados</strong> e da cor <strong class="text-danger">vermelha </strong> não contém quarteir&otilde;es cadastrados e não podem ser utilizados por este motivo. Para habilita-los va no cadastro de bairros e cadastre ao menos um quarteir&atilde;o para o bairro desejado.
                                 </div>
+                               
                                 <br/>
                                 <div class="checkbox col-lg-12">
                                     <c:forEach items="${bairroList}" var="bairro">
                                         <div class="form-group col-md-3">
                                             <label>
-                                                <input type="checkbox" value="${bairro.id}" name="bairro"
+                                                <input type="checkbox" 
+                                                       <c:if test="${bairro.quarteiraoList[0].id <= 0}">class="text-danger" disabled</c:if>
+                                                       value="${bairro.id}" name="bairro"  
                                                        <c:forEach items="${usuarioBairroList}" var="usuarioBairro">
                                                            <c:if test="${bairro.id eq usuarioBairro.bairro.id}"> checked</c:if>
                                                        </c:forEach>
                                                        >
-                                                ${bairro.nome}
+                                                <p <c:if test="${bairro.quarteiraoList[0].id <= 0}">class="text-danger" </c:if>>
+                                                    ${bairro.nome}</p>
                                             </label>
                                         </div>
                                     </c:forEach>
@@ -53,12 +60,13 @@
                             </div>
 
                             <div class="form-group col-md-12 ">
-                                <div class="form-group col-md-5 "></div>
-                                <div class="form-group col-md-2 ">
+                                <div class="form-group col-md-4 "></div>
+                                <div class="form-group col-md-4 ">
                                     <label class="" for="dataInicio">&nbsp;</label><br/>
                                     <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
+                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                 </div>
-                                <div class="form-group col-md-5 "></div>
+                                <div class="form-group col-md-4 "></div>
                             </div>
                         </c:if>
                             <c:if test="${usuario.tipo eq 'ADM'}">

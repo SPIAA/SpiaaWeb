@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="imoveisVisitados" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="389f66f9-f6db-4c65-b241-8e8074631409">
-	<property name="ireport.zoom" value="1.7715610000000013"/>
+	<property name="ireport.zoom" value="2.3579476910000103"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="31"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -24,6 +24,7 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 1" uuid="a1bcaebc-ddf3-437a-bb7f-f3edd1339727"/>
+	<parameter name="periodo" class="java.lang.String"/>
 	<field name="usuario.nome" class="java.lang.String"/>
 	<field name="diasTrabalhados" class="java.lang.Integer"/>
 	<field name="imoveisVisitados" class="java.lang.Integer"/>
@@ -46,76 +47,102 @@
 		<band/>
 	</background>
 	<title>
-		<band height="72">
-			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#FF0000" uuid="16f490ba-75dc-4621-b90e-1261bcf10550"/>
-				<staticText>
-					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="5951989d-78f5-4f11-bcd3-aef521b7c31e"/>
-					<textElement>
-						<font size="34" isBold="true"/>
-					</textElement>
-					<text><![CDATA[SPIAA]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="330" y="43" width="245" height="20" forecolor="#FFFFFF" uuid="5afb77da-f613-44ba-8f5a-50a559838682"/>
-					<textElement textAlignment="Right">
-						<font size="14" isBold="false"/>
-					</textElement>
-					<text><![CDATA[Imóveis visitados por agentes]]></text>
-				</staticText>
-			</frame>
+		<band height="41">
+			<line>
+				<reportElement x="0" y="1" width="1" height="39" uuid="e836ab85-eb83-49f2-bb9e-527c63aa59ce"/>
+			</line>
+			<line>
+				<reportElement x="0" y="40" width="554" height="1" uuid="b013d15d-7d51-46e4-9990-d1797a629b74"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="554" height="1" uuid="8995b0af-bf0d-4e8a-a3e3-c8356b82f9f6"/>
+			</line>
+			<staticText>
+				<reportElement x="374" y="23" width="44" height="15" uuid="25e32b3f-5a1c-4747-920d-6e55826d2b01"/>
+				<text><![CDATA[Período :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="418" y="23" width="136" height="15" uuid="622a3ecc-0b07-47ab-a3ed-6fa8ada40e7a"/>
+				<textFieldExpression><![CDATA[$P{periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="2" width="553" height="20" forecolor="#000000" uuid="5afb77da-f613-44ba-8f5a-50a559838682"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Imóveis visitados por agentes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="554" y="0" width="1" height="41" uuid="93356aee-3aff-4aa1-86d5-a9e9460126b8"/>
+			</line>
+			<image>
+				<reportElement x="2" y="2" width="98" height="37" uuid="1ae2953c-c032-462a-871d-4c08e6f49fc8"/>
+				<imageExpression><![CDATA["E:\\Projetos\\java\\SPIAA\\spiaaweb\\src\\main\\webapp\\img\\logo.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="9"/>
+		<band/>
 	</pageHeader>
 	<columnHeader>
-		<band height="20">
+		<band height="19">
 			<staticText>
-				<reportElement x="0" y="0" width="137" height="20" uuid="9afe2db1-b964-41ee-9ed3-0d53865ab446"/>
+				<reportElement x="1" y="0" width="136" height="18" uuid="9afe2db1-b964-41ee-9ed3-0d53865ab446"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true" isPdfEmbedded="true"/>
+					<font size="12" isBold="true" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[Agente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="198" y="0" width="151" height="20" uuid="9b3471af-b496-4319-b499-904fdc9bae3f"/>
+				<reportElement x="198" y="1" width="151" height="16" uuid="9b3471af-b496-4319-b499-904fdc9bae3f"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Dias trabalhados]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="395" y="1" width="160" height="19" uuid="3c508953-428c-4980-a9bc-a191bdb0a11a"/>
+				<reportElement x="395" y="1" width="159" height="16" uuid="3c508953-428c-4980-a9bc-a191bdb0a11a"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Imóveis visitados]]></text>
 			</staticText>
 			<line>
 				<reportElement x="1" y="18" width="554" height="1" uuid="3c626e8f-38e2-4c93-8ab9-1b608d6b13a2"/>
 			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="18" uuid="3b871533-1787-44c6-a8bd-61f866073de3"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="19" uuid="bd402c36-7d01-4a42-bdd8-ad02b69fb68c"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="30">
+		<band height="16">
 			<textField>
-				<reportElement x="0" y="0" width="137" height="20" uuid="446dd93f-c49f-4a89-bebd-221f94931ec1"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="0" y="0" width="137" height="15" uuid="446dd93f-c49f-4a89-bebd-221f94931ec1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{usuario.nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="198" y="0" width="151" height="20" uuid="2e183a46-2655-4448-bfa9-927858aeb642"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<reportElement x="198" y="0" width="151" height="15" uuid="2e183a46-2655-4448-bfa9-927858aeb642"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{diasTrabalhados}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="395" y="0" width="160" height="20" uuid="9ff19f85-0fcc-4ae5-99c8-28885386b3e1"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<reportElement x="395" y="0" width="160" height="15" uuid="9ff19f85-0fcc-4ae5-99c8-28885386b3e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{imoveisVisitados}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="1" y="22" width="554" height="1" uuid="972650e7-5749-4725-9191-28953ebdf26b"/>
+				<reportElement x="0" y="15" width="555" height="1" uuid="972650e7-5749-4725-9191-28953ebdf26b"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-2" width="1" height="17" uuid="a5a341f8-5d60-4c0c-a92a-5d1109dbf28e"/>
+			</line>
+			<line>
+				<reportElement x="554" y="-2" width="1" height="18" uuid="c08128f1-a269-4dd8-aa7c-89bdd70a71f1"/>
 			</line>
 		</band>
 	</detail>
@@ -125,16 +152,16 @@
 	<pageFooter>
 		<band height="17">
 			<textField>
-				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="8042e616-9d69-4a9a-9a26-8ccee28f501a"/>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#FFFFFF" uuid="8042e616-9d69-4a9a-9a26-8ccee28f501a"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página"+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="a10e63a3-29fc-48ad-8d5a-c7df034c4ced"/>
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#FFFFFF" uuid="a10e63a3-29fc-48ad-8d5a-c7df034c4ced"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
-			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="4" width="100" height="13" uuid="d5aacbab-3bb6-493b-aa09-078aaf09ed64"/>
+			<textField pattern="EEEEE dd MMMMM yyyy   HH:mm">
+				<reportElement x="1" y="4" width="197" height="13" uuid="d5aacbab-3bb6-493b-aa09-078aaf09ed64"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>

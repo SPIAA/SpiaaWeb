@@ -6,7 +6,6 @@
 package spiaa.model.entity.relatorio;
 
 import java.util.Date;
-import org.springframework.format.annotation.DateTimeFormat;
 import spiaa.model.entity.Usuario;
 
 /**

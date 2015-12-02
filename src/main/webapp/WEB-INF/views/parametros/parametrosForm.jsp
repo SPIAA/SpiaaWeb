@@ -52,7 +52,9 @@
                                             <div class="form-group col-md-2 ">
                                                 <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
                                             </div>
-                                            <div class="form-group col-md-5 "></div>
+                                            <div class="form-group col-md-5 ">
+                                                <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

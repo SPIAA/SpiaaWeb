@@ -44,8 +44,8 @@
                                         <th>Complemento</th>
                                         <th>Bairro</th>
                                         <th>Agente Reposnsável</th>
-                                        <th align="center" style="width:70px;" > </th>
-                                        <th align="center" style="width:70px;" > </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
+                                        <th align="center" style="width:70px;" class="no-sort"> </th>
                                     </tr>
                                 </thead>
                                 <tbody>

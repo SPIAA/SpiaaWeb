@@ -51,25 +51,7 @@
                                 </div>
 
                             </form>
-                            <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>Agente</th>
-                                        <th align="right"> Dias Trabalhados</th>
-                                        <th align="rigth"> Imóveis Visitados</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${imoveisVisitadosList}" var="imoveisVisitados">
-                                        <tr>
-                                            <td>${imoveisVisitados.usuario.nome}</td>
-                                            <td>${imoveisVisitados.diasTrabalhados}</td>
-                                            <td>${imoveisVisitados.imoveisVisitados}</td>
-                                        </tr>
-                                    </c:forEach>
-
-                                </tbody>
-                            </table>
+                            
                         </div>
                     </div>
                     <!-- /.row -->
