@@ -5,6 +5,9 @@
  */
 package spiaa.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -46,7 +50,7 @@ public class RelatorioController {
     }
 
     @RequestMapping(value = "/relatorio/imoveisagentes", method = RequestMethod.POST)
-    public void readaaa(@DateTimeFormat(pattern = "dd/MM/yyyy") Date dataInicial, @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataFinal, HttpServletResponse response) throws Exception {
+    public void readaaa(@DateTimeFormat(pattern = "dd/MM/yyyy") Date dataInicial, @DateTimeFormat(pattern = "dd/MM/yyyy") Date dataFinal, HttpServletResponse response, HttpSession session) throws Exception {
         ModelAndView mv = null;
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -55,8 +59,7 @@ public class RelatorioController {
 
         HashMap parameters = new HashMap<String, Object>();
         parameters.put("periodo", dataIn + " a " + dataFin);
-
-        List<ImoveisVisitadorPorAgentes> imoveisVisitadosList = new ArrayList<>();
+               List<ImoveisVisitadorPorAgentes> imoveisVisitadosList = new ArrayList<>();
         imoveisVisitadosList = ServiceLocator.getbaseRelatorioService().readImoveisVisitadorPorAgentes(dataInicial, dataFinal);
         InputStream isReport = RelatorioController.class.getResourceAsStream("/imoveisVisitados.jasper");
 

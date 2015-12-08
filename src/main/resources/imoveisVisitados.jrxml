@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="imoveisVisitados" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="389f66f9-f6db-4c65-b241-8e8074631409">
-	<property name="ireport.zoom" value="2.3579476910000103"/>
+	<property name="ireport.zoom" value="6.727499949325635"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="31"/>
+	<property name="ireport.y" value="40"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -75,10 +75,13 @@
 			<line>
 				<reportElement x="554" y="0" width="1" height="41" uuid="93356aee-3aff-4aa1-86d5-a9e9460126b8"/>
 			</line>
-			<image>
-				<reportElement x="2" y="2" width="98" height="37" uuid="1ae2953c-c032-462a-871d-4c08e6f49fc8"/>
-				<imageExpression><![CDATA["E:\\Projetos\\java\\SPIAA\\spiaaweb\\src\\main\\webapp\\img\\logo.jpg"]]></imageExpression>
-			</image>
+			<staticText>
+				<reportElement x="12" y="2" width="73" height="36" uuid="97fb7181-456e-4332-835c-c84839f49b3f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[SPIAA]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>

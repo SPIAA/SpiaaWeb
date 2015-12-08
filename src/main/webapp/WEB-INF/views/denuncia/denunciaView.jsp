@@ -97,12 +97,17 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-sm-4"> <p> &nbsp;</p></div>
-                                    <div class="col-sm-4"> 
-                                        <input class="btn btn-lg btn-block btn-default" style="margin-top: 30px;" onclick="getFormData()"  value="Salvar" <c:if test="${denuncia.status eq 'Finalizada'}"> disabled</c:if> /> 
-                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                               
+                                    <div class=" form-group" align="center"> 
+                                    <div class="col-sm-3"> </div>
+                                        <div class="col-sm-3 form-group"> 
+                                            <a href="#"  name="cancelar" class="btn btn-default" style="margin-top: 30px;" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                        </div>
+                                        <div class="col-sm-3 form-group"> 
+                                            <input class="btn  btn-success" style="margin-top: 30px;" onclick="getFormData()"  value="Salvar" <c:if test="${denuncia.status eq 'Finalizada'}"> disabled</c:if> /> 
+                                        </div>
+                                    <div class="col-sm-3"> </div>
                                     </div>
-                                    <div class="col-sm-4"> <p> &nbsp;</p>
                                     </div>
                                 </div>
                             </form>

@@ -62,8 +62,8 @@
                                 </div>
                                 <br/><br/><br/><br/><br/><br/><br/><br/>
                                 <div class="col-lg-12" align="left">
-                                    <input class="btn btn-success" type="submit" name="salvar" value="Salvar"/>  
-                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">Cancelar</a>
+                                    <input class="btn btn-success" type="submit" name="salvar" value="&nbsp;&nbsp;Salvar&nbsp;&nbsp;"/>  
                                 </div>
                             </form>
                         </div>

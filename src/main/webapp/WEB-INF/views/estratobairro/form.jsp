@@ -41,8 +41,8 @@
                                     </div>
                                     <div class="form-group col-md-2 ">
                                         <label class="" for="dataInicio">&nbsp;</label><br/>
-                                        <input type="submit" class="btn btn-success btn-block" value=" Salvar" />
-                                        <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                        <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">Cancelar</a>
+                                        <input type="submit" class="btn btn-success btn-block" value="&nbsp;&nbsp;Salvar&nbsp;&nbsp;" />
                                     </div>
 
                                     <br/> <br/>    <br/> <br/> <br/> 

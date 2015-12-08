@@ -25,6 +25,8 @@
 
                             </h1>
                             <input type="hidden" id="bairroid"  name="bairroid" value="${bairro.id}"/>
+                            <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp; &nbsp; Cancelar&nbsp; &nbsp;</a>
+                                       
                             <a href="#" class="btn btn-default" onclick="novoQuarteirao()"><i class="fa fa-fw fa-plus"></i> Novo</a><br/><br/>
                             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>

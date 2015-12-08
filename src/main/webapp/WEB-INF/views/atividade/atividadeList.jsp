@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                               Tratamento Anti-Vetorial
+                                Tratamento Anti-Vetorial
                                 <small>Listagem</small>
                             </h1>
                             <br/>                              
@@ -55,9 +55,11 @@
                                     <br/>${boletimDiario.tipoAtividade}
                                 </div> 
                             </div>
-                               
+
                             <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  
-                            <a class="btn btn-default" href="<c:url value="/atividade/${boletimDiario.id}/novo"/>"><i class="fa fa-fw fa-plus"></i> Novo</a>
+
+                            <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">Cancelar</a>
+                            <a class="btn btn-default" href="<c:url value="/atividade/${boletimDiario.id}/novo"/>"><i class="fa fa-fw fa-plus"></i>  &nbsp;&nbsp;Novo &nbsp;&nbsp;</a>
                             <br/>
 
                             <br/><br/>

@@ -163,9 +163,9 @@
                                 <br/><br/><br/><br/>
                                 <div class="col-lg-12" align="center">
 
-                                    <button class="btn btn-success" type="submit" > Salvar Atividade</button>  
                                     <a class="btn btn-primary" href="#" onclick="geocodeAddress()"><i class="fa fa-map-marker fa-fw"></i> Coordenadas</a>
-                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <button class="btn btn-success" type="submit" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Salvar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>  
 
                                 </div>
                                 <br/>

@@ -36,8 +36,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-7 text-right">   
-                                      
-                                        <input type="submit" class="btn btn-lg btn-success text-right" value=" Gravar" />
+                                       <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">Cancelar</a>
+                                        
+                                        <input type="submit" class="btn btn-success text-right" value=" &nbsp;&nbsp;salvar&nbsp;&nbsp;" />
                                    
                                 </div>
                                </div>

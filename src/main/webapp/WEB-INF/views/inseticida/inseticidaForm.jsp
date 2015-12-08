@@ -43,8 +43,9 @@
 
                                 <div class="col-lg-4" align="center">
                                     <br/>
+                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; Cancelar &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</a>
                                     <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
-                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
                                 </div>
                             </form>
                             <!--<button onclick="myFunction()">report via ajax</button>-->

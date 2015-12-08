@@ -21,7 +21,8 @@
                                 <small>Listagem</small>
                             </h1>
                             <br/>
-                            <a class="btn btn-default" href="<c:url value="/tratamento/novo"/>"><i class="fa fa-fw fa-plus"></i> Novo </a>
+                            
+                            <a class="btn btn-default" href="<c:url value="/tratamento/novo"/>"><i class="fa fa-fw fa-plus"></i> Novo</a>
                             <br/><br/>
                             <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>

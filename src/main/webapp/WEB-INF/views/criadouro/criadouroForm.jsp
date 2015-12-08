@@ -23,7 +23,7 @@
                                 Criadouro
                                 <c:if test="${not empty criadouro}"><small>Alterar</small></c:if>
                                 <c:if test="${empty criadouro}"><small>Novo</small></c:if>
-                            </h1>
+                                </h1>
                             <c:if test="${not empty mensagem}">  <div class="alert alert-danger alert-dismissible" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <p class="text-center">${mensagem}</p> 
@@ -41,8 +41,9 @@
                                 </div>
                                 <div class="col-lg-4" align="center">
                                     <br/>
+                                     <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; Cancelar &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</a>
+                                        
                                     <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
-                                    <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                 </div>
                             </form>
                             <!--<button onclick="myFunction()">report via ajax</button>-->

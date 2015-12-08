@@ -41,17 +41,17 @@
                                             <input class="form-control validate[required]" type="text" id="nome" name="nome" value="${estrato.nome}" placeholder="Digite o Nome do estrato">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-4  demo2">
+                                    <div class="form-group col-md-3  demo2">
                                         <label class="" for="estrato">Cor para o mapa :</label><br/>
                                         <div class="input-group margin-bottom-sm">
                                             <span class="input-group-addon"><i  class="fa fa-circle-o"></i></span>
                                             <input type="text" value="${estrato.cor}" name="cor" class="form-control validate[required]"  />
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 ">
+                                    <div class="form-group col-md-4 ">
                                         <label class="" for="dataInicio">&nbsp;</label><br/>
+                                        <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; Cancelar &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</a>
                                         <input class="btn btn-success " onclick="getFormData()" value="Salvar" />  
-                                        <a href="#"  name="cancelar" class="btn btn-default" onclick="javascript:history.back();" value="cancelar">&nbsp;&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                                     </div>
 
                                     <br/> <br/>    <br/> <br/> <br/> 
