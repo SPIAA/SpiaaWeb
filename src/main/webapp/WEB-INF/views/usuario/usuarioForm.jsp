@@ -40,7 +40,7 @@
                                     <label for="tipo">Tipo de Usuário: </label>
                                     <select class="form-control " name="tipo" id="tipo">
                                         <option value="0">Selecione...</option>
-                                        <option value="AGS" <c:if test="${usuario.tipo == 'AGS'}">selected</c:if>>Agente de Saúde</option>
+                                        <option value="AGS" <c:if test="${usuario.tipo == 'AGS'}">selected</c:if>>Agente de Endemias</option>
                                         <option value="ADM" <c:if test="${usuario.tipo == 'ADM'}">selected</c:if>>Administrador</option>
                                         </select>
                                     </div>

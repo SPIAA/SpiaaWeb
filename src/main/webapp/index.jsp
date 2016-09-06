@@ -122,7 +122,7 @@
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">Gerenciamento de atividades</h4>
-                                <p> As atividades realizadas pelos Agentes de Saúde podem ser gerenciadas através do navegador.</p>
+                                <p> As atividades realizadas pelos Agentes de Endemias podem ser gerenciadas através do navegador.</p>
 
                             </div>
                         </div>
